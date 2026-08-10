@@ -301,6 +301,7 @@ def main():
     # point at by name.
     names = {}
     everywhere = []
+    objflags = {}
     for body in forms(dungeon, "OBJECT"):
         oid = re.match(r"<OBJECT\s+([A-Z0-9?\-]+)", body).group(1)
         loc = name = None
@@ -318,6 +319,10 @@ def main():
             elif key == "FLAGS":
                 flags = rest.split()
         names[oid] = name or pretty(oid).lower()
+        if name and flags:
+            # Keyed by printed name, which is what the interpreter reports at
+            # runtime. Used to work out which attribute bit is which flag.
+            objflags.setdefault(name.lower(), sorted(set(flags)))
         if loc == "GLOBAL-OBJECTS" and name:
             everywhere.append(name)
         if loc in rooms:
@@ -342,6 +347,7 @@ def main():
         "rooms": [rooms[k] for k in rooms],
         "verbs": verb_grammar(read("gsyntax.zil")),
         "everywhere": sorted(set(everywhere)),
+        "objectFlags": objflags,
     }
     out = os.path.join(ROOT, "web", "world.json")
     with open(out, "w") as fh:

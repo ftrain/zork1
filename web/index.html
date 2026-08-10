@@ -102,9 +102,18 @@
   .row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
   .row button { font-size: 11px; }
 
-  .obj { border: 1px solid var(--line); border-radius: 3px; padding: 6px 8px; margin-bottom: 6px; }
-  .obj .nm { display: block; margin-bottom: 4px; }
-  .obj .nm.treasure { color: var(--gold); }
+  .thing {
+    border: 1px solid var(--line); border-radius: 5px;
+    padding: 8px 10px; margin-bottom: 7px;
+  }
+  .thing.nested {
+    margin-left: 16px; border-left: 2px solid #2c343e; border-radius: 0 5px 5px 0;
+  }
+  .thing .nm { display: block; color: var(--ink); }
+  .thing .what, aside > .what {
+    color: var(--dim); font-size: 11px; margin: 2px 0 6px;
+  }
+  aside > .what { margin-top: -2px; }
 
   #log {
     white-space: pre-wrap; word-break: break-word; color: var(--ink);
@@ -401,8 +410,13 @@
     }
     if (snap.desc) n.desc = snap.desc;
     n.name = snap.name;
+    // Keep the interpreter's attribute read-out: it is what tells the panel
+    // this is a closed container rather than just a noun.
     n.objects = snap.objects.map(function (o) {
-      return { name: o.name, takeable: o.takeable, treasure: false };
+      return {
+        name: o.name, takeable: o.takeable, treasure: false,
+        f: o.f, inside: o.inside
+      };
     });
 
     if (dir && prev !== null && state.nodes[prev]) {
@@ -758,23 +772,158 @@
     return out;
   }
 
-  function liveThings(host, n) {
-    var list = nouns(n);
-    if (!list.length) return;
-    var h = document.createElement("h3");
-    h.textContent = "TAP A THING";
-    host.appendChild(h);
-    var wrap = document.createElement("div");
-    wrap.className = "chips";
-    list.forEach(function (t) {
-      var b = document.createElement("button");
-      b.className = "chip " + t.kind;
-      b.textContent = t.kind === "carried" ? "· " + t.label : t.label;
-      b.disabled = busy;
-      b.onclick = function () { openSheet(t.label); };
-      wrap.appendChild(b);
+  /* ---------- what a thing is, and what you can do with it ---------- */
+
+  // Reads the object's attribute bits into a plain-English line, so a thing
+  // in the list says what it is rather than only what it is called.
+  function describeItem(it, carried) {
+    var f = it.f || {}, bits = [];
+    if (f.actor) bits.push("alive");
+    if (f.light) bits.push(f.on ? "lit" : "a lamp, not lit");
+    if (f.flame && !f.light) bits.push(f.on ? "burning" : "burnable");
+    if (f.container || f.surface) {
+      bits.push(f.surface ? "a surface" :
+                (f.open ? "an open container" : "a closed container"));
+    }
+    if (f.door) bits.push(f.open ? "an open door" : "a closed door");
+    if (f.read) bits.push("readable");
+    if (f.weapon) bits.push("a weapon");
+    if (f.tool) bits.push("a tool");
+    if (f.food) bits.push("edible");
+    if (f.drink) bits.push("drinkable");
+    if (f.vehicle) bits.push("rideable");
+    if (f.climb) bits.push("climbable");
+    if (!bits.length && !carried && !f.take) bits.push("scenery");
+    if (it.inside && it.inside.length) {
+      bits.push("holding " + it.inside.map(function (x) {
+        return x.name;
+      }).join(", "));
+    } else if (it.inside && (f.open || f.trans)) {
+      bits.push("empty");
+    }
+    return bits.join(" · ");
+  }
+
+  // The verbs worth surfacing for this particular thing, in the order they
+  // are worth trying. Everything else is still one tap away under the sheet.
+  function verbsFor(it, carried) {
+    var f = it.f || {}, v = [];
+    if (carried) v.push("drop");
+    else if (f.take) v.push("take");
+    if (f.container || f.door) v.push(f.open ? "close" : "open");
+    if ((f.container || f.surface) && (f.open || f.trans)) v.push("look in");
+    if (f.read) v.push("read");
+    if (f.light) v.push(f.on ? "turn off" : "turn on");
+    if (f.food) v.push("eat");
+    if (f.drink) v.push("drink");
+    if (f.vehicle) v.push("board");
+    if (f.climb) v.push("climb");
+    if (f.search) v.push("search");
+    if (f.turn) v.push("turn");
+    // Everything can be examined, and anything sitting there can be shoved
+    // about or looked under. Without this tail a flagless object offers
+    // nothing but "examine" — and the rug in the living room, which hides
+    // the trap door and is the whole opening of the game, is flagless.
+    v.push("examine", "move", "look under", "push");
+    return v.filter(function (x, i) { return v.indexOf(x) === i; });
+  }
+
+  // Verbs where this thing is the *second* object: the sword you attack with,
+  // the sack you put things in. Without these, a weapon in your hands offers
+  // nothing to do with the troll in front of you.
+  function verbsWith(it) {
+    var f = it.f || {}, v = [];
+    if (f.weapon) v.push({ phrase: "attack", prep: "with" },
+                         { phrase: "kill", prep: "with" });
+    if (f.container || f.surface) v.push({ phrase: "put", prep: "in" });
+    if (f.surface) v.push({ phrase: "put", prep: "on" });
+    if (f.flame || f.light) v.push({ phrase: "burn", prep: "with" },
+                                   { phrase: "light", prep: "with" });
+    if (f.tool) v.push({ phrase: "open", prep: "with" },
+                       { phrase: "move", prep: "with" },
+                       { phrase: "dig", prep: "with" },
+                       { phrase: "unlock", prep: "with" });
+    return v;
+  }
+
+  function itemRow(it, carried) {
+    var row = document.createElement("div");
+    row.className = "thing";
+    var head = document.createElement("div");
+    head.className = "nm";
+    head.textContent = it.name;
+    row.appendChild(head);
+    var what = describeItem(it, carried);
+    if (what) {
+      var sub = document.createElement("div");
+      sub.className = "what";
+      sub.textContent = what;
+      row.appendChild(sub);
+    }
+    var acts = document.createElement("div");
+    acts.className = "row";
+    verbsFor(it, carried).slice(0, 3).forEach(function (v) {
+      acts.appendChild(cmdButton(v, v + " " + it.name));
     });
-    host.appendChild(wrap);
+    var more = document.createElement("button");
+    more.textContent = "more…";
+    more.disabled = busy;
+    more.onclick = function () { openSheet(it.name, it, carried); };
+    acts.appendChild(more);
+    row.appendChild(acts);
+    return row;
+  }
+
+  function section(host, title, note) {
+    var h = document.createElement("h3");
+    h.textContent = title;
+    host.appendChild(h);
+    if (note) {
+      var d = document.createElement("div");
+      d.className = "what";
+      d.textContent = note;
+      host.appendChild(d);
+    }
+  }
+
+  // A thing, then anything visible inside it, indented one step.
+  function addThing(host, it, carried) {
+    host.appendChild(itemRow(it, carried));
+    (it.inside || []).forEach(function (child) {
+      var row = itemRow(child, false);
+      row.className = "thing nested";
+      host.appendChild(row);
+    });
+  }
+
+  function liveThings(host, n) {
+    var carried = (live && live.inventory) || [];
+    section(host, "YOU ARE CARRYING",
+            carried.length ? "" : "nothing at all");
+    carried.forEach(function (it) { addThing(host, it, true); });
+
+    var here = n.objects || [];
+    if (here.length) {
+      section(host, "HERE");
+      here.forEach(function (it) { addThing(host, it, false); });
+    }
+
+    // Scenery has no object of its own to inspect, so it stays as chips.
+    var scenery = nouns(n).filter(function (t) { return t.kind === "scenery"; });
+    if (scenery.length) {
+      section(host, "ALSO HERE");
+      var wrap = document.createElement("div");
+      wrap.className = "chips";
+      scenery.forEach(function (t) {
+        var b = document.createElement("button");
+        b.className = "chip scenery";
+        b.textContent = t.label;
+        b.disabled = busy;
+        b.onclick = function () { openSheet(t.label); };
+        wrap.appendChild(b);
+      });
+      host.appendChild(wrap);
+    }
   }
 
   /* ---------- the action sheet ---------- */
@@ -823,18 +972,41 @@
   // reaches for; the rest of the parser's grammar is one tap further in.
   var SHOWN = 12;
 
-  function openSheet(thing) {
+  function openSheet(thing, it, carried) {
     var one = ATLAS.verbs.one, two = ATLAS.verbs.two;
     sheetHead(thing);
-    verbGrid(one.slice(0, SHOWN), "do this to it", function (v) {
-      closeSheet();
-      send(v.phrase + " " + thing, null);
-    });
-    verbGrid(two.slice(0, SHOWN), "use it with something else", function (v) {
+    if (it) {
+      var what = describeItem(it, carried);
+      if (what) {
+        var sub = document.createElement("div");
+        sub.className = "sub";
+        sub.textContent = what;
+        sheet.appendChild(sub);
+      }
+      var fits = verbsFor(it, carried).map(function (p) { return { phrase: p }; });
+      verbGrid(fits, "what this is for", function (v) {
+        closeSheet();
+        send(v.phrase + " " + thing, null);
+      });
+      var with_ = verbsWith(it);
+      if (with_.length) {
+        verbGrid(with_, "use it on something", function (v) {
+          pickTarget(thing, v, true);
+        });
+      }
+    }
+    verbGrid(one.slice(0, SHOWN), it ? "anything else" : "do this to it",
+      function (v) {
+        closeSheet();
+        send(v.phrase + " " + thing, null);
+      });
+    verbGrid(two.slice(0, SHOWN), "other two-part commands", function (v) {
       pickTarget(thing, v);
     });
     more(function () {
-      sheetHead(thing + " — every verb", function () { openSheet(thing); });
+      sheetHead(thing + " — every verb", function () {
+        openSheet(thing, it, carried);
+      });
       verbGrid(one.slice(SHOWN), "do this to it", function (v) {
         closeSheet();
         send(v.phrase + " " + thing, null);
@@ -853,12 +1025,16 @@
     sheet.appendChild(b);
   }
 
-  function pickTarget(thing, verb) {
-    var phrase = verb.phrase + " " + thing + " " + verb.prep;
-    sheetHead(phrase + " …", function () { openSheet(thing); });
+  // reversed: the tapped thing is the instrument rather than the target, so
+  // "attack … with sword" asks for the victim, not the weapon.
+  function pickTarget(thing, verb, reversed) {
+    var phrase = reversed
+      ? verb.phrase + " %s " + verb.prep + " " + thing
+      : verb.phrase + " " + thing + " " + verb.prep + " %s";
+    sheetHead(phrase.replace("%s", "…"), function () { openSheet(thing); });
     var note = document.createElement("div");
     note.className = "sub";
-    note.textContent = "with what?";
+    note.textContent = reversed ? "on what?" : "with what?";
     sheet.appendChild(note);
     var grid = document.createElement("div");
     grid.className = "grid";
@@ -868,7 +1044,7 @@
       b.textContent = t.label;
       b.onclick = function () {
         closeSheet();
-        send(phrase + " " + t.label, null);
+        send(phrase.replace("%s", t.label), null);
       };
       grid.appendChild(b);
     });

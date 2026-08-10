@@ -4,6 +4,509 @@
   "set of teeth",
   "surrounding wall"
  ],
+ "objectFlags": {
+  "altar": [
+   "CONTBIT",
+   "NDESCBIT",
+   "OPENBIT",
+   "SURFACEBIT"
+  ],
+  "ancient map": [
+   "INVISIBLE",
+   "READBIT",
+   "TAKEBIT"
+  ],
+  "basket": [
+   "TRYTAKEBIT"
+  ],
+  "bat": [
+   "ACTORBIT",
+   "TRYTAKEBIT"
+  ],
+  "beautiful brass bauble": [
+   "TAKEBIT"
+  ],
+  "beautiful jeweled scarab": [
+   "INVISIBLE",
+   "TAKEBIT"
+  ],
+  "bird's nest": [
+   "BURNBIT",
+   "CONTBIT",
+   "OPENBIT",
+   "SEARCHBIT",
+   "TAKEBIT"
+  ],
+  "black book": [
+   "BURNBIT",
+   "CONTBIT",
+   "READBIT",
+   "TAKEBIT",
+   "TURNBIT"
+  ],
+  "bloody axe": [
+   "NDESCBIT",
+   "TAKEBIT",
+   "TRYTAKEBIT",
+   "WEAPONBIT"
+  ],
+  "blue button": [
+   "NDESCBIT"
+  ],
+  "board": [
+   "NDESCBIT"
+  ],
+  "boarded window": [
+   "NDESCBIT"
+  ],
+  "bolt": [
+   "NDESCBIT",
+   "TRYTAKEBIT",
+   "TURNBIT"
+  ],
+  "brass bell": [
+   "TAKEBIT"
+  ],
+  "brass lantern": [
+   "LIGHTBIT",
+   "TAKEBIT"
+  ],
+  "broken clockwork canary": [
+   "TAKEBIT"
+  ],
+  "broken jewel-encrusted egg": [
+   "CONTBIT",
+   "OPENBIT",
+   "TAKEBIT"
+  ],
+  "broken lantern": [
+   "TAKEBIT"
+  ],
+  "broken timber": [
+   "TAKEBIT"
+  ],
+  "brown button": [
+   "NDESCBIT"
+  ],
+  "brown sack": [
+   "BURNBIT",
+   "CONTBIT",
+   "TAKEBIT"
+  ],
+  "burned-out lantern": [
+   "TAKEBIT"
+  ],
+  "carpet": [
+   "NDESCBIT",
+   "TRYTAKEBIT"
+  ],
+  "chalice": [
+   "CONTBIT",
+   "TAKEBIT",
+   "TRYTAKEBIT"
+  ],
+  "chimney": [
+   "CLIMBBIT",
+   "NDESCBIT"
+  ],
+  "chute": [
+   "CLIMBBIT"
+  ],
+  "cliff": [
+   "CLIMBBIT",
+   "NDESCBIT"
+  ],
+  "clove of garlic": [
+   "FOODBIT",
+   "TAKEBIT"
+  ],
+  "control panel": [
+   "NDESCBIT"
+  ],
+  "crack": [
+   "NDESCBIT"
+  ],
+  "crystal skull": [
+   "TAKEBIT"
+  ],
+  "crystal trident": [
+   "TAKEBIT"
+  ],
+  "cyclops": [
+   "ACTORBIT",
+   "NDESCBIT",
+   "TRYTAKEBIT"
+  ],
+  "dam": [
+   "NDESCBIT",
+   "TRYTAKEBIT"
+  ],
+  "door": [
+   "DOORBIT",
+   "NDESCBIT"
+  ],
+  "forest": [
+   "NDESCBIT"
+  ],
+  "glass bottle": [
+   "CONTBIT",
+   "TAKEBIT",
+   "TRANSBIT"
+  ],
+  "gold coffin": [
+   "CONTBIT",
+   "SACREDBIT",
+   "SEARCHBIT",
+   "TAKEBIT"
+  ],
+  "golden clockwork canary": [
+   "SEARCHBIT",
+   "TAKEBIT"
+  ],
+  "grating": [
+   "DOORBIT",
+   "INVISIBLE",
+   "NDESCBIT"
+  ],
+  "green bubble": [
+   "NDESCBIT",
+   "TRYTAKEBIT"
+  ],
+  "group of tool chests": [
+   "CONTBIT",
+   "OPENBIT",
+   "SACREDBIT",
+   "TRYTAKEBIT"
+  ],
+  "hand-held air pump": [
+   "TAKEBIT",
+   "TOOLBIT"
+  ],
+  "huge diamond": [
+   "TAKEBIT"
+  ],
+  "jade figurine": [
+   "TAKEBIT"
+  ],
+  "jewel-encrusted egg": [
+   "CONTBIT",
+   "SEARCHBIT",
+   "TAKEBIT"
+  ],
+  "kitchen table": [
+   "CONTBIT",
+   "NDESCBIT",
+   "OPENBIT",
+   "SURFACEBIT"
+  ],
+  "kitchen window": [
+   "DOORBIT",
+   "NDESCBIT"
+  ],
+  "large bag": [
+   "NDESCBIT",
+   "TRYTAKEBIT"
+  ],
+  "large emerald": [
+   "TAKEBIT"
+  ],
+  "leaflet": [
+   "BURNBIT",
+   "READBIT",
+   "TAKEBIT"
+  ],
+  "leak": [
+   "INVISIBLE",
+   "NDESCBIT"
+  ],
+  "leather bag of coins": [
+   "TAKEBIT"
+  ],
+  "lunch": [
+   "FOODBIT",
+   "TAKEBIT"
+  ],
+  "machine": [
+   "CONTBIT",
+   "NDESCBIT",
+   "TRYTAKEBIT"
+  ],
+  "magic boat": [
+   "BURNBIT",
+   "OPENBIT",
+   "SEARCHBIT",
+   "TAKEBIT",
+   "VEHBIT"
+  ],
+  "matchbook": [
+   "READBIT",
+   "TAKEBIT"
+  ],
+  "mirror": [
+   "NDESCBIT",
+   "TRYTAKEBIT"
+  ],
+  "mountain range": [
+   "CLIMBBIT",
+   "NDESCBIT"
+  ],
+  "nasty knife": [
+   "TAKEBIT",
+   "TRYTAKEBIT",
+   "WEAPONBIT"
+  ],
+  "number of ghosts": [
+   "ACTORBIT",
+   "NDESCBIT"
+  ],
+  "painting": [
+   "BURNBIT",
+   "TAKEBIT"
+  ],
+  "pair of candles": [
+   "FLAMEBIT",
+   "LIGHTBIT",
+   "ONBIT",
+   "TAKEBIT"
+  ],
+  "pedestal": [
+   "CONTBIT",
+   "NDESCBIT",
+   "OPENBIT",
+   "SURFACEBIT"
+  ],
+  "pile of bodies": [
+   "NDESCBIT",
+   "TRYTAKEBIT"
+  ],
+  "pile of leaves": [
+   "BURNBIT",
+   "TAKEBIT",
+   "TRYTAKEBIT"
+  ],
+  "pile of plastic": [
+   "BURNBIT",
+   "TAKEBIT"
+  ],
+  "platinum bar": [
+   "SACREDBIT",
+   "TAKEBIT"
+  ],
+  "pot of gold": [
+   "INVISIBLE",
+   "TAKEBIT"
+  ],
+  "prayer": [
+   "NDESCBIT",
+   "READBIT",
+   "SACREDBIT"
+  ],
+  "punctured boat": [
+   "BURNBIT",
+   "TAKEBIT"
+  ],
+  "quantity of water": [
+   "DRINKBIT",
+   "TAKEBIT",
+   "TRYTAKEBIT"
+  ],
+  "rainbow": [
+   "CLIMBBIT",
+   "NDESCBIT"
+  ],
+  "red buoy": [
+   "CONTBIT",
+   "TAKEBIT"
+  ],
+  "red button": [
+   "NDESCBIT"
+  ],
+  "red hot brass bell": [
+   "TRYTAKEBIT"
+  ],
+  "river": [
+   "NDESCBIT"
+  ],
+  "rope": [
+   "SACREDBIT",
+   "TAKEBIT",
+   "TRYTAKEBIT"
+  ],
+  "rusty knife": [
+   "TAKEBIT",
+   "TOOLBIT",
+   "TRYTAKEBIT",
+   "WEAPONBIT"
+  ],
+  "sand": [
+   "NDESCBIT"
+  ],
+  "sapphire-encrusted bracelet": [
+   "TAKEBIT"
+  ],
+  "sceptre": [
+   "TAKEBIT",
+   "WEAPONBIT"
+  ],
+  "screwdriver": [
+   "TAKEBIT",
+   "TOOLBIT"
+  ],
+  "set of teeth": [
+   "NDESCBIT"
+  ],
+  "shovel": [
+   "TAKEBIT",
+   "TOOLBIT"
+  ],
+  "skeleton": [
+   "NDESCBIT",
+   "TRYTAKEBIT"
+  ],
+  "skeleton key": [
+   "TAKEBIT",
+   "TOOLBIT"
+  ],
+  "small mailbox": [
+   "CONTBIT",
+   "TRYTAKEBIT"
+  ],
+  "small piece of vitreous slag": [
+   "TAKEBIT",
+   "TRYTAKEBIT"
+  ],
+  "small pile of coal": [
+   "BURNBIT",
+   "TAKEBIT"
+  ],
+  "songbird": [
+   "NDESCBIT"
+  ],
+  "stiletto": [
+   "NDESCBIT",
+   "TAKEBIT",
+   "TRYTAKEBIT",
+   "WEAPONBIT"
+  ],
+  "stone barrow": [
+   "NDESCBIT"
+  ],
+  "stone door": [
+   "DOORBIT",
+   "NDESCBIT",
+   "OPENBIT"
+  ],
+  "switch": [
+   "NDESCBIT",
+   "TURNBIT"
+  ],
+  "sword": [
+   "TAKEBIT",
+   "TRYTAKEBIT",
+   "WEAPONBIT"
+  ],
+  "table": [
+   "CONTBIT",
+   "NDESCBIT",
+   "OPENBIT",
+   "SURFACEBIT"
+  ],
+  "tan label": [
+   "BURNBIT",
+   "READBIT",
+   "TAKEBIT"
+  ],
+  "thief": [
+   "ACTORBIT",
+   "CONTBIT",
+   "INVISIBLE",
+   "OPENBIT",
+   "TRYTAKEBIT"
+  ],
+  "torch": [
+   "FLAMEBIT",
+   "LIGHTBIT",
+   "ONBIT",
+   "TAKEBIT"
+  ],
+  "tour guidebook": [
+   "BURNBIT",
+   "READBIT",
+   "TAKEBIT"
+  ],
+  "trap door": [
+   "DOORBIT",
+   "INVISIBLE",
+   "NDESCBIT"
+  ],
+  "tree": [
+   "CLIMBBIT",
+   "NDESCBIT"
+  ],
+  "troll": [
+   "ACTORBIT",
+   "OPENBIT",
+   "TRYTAKEBIT"
+  ],
+  "trophy case": [
+   "CONTBIT",
+   "NDESCBIT",
+   "SEARCHBIT",
+   "TRANSBIT",
+   "TRYTAKEBIT"
+  ],
+  "trunk of jewels": [
+   "INVISIBLE",
+   "TAKEBIT"
+  ],
+  "tube": [
+   "CONTBIT",
+   "READBIT",
+   "TAKEBIT"
+  ],
+  "viscous material": [
+   "TAKEBIT",
+   "TOOLBIT"
+  ],
+  "wall with engravings": [
+   "READBIT",
+   "SACREDBIT"
+  ],
+  "water": [
+   "DRINKBIT"
+  ],
+  "white cliffs": [
+   "CLIMBBIT",
+   "NDESCBIT"
+  ],
+  "white house": [
+   "NDESCBIT"
+  ],
+  "wooden door": [
+   "DOORBIT",
+   "NDESCBIT",
+   "READBIT",
+   "TRANSBIT"
+  ],
+  "wooden ladder": [
+   "CLIMBBIT",
+   "NDESCBIT"
+  ],
+  "wooden railing": [
+   "NDESCBIT"
+  ],
+  "wrench": [
+   "TAKEBIT",
+   "TOOLBIT"
+  ],
+  "yellow button": [
+   "NDESCBIT"
+  ],
+  "zork owner's manual": [
+   "READBIT",
+   "TAKEBIT"
+  ]
+ },
  "rooms": [
   {
    "action": "WEST-HOUSE",

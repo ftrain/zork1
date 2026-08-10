@@ -61,11 +61,46 @@ Three things supply the nouns:
 * what the interpreter reports in the room, minus anything still flagged
   invisible — so the trap door does not appear, or become tappable, until
   you have moved the rug
-* what you are carrying, marked with a dot
+* what you are carrying, in its own section
 * the scenery the ZIL source lists for that room. This one matters more
   than it sounds: the kitchen window is in no room's object tree, so
   without it there would be no way to open the window without typing —
   and no way into the house
+
+## Knowing what a thing is
+
+Each thing is listed with what it actually is — *a closed container*, *a
+lamp, not lit*, *a weapon*, *an open container · holding leaflet* — and
+with the two or three verbs that suit it. The lamp offers **turn on**, and
+**turn off** once it is lit. A container offers **open**, then **look in**
+once open, and whatever is inside gets its own indented row, so the leaflet
+in the mailbox is a thing you take rather than a detail of the mailbox.
+
+Weapons, tools and containers also appear as the *second* object of a
+command: tapping the sword offers *attack … with sword*, and then asks who.
+Without that, a weapon in your hands has nothing to say about the troll in
+front of you.
+
+This comes from the object's attribute bits, which the page reads out of VM
+memory. Working out which bit means what was the interesting part, and it
+was solved rather than guessed:
+
+* `extract_map.py` emits every object's `FLAGS` from the ZIL source, keyed
+  by printed name
+* matching those 118 objects against the compiled object table and looking
+  for the bit set on exactly the objects carrying a given flag pins
+  nineteen flags outright; correlation settles five more at 99% agreement
+  (not 100% — this repository's source is a snapshot that does not exactly
+  match the 1983 binary)
+* `ONBIT` could not be separated from `FLAMEBIT` that way, since everything
+  that starts lit carries both. Lighting the brass lantern and watching bit
+  19 turn on, then dousing it and watching the same bit clear, settles it
+
+The result is in `ATTR` at the top of `engine.js`.
+
+Objects with no telling flags — the living room rug is one, and it hides
+the trap door the whole opening depends on — fall back to **move**, **look
+under** and **push**, so nothing is ever a dead end offering only *examine*.
 
 A **type instead** button is still there for a desktop keyboard. Nothing
 requires it.

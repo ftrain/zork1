@@ -124,12 +124,31 @@ window.ZorkEngine = (function () {
   var A0 = "abcdefghijklmnopqrstuvwxyz";
   var A1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var A2 = " \n0123456789.,!?_#'\"/\\-:()";
-  var ATTR_TAKEABLE = 17;   // Infocom's convention, as zwalker documents
-  // Attribute 7 is INVISIBLE in this build: the trap door under the rug
-  // carries it, and moving the rug clears exactly that bit. Objects holding
-  // it are in the room but cannot be referred to yet, so listing them would
-  // both give the game away and offer taps the parser will reject.
-  var ATTR_INVISIBLE = 7;
+  /* Attribute numbers for this story file.
+   *
+   * These were solved rather than guessed. tools/extract_map.py emits every
+   * object's FLAGS from the ZIL source keyed by printed name; matching those
+   * 118 objects against the compiled object table and looking for the bit
+   * that is set on exactly the objects carrying a given flag pins nineteen of
+   * them outright, and correlation settles the rest at 99% agreement. (Not
+   * 100%: this repository's source is a snapshot that does not exactly match
+   * the 1983 binary, so one or two objects disagree.)
+   *
+   * ONBIT could not be separated from FLAMEBIT statically, since the objects
+   * that start lit carry both. Lighting the brass lantern and watching bit 19
+   * turn on, then dousing it and watching the same bit clear, settles it.
+   */
+  var ATTR = {
+    INVISIBLE: 7, SEARCH: 8, SACRED: 9, SURFACE: 10, OPEN: 11, TRANS: 12,
+    TRYTAKE: 13, NDESC: 14, TURN: 15, READ: 16, TAKE: 17, CONTAINER: 18,
+    ON: 19, FOOD: 20, DRINK: 21, DOOR: 22, CLIMB: 23, FLAME: 25, BURN: 26,
+    VEHICLE: 27, TOOL: 28, WEAPON: 29, ACTOR: 30, LIGHT: 31
+  };
+  var ATTR_TAKEABLE = ATTR.TAKE;
+  // Objects holding INVISIBLE are in the room but cannot be referred to yet,
+  // so listing them would both give the game away and offer taps the parser
+  // will reject.
+  var ATTR_INVISIBLE = ATTR.INVISIBLE;
   var PLAYER_NAMES = ["cretin", "adventurer", "protagonist", "player", "yourself"];
 
   function Peek(vm) { this.vm = vm; this.player = null; }
@@ -198,15 +217,36 @@ window.ZorkEngine = (function () {
   };
   Peek.prototype.turns = function () { return this.w(this.w(0x0C) + 4); };
 
-  Peek.prototype.contents = function (n) {
+  // What kind of thing this is, in terms the interface can act on: what
+  // verbs make sense for it, and what state it is currently in.
+  Peek.prototype.traits = function (n) {
+    var self = this;
+    function has(k) { return !!self.attr(n, ATTR[k]); }
+    return {
+      take: has("TAKE"), container: has("CONTAINER"), open: has("OPEN"),
+      trans: has("TRANS"), surface: has("SURFACE"), door: has("DOOR"),
+      read: has("READ"), light: has("LIGHT"), on: has("ON"),
+      flame: has("FLAME"), burn: has("BURN"), food: has("FOOD"),
+      drink: has("DRINK"), weapon: has("WEAPON"), tool: has("TOOL"),
+      actor: has("ACTOR"), climb: has("CLIMB"), vehicle: has("VEHICLE"),
+      turn: has("TURN"), search: has("SEARCH")
+    };
+  };
+
+  Peek.prototype.contents = function (n, deep) {
     var out = [], c = this.child(n), guard = 0;
     while (c && guard++ < 200) {
       if (!this.attr(c, ATTR_INVISIBLE)) {
-        out.push({
-          id: c,
-          name: this.name(c),
-          takeable: !!this.attr(c, ATTR_TAKEABLE)
-        });
+        var f = this.traits(c);
+        var item = { id: c, name: this.name(c), takeable: f.take, f: f };
+        // What is inside a container you can actually see into, as real
+        // items rather than names, so the interface can offer them directly:
+        // the leaflet in the mailbox is a thing you take, not a detail of
+        // the mailbox. One level down only, which is as deep as Zork goes.
+        if (deep !== false && (f.container || f.surface) && (f.open || f.trans)) {
+          item.inside = this.contents(c, false);
+        }
+        out.push(item);
       }
       c = this.sibling(c);
     }
