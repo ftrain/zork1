@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZORK I — Clickable Map</title>
+<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'&gt;&lt;text y='13' font-size='13'&gt;🗺&lt;/text&gt;&lt;/svg&gt;">
+<style>
+  :root {
+    --bg: #0b0d10;
+    --panel: #12161b;
+    --line: #232a33;
+    --ink: #cfd6de;
+    --dim: #6b7684;
+    --acid: #7fe07f;
+    --gold: #e0c060;
+    --blood: #d06060;
+    --sky: #6fb0e0;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  header {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding: 8px 14px; border-bottom: 1px solid var(--line); background: var(--panel);
+  }
+  header h1 { font-size: 13px; margin: 0; letter-spacing: .18em; color: var(--acid); }
+  .stat { color: var(--dim); white-space: nowrap; }
+  .stat b { color: var(--ink); font-weight: 600; }
+  .spacer { flex: 1; }
+  #mode {
+    color: var(--sky); border: 1px solid var(--line); border-radius: 3px;
+    padding: 2px 7px; font-size: 11px; letter-spacing: .1em;
+  }
+  button {
+    font: inherit; color: var(--ink); background: #1a2029;
+    border: 1px solid var(--line); border-radius: 3px;
+    padding: 4px 9px; cursor: pointer;
+  }
+  button:hover:not(:disabled) { border-color: var(--acid); color: var(--acid); }
+  button:disabled { opacity: .35; cursor: not-allowed; }
+
+  main { flex: 1; display: flex; min-height: 0; }
+  #mapwrap { flex: 1; position: relative; min-width: 0; }
+  canvas { display: block; width: 100%; height: 100%; cursor: grab; }
+  canvas.drag { cursor: grabbing; }
+  #hint {
+    position: absolute; left: 10px; bottom: 8px; color: var(--dim);
+    font-size: 11px; pointer-events: none;
+  }
+
+  aside {
+    width: 360px; flex: none; border-left: 1px solid var(--line);
+    background: var(--panel); overflow-y: auto; padding: 14px;
+  }
+  aside h2 { font-size: 15px; margin: 0 0 2px; color: var(--gold); }
+  .meta { color: var(--dim); font-size: 11px; margin-bottom: 10px; }
+  .desc { margin-bottom: 4px; }
+  h3 {
+    font-size: 11px; letter-spacing: .16em; color: var(--dim);
+    margin: 16px 0 6px; border-bottom: 1px solid var(--line); padding-bottom: 4px;
+  }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin-bottom: 5px; }
+  .item::before { content: "• "; color: var(--dim); }
+  .item.treasure { color: var(--gold); }
+
+  .exit {
+    display: block; width: 100%; text-align: left; margin-bottom: 5px;
+    padding: 6px 9px; line-height: 1.35;
+  }
+  .exit .dir { color: var(--acid); font-weight: 700; }
+  .exit .new { color: var(--sky); }
+  .exit .cond, .exit .sub { display: block; color: var(--dim); font-size: 11px; }
+  .exit .key { float: right; color: var(--dim); }
+  .blocked {
+    padding: 6px 9px; margin-bottom: 5px; border: 1px dashed var(--line);
+    border-radius: 3px; color: var(--dim);
+  }
+  .blocked .dir { color: var(--blood); font-weight: 700; }
+
+  .compass { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .compass button { padding: 6px 2px; text-align: center; font-size: 11px; }
+  .compass button.known { border-color: #3d6b3d; color: var(--acid); background: #16211a; }
+  .compass button.hint { border-color: #38506b; color: var(--sky); }
+  .compass button.wall { color: #59616b; border-style: dashed; opacity: .6; }
+  .compass .blank { visibility: hidden; }
+  .row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .row button { font-size: 11px; }
+
+  .obj { border: 1px solid var(--line); border-radius: 3px; padding: 6px 8px; margin-bottom: 6px; }
+  .obj .nm { display: block; margin-bottom: 4px; }
+  .obj .nm.treasure { color: var(--gold); }
+
+  #log {
+    white-space: pre-wrap; word-break: break-word; color: var(--ink);
+    background: #0d1116; border: 1px solid var(--line); border-radius: 3px;
+    padding: 8px; max-height: 190px; overflow-y: auto; font-size: 12px;
+  }
+  #log .cmd { color: var(--acid); }
+  .trail { color: var(--dim); font-size: 11px; word-break: break-word; }
+  @media (max-width: 760px) {
+    main { flex-direction: column; }
+    aside { width: auto; border-left: 0; border-top: 1px solid var(--line); max-height: 48vh; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>ZORK I</h1>
+  <span id="mode">ATLAS</span>
+  <span class="stat">rooms <b id="s-rooms">0</b><span id="s-of"></span></span>
+  <span class="stat">exits <b id="s-edges">0</b></span>
+  <span class="stat">moves <b id="s-moves">0</b></span>
+  <span class="stat" id="s-scorewrap" hidden>score <b id="s-score">0</b></span>
+  <span class="spacer"></span>
+  <button id="b-live" hidden>play live</button>
+  <button id="b-center">center</button>
+  <button id="b-fit">fit</button>
+  <button id="b-reveal">reveal all</button>
+  <button id="b-reset">reset</button>
+</header>
+<main>
+  <div id="mapwrap">
+    <canvas id="map"></canvas>
+    <div id="hint">drag to pan · scroll to zoom · click a known room to travel there</div>
+  </div>
+  <aside>
+    <h2 id="r-name">—</h2>
+    <div class="meta" id="r-meta"></div>
+    <div class="desc" id="r-desc"></div>
+    <div id="r-items"></div>
+    <div id="r-exits"></div>
+    <div id="r-actions"></div>
+    <div id="r-logwrap" hidden><h3>TRANSCRIPT</h3><div id="log"></div></div>
+    <h3>TRAIL</h3>
+    <div class="trail" id="r-trail"></div>
+  </aside>
+</main>
+
+<script src="world.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ------------------------------------------------------------------ *
+   * Two ways to walk the same dungeon.
+   *
+   * ATLAS mode reads the graph extracted from the ZIL source: every room
+   * and every exit, walkable with no server and no game engine.
+   *
+   * LIVE mode talks to tools/server.py, which runs zork1.zip on zwalker's
+   * Z-machine interpreter. Clicks become real commands and the map is
+   * built from the game's own room object numbers, so a maze of rooms
+   * that all describe themselves identically still maps correctly.
+   *
+   * Both modes feed one graph model, so the map code below is shared.
+   * ------------------------------------------------------------------ */
+
+  var ATLAS = window.WORLD;
+  var ROOMS = {};
+  ATLAS.rooms.forEach(function (r) { ROOMS[r.id] = r; });
+
+  // Room name -> ZIL room, used in live mode to hint which directions are
+  // worth trying. Names shared by several rooms (Maze, Forest, Dead End)
+  // are dropped: an ambiguous hint is worse than none.
+  var BY_NAME = {};
+  ATLAS.rooms.forEach(function (r) {
+    var k = r.name.toLowerCase();
+    BY_NAME[k] = BY_NAME.hasOwnProperty(k) ? null : r;
+  });
+
+  var DIRS = ["NORTH", "NE", "EAST", "SE", "SOUTH", "SW", "WEST", "NW",
+              "UP", "DOWN", "IN", "OUT"];
+  var WORD = {
+    NORTH: "north", SOUTH: "south", EAST: "east", WEST: "west",
+    NE: "northeast", NW: "northwest", SE: "southeast", SW: "southwest",
+    UP: "up", DOWN: "down", IN: "in", OUT: "out", LAND: "land"
+  };
+  var VEC = {
+    NORTH: [0, -1], SOUTH: [0, 1], EAST: [1, 0], WEST: [-1, 0],
+    NE: [1, -1], NW: [-1, -1], SE: [1, 1], SW: [-1, 1],
+    UP: [0, 0], DOWN: [0, 0], IN: [0, 0], OUT: [0, 0], LAND: [0, 0]
+  };
+  var VERTICAL = { UP: 1, DOWN: 1, IN: 1, OUT: 1, LAND: 1 };
+
+  var STEP_X = 190, STEP_Y = 110, BOX_W = 148, BOX_H = 54;
+
+  var mode = "atlas";
+  var live = null;      // last snapshot from the server
+  var busy = false;
+  var state;            // per-mode map state, see fresh()
+
+  /* ---------- per-mode state ---------- */
+
+  function key() { return "zork-map-v2-" + mode; }
+
+  function fresh() {
+    var s = { pos: {}, current: null, moves: 0, trail: [], nodes: {}, session: 0 };
+    if (mode === "atlas") {
+      s.current = ATLAS.start;
+      s.pos[s.current] = { x: 0, y: 0 };
+      s.trail = [s.current];
+    }
+    return s;
+  }
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(key());
+      if (!raw) return null;
+      var s = JSON.parse(raw);
+      if (!s || !s.pos || s.current === null || s.current === undefined) return null;
+      if (mode === "atlas" && !ROOMS[s.current]) return null;
+      return s;
+    } catch (e) { return null; }
+  }
+
+  function save() {
+    try { localStorage.setItem(key(), JSON.stringify(state)); } catch (e) {}
+  }
+
+  /* ---------- one graph model over both modes ---------- */
+
+  function node(id) {
+    return mode === "atlas" ? ROOMS[id] : state.nodes[id];
+  }
+
+  // Exits as [{dir, to, cond}] regardless of where they came from.
+  function exitsOf(id) {
+    var n = node(id);
+    if (!n) return [];
+    if (mode === "atlas") return n.exits;
+    return Object.keys(n.exits).map(function (d) {
+      return { dir: d, to: n.exits[d], cond: "" };
+    });
+  }
+
+  function hasTreasure(id) {
+    var n = node(id);
+    return !!(n && n.objects && n.objects.some(function (o) { return o.treasure; }));
+  }
+
+  function known(id) { return state.pos.hasOwnProperty(id); }
+
+  function occupied(x, y) {
+    for (var id in state.pos) {
+      if (state.pos[id].x === x && state.pos[id].y === y) return true;
+    }
+    return false;
+  }
+
+  // Zork's geography is not Euclidean: exits loop back on themselves and two
+  // directions can land in the same place. Put a new room at its natural
+  // offset, and when that cell is taken, spiral out to the nearest free one.
+  // The drawn edge keeps the true connection visible however far it slid.
+  function place(id, from, dir) {
+    if (known(id)) return;
+    if (!from) { state.pos[id] = { x: 0, y: 0 }; return; }
+    var v = VEC[dir] || [0, 0];
+    var ox = from.x + v[0], oy = from.y + v[1];
+    if (!occupied(ox, oy)) { state.pos[id] = { x: ox, y: oy }; return; }
+    for (var r = 1; r < 60; r++) {
+      for (var dx = -r; dx <= r; dx++) {
+        for (var dy = -r; dy <= r; dy++) {
+          if (Math.max(Math.abs(dx), Math.abs(dy)) !== r) continue;
+          if (!occupied(ox + dx, oy + dy)) {
+            state.pos[id] = { x: ox + dx, y: oy + dy };
+            return;
+          }
+        }
+      }
+    }
+    state.pos[id] = { x: ox, y: oy };
+  }
+
+  function arrive(id, from, dir, recenter) {
+    place(id, from ? state.pos[from] : null, dir);
+    state.current = id;
+    state.trail.push(id);
+    if (state.trail.length > 60) state.trail.shift();
+    // Walking follows the camera; jumping to a room you just clicked does
+    // not, since you are already looking straight at it.
+    if (recenter !== false) center();
+    save();
+    draw();
+    panel();
+  }
+
+  /* ---------- atlas mode ---------- */
+
+  function atlasGo(dir, to) {
+    state.moves++;
+    arrive(to, state.current, dir);
+  }
+
+  function revealAll() {
+    var queue = [state.current], seen = {};
+    seen[state.current] = 1;
+    while (queue.length) {
+      var id = queue.shift();
+      exitsOf(id).forEach(function (e) {
+        if (!known(e.to)) place(e.to, state.pos[id], e.dir);
+        if (!seen[e.to]) { seen[e.to] = 1; queue.push(e.to); }
+      });
+    }
+    if (mode === "atlas") {
+      // Rooms with no inbound path from here still belong on the map.
+      ATLAS.rooms.forEach(function (r) {
+        if (!known(r.id)) place(r.id, state.pos[state.current], "SOUTH");
+      });
+    }
+    save();
+    fit();
+    panel();
+  }
+
+  /* ---------- live mode ---------- */
+
+  function api(path, body) {
+    return fetch(path, body ? {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    } : undefined).then(function (r) {
+      if (!r.ok) throw new Error("http " + r.status);
+      return r.json();
+    });
+  }
+
+  function absorb(snap, cmd, dir) {
+    var prev = state.current;
+    var n = state.nodes[snap.id];
+    if (!n) {
+      n = state.nodes[snap.id] = {
+        id: snap.id, name: snap.name, desc: snap.desc,
+        objects: [], exits: {}, blocked: {}, tried: {}
+      };
+    }
+    if (snap.desc) n.desc = snap.desc;
+    n.name = snap.name;
+    n.objects = snap.objects.map(function (o) {
+      return { name: o.name, takeable: o.takeable, treasure: false };
+    });
+
+    if (dir && prev !== null && state.nodes[prev]) {
+      state.nodes[prev].tried[dir] = 1;
+      if (snap.moved) state.nodes[prev].exits[dir] = snap.id;
+      else if (snap.blocked) state.nodes[prev].blocked[dir] = snap.output;
+    }
+
+    live = snap;
+    state.moves = snap.moves;
+    if (snap.id !== prev || state.current === null) {
+      arrive(snap.id, snap.moved ? prev : null, dir || "IN");
+    } else {
+      save();
+      draw();
+      panel();
+    }
+    if (cmd) log(cmd, snap.output);
+  }
+
+  function send(cmd, dir) {
+    if (busy) return;
+    busy = true;
+    render();
+    api("/api/cmd", { cmd: cmd }).then(function (snap) {
+      busy = false;
+      absorb(snap, cmd, dir);
+    }).catch(function (e) {
+      busy = false;
+      log(cmd, "[the server is not answering: " + e.message + "]");
+      render();
+    });
+  }
+
+  function startLive(snap) {
+    mode = "live";
+    document.getElementById("mode").textContent = "LIVE";
+    document.getElementById("s-scorewrap").hidden = false;
+    document.getElementById("r-logwrap").hidden = false;
+    document.getElementById("b-live").hidden = true;
+    // Nothing to reveal in a live game: the only way to map a room is to
+    // walk into it.
+    document.getElementById("b-reveal").hidden = true;
+    document.getElementById("b-reset").textContent = "restart";
+    document.getElementById("hint").textContent =
+      "every click runs a real command in zork1.zip · drag to pan · scroll to zoom";
+    var saved = load();
+    state = (saved && saved.session === snap.session) ? saved : fresh();
+    state.session = snap.session;
+    live = snap;
+    absorb(snap, null, null);
+    if (logLines.length === 0) log(null, snap.output || "");
+  }
+
+  var logLines = [];
+  function log(cmd, out) {
+    if (cmd) logLines.push({ cmd: cmd, out: out });
+    else if (out) logLines.push({ cmd: null, out: out });
+    if (logLines.length > 60) logLines.shift();
+    var el = document.getElementById("log");
+    el.innerHTML = logLines.map(function (l) {
+      return (l.cmd ? '<span class="cmd">&gt; ' + esc(l.cmd) + "</span>\n" : "") +
+             esc(l.out || "");
+    }).join("\n\n");
+    el.scrollTop = el.scrollHeight;
+  }
+
+  /* ---------- camera ---------- */
+
+  var canvas = document.getElementById("map");
+  var ctx = canvas.getContext("2d");
+  var cam = { x: 0, y: 0, z: 1 };
+
+  function resize() {
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(canvas.clientWidth * dpr);
+    canvas.height = Math.round(canvas.clientHeight * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+
+  function center() {
+    var p = state.pos[state.current];
+    if (!p) return;
+    cam.x = p.x * STEP_X;
+    cam.y = p.y * STEP_Y;
+    draw();
+  }
+
+  function fit() {
+    var xs = [], ys = [];
+    for (var id in state.pos) {
+      xs.push(state.pos[id].x * STEP_X);
+      ys.push(state.pos[id].y * STEP_Y);
+    }
+    if (!xs.length) return;
+    var minx = Math.min.apply(null, xs), maxx = Math.max.apply(null, xs);
+    var miny = Math.min.apply(null, ys), maxy = Math.max.apply(null, ys);
+    cam.x = (minx + maxx) / 2;
+    cam.y = (miny + maxy) / 2;
+    cam.z = Math.max(0.08, Math.min(1.6, Math.min(
+      canvas.clientWidth / (maxx - minx + BOX_W * 2),
+      canvas.clientHeight / (maxy - miny + BOX_H * 4))));
+    draw();
+  }
+
+  function toScreen(wx, wy) {
+    return {
+      x: (wx - cam.x) * cam.z + canvas.clientWidth / 2,
+      y: (wy - cam.y) * cam.z + canvas.clientHeight / 2
+    };
+  }
+
+  function roomAt(sx, sy) {
+    for (var id in state.pos) {
+      var p = toScreen(state.pos[id].x * STEP_X, state.pos[id].y * STEP_Y);
+      if (Math.abs(sx - p.x) <= BOX_W / 2 * cam.z &&
+          Math.abs(sy - p.y) <= BOX_H / 2 * cam.z) return id;
+    }
+    return null;
+  }
+
+  /* ---------- drawing ---------- */
+
+  function draw() {
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    ctx.fillStyle = "#0b0d10";
+    ctx.fillRect(0, 0, w, h);
+    grid(w, h);
+
+    Object.keys(state.pos).forEach(function (id) {
+      var a = toScreen(state.pos[id].x * STEP_X, state.pos[id].y * STEP_Y);
+      exitsOf(id).forEach(function (e) {
+        if (!known(e.to)) { stub(a, e.dir); return; }
+        var b = toScreen(state.pos[e.to].x * STEP_X, state.pos[e.to].y * STEP_Y);
+        var back = exitsOf(e.to).some(function (x) { return String(x.to) === String(id); });
+        var hot = String(id) === String(state.current) ||
+                  String(e.to) === String(state.current);
+        edge(a, b, e, back, hot);
+      });
+    });
+
+    Object.keys(state.pos).forEach(box);
+  }
+
+  function grid(w, h) {
+    if (cam.z < 0.35) return;
+    ctx.strokeStyle = "#14181e";
+    ctx.lineWidth = 1;
+    var sx = STEP_X * cam.z, sy = STEP_Y * cam.z;
+    var ox = (w / 2 - cam.x * cam.z) % sx, oy = (h / 2 - cam.y * cam.z) % sy;
+    ctx.beginPath();
+    for (var x = ox; x < w; x += sx) { ctx.moveTo(x, 0); ctx.lineTo(x, h); }
+    for (var y = oy; y < h; y += sy) { ctx.moveTo(0, y); ctx.lineTo(w, y); }
+    ctx.stroke();
+  }
+
+  function edge(a, b, e, twoWay, hot) {
+    var vertical = VERTICAL[e.dir];
+    ctx.save();
+    ctx.lineWidth = hot ? 2 : 1;
+    ctx.strokeStyle = hot ? (vertical ? "#8fd0ff" : "#7fe07f")
+                          : (vertical ? "#2f4a63" : "#2b333d");
+    if (vertical || e.cond) ctx.setLineDash([5, 4]);
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.stroke();
+    ctx.restore();
+
+    if (!twoWay && cam.z > 0.3) arrowhead(a, b, hot ? "#7fe07f" : "#48545f");
+    if (vertical && cam.z > 0.45) {
+      ctx.fillStyle = hot ? "#8fd0ff" : "#4a6a85";
+      ctx.font = "9px ui-monospace, monospace";
+      ctx.textAlign = "center";
+      ctx.fillText(e.dir, (a.x + b.x) / 2, (a.y + b.y) / 2 - 3);
+    }
+  }
+
+  function arrowhead(a, b, color) {
+    var ang = Math.atan2(b.y - a.y, b.x - a.x);
+    var d = Math.hypot(b.x - a.x, b.y - a.y);
+    if (d < 12) return;
+    var tx = a.x + Math.cos(ang) * (d * 0.62);
+    var ty = a.y + Math.sin(ang) * (d * 0.62);
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(tx, ty);
+    ctx.lineTo(tx - Math.cos(ang - 0.4) * 7, ty - Math.sin(ang - 0.4) * 7);
+    ctx.lineTo(tx - Math.cos(ang + 0.4) * 7, ty - Math.sin(ang + 0.4) * 7);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  // Exits whose far side is still unknown get a short dashed stub and a "?",
+  // so the frontier of the map is always visible.
+  function stub(a, dir) {
+    var v = VEC[dir] || [0, 0];
+    var dx = v[0], dy = v[1];
+    if (!dx && !dy) { dy = dir === "UP" ? -0.6 : 0.6; }
+    var n = Math.hypot(dx, dy) || 1;
+    var len = 34 * cam.z + BOX_W / 2 * cam.z;
+    var bx = a.x + (dx / n) * len, by = a.y + (dy / n) * len;
+    ctx.save();
+    ctx.strokeStyle = "#39424d";
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(bx, by);
+    ctx.stroke();
+    ctx.restore();
+    if (cam.z > 0.35) {
+      ctx.fillStyle = "#4d5966";
+      ctx.font = Math.max(8, 11 * cam.z) + "px ui-monospace, monospace";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("?", bx, by);
+    }
+  }
+
+  function box(id) {
+    var n = node(id);
+    if (!n) return;
+    var p = toScreen(state.pos[id].x * STEP_X, state.pos[id].y * STEP_Y);
+    var w = BOX_W * cam.z, h = BOX_H * cam.z;
+    if (p.x + w < 0 || p.x - w > canvas.clientWidth ||
+        p.y + h < 0 || p.y - h > canvas.clientHeight) return;
+    var here = String(id) === String(state.current);
+    var gold = hasTreasure(id);
+
+    ctx.fillStyle = here ? "#1d2b1d" : "#151a21";
+    ctx.strokeStyle = here ? "#7fe07f" : (gold ? "#6b5c2c" : "#2c343e");
+    ctx.lineWidth = here ? 2 : 1;
+    ctx.beginPath();
+    ctx.rect(p.x - w / 2, p.y - h / 2, w, h);
+    ctx.fill();
+    ctx.stroke();
+
+    if (cam.z < 0.28) return;
+    ctx.fillStyle = here ? "#cfe8cf" : "#98a3b0";
+    var size = Math.max(8, 11 * Math.min(cam.z, 1.1));
+    ctx.font = size + "px ui-monospace, monospace";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    var label = n.name;
+    var max = Math.floor(w / (size * 0.62));
+    if (label.length > max) label = label.slice(0, Math.max(3, max - 1)) + "…";
+    ctx.fillText(label, p.x, p.y);
+    if (gold && cam.z > 0.5) {
+      ctx.fillStyle = "#e0c060";
+      ctx.fillText("✦", p.x + w / 2 - 8, p.y - h / 2 + 8);
+    }
+  }
+
+  /* ---------- side panel ---------- */
+
+  function panel() { render(); }
+
+  function render() {
+    var id = state.current, n = node(id);
+    if (!n) return;
+
+    document.getElementById("r-name").textContent = n.name;
+    document.getElementById("r-desc").textContent = n.desc || "";
+
+    var bits = [];
+    if (mode === "atlas") {
+      bits.push(n.id);
+      if (n.value) bits.push(n.value + " pts");
+      if (n.flags.indexOf("RLANDBIT") < 0) bits.push("not dry land");
+      if (n.flags.indexOf("ONBIT") < 0) bits.push("dark");
+      if (n.flags.indexOf("MAZEBIT") >= 0) bits.push("maze");
+    } else {
+      bits.push("object #" + n.id);
+      if (live) bits.push("turn " + live.turns);
+    }
+    document.getElementById("r-meta").textContent = bits.join(" · ");
+
+    items(n);
+    if (mode === "atlas") atlasExits(n); else liveControls(n);
+
+    document.getElementById("r-trail").textContent =
+      state.trail.slice(-12).map(function (t) {
+        var m = node(t);
+        return m ? m.name : "?";
+      }).join(" → ");
+
+    document.getElementById("s-rooms").textContent = Object.keys(state.pos).length;
+    document.getElementById("s-of").textContent =
+      mode === "atlas" ? "/" + ATLAS.rooms.length : "";
+    document.getElementById("s-moves").textContent = state.moves;
+    document.getElementById("s-edges").textContent = countEdges();
+    if (live) document.getElementById("s-score").textContent = live.score;
+  }
+
+  function items(n) {
+    var host = document.getElementById("r-items");
+    host.innerHTML = "";
+    if (!n.objects || !n.objects.length) return;
+    var h = document.createElement("h3");
+    h.textContent = "HERE";
+    host.appendChild(h);
+    if (mode === "atlas") {
+      var ul = document.createElement("ul");
+      n.objects.forEach(function (o) {
+        var li = document.createElement("li");
+        li.className = "item" + (o.treasure ? " treasure" : "");
+        li.textContent = o.name;
+        ul.appendChild(li);
+      });
+      host.appendChild(ul);
+      return;
+    }
+    n.objects.forEach(function (o) {
+      var d = document.createElement("div");
+      d.className = "obj";
+      var nm = document.createElement("span");
+      nm.className = "nm";
+      nm.textContent = o.name;
+      d.appendChild(nm);
+      var row = document.createElement("div");
+      row.className = "row";
+      var verbs = ["examine", "open", "read"];
+      if (o.takeable) verbs.unshift("take");
+      verbs.forEach(function (v) {
+        row.appendChild(cmdButton(v, v + " " + o.name));
+      });
+      d.appendChild(row);
+      host.appendChild(d);
+    });
+  }
+
+  function cmdButton(label, cmd) {
+    var b = document.createElement("button");
+    b.textContent = label;
+    b.disabled = busy;
+    b.onclick = function () { send(cmd, null); };
+    return b;
+  }
+
+  function atlasExits(n) {
+    var host = document.getElementById("r-exits");
+    host.innerHTML = "<h3>EXITS</h3>";
+    document.getElementById("r-actions").innerHTML = "";
+    n.exits.forEach(function (e, i) {
+      var b = document.createElement("button");
+      b.className = "exit";
+      var seen = known(e.to);
+      b.innerHTML =
+        '<span class="key">' + (i < 9 ? i + 1 : "") + "</span>" +
+        '<span class="dir">' + e.dir + "</span> → " +
+        '<span class="' + (seen ? "" : "new") + '">' +
+        esc(seen ? ROOMS[e.to].name : "unexplored") + "</span>" +
+        (e.cond ? '<span class="cond">' + esc(e.cond) + "</span>" : "");
+      b.onclick = function () { atlasGo(e.dir, e.to); };
+      host.appendChild(b);
+    });
+    n.blocked.forEach(function (e) {
+      var d = document.createElement("div");
+      d.className = "blocked";
+      d.innerHTML = '<span class="dir">' + e.dir + "</span> — " + esc(e.msg);
+      host.appendChild(d);
+    });
+  }
+
+  function liveControls(n) {
+    var host = document.getElementById("r-exits");
+    host.innerHTML = "<h3>GO</h3>";
+    var hint = BY_NAME[(n.name || "").toLowerCase()];
+    var hintDirs = {};
+    if (hint) hint.exits.forEach(function (e) { hintDirs[e.dir] = 1; });
+
+    var grid = document.createElement("div");
+    grid.className = "compass";
+    // Compass rose, then the vertical and threshold moves underneath.
+    ["NW", "NORTH", "NE", "WEST", null, "EAST", "SW", "SOUTH", "SE",
+     "UP", "DOWN", "IN"].forEach(function (d) {
+      if (!d) {
+        var pad = document.createElement("span");
+        pad.className = "blank";
+        grid.appendChild(pad);
+        return;
+      }
+      var b = document.createElement("button");
+      b.textContent = d;
+      b.disabled = busy;
+      var dest = n.exits[d];
+      if (dest !== undefined) {
+        b.className = "known";
+        var to = state.nodes[dest];
+        b.title = "to " + (to ? to.name : "?");
+      } else if (n.blocked[d]) {
+        b.className = "wall";
+        b.title = n.blocked[d];
+      } else if (hintDirs[d]) {
+        b.className = "hint";
+        b.title = "the ZIL source has an exit this way";
+      }
+      b.onclick = function () { send(WORD[d], d); };
+      grid.appendChild(b);
+    });
+    host.appendChild(grid);
+
+    var acts = document.getElementById("r-actions");
+    acts.innerHTML = "<h3>DO</h3>";
+    var row = document.createElement("div");
+    row.className = "row";
+    ["look", "inventory", "wait", "listen", "out"].forEach(function (c) {
+      row.appendChild(cmdButton(c, c));
+    });
+    if (live) {
+      var u = document.createElement("button");
+      u.textContent = "undo";
+      u.disabled = busy || !live.canUndo;
+      u.onclick = function () {
+        if (busy) return;
+        busy = true;
+        render();
+        api("/api/undo", {}).then(function (s) {
+          busy = false;
+          absorb(s, null, null);
+          log("undo", s.output);
+        }).catch(function () { busy = false; render(); });
+      };
+      row.appendChild(u);
+    }
+    acts.appendChild(row);
+
+    var free = document.createElement("div");
+    free.className = "row";
+    var input = document.createElement("input");
+    input.placeholder = "anything else…";
+    input.style.cssText =
+      "flex:1;min-width:120px;background:#0d1116;color:inherit;font:inherit;" +
+      "border:1px solid #232a33;border-radius:3px;padding:4px 7px";
+    input.onkeydown = function (ev) {
+      if (ev.key === "Enter" && input.value.trim()) {
+        send(input.value.trim(), null);
+        input.value = "";
+      }
+    };
+    free.appendChild(input);
+    acts.appendChild(free);
+  }
+
+  function countEdges() {
+    var n = 0;
+    Object.keys(state.pos).forEach(function (id) {
+      exitsOf(id).forEach(function (e) { if (known(e.to)) n++; });
+    });
+    return n;
+  }
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
+  /* ---------- input ---------- */
+
+  var drag = null;
+  canvas.addEventListener("mousedown", function (ev) {
+    drag = { x: ev.clientX, y: ev.clientY, moved: 0 };
+    canvas.classList.add("drag");
+  });
+  window.addEventListener("mousemove", function (ev) {
+    if (!drag) return;
+    drag.moved += Math.abs(ev.clientX - drag.x) + Math.abs(ev.clientY - drag.y);
+    cam.x -= (ev.clientX - drag.x) / cam.z;
+    cam.y -= (ev.clientY - drag.y) / cam.z;
+    drag.x = ev.clientX;
+    drag.y = ev.clientY;
+    draw();
+  });
+  window.addEventListener("mouseup", function (ev) {
+    if (drag && drag.moved < 4) {
+      var rect = canvas.getBoundingClientRect();
+      var id = roomAt(ev.clientX - rect.left, ev.clientY - rect.top);
+      // Fast travel is an atlas privilege: in a live game you can only get
+      // somewhere by actually walking there.
+      if (id && mode === "atlas" && id !== state.current) {
+        state.moves++;
+        arrive(id, null, null, false);
+      }
+    }
+    drag = null;
+    canvas.classList.remove("drag");
+  });
+  canvas.addEventListener("wheel", function (ev) {
+    ev.preventDefault();
+    var rect = canvas.getBoundingClientRect();
+    var mx = ev.clientX - rect.left - canvas.clientWidth / 2;
+    var my = ev.clientY - rect.top - canvas.clientHeight / 2;
+    var wx = cam.x + mx / cam.z, wy = cam.y + my / cam.z;
+    cam.z = Math.max(0.06, Math.min(2.5, cam.z * (ev.deltaY < 0 ? 1.12 : 0.89)));
+    cam.x = wx - mx / cam.z;
+    cam.y = wy - my / cam.z;
+    draw();
+  }, { passive: false });
+
+  var KEYS = {
+    ArrowUp: "NORTH", ArrowDown: "SOUTH", ArrowLeft: "WEST", ArrowRight: "EAST",
+    k: "NORTH", j: "SOUTH", h: "WEST", l: "EAST",
+    y: "NW", u: "NE", b: "SW", n: "SE", "<": "UP", ">": "DOWN"
+  };
+  window.addEventListener("keydown", function (ev) {
+    if (ev.target && ev.target.tagName === "INPUT") return;
+    var cur = node(state.current);
+    if (!cur) return;
+    if (mode === "atlas" && ev.key >= "1" && ev.key <= "9") {
+      var e = cur.exits[ev.key.charCodeAt(0) - 49];
+      if (e) { ev.preventDefault(); atlasGo(e.dir, e.to); }
+      return;
+    }
+    var dir = KEYS[ev.key];
+    if (!dir) return;
+    ev.preventDefault();
+    if (mode === "live") { send(WORD[dir], dir); return; }
+    var hit = cur.exits.filter(function (x) { return x.dir === dir; })[0];
+    if (hit) atlasGo(hit.dir, hit.to);
+  });
+
+  document.getElementById("b-center").onclick = center;
+  document.getElementById("b-fit").onclick = fit;
+  document.getElementById("b-reveal").onclick = revealAll;
+  document.getElementById("b-reveal").title =
+    "lay out every room reachable from here at once";
+  document.getElementById("b-reset").onclick = function () {
+    if (mode === "atlas") {
+      if (!confirm("Forget the map and start over at West of House?")) return;
+      state = fresh();
+      cam.z = 1;
+      save();
+      center();
+      panel();
+      return;
+    }
+    if (!confirm("Restart the game and forget the map?")) return;
+    api("/api/restart", {}).then(function (snap) {
+      state = fresh();
+      state.session = snap.session;
+      logLines = [];
+      cam.z = 1;
+      absorb(snap, null, null);
+      log(null, snap.output);
+    });
+  };
+
+  window.addEventListener("resize", resize);
+
+  /* ---------- boot ---------- */
+
+  state = load() || fresh();
+  resize();
+  center();
+  panel();
+
+  // If tools/server.py is behind us, offer the live game.
+  if (location.protocol !== "file:") {
+    api("/api/state").then(function (snap) {
+      var b = document.getElementById("b-live");
+      b.hidden = false;
+      b.onclick = function () { startLive(snap); };
+    }).catch(function () {});
+  }
+})();
+</script>
+</body>
+</html>

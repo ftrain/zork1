@@ -26,6 +26,14 @@ In general, Infocom games were created by taking previous Infocom source code, c
 
 There are also multiple versions of the "Z-Machine" and code did change notably between the first years of Infocom and a decade later. Addition of graphics, sound and memory expansion are all slowly implemented over time.
 
+__A Clickable Map__
+
+`web/index.html` renders this source as a roguelike map you explore by
+clicking instead of typing: exits are buttons, and the dungeon draws itself
+into an infinite 2D plane as you open it up. It runs either from the ZIL
+source alone (no install) or against the real `zork1.zip` on a Z-machine
+interpreter. See [web/README.md](web/README.md).
+
 __What is the Purpose of this Repository__
 
 This collection is meant for education, discussion, and historical work, allowing researchers and students to study how code was made for these interactive fiction games and how the system dealt with input and processing.
