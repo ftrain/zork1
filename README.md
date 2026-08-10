@@ -30,9 +30,10 @@ __A Clickable Map__
 
 `web/index.html` renders this source as a roguelike map you explore by
 clicking instead of typing: exits are buttons, and the dungeon draws itself
-into an infinite 2D plane as you open it up. It runs either from the ZIL
-source alone (no install) or against the real `zork1.zip` on a Z-machine
-interpreter. See [web/README.md](web/README.md).
+into an infinite 2D plane as you open it up. It walks either the graph
+extracted from the ZIL source or the real `zork1.zip` on a Z-machine
+interpreter running in the page — no server either way. See
+[web/README.md](web/README.md).
 
 __What is the Purpose of this Repository__
 

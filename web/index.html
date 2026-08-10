@@ -118,7 +118,7 @@
   <span class="stat">moves <b id="s-moves">0</b></span>
   <span class="stat" id="s-scorewrap" hidden>score <b id="s-score">0</b></span>
   <span class="spacer"></span>
-  <button id="b-live" hidden>play live</button>
+  <button id="b-live">play the game</button>
   <button id="b-center">center</button>
   <button id="b-fit">fit</button>
   <button id="b-reveal">reveal all</button>
@@ -143,6 +143,9 @@
 </main>
 
 <script src="world.js"></script>
+<script src="vendor/zvm.js"></script>
+<script src="story.js"></script>
+<script src="engine.js"></script>
 <script>
 (function () {
   "use strict";
@@ -153,10 +156,10 @@
    * ATLAS mode reads the graph extracted from the ZIL source: every room
    * and every exit, walkable with no server and no game engine.
    *
-   * LIVE mode talks to tools/server.py, which runs zork1.zip on zwalker's
-   * Z-machine interpreter. Clicks become real commands and the map is
-   * built from the game's own room object numbers, so a maze of rooms
-   * that all describe themselves identically still maps correctly.
+   * LIVE mode runs zork1.zip on a Z-machine interpreter in this page —
+   * no server, nothing to install. Clicks become real commands, and the
+   * map is built from the game's own room object numbers, so a maze of
+   * rooms that all describe themselves identically still maps correctly.
    *
    * Both modes feed one graph model, so the map code below is shared.
    * ------------------------------------------------------------------ */
@@ -191,7 +194,8 @@
   var STEP_X = 190, STEP_Y = 110, BOX_W = 148, BOX_H = 54;
 
   var mode = "atlas";
-  var live = null;      // last snapshot from the server
+  var engine = null;    // the Z-machine, once the live game starts
+  var live = null;      // its most recent snapshot
   var busy = false;
   var state;            // per-mode map state, see fresh()
 
@@ -321,17 +325,6 @@
 
   /* ---------- live mode ---------- */
 
-  function api(path, body) {
-    return fetch(path, body ? {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    } : undefined).then(function (r) {
-      if (!r.ok) throw new Error("http " + r.status);
-      return r.json();
-    });
-  }
-
   function absorb(snap, cmd, dir) {
     var prev = state.current;
     var n = state.nodes[snap.id];
@@ -366,20 +359,28 @@
   }
 
   function send(cmd, dir) {
-    if (busy) return;
+    if (busy || !engine) return;
     busy = true;
-    render();
-    api("/api/cmd", { cmd: cmd }).then(function (snap) {
+    var snap;
+    try {
+      snap = engine.command(cmd);
+    } catch (e) {
       busy = false;
-      absorb(snap, cmd, dir);
-    }).catch(function (e) {
-      busy = false;
-      log(cmd, "[the server is not answering: " + e.message + "]");
+      log(cmd, "[the interpreter stumbled: " + e.message + "]");
       render();
-    });
+      return;
+    }
+    busy = false;
+    absorb(snap, cmd, dir);
   }
 
-  function startLive(snap) {
+  function startLive() {
+    engine = window.ZorkEngine.create();
+    if (!engine) {
+      alert("The interpreter did not load, so only the atlas is available.");
+      return;
+    }
+    var snap = engine.snapshot(engine.banner);
     mode = "live";
     document.getElementById("mode").textContent = "LIVE";
     document.getElementById("s-scorewrap").hidden = false;
@@ -391,6 +392,7 @@
     document.getElementById("b-reset").textContent = "restart";
     document.getElementById("hint").textContent =
       "every click runs a real command in zork1.zip · drag to pan · scroll to zoom";
+    document.title = "ZORK I — playing";
     var saved = load();
     state = (saved && saved.session === snap.session) ? saved : fresh();
     state.session = snap.session;
@@ -761,13 +763,9 @@
       u.disabled = busy || !live.canUndo;
       u.onclick = function () {
         if (busy) return;
-        busy = true;
-        render();
-        api("/api/undo", {}).then(function (s) {
-          busy = false;
-          absorb(s, null, null);
-          log("undo", s.output);
-        }).catch(function () { busy = false; render(); });
+        var s = engine.undo();
+        absorb(s, null, null);
+        log("undo", s.output);
       };
       row.appendChild(u);
     }
@@ -884,14 +882,13 @@
       return;
     }
     if (!confirm("Restart the game and forget the map?")) return;
-    api("/api/restart", {}).then(function (snap) {
-      state = fresh();
-      state.session = snap.session;
-      logLines = [];
-      cam.z = 1;
-      absorb(snap, null, null);
-      log(null, snap.output);
-    });
+    var snap = engine.restart();
+    state = fresh();
+    state.session = snap.session;
+    logLines = [];
+    cam.z = 1;
+    absorb(snap, null, null);
+    log(null, snap.output);
   };
 
   window.addEventListener("resize", resize);
@@ -903,13 +900,11 @@
   center();
   panel();
 
-  // If tools/server.py is behind us, offer the live game.
-  if (location.protocol !== "file:") {
-    api("/api/state").then(function (snap) {
-      var b = document.getElementById("b-live");
-      b.hidden = false;
-      b.onclick = function () { startLive(snap); };
-    }).catch(function () {});
+  var liveButton = document.getElementById("b-live");
+  if (window.ZorkEngine && window.ZVM && window.ZORK_STORY) {
+    liveButton.onclick = startLive;
+  } else {
+    liveButton.hidden = true;
   }
 })();
 </script>
