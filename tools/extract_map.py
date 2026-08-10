@@ -125,6 +125,38 @@ COMMON_VERBS = [
 ]
 
 
+# The object flags, in words. This is what "a closed container" and "a
+# weapon" are made of in the panel.
+FLAG_WORDS = {
+    "TAKEBIT": "can be picked up",
+    "TRYTAKEBIT": "looks portable but is not",
+    "CONTBIT": "a container",
+    "OPENBIT": "starts open",
+    "TRANSBIT": "see-through",
+    "SURFACEBIT": "things can sit on it",
+    "DOORBIT": "a door",
+    "READBIT": "can be read",
+    "LIGHTBIT": "can give light",
+    "ONBIT": "starts lit",
+    "FLAMEBIT": "burning",
+    "BURNBIT": "will burn",
+    "FOODBIT": "edible",
+    "DRINKBIT": "drinkable",
+    "WEAPONBIT": "a weapon",
+    "TOOLBIT": "a tool",
+    "ACTORBIT": "alive",
+    "CLIMBBIT": "can be climbed",
+    "VEHBIT": "can be ridden",
+    "SEARCHBIT": "worth searching",
+    "TURNBIT": "can be turned",
+    "INVISIBLE": "hidden until something reveals it",
+    "NDESCBIT": "not listed in the room description",
+    "SACREDBIT": "the thief will not steal it",
+    "TOUCHBIT": "counts as handled",
+    "RMUNGBIT": "the room changes once used",
+}
+
+
 COMMON_PAIRS = [
     "put in", "put on", "attack with", "kill with", "unlock with",
     "lock with", "tie to", "untie from", "throw at", "give to", "open with",
@@ -197,6 +229,192 @@ def add(target, seen, sig, value):
         target.append(value)
 
 
+TOKENS = re.compile(r'''
+    ;\s*"(?:[^"\\]|\\.)*"     # a commented-out string, skipped
+  | "(?:[^"\\]|\\.)*"         # a string
+  | [<>()]                    # brackets, both kinds
+  | [^\s<>()"]+               # an atom
+''', re.X | re.S)
+
+
+def parse(text):
+    """Read ZIL into nested lists. <FORM ...> and (LIST ...) both become
+    lists; the head atom is what distinguishes them in practice."""
+    stack, out = [], []
+    for tok in TOKENS.findall(text):
+        if tok.startswith(";"):
+            continue
+        if tok in "<(":
+            new = []
+            (stack[-1] if stack else out).append(new)
+            stack.append(new)
+        elif tok in ">)":
+            if stack:
+                stack.pop()
+        elif tok.startswith('"'):
+            (stack[-1] if stack else out).append(
+                re.sub(r"\s+", " ", tok[1:-1]).strip())
+        else:
+            (stack[-1] if stack else out).append(Atom(tok))
+    return out
+
+
+class Atom(str):
+    """An unquoted ZIL word, so it can be told apart from a string."""
+    pass
+
+
+def atoms(node, name):
+    """Every argument of every <NAME ...> form anywhere under node."""
+    found = []
+    if isinstance(node, list):
+        if node and isinstance(node[0], Atom) and node[0] == name:
+            found += [str(x) for x in node[1:] if isinstance(x, Atom)]
+        for x in node:
+            found += atoms(x, name)
+    return found
+
+
+def texts(node, stop_at_cond=True):
+    """Strings printed by this node, not descending into nested CONDs.
+
+    One TELL is one thing said, so its pieces are joined with an ellipsis:
+    the gaps are where the game splices in an object's name at runtime,
+    and showing them as separate lines would read as separate messages.
+    """
+    out = []
+    if isinstance(node, list):
+        if stop_at_cond and node and isinstance(node[0], Atom) \
+                and node[0] == "COND":
+            return out
+        if node and isinstance(node[0], Atom) and node[0] == "TELL":
+            parts = [x for x in node[1:]
+                     if isinstance(x, str) and not isinstance(x, Atom)]
+            if parts:
+                return [" … ".join(p.strip() for p in parts)]
+            return out
+        for x in node:
+            if isinstance(x, str) and not isinstance(x, Atom):
+                out.append(x)
+            else:
+                out += texts(x, stop_at_cond)
+    return out
+
+
+def subconds(node):
+    """Top-level COND forms inside a clause body."""
+    out = []
+    if isinstance(node, list):
+        if node and isinstance(node[0], Atom) and node[0] == "COND":
+            return [node]
+        for x in node:
+            out += subconds(x)
+    return out
+
+
+# A few internal verb names read as jargon; these are what a player types.
+VERB_WORDS = {
+    "lamp on": "turn on", "lamp off": "turn off", "mung": "destroy",
+    "trnon": "turn on", "trnoff": "turn off", "lookin": "look in",
+    "look inside": "look in", "rub": "touch", "melt": "melt",
+    "ract": "act", "walk to": "walk to", "thru": "go through",
+}
+RARG_WORDS = {
+    ",M-ENTER": "on entering", ",M-LOOK": "on looking",
+    ",M-END": "at the end of each turn", ",M-BEG": "before each command",
+}
+FLAG_STATE = {
+    "rmung": "ruined", "ndesc": "unlisted", "trytake": "fixed in place",
+}
+
+
+def verb_word(atom):
+    w = str(atom).lstrip(",").replace("-", " ").lower()
+    return VERB_WORDS.get(w, w)
+
+
+def find_forms(node, name):
+    """Every <NAME ...> form anywhere under node, as forms."""
+    out = []
+    if isinstance(node, list):
+        if node and isinstance(node[0], Atom) and node[0] == name:
+            out.append(node)
+        for x in node:
+            out += find_forms(x, name)
+    return out
+
+
+def humanize_guard(cond):
+    """Turn the guard of a clause into a short readable condition.
+
+    Only an EQUAL? against ,HERE is a room test -- comparing ,PRSO to an
+    object is asking which noun was typed, not where you are standing.
+    """
+    bits = []
+    for form in find_forms(cond, "EQUAL?"):
+        args = [str(x) for x in form[1:] if isinstance(x, Atom)]
+        # A room routine is called with a reason rather than a verb.
+        if ".RARG" in args:
+            for a in args:
+                if a in RARG_WORDS:
+                    bits.append(RARG_WORDS[a])
+        if ",HERE" in args:
+            for a in args:
+                if a.startswith(",") and a != ",HERE":
+                    bits.append("in " + pretty(a[1:]))
+    for form in find_forms(cond, "FSET?"):
+        args = [str(x).lstrip(",") for x in form[1:] if isinstance(x, Atom)]
+        if len(args) >= 2 and args[1].endswith("BIT"):
+            state = args[1][:-3].lower()
+            bits.append("when the %s is %s" % (
+                pretty(args[0]).lower(), FLAG_STATE.get(state, state)))
+    return ", ".join(sorted(set(bits)))
+
+
+def responses(routine):
+    """What an object or room says, and to which verbs.
+
+    Walks the COND clauses of an ACTION routine. A clause guarded by
+    <VERB? OPEN CLOSE> that prints two strings is the open and close
+    message; nested CONDs become their own entries, inheriting the verbs
+    of the clause they sit in.
+    """
+    out = []
+
+    def walk(cond, verbs, guard):
+        for clause in cond[1:]:
+            if not isinstance(clause, list) or not clause:
+                continue
+            head, body = clause[0], clause[1:]
+            v = verbs + [verb_word(x) for x in atoms(head, "VERB?")]
+            g = guard or humanize_guard(head)
+            said = [t for t in texts(body) if len(t) > 3]
+            if said and (v or g):
+                out.append({"verbs": sorted(set(v)), "when": g,
+                            "says": said})
+            for sub in subconds(body):
+                walk(sub, v, g)
+
+    for cond in subconds(routine):
+        walk(cond, [], "")
+    return out
+
+
+def routine_map(actions_src):
+    """ROUTINE name -> the verbs it answers and what it says."""
+    out = {}
+    for body in forms(actions_src, "ROUTINE"):
+        m = re.match(r"<ROUTINE\s+([A-Z0-9?\-]+)", body)
+        if not m:
+            continue
+        tree = parse(body)
+        if tree:
+            got = responses(tree[0])
+            if got:
+                out[m.group(1)] = got
+    return out
+
+
 def look_texts(actions_src):
     """Map ROUTINE name -> description text printed on M-LOOK."""
     out = {}
@@ -223,7 +441,9 @@ def look_texts(actions_src):
 
 def main():
     dungeon = read("1dungeon.zil")
-    looks = look_texts(read("1actions.zil"))
+    actions = read("1actions.zil")
+    looks = look_texts(actions)
+    behaviour = routine_map(actions)
 
     rooms = {}
     for body in forms(dungeon, "ROOM"):
@@ -302,10 +522,14 @@ def main():
     names = {}
     everywhere = []
     objflags = {}
+    lore = {}
     for body in forms(dungeon, "OBJECT"):
         oid = re.match(r"<OBJECT\s+([A-Z0-9?\-]+)", body).group(1)
         loc = name = None
         flags = []
+        record = {"fdesc": "", "ldesc": "", "text": "", "action": None,
+                  "value": 0, "tvalue": 0, "size": 0, "capacity": 0,
+                  "synonyms": [], "adjectives": []}
         for p in props(body):
             head = p[1:].split(None, 1)
             key = head[0].rstrip(")")
@@ -318,7 +542,30 @@ def main():
                     name = s[0]
             elif key == "FLAGS":
                 flags = rest.split()
+            elif key in ("FDESC", "LDESC", "TEXT"):
+                got = strings(p)
+                if got:
+                    record[key.lower()] = got[0]
+            elif key in ("VALUE", "TVALUE", "SIZE", "CAPACITY"):
+                try:
+                    record[key.lower()] = int(rest)
+                except ValueError:
+                    pass
+            elif key == "ACTION":
+                record["action"] = rest
+            elif key in ("SYNONYM", "ADJECTIVE"):
+                record[key.lower().replace("adjective", "adjectives")
+                       .replace("synonym", "synonyms")] = [
+                    w.lower() for w in rest.split()]
         names[oid] = name or pretty(oid).lower()
+        if name:
+            record["name"] = name
+            record["flags"] = sorted(set(flags))
+            record["is"] = [FLAG_WORDS[f] for f in sorted(set(flags))
+                            if f in FLAG_WORDS]
+            record["does"] = behaviour.get(record["action"], [])
+            record["where"] = loc
+            lore[name.lower()] = record
         if name and flags:
             # Keyed by printed name, which is what the interpreter reports at
             # runtime. Used to work out which attribute bit is which flag.
@@ -333,6 +580,7 @@ def main():
             })
 
     for room in rooms.values():
+        room["does"] = behaviour.get(room["action"], [])
         room["globals"] = sorted(set(
             [names[g] for g in room.pop("globalIds") if g in names]
             + room.pop("pseudo")))
@@ -348,6 +596,7 @@ def main():
         "verbs": verb_grammar(read("gsyntax.zil")),
         "everywhere": sorted(set(everywhere)),
         "objectFlags": objflags,
+        "lore": lore,
     }
     out = os.path.join(ROOT, "web", "world.json")
     with open(out, "w") as fh:

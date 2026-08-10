@@ -4,6 +4,6862 @@
   "set of teeth",
   "surrounding wall"
  ],
+ "lore": {
+  "altar": {
+   "action": null,
+   "adjectives": [],
+   "capacity": 50,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "NDESCBIT",
+    "OPENBIT",
+    "SURFACEBIT"
+   ],
+   "is": [
+    "a container",
+    "not listed in the room description",
+    "starts open",
+    "things can sit on it"
+   ],
+   "ldesc": "",
+   "name": "altar",
+   "size": 0,
+   "synonyms": [
+    "altar"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "SOUTH-TEMPLE"
+  },
+  "ancient map": {
+   "action": null,
+   "adjectives": [
+    "antique",
+    "old",
+    "ancient"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "In the trophy case is an ancient parchment which appears to be a map.",
+   "flags": [
+    "INVISIBLE",
+    "READBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "hidden until something reveals it",
+    "can be read",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "ancient map",
+   "size": 2,
+   "synonyms": [
+    "parchment",
+    "map"
+   ],
+   "text": "The map shows a forest with three clearings. The largest clearing contains a house. Three paths leave the large clearing. One of these paths, leading southwest, is marked \\\"To Stone Barrow\\\".",
+   "tvalue": 0,
+   "value": 0,
+   "where": "TROPHY-CASE"
+  },
+  "basket": {
+   "action": "BASKET-F",
+   "adjectives": [],
+   "capacity": 50,
+   "does": [
+    {
+     "says": [
+      "The basket is raised to the top of the shaft."
+     ],
+     "verbs": [
+      "raise"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The basket is lowered to the bottom of the shaft."
+     ],
+     "verbs": [
+      "lower"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "It is now pitch black."
+     ],
+     "verbs": [
+      "lower"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The cage is securely fastened to the iron chain."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "OPENBIT",
+    "TRANSBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "a container",
+    "starts open",
+    "see-through",
+    "looks portable but is not"
+   ],
+   "ldesc": "At the end of the chain is a basket.",
+   "name": "basket",
+   "size": 0,
+   "synonyms": [
+    "cage",
+    "dumbwaiter",
+    "basket"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "SHAFT-ROOM"
+  },
+  "bat": {
+   "action": "BAT-F",
+   "adjectives": [
+    "vampire",
+    "deranged"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "You can't reach him; he's on the ceiling."
+     ],
+     "verbs": [
+      "attack",
+      "destroy",
+      "take"
+     ],
+     "when": "in Winner"
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "ACTORBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "alive",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "bat",
+   "size": 0,
+   "synonyms": [
+    "bat",
+    "vampire"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "BAT-ROOM"
+  },
+  "beautiful brass bauble": {
+   "action": null,
+   "adjectives": [
+    "brass",
+    "beauti"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "beautiful brass bauble",
+   "size": 0,
+   "synonyms": [
+    "bauble",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 1,
+   "value": 1,
+   "where": null
+  },
+  "beautiful jeweled scarab": {
+   "action": null,
+   "adjectives": [
+    "beauti",
+    "carved",
+    "jeweled"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "INVISIBLE",
+    "TAKEBIT"
+   ],
+   "is": [
+    "hidden until something reveals it",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "beautiful jeweled scarab",
+   "size": 8,
+   "synonyms": [
+    "scarab",
+    "bug",
+    "beetle",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 5,
+   "value": 5,
+   "where": "SANDY-CAVE"
+  },
+  "bird's nest": {
+   "action": null,
+   "adjectives": [
+    "birds"
+   ],
+   "capacity": 20,
+   "does": [],
+   "fdesc": "Beside you on the branch is a small bird's nest.",
+   "flags": [
+    "BURNBIT",
+    "CONTBIT",
+    "OPENBIT",
+    "SEARCHBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "will burn",
+    "a container",
+    "starts open",
+    "worth searching",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "bird's nest",
+   "size": 0,
+   "synonyms": [
+    "nest"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "UP-A-TREE"
+  },
+  "black book": {
+   "action": "BLACK-BOOK",
+   "adjectives": [
+    "large",
+    "black"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The book is already open to page 569."
+     ],
+     "verbs": [
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "As hard as you try, the book cannot be closed."
+     ],
+     "verbs": [
+      "close"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Beside page 569, there is only one other page with any legible printing on it. Most of it is unreadable, but the subject seems to be the banishment of evil. Apparently, certain noises, lights, and prayers are efficacious in this regard."
+     ],
+     "verbs": [
+      "read page",
+      "turn"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "A booming voice says \\\"Wrong, cretin!\\\" and you notice that you have turned into a pile of dust. How, I can't imagine."
+     ],
+     "verbs": [
+      "burn"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "On the altar is a large black book, open to page 569.",
+   "flags": [
+    "BURNBIT",
+    "CONTBIT",
+    "READBIT",
+    "TAKEBIT",
+    "TURNBIT"
+   ],
+   "is": [
+    "will burn",
+    "a container",
+    "can be read",
+    "can be picked up",
+    "can be turned"
+   ],
+   "ldesc": "",
+   "name": "black book",
+   "size": 10,
+   "synonyms": [
+    "book",
+    "prayer",
+    "page",
+    "books"
+   ],
+   "text": "Commandment #12592| | Oh ye who go about saying unto each: \\\"Hello sailor\\\":| Dost thou know the magnitude of thy sin before the gods?| Yea, verily, thou shalt be ground between two stones.| Shall the angry gods cast thy body into the whirlpool?| Surely, thy eye shall be put out with a sharp stick!| Even unto the ends of the earth shalt thou wander and| Unto the land of the dead shalt thou be sent at last.| Surely thou shalt repent of thy cunning.",
+   "tvalue": 0,
+   "value": 0,
+   "where": "ALTAR"
+  },
+  "bloody axe": {
+   "action": "AXE-F",
+   "adjectives": [
+    "bloody"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "TAKEBIT",
+    "TRYTAKEBIT",
+    "WEAPONBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "can be picked up",
+    "looks portable but is not",
+    "a weapon"
+   ],
+   "ldesc": "",
+   "name": "bloody axe",
+   "size": 25,
+   "synonyms": [
+    "axe",
+    "ax"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "TROLL"
+  },
+  "blue button": {
+   "action": "BUTTON-F",
+   "adjectives": [
+    "blue"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "They're greek to you."
+     ],
+     "verbs": [
+      "read"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "There is a rumbling sound and a stream of water appears to burst from the east wall of the room (apparently, a leak has occurred in a pipe)."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The blue button appears to be jammed."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The lights within the room"
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "shut off."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": "when the here is on"
+    },
+    {
+     "says": [
+      "come on."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Click."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Click."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "blue button",
+   "size": 0,
+   "synonyms": [
+    "button",
+    "switch"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAINTENANCE-ROOM"
+  },
+  "board": {
+   "action": "BOARD-F",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The boards are securely fastened."
+     ],
+     "verbs": [
+      "examine",
+      "take"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "board",
+   "size": 0,
+   "synonyms": [
+    "boards",
+    "board"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "boarded window": {
+   "action": "BOARDED-WINDOW-FCN",
+   "adjectives": [
+    "boarded"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The windows are boarded and can't be opened."
+     ],
+     "verbs": [
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You can't break the windows open."
+     ],
+     "verbs": [
+      "destroy"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "boarded window",
+   "size": 0,
+   "synonyms": [
+    "window"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "bolt": {
+   "action": "BOLT-F",
+   "adjectives": [
+    "metal",
+    "large"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The sluice gates close and water starts to collect behind the dam."
+     ],
+     "verbs": [
+      "turn"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The sluice gates open and water pours through the dam."
+     ],
+     "verbs": [
+      "turn"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The bolt won't turn with your best effort."
+     ],
+     "verbs": [
+      "turn"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The bolt won't turn using the \u2026 ."
+     ],
+     "verbs": [
+      "turn"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Hmm. It appears the tube contained glue, not oil. Turning the bolt won't get any easier...."
+     ],
+     "verbs": [
+      "oil"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "TRYTAKEBIT",
+    "TURNBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "looks portable but is not",
+    "can be turned"
+   ],
+   "ldesc": "",
+   "name": "bolt",
+   "size": 0,
+   "synonyms": [
+    "bolt",
+    "nut"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "DAM-ROOM"
+  },
+  "brass bell": {
+   "action": "BELL-F",
+   "adjectives": [
+    "small",
+    "brass"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "Ding, dong."
+     ],
+     "verbs": [
+      "ring"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "brass bell",
+   "size": 0,
+   "synonyms": [
+    "bell"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "NORTH-TEMPLE"
+  },
+  "brass lantern": {
+   "action": "LANTERN",
+   "adjectives": [
+    "brass"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The lamp has smashed into the floor, and the light has gone out."
+     ],
+     "verbs": [
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "A burned-out lamp won't light."
+     ],
+     "verbs": [
+      "turn on"
+     ],
+     "when": "when the lamp is ruined"
+    },
+    {
+     "says": [
+      "The lamp has already burned out."
+     ],
+     "verbs": [
+      "turn off"
+     ],
+     "when": "when the lamp is ruined"
+    },
+    {
+     "says": [
+      "The lamp"
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "has burned out."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": "when the lamp is ruined"
+    },
+    {
+     "says": [
+      "is on."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": "when the lamp is on"
+    },
+    {
+     "says": [
+      "is turned off."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "A battery-powered brass lantern is on the trophy case.",
+   "flags": [
+    "LIGHTBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "can give light",
+    "can be picked up"
+   ],
+   "ldesc": "There is a brass lantern (battery-powered) here.",
+   "name": "brass lantern",
+   "size": 15,
+   "synonyms": [
+    "lamp",
+    "lantern",
+    "light"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LIVING-ROOM"
+  },
+  "broken clockwork canary": {
+   "action": "CANARY-OBJECT",
+   "adjectives": [
+    "broken",
+    "clockwork",
+    "gold",
+    "golden"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The canary chirps, slightly off-key, an aria from a forgotten opera. From out of the greenery flies a lovely songbird. It perches on a limb just over your head and opens its beak to sing. As it does so a beautiful brass bauble drops from its mouth, bounces off the top of your head, and lands glimmering in the grass. As the canary winds down, the songbird flies away."
+     ],
+     "verbs": [
+      "wind"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The canary chirps blithely, if somewhat tinnily, for a short time."
+     ],
+     "verbs": [
+      "wind"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "There is an unpleasant grinding noise from inside the canary."
+     ],
+     "verbs": [
+      "wind"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "There is a golden clockwork canary nestled in the egg. It seems to have recently had a bad experience. The mountings for its jewel-like eyes are empty, and its silver beak is crumpled. Through a cracked crystal window below its left wing you can see the remains of intricate machinery. It is not clear what result winding it would have, as the mainspring seems sprung.",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "broken clockwork canary",
+   "size": 0,
+   "synonyms": [
+    "canary",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 1,
+   "value": 0,
+   "where": "BROKEN-EGG"
+  },
+  "broken jewel-encrusted egg": {
+   "action": null,
+   "adjectives": [
+    "broken",
+    "birds",
+    "encrusted",
+    "jewel"
+   ],
+   "capacity": 6,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "OPENBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "a container",
+    "starts open",
+    "can be picked up"
+   ],
+   "ldesc": "There is a somewhat ruined egg here.",
+   "name": "broken jewel-encrusted egg",
+   "size": 0,
+   "synonyms": [
+    "egg",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 2,
+   "value": 0,
+   "where": null
+  },
+  "broken lantern": {
+   "action": null,
+   "adjectives": [
+    "broken"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "broken lantern",
+   "size": 0,
+   "synonyms": [
+    "lamp",
+    "lantern"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": null
+  },
+  "broken timber": {
+   "action": null,
+   "adjectives": [
+    "wooden",
+    "broken"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "broken timber",
+   "size": 50,
+   "synonyms": [
+    "timbers",
+    "pile"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "TIMBER-ROOM"
+  },
+  "brown button": {
+   "action": "BUTTON-F",
+   "adjectives": [
+    "brown"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "They're greek to you."
+     ],
+     "verbs": [
+      "read"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "There is a rumbling sound and a stream of water appears to burst from the east wall of the room (apparently, a leak has occurred in a pipe)."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The blue button appears to be jammed."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The lights within the room"
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "shut off."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": "when the here is on"
+    },
+    {
+     "says": [
+      "come on."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Click."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Click."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "brown button",
+   "size": 0,
+   "synonyms": [
+    "button",
+    "switch"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAINTENANCE-ROOM"
+  },
+  "brown sack": {
+   "action": "SANDWICH-BAG-FCN",
+   "adjectives": [
+    "brown",
+    "elongated",
+    "smelly"
+   ],
+   "capacity": 9,
+   "does": [
+    {
+     "says": [
+      "It smells of hot peppers."
+     ],
+     "verbs": [
+      "smell"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "On the table is an elongated brown sack, smelling of hot peppers.",
+   "flags": [
+    "BURNBIT",
+    "CONTBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "will burn",
+    "a container",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "brown sack",
+   "size": 9,
+   "synonyms": [
+    "bag",
+    "sack"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "KITCHEN-TABLE"
+  },
+  "burned-out lantern": {
+   "action": null,
+   "adjectives": [
+    "rusty",
+    "burned",
+    "dead",
+    "useless"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "The deceased adventurer's useless lantern is here.",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "burned-out lantern",
+   "size": 20,
+   "synonyms": [
+    "lantern",
+    "lamp"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAZE-5"
+  },
+  "carpet": {
+   "action": "RUG-FCN",
+   "adjectives": [
+    "large",
+    "oriental"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The rug is too heavy to lift"
+     ],
+     "verbs": [
+      "raise"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      ", but in trying to take it you have noticed an irregularity beneath it."
+     ],
+     "verbs": [
+      "raise"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Having moved the carpet previously, you find it impossible to move it again."
+     ],
+     "verbs": [
+      "move",
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "With a great effort, the rug is moved to one side of the room, revealing the dusty cover of a closed trap door."
+     ],
+     "verbs": [
+      "move",
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The rug is extremely heavy and cannot be carried."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Underneath the rug is a closed trap door. As you drop the corner of the rug, the trap door is once again concealed from view."
+     ],
+     "verbs": [
+      "look under"
+     ],
+     "when": "when the trap door is open"
+    },
+    {
+     "says": [
+      "As you sit, you notice an irregularity underneath it. Rather than be uncomfortable, you stand up again."
+     ],
+     "verbs": [
+      "climb on"
+     ],
+     "when": "when the trap door is open"
+    },
+    {
+     "says": [
+      "I suppose you think it's a magic carpet?"
+     ],
+     "verbs": [
+      "climb on"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "carpet",
+   "size": 0,
+   "synonyms": [
+    "rug",
+    "carpet"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LIVING-ROOM"
+  },
+  "chalice": {
+   "action": "CHALICE-FCN",
+   "adjectives": [
+    "silver",
+    "engravings"
+   ],
+   "capacity": 5,
+   "does": [
+    {
+     "says": [
+      "You'd be stabbed in the back first."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": "when the thief is fight"
+    },
+    {
+     "says": [
+      "You can't. It's not a very good chalice, is it?"
+     ],
+     "verbs": [
+      "put"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "TAKEBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "a container",
+    "can be picked up",
+    "looks portable but is not"
+   ],
+   "ldesc": "There is a silver chalice, intricately engraved, here.",
+   "name": "chalice",
+   "size": 10,
+   "synonyms": [
+    "chalice",
+    "cup",
+    "silver",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 5,
+   "value": 10,
+   "where": "TREASURE-ROOM"
+  },
+  "chimney": {
+   "action": "CHIMNEY-F",
+   "adjectives": [
+    "dark",
+    "narrow"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The chimney leads",
+      "ward, and looks climbable."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "down"
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CLIMBBIT",
+    "NDESCBIT"
+   ],
+   "is": [
+    "can be climbed",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "chimney",
+   "size": 0,
+   "synonyms": [
+    "chimney"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "chute": {
+   "action": "SLIDE-FUNCTION",
+   "adjectives": [
+    "steep",
+    "metal",
+    "twisting"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "You tumble down the slide...."
+     ],
+     "verbs": [
+      "climb down",
+      "climb foo",
+      "climb up",
+      "put",
+      "through"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CLIMBBIT"
+   ],
+   "is": [
+    "can be climbed"
+   ],
+   "ldesc": "",
+   "name": "chute",
+   "size": 0,
+   "synonyms": [
+    "chute",
+    "ramp",
+    "slide"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "cliff": {
+   "action": "CLIFF-OBJECT",
+   "adjectives": [
+    "rocky",
+    "sheer"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "That would be very unwise. Perhaps even fatal."
+     ],
+     "verbs": [
+      "leap",
+      "put"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The \u2026 tumbles into the river and is seen no more."
+     ],
+     "verbs": [
+      "put",
+      "throw off"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CLIMBBIT",
+    "NDESCBIT"
+   ],
+   "is": [
+    "can be climbed",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "cliff",
+   "size": 0,
+   "synonyms": [
+    "wall",
+    "cliff",
+    "walls",
+    "ledge"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "clove of garlic": {
+   "action": "GARLIC-F",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "What the heck! You won't make friends this way, but nobody around here is too friendly anyhow. Gulp!"
+     ],
+     "verbs": [
+      "eat"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "FOODBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "edible",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "clove of garlic",
+   "size": 4,
+   "synonyms": [
+    "garlic",
+    "clove"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "SANDWICH-BAG"
+  },
+  "control panel": {
+   "action": null,
+   "adjectives": [
+    "control"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "control panel",
+   "size": 0,
+   "synonyms": [
+    "panel"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "DAM-ROOM"
+  },
+  "crack": {
+   "action": "CRACK-FCN",
+   "adjectives": [
+    "narrow"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "You can't fit through the crack."
+     ],
+     "verbs": [
+      "through"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "crack",
+   "size": 0,
+   "synonyms": [
+    "crack"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "crystal skull": {
+   "action": null,
+   "adjectives": [
+    "crystal"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "Lying in one corner of the room is a beautifully carved crystal skull. It appears to be grinning at you rather nastily.",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "crystal skull",
+   "size": 0,
+   "synonyms": [
+    "skull",
+    "head",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 10,
+   "value": 10,
+   "where": "LAND-OF-LIVING-DEAD"
+  },
+  "crystal trident": {
+   "action": null,
+   "adjectives": [
+    "poseidon",
+    "own",
+    "crystal"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "On the shore lies Poseidon's own crystal trident.",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "crystal trident",
+   "size": 20,
+   "synonyms": [
+    "trident",
+    "fork",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 11,
+   "value": 4,
+   "where": "ATLANTIS-ROOM"
+  },
+  "cyclops": {
+   "action": "CYCLOPS-FCN",
+   "adjectives": [
+    "hungry",
+    "giant"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The cyclops is sleeping like a baby, albeit a very ugly one."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The cyclops yawns and stares at the thing that woke him up."
+     ],
+     "verbs": [
+      "alarm",
+      "attack",
+      "burn",
+      "destroy",
+      "kick"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "A hungry cyclops is standing at the foot of the stairs."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The cyclops says \\\"Mmm Mmm. I love hot peppers! But oh, could I use a drink. Perhaps I could drink the blood of that thing.\\\" From the gleam in his eye, it could be surmised that you are \\\"that thing\\\"."
+     ],
+     "verbs": [
+      "give"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The cyclops takes the bottle, checks that it's open, and drinks the water. A moment later, he lets out a yawn that nearly blows you over, and then falls fast asleep (what did you put in that drink, anyway?)."
+     ],
+     "verbs": [
+      "give"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The cyclops apparently is not thirsty and refuses your generous offer."
+     ],
+     "verbs": [
+      "give"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The cyclops may be hungry, but there is a limit."
+     ],
+     "verbs": [
+      "give"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The cyclops is not so stupid as to eat THAT!"
+     ],
+     "verbs": [
+      "give"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "\\\"Do you think I'm as stupid as my father was?\\\", he says, dodging."
+     ],
+     "verbs": [
+      "attack",
+      "destroy",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The cyclops shrugs but otherwise ignores your pitiful attempt."
+     ],
+     "verbs": [
+      "attack",
+      "destroy",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The cyclops doesn't take kindly to being grabbed."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You cannot tie the cyclops, though he is fit to be tied."
+     ],
+     "verbs": [
+      "tie"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You can hear his stomach rumbling."
+     ],
+     "verbs": [
+      "listen"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "ACTORBIT",
+    "NDESCBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "alive",
+    "not listed in the room description",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "cyclops",
+   "size": 0,
+   "synonyms": [
+    "cyclops",
+    "monster",
+    "eye"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "CYCLOPS-ROOM"
+  },
+  "dam": {
+   "action": "DAM-FUNCTION",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "Sounds reasonable, but this isn't how."
+     ],
+     "verbs": [
+      "close",
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Are you the little Dutch boy, then? Sorry, this is a big dam."
+     ],
+     "verbs": [
+      "plug"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "With a \u2026 ? Do you know how big this dam is? You could only stop a tiny leak with that."
+     ],
+     "verbs": [
+      "plug"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "dam",
+   "size": 0,
+   "synonyms": [
+    "dam",
+    "gate",
+    "gates",
+    "fcd\\#3"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "DAM-ROOM"
+  },
+  "door": {
+   "action": "FRONT-DOOR-FCN",
+   "adjectives": [
+    "front",
+    "boarded"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The door cannot be opened."
+     ],
+     "verbs": [
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You cannot burn this door."
+     ],
+     "verbs": [
+      "burn"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You can't seem to damage the door."
+     ],
+     "verbs": [
+      "destroy"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "It won't open."
+     ],
+     "verbs": [
+      "look behind"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "DOORBIT",
+    "NDESCBIT"
+   ],
+   "is": [
+    "a door",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "door",
+   "size": 0,
+   "synonyms": [
+    "door"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "WEST-OF-HOUSE"
+  },
+  "forest": {
+   "action": "FOREST-F",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "You aren't even in the forest."
+     ],
+     "verbs": [
+      "walk around"
+     ],
+     "when": "in East Of House, in North Of House, in South Of House, in West Of House"
+    },
+    {
+     "says": [
+      "You will have to specify a direction."
+     ],
+     "verbs": [
+      "disembark"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You cannot see the forest for the trees."
+     ],
+     "verbs": [
+      "find"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The pines and the hemlocks seem to be murmuring."
+     ],
+     "verbs": [
+      "listen"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "forest",
+   "size": 0,
+   "synonyms": [
+    "forest",
+    "trees",
+    "pines",
+    "hemlocks"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "glass bottle": {
+   "action": "BOTTLE-FUNCTION",
+   "adjectives": [
+    "clear",
+    "glass"
+   ],
+   "capacity": 4,
+   "does": [
+    {
+     "says": [
+      "The bottle hits the far wall and shatters."
+     ],
+     "verbs": [
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "A brilliant maneuver destroys the bottle."
+     ],
+     "verbs": [
+      "destroy"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "A bottle is sitting on the table.",
+   "flags": [
+    "CONTBIT",
+    "TAKEBIT",
+    "TRANSBIT"
+   ],
+   "is": [
+    "a container",
+    "can be picked up",
+    "see-through"
+   ],
+   "ldesc": "",
+   "name": "glass bottle",
+   "size": 0,
+   "synonyms": [
+    "bottle",
+    "container"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "KITCHEN-TABLE"
+  },
+  "gold coffin": {
+   "action": null,
+   "adjectives": [
+    "solid",
+    "gold"
+   ],
+   "capacity": 35,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "SACREDBIT",
+    "SEARCHBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "a container",
+    "the thief will not steal it",
+    "worth searching",
+    "can be picked up"
+   ],
+   "ldesc": "The solid-gold coffin used for the burial of Ramses II is here.",
+   "name": "gold coffin",
+   "size": 55,
+   "synonyms": [
+    "coffin",
+    "casket",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 15,
+   "value": 10,
+   "where": "EGYPT-ROOM"
+  },
+  "golden clockwork canary": {
+   "action": "CANARY-OBJECT",
+   "adjectives": [
+    "clockwork",
+    "gold",
+    "golden"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The canary chirps, slightly off-key, an aria from a forgotten opera. From out of the greenery flies a lovely songbird. It perches on a limb just over your head and opens its beak to sing. As it does so a beautiful brass bauble drops from its mouth, bounces off the top of your head, and lands glimmering in the grass. As the canary winds down, the songbird flies away."
+     ],
+     "verbs": [
+      "wind"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The canary chirps blithely, if somewhat tinnily, for a short time."
+     ],
+     "verbs": [
+      "wind"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "There is an unpleasant grinding noise from inside the canary."
+     ],
+     "verbs": [
+      "wind"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "There is a golden clockwork canary nestled in the egg. It has ruby eyes and a silver beak. Through a crystal window below its left wing you can see intricate machinery inside. It appears to have wound down.",
+   "flags": [
+    "SEARCHBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "worth searching",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "golden clockwork canary",
+   "size": 0,
+   "synonyms": [
+    "canary",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 4,
+   "value": 6,
+   "where": "EGG"
+  },
+  "granite wall": {
+   "action": "GRANITE-WALL-F",
+   "adjectives": [
+    "granite"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The west wall is solid granite here."
+     ],
+     "verbs": [
+      "find"
+     ],
+     "when": "in North Temple"
+    },
+    {
+     "says": [
+      "It's solid granite."
+     ],
+     "verbs": [
+      "lower",
+      "raise",
+      "take"
+     ],
+     "when": "in North Temple"
+    },
+    {
+     "says": [
+      "The east wall is solid granite here."
+     ],
+     "verbs": [
+      "find"
+     ],
+     "when": "in Treasure Room"
+    },
+    {
+     "says": [
+      "It's solid granite."
+     ],
+     "verbs": [
+      "lower",
+      "raise",
+      "take"
+     ],
+     "when": "in Treasure Room"
+    },
+    {
+     "says": [
+      "It only SAYS \\\"Granite Wall\\\"."
+     ],
+     "verbs": [
+      "find",
+      "read"
+     ],
+     "when": "in Slide Room"
+    },
+    {
+     "says": [
+      "The wall isn't granite."
+     ],
+     "verbs": [],
+     "when": "in Slide Room"
+    }
+   ],
+   "fdesc": "",
+   "flags": [],
+   "is": [],
+   "ldesc": "",
+   "name": "granite wall",
+   "size": 0,
+   "synonyms": [
+    "wall"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "GLOBAL-OBJECTS"
+  },
+  "grating": {
+   "action": "GRATE-FUNCTION",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The grate is locked."
+     ],
+     "verbs": [
+      "lock"
+     ],
+     "when": "in Grating Room"
+    },
+    {
+     "says": [
+      "You can't lock it from this side."
+     ],
+     "verbs": [
+      "lock"
+     ],
+     "when": "in Grating Clearing"
+    },
+    {
+     "says": [
+      "The grate is unlocked."
+     ],
+     "verbs": [
+      "unlock"
+     ],
+     "when": "in Grating Room"
+    },
+    {
+     "says": [
+      "You can't reach the lock from here."
+     ],
+     "verbs": [
+      "unlock"
+     ],
+     "when": "in Grating Clearing"
+    },
+    {
+     "says": [
+      "Can you unlock a grating with a \u2026 ?"
+     ],
+     "verbs": [
+      "unlock"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You can't pick the lock."
+     ],
+     "verbs": [
+      "pick"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The grating is closed."
+     ],
+     "verbs": [
+      "close",
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The grating opens."
+     ],
+     "verbs": [
+      "close",
+      "open"
+     ],
+     "when": "in Clearing"
+    },
+    {
+     "says": [
+      "The grating opens to reveal trees above you."
+     ],
+     "verbs": [
+      "close",
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "A pile of leaves falls onto your head and to the ground."
+     ],
+     "verbs": [
+      "close",
+      "open"
+     ],
+     "when": "when the grate is open"
+    },
+    {
+     "says": [
+      "The grating is locked."
+     ],
+     "verbs": [
+      "close",
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "It won't fit through the grating."
+     ],
+     "verbs": [
+      "put"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The \u2026 goes through the grating into the darkness below."
+     ],
+     "verbs": [
+      "put"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "DOORBIT",
+    "INVISIBLE",
+    "NDESCBIT"
+   ],
+   "is": [
+    "a door",
+    "hidden until something reveals it",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "grating",
+   "size": 0,
+   "synonyms": [
+    "grate",
+    "grating"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "green bubble": {
+   "action": "BUBBLE-F",
+   "adjectives": [
+    "small",
+    "green",
+    "plastic"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "green bubble",
+   "size": 0,
+   "synonyms": [
+    "bubble"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "DAM-ROOM"
+  },
+  "group of tool chests": {
+   "action": "TOOL-CHEST-FCN",
+   "adjectives": [
+    "tool"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The chests are all empty."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The chests are so rusty and corroded that they crumble when you touch them."
+     ],
+     "verbs": [
+      "open",
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The chests are already open."
+     ],
+     "verbs": [
+      "open"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "OPENBIT",
+    "SACREDBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "a container",
+    "starts open",
+    "the thief will not steal it",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "group of tool chests",
+   "size": 0,
+   "synonyms": [
+    "chest",
+    "chests",
+    "group",
+    "toolchests"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAINTENANCE-ROOM"
+  },
+  "hand-held air pump": {
+   "action": null,
+   "adjectives": [
+    "small",
+    "hand-held"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT",
+    "TOOLBIT"
+   ],
+   "is": [
+    "can be picked up",
+    "a tool"
+   ],
+   "ldesc": "",
+   "name": "hand-held air pump",
+   "size": 0,
+   "synonyms": [
+    "pump",
+    "air-pump",
+    "tool",
+    "tools"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "RESERVOIR-NORTH"
+  },
+  "huge diamond": {
+   "action": null,
+   "adjectives": [
+    "huge",
+    "enormous"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "There is an enormous diamond (perfectly cut) here.",
+   "name": "huge diamond",
+   "size": 0,
+   "synonyms": [
+    "diamond",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 10,
+   "value": 10,
+   "where": null
+  },
+  "jade figurine": {
+   "action": null,
+   "adjectives": [
+    "exquisite",
+    "jade"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "There is an exquisite jade figurine here.",
+   "name": "jade figurine",
+   "size": 10,
+   "synonyms": [
+    "figurine",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 5,
+   "value": 5,
+   "where": "BAT-ROOM"
+  },
+  "jewel-encrusted egg": {
+   "action": "EGG-OBJECT",
+   "adjectives": [
+    "birds",
+    "encrusted",
+    "jeweled"
+   ],
+   "capacity": 6,
+   "does": [
+    {
+     "says": [
+      "The egg is already open."
+     ],
+     "verbs": [
+      "destroy",
+      "open"
+     ],
+     "when": "when the prso is open"
+    },
+    {
+     "says": [
+      "You have neither the tools nor the expertise."
+     ],
+     "verbs": [
+      "destroy",
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "I doubt you could do that without damaging it."
+     ],
+     "verbs": [
+      "destroy",
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The egg is now open, but the clumsiness of your attempt has seriously compromised its esthetic appeal."
+     ],
+     "verbs": [
+      "destroy",
+      "open"
+     ],
+     "when": "when the prsi is tool, when the prsi is weapon"
+    },
+    {
+     "says": [
+      "Not to say that using the \u2026 isn't original too..."
+     ],
+     "verbs": [
+      "destroy",
+      "open"
+     ],
+     "when": "when the prso is fight"
+    },
+    {
+     "says": [
+      "The concept of using a \u2026 is certainly original."
+     ],
+     "verbs": [
+      "destroy",
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "There is a noticeable crunch from beneath you, and inspection reveals that the egg is lying open, badly damaged."
+     ],
+     "verbs": [
+      "climb on",
+      "hatch"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Your rather indelicate handling of the egg has caused it some damage, although you have succeeded in opening it."
+     ],
+     "verbs": [
+      "destroy",
+      "open",
+      "throw"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "In the bird's nest is a large egg encrusted with precious jewels, apparently scavenged by a childless songbird. The egg is covered with fine gold inlay, and ornamented in lapis lazuli and mother-of-pearl. Unlike most eggs, this one is hinged and closed with a delicate looking clasp. The egg appears extremely fragile.",
+   "flags": [
+    "CONTBIT",
+    "SEARCHBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "a container",
+    "worth searching",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "jewel-encrusted egg",
+   "size": 0,
+   "synonyms": [
+    "egg",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 5,
+   "value": 5,
+   "where": "NEST"
+  },
+  "kitchen table": {
+   "action": null,
+   "adjectives": [
+    "kitchen"
+   ],
+   "capacity": 50,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "NDESCBIT",
+    "OPENBIT",
+    "SURFACEBIT"
+   ],
+   "is": [
+    "a container",
+    "not listed in the room description",
+    "starts open",
+    "things can sit on it"
+   ],
+   "ldesc": "",
+   "name": "kitchen table",
+   "size": 0,
+   "synonyms": [
+    "table"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "KITCHEN"
+  },
+  "kitchen window": {
+   "action": "KITCHEN-WINDOW-F",
+   "adjectives": [
+    "kitchen",
+    "small"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "With great effort, you open the window far enough to allow entry.",
+      "The window closes (more easily than it opened)."
+     ],
+     "verbs": [
+      "close",
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The window is slightly ajar, but not enough to allow entry."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You can see"
+     ],
+     "verbs": [
+      "look in"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "a clear area leading towards a forest."
+     ],
+     "verbs": [
+      "look in"
+     ],
+     "when": "in Kitchen"
+    },
+    {
+     "says": [
+      "what appears to be a kitchen."
+     ],
+     "verbs": [
+      "look in"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "DOORBIT",
+    "NDESCBIT"
+   ],
+   "is": [
+    "a door",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "kitchen window",
+   "size": 0,
+   "synonyms": [
+    "window"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "large bag": {
+   "action": "LARGE-BAG-F",
+   "adjectives": [
+    "large",
+    "thiefs"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "Sadly for you, the robber collapsed on top of the bag. Trying to take it would wake him."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The bag will be taken over his dead body."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "It would be a good trick."
+     ],
+     "verbs": [
+      "put"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Getting close enough would be a good trick."
+     ],
+     "verbs": [
+      "close",
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The bag is underneath the thief, so one can't say what, if anything, is inside."
+     ],
+     "verbs": [
+      "examine",
+      "look in"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "large bag",
+   "size": 0,
+   "synonyms": [
+    "bag"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "THIEF"
+  },
+  "large emerald": {
+   "action": null,
+   "adjectives": [
+    "large"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "large emerald",
+   "size": 0,
+   "synonyms": [
+    "emerald",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 10,
+   "value": 5,
+   "where": "BUOY"
+  },
+  "leaflet": {
+   "action": null,
+   "adjectives": [
+    "small"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "BURNBIT",
+    "READBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "will burn",
+    "can be read",
+    "can be picked up"
+   ],
+   "ldesc": "A small leaflet is on the ground.",
+   "name": "leaflet",
+   "size": 2,
+   "synonyms": [
+    "advertisement",
+    "leaflet",
+    "booklet",
+    "mail"
+   ],
+   "text": "\\\"WELCOME TO ZORK!| | ZORK is a game of adventure, danger, and low cunning. In it you will explore some of the most amazing territory ever seen by mortals. No computer should be without one!\\\"",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAILBOX"
+  },
+  "leak": {
+   "action": "LEAK-FUNCTION",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "INVISIBLE",
+    "NDESCBIT"
+   ],
+   "is": [
+    "hidden until something reveals it",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "leak",
+   "size": 0,
+   "synonyms": [
+    "leak",
+    "drip",
+    "pipe"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAINTENANCE-ROOM"
+  },
+  "leather bag of coins": {
+   "action": "BAG-OF-COINS-F",
+   "adjectives": [
+    "old",
+    "leather"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "An old leather bag, bulging with coins, is here.",
+   "name": "leather bag of coins",
+   "size": 15,
+   "synonyms": [
+    "bag",
+    "coins",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 5,
+   "value": 10,
+   "where": "MAZE-5"
+  },
+  "lunch": {
+   "action": null,
+   "adjectives": [
+    "hot",
+    "pepper"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "FOODBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "edible",
+    "can be picked up"
+   ],
+   "ldesc": "A hot pepper sandwich is here.",
+   "name": "lunch",
+   "size": 0,
+   "synonyms": [
+    "food",
+    "sandwich",
+    "lunch",
+    "dinner"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "SANDWICH-BAG"
+  },
+  "machine": {
+   "action": "MACHINE-F",
+   "adjectives": [],
+   "capacity": 50,
+   "does": [
+    {
+     "says": [
+      "It is far too large to carry."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The lid opens, revealing"
+     ],
+     "verbs": [
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The lid opens."
+     ],
+     "verbs": [
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The lid closes."
+     ],
+     "verbs": [
+      "close"
+     ],
+     "when": "when the machine is open"
+    },
+    {
+     "says": [
+      "It's not clear how to turn it on with your bare hands."
+     ],
+     "verbs": [
+      "turn on"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "NDESCBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "a container",
+    "not listed in the room description",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "machine",
+   "size": 0,
+   "synonyms": [
+    "machine",
+    "pdp10",
+    "dryer",
+    "lid"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MACHINE-ROOM"
+  },
+  "magic boat": {
+   "action": "RBOAT-FUNCTION",
+   "adjectives": [
+    "inflat",
+    "magic",
+    "plastic",
+    "seaworthy"
+   ],
+   "capacity": 100,
+   "does": [
+    {
+     "says": [
+      "Read the label for the boat's instructions."
+     ],
+     "verbs": [
+      "walk"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "You are on the",
+      ", or have you forgotten?"
+     ],
+     "verbs": [
+      "launch"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "reservoir"
+     ],
+     "verbs": [
+      "launch"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "stream"
+     ],
+     "verbs": [
+      "launch"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "river"
+     ],
+     "verbs": [
+      "launch"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "You can't launch it here."
+     ],
+     "verbs": [
+      "launch"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "It seems that the",
+      "didn't agree with the boat, as evidenced by the loud hissing noise issuing therefrom. With a pathetic sputter, the boat deflates, leaving you without."
+     ],
+     "verbs": [
+      "attack",
+      "destroy",
+      "drop",
+      "put"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "Another pathetic sputter, this time from you, heralds your drowning."
+     ],
+     "verbs": [
+      "attack",
+      "destroy",
+      "drop",
+      "put"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "In other words, fighting the fierce currents of the Frigid River. You manage to hold your own for a bit, but then you are carried over a waterfall and into some nasty rocks. Ouch!"
+     ],
+     "verbs": [
+      "attack",
+      "destroy",
+      "drop",
+      "put"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "You're not in the boat!"
+     ],
+     "verbs": [
+      "launch"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "Oops! Something sharp seems to have slipped and punctured the boat. The boat deflates to the sounds of hissing, sputtering, and cursing."
+     ],
+     "verbs": [
+      "board"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Inflating it further would probably burst it."
+     ],
+     "verbs": [
+      "fill",
+      "inflate"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You can't deflate the boat while you're in it."
+     ],
+     "verbs": [
+      "deflate"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The boat must be on the ground to be deflated."
+     ],
+     "verbs": [
+      "deflate"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The boat deflates."
+     ],
+     "verbs": [
+      "deflate"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "BURNBIT",
+    "OPENBIT",
+    "SEARCHBIT",
+    "TAKEBIT",
+    "VEHBIT"
+   ],
+   "is": [
+    "will burn",
+    "starts open",
+    "worth searching",
+    "can be picked up",
+    "can be ridden"
+   ],
+   "ldesc": "",
+   "name": "magic boat",
+   "size": 20,
+   "synonyms": [
+    "boat",
+    "raft"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": null
+  },
+  "matchbook": {
+   "action": "MATCH-FUNCTION",
+   "adjectives": [
+    "match"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "I'm afraid that you have run out of matches."
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "This room is drafty, and the match goes out instantly."
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": "in Lower Shaft, in Timber Room"
+    },
+    {
+     "says": [
+      "One of the matches starts to burn."
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The match is out."
+     ],
+     "verbs": [
+      "turn off"
+     ],
+     "when": "when the match is flame"
+    },
+    {
+     "says": [
+      "It's pitch black in here!"
+     ],
+     "verbs": [
+      "turn off"
+     ],
+     "when": "when the match is flame"
+    },
+    {
+     "says": [
+      "You have",
+      "match"
+     ],
+     "verbs": [
+      "count",
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The match is burning."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": "when the match is on"
+    },
+    {
+     "says": [
+      "The matchbook isn't very interesting, except for what's written on it."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "READBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be read",
+    "can be picked up"
+   ],
+   "ldesc": "There is a matchbook whose cover says \\\"Visit Beautiful FCD#3\\\" here.",
+   "name": "matchbook",
+   "size": 2,
+   "synonyms": [
+    "match",
+    "matches",
+    "matchbook"
+   ],
+   "text": "| (Close cover before striking)| | YOU too can make BIG MONEY in the exciting field of PAPER SHUFFLING!| | Mr. Anderson of Muddle, Mass. says: \\\"Before I took this course I was a lowly bit twiddler. Now with what I learned at GUE Tech I feel really important and can obfuscate and confuse with the best.\\\"| | Dr. Blank had this to say: \\\"Ten short days ago all I could look forward to was a dead-end job as a doctor. Now I have a promising future and make really big Zorkmids.\\\"| | GUE Tech can't promise these fantastic results to everyone. But when you earn your degree from GUE Tech, your future will be brighter.",
+   "tvalue": 0,
+   "value": 0,
+   "where": "DAM-LOBBY"
+  },
+  "mirror": {
+   "action": "MIRROR-MIRROR",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "There is a rumble from deep within the earth and the room shakes."
+     ],
+     "verbs": [
+      "touch"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You feel a faint tingling transmitted through the \u2026 ."
+     ],
+     "verbs": [
+      "touch"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The mirror is broken into many pieces."
+     ],
+     "verbs": [
+      "examine",
+      "look in"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "There is an ugly person staring back at you."
+     ],
+     "verbs": [
+      "examine",
+      "look in"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The mirror is many times your size. Give up."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Haven't you done enough damage already?"
+     ],
+     "verbs": [
+      "attack",
+      "destroy",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You have broken the mirror. I hope you have a seven years' supply of good luck handy."
+     ],
+     "verbs": [
+      "attack",
+      "destroy",
+      "throw"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "mirror",
+   "size": 0,
+   "synonyms": [
+    "reflection",
+    "mirror",
+    "enormous"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MIRROR-ROOM-1"
+  },
+  "mountain range": {
+   "action": "MOUNTAIN-RANGE-F",
+   "adjectives": [
+    "impassable",
+    "flathead"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "Don't you believe me? The mountains are impassable!"
+     ],
+     "verbs": [
+      "climb down",
+      "climb foo",
+      "climb up"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CLIMBBIT",
+    "NDESCBIT"
+   ],
+   "is": [
+    "can be climbed",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "mountain range",
+   "size": 0,
+   "synonyms": [
+    "mountain",
+    "range"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MOUNTAINS"
+  },
+  "nasty knife": {
+   "action": "KNIFE-F",
+   "adjectives": [
+    "nasty",
+    "unrusty"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "On a table is a nasty-looking knife.",
+   "flags": [
+    "TAKEBIT",
+    "TRYTAKEBIT",
+    "WEAPONBIT"
+   ],
+   "is": [
+    "can be picked up",
+    "looks portable but is not",
+    "a weapon"
+   ],
+   "ldesc": "",
+   "name": "nasty knife",
+   "size": 0,
+   "synonyms": [
+    "knives",
+    "knife",
+    "blade"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "ATTIC-TABLE"
+  },
+  "number of ghosts": {
+   "action": "GHOSTS-F",
+   "adjectives": [
+    "invisible",
+    "evil"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The spirits jeer loudly and ignore you."
+     ],
+     "verbs": [
+      "tell"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Only the ceremony itself has any effect."
+     ],
+     "verbs": [
+      "exorcise"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "How can you attack a spirit with material objects?"
+     ],
+     "verbs": [
+      "attack",
+      "destroy"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "ACTORBIT",
+    "NDESCBIT"
+   ],
+   "is": [
+    "alive",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "number of ghosts",
+   "size": 0,
+   "synonyms": [
+    "ghosts",
+    "spirits",
+    "fiends",
+    "force"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "ENTRANCE-TO-HADES"
+  },
+  "painting": {
+   "action": "PAINTING-FCN",
+   "adjectives": [
+    "beauti"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "There is a worthless piece of canvas here.",
+      "Congratulations! Unlike the other vandals, who merely stole the artist's masterpieces, you have destroyed one."
+     ],
+     "verbs": [
+      "destroy"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "Fortunately, there is still one chance for you to be a vandal, for on the far wall is a painting of unparalleled beauty.",
+   "flags": [
+    "BURNBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "will burn",
+    "can be picked up"
+   ],
+   "ldesc": "A painting by a neglected genius is here.",
+   "name": "painting",
+   "size": 15,
+   "synonyms": [
+    "painting",
+    "art",
+    "canvas",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 6,
+   "value": 4,
+   "where": "GALLERY"
+  },
+  "pair of candles": {
+   "action": "CANDLES-FCN",
+   "adjectives": [
+    "burning"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "Alas, there's not much left of the candles. Certainly not enough to burn."
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": "when the candles is ruined"
+    },
+    {
+     "says": [
+      "(with the match)"
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": "when the match is flame"
+    },
+    {
+     "says": [
+      "You should say what to light them with."
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The candles are"
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": "when the match is on"
+    },
+    {
+     "says": [
+      "already lit."
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": "when the match is on"
+    },
+    {
+     "says": [
+      "lit."
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": "when the match is on"
+    },
+    {
+     "says": [
+      "You realize, just in time, that the candles are already lighted."
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": "when the candles is on"
+    },
+    {
+     "says": [
+      "The heat from the torch is so intense that the candles are vaporized."
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You have to light them with something that's burning, you know."
+     ],
+     "verbs": [
+      "burn",
+      "turn on"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Let's see, how many objects in a pair? Don't tell me, I'll get it."
+     ],
+     "verbs": [
+      "count"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The flame is extinguished."
+     ],
+     "verbs": [
+      "turn off"
+     ],
+     "when": "when the candles is on"
+    },
+    {
+     "says": [
+      "It's really dark in here...."
+     ],
+     "verbs": [
+      "turn off"
+     ],
+     "when": "when the candles is on"
+    },
+    {
+     "says": [
+      "The candles are not lighted."
+     ],
+     "verbs": [
+      "turn off"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "That wouldn't be smart."
+     ],
+     "verbs": [
+      "put"
+     ],
+     "when": "when the prsi is burn"
+    },
+    {
+     "says": [
+      "The candles are"
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "burning."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": "when the candles is on"
+    },
+    {
+     "says": [
+      "out."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "On the two ends of the altar are burning candles.",
+   "flags": [
+    "FLAMEBIT",
+    "LIGHTBIT",
+    "ONBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "burning",
+    "can give light",
+    "starts lit",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "pair of candles",
+   "size": 10,
+   "synonyms": [
+    "candles",
+    "pair"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "SOUTH-TEMPLE"
+  },
+  "pedestal": {
+   "action": "DUMB-CONTAINER",
+   "adjectives": [
+    "white",
+    "marble"
+   ],
+   "capacity": 30,
+   "does": [
+    {
+     "says": [
+      "You can't do that."
+     ],
+     "verbs": [
+      "close",
+      "look in",
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "It looks pretty much like a \u2026 ."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "NDESCBIT",
+    "OPENBIT",
+    "SURFACEBIT"
+   ],
+   "is": [
+    "a container",
+    "not listed in the room description",
+    "starts open",
+    "things can sit on it"
+   ],
+   "ldesc": "",
+   "name": "pedestal",
+   "size": 0,
+   "synonyms": [
+    "pedestal"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "TORCH-ROOM"
+  },
+  "pile of bodies": {
+   "action": "BODY-FUNCTION",
+   "adjectives": [
+    "mangled"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "A force keeps you from taking the bodies."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The voice of the guardian of the dungeon booms out from the darkness, \\\"Your disrespect costs you your life!\\\" and places your head on a sharp pole."
+     ],
+     "verbs": [
+      "burn",
+      "destroy"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "pile of bodies",
+   "size": 0,
+   "synonyms": [
+    "bodies",
+    "body",
+    "remains",
+    "pile"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "pile of leaves": {
+   "action": "LEAF-PILE",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "There are 69,105 leaves here."
+     ],
+     "verbs": [
+      "count"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The leaves burn."
+     ],
+     "verbs": [
+      "burn"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The leaves burn, and so do you."
+     ],
+     "verbs": [
+      "burn"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You rustle the leaves around, making quite a mess."
+     ],
+     "verbs": [
+      "cut"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Done."
+     ],
+     "verbs": [
+      "move",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Underneath the pile of leaves is a grating. As you release the leaves, the grating is once again concealed from view."
+     ],
+     "verbs": [
+      "look under"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "BURNBIT",
+    "TAKEBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "will burn",
+    "can be picked up",
+    "looks portable but is not"
+   ],
+   "ldesc": "On the ground is a pile of leaves.",
+   "name": "pile of leaves",
+   "size": 25,
+   "synonyms": [
+    "leaves",
+    "leaf",
+    "pile"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "GRATING-CLEARING"
+  },
+  "pile of plastic": {
+   "action": "IBOAT-FUNCTION",
+   "adjectives": [
+    "plastic",
+    "inflat"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The boat must be on the ground to be inflated."
+     ],
+     "verbs": [
+      "fill",
+      "inflate"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The boat inflates and appears seaworthy."
+     ],
+     "verbs": [
+      "fill",
+      "inflate"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "A tan label is lying inside the boat."
+     ],
+     "verbs": [
+      "fill",
+      "inflate"
+     ],
+     "when": "when the boat label is touch"
+    },
+    {
+     "says": [
+      "You don't have enough lung power to inflate it."
+     ],
+     "verbs": [
+      "fill",
+      "inflate"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "With a \u2026 ? Surely you jest!"
+     ],
+     "verbs": [
+      "fill",
+      "inflate"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "BURNBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "will burn",
+    "can be picked up"
+   ],
+   "ldesc": "There is a folded pile of plastic here which has a small valve attached.",
+   "name": "pile of plastic",
+   "size": 20,
+   "synonyms": [
+    "boat",
+    "pile",
+    "plastic",
+    "valve"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "DAM-BASE"
+  },
+  "platinum bar": {
+   "action": null,
+   "adjectives": [
+    "platinum",
+    "large"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "SACREDBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "the thief will not steal it",
+    "can be picked up"
+   ],
+   "ldesc": "On the ground is a large platinum bar.",
+   "name": "platinum bar",
+   "size": 20,
+   "synonyms": [
+    "bar",
+    "platinum",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 5,
+   "value": 10,
+   "where": "LOUD-ROOM"
+  },
+  "pot of gold": {
+   "action": null,
+   "adjectives": [
+    "gold"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "At the end of the rainbow is a pot of gold.",
+   "flags": [
+    "INVISIBLE",
+    "TAKEBIT"
+   ],
+   "is": [
+    "hidden until something reveals it",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "pot of gold",
+   "size": 15,
+   "synonyms": [
+    "pot",
+    "gold",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 10,
+   "value": 10,
+   "where": "END-OF-RAINBOW"
+  },
+  "prayer": {
+   "action": null,
+   "adjectives": [
+    "ancient",
+    "old"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "READBIT",
+    "SACREDBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "can be read",
+    "the thief will not steal it"
+   ],
+   "ldesc": "",
+   "name": "prayer",
+   "size": 0,
+   "synonyms": [
+    "prayer",
+    "inscription"
+   ],
+   "text": "The prayer is inscribed in an ancient script, rarely used today. It seems to be a philippic against small insects, absent-mindedness, and the picking up and dropping of small objects. The final verse consigns trespassers to the land of the dead. All evidence indicates that the beliefs of the ancient Zorkers were obscure.",
+   "tvalue": 0,
+   "value": 0,
+   "where": "NORTH-TEMPLE"
+  },
+  "punctured boat": {
+   "action": "DBOAT-FUNCTION",
+   "adjectives": [
+    "plastic",
+    "puncture",
+    "large"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "No chance. Some moron punctured it."
+     ],
+     "verbs": [
+      "fill",
+      "inflate"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "BURNBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "will burn",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "punctured boat",
+   "size": 20,
+   "synonyms": [
+    "boat",
+    "pile",
+    "plastic"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": null
+  },
+  "quantity of water": {
+   "action": "WATER-F",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "There is now a puddle in the bottom of the \u2026 ."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water leaks out of the \u2026 and evaporates immediately."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The bottle is closed."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": "when the bottle is open"
+    },
+    {
+     "says": [
+      "The bottle is now full of water."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water slips through your fingers."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "It's in the bottle. Perhaps you should take that instead."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water slips through your fingers."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The bottle is closed."
+     ],
+     "verbs": [
+      "drop",
+      "give"
+     ],
+     "when": "when the bottle is open"
+    },
+    {
+     "says": [
+      "There is now a puddle in the bottom of the \u2026 ."
+     ],
+     "verbs": [
+      "drop",
+      "give"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water spills to the floor and evaporates immediately."
+     ],
+     "verbs": [
+      "drop",
+      "give"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water splashes on the walls and evaporates immediately."
+     ],
+     "verbs": [
+      "throw"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "DRINKBIT",
+    "TAKEBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "drinkable",
+    "can be picked up",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "quantity of water",
+   "size": 4,
+   "synonyms": [
+    "water",
+    "quantity",
+    "liquid",
+    "h2o"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "BOTTLE"
+  },
+  "rainbow": {
+   "action": "RAINBOW-FCN",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "From here?!?"
+     ],
+     "verbs": [
+      "cross",
+      "through"
+     ],
+     "when": "in Canyon View"
+    },
+    {
+     "says": [
+      "You'll have to say which way..."
+     ],
+     "verbs": [
+      "cross",
+      "through"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Can you walk on water vapor?"
+     ],
+     "verbs": [
+      "cross",
+      "through"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The Frigid River flows under the rainbow."
+     ],
+     "verbs": [
+      "look under"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CLIMBBIT",
+    "NDESCBIT"
+   ],
+   "is": [
+    "can be climbed",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "rainbow",
+   "size": 0,
+   "synonyms": [
+    "rainbow"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "red buoy": {
+   "action": "TREASURE-INSIDE",
+   "adjectives": [
+    "red"
+   ],
+   "capacity": 20,
+   "does": [],
+   "fdesc": "There is a red buoy here (probably a warning).",
+   "flags": [
+    "CONTBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "a container",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "red buoy",
+   "size": 10,
+   "synonyms": [
+    "buoy"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "RIVER-4"
+  },
+  "red button": {
+   "action": "BUTTON-F",
+   "adjectives": [
+    "red"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "They're greek to you."
+     ],
+     "verbs": [
+      "read"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "There is a rumbling sound and a stream of water appears to burst from the east wall of the room (apparently, a leak has occurred in a pipe)."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The blue button appears to be jammed."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The lights within the room"
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "shut off."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": "when the here is on"
+    },
+    {
+     "says": [
+      "come on."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Click."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Click."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "red button",
+   "size": 0,
+   "synonyms": [
+    "button",
+    "switch"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAINTENANCE-ROOM"
+  },
+  "red hot brass bell": {
+   "action": "HOT-BELL-F",
+   "adjectives": [
+    "brass",
+    "hot",
+    "red",
+    "small"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The bell is very hot and cannot be taken."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The \u2026 burns and is consumed."
+     ],
+     "verbs": [
+      "ring",
+      "touch"
+     ],
+     "when": "when the prsi is burn"
+    },
+    {
+     "says": [
+      "The bell is too hot to touch."
+     ],
+     "verbs": [
+      "ring",
+      "touch"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The heat from the bell is too intense."
+     ],
+     "verbs": [
+      "ring",
+      "touch"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water cools the bell and is evaporated."
+     ],
+     "verbs": [
+      "pour on"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The bell is too hot to reach."
+     ],
+     "verbs": [
+      "ring"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "looks portable but is not"
+   ],
+   "ldesc": "On the ground is a red hot bell.",
+   "name": "red hot brass bell",
+   "size": 0,
+   "synonyms": [
+    "bell"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": null
+  },
+  "river": {
+   "action": "RIVER-FUNCTION",
+   "adjectives": [
+    "frigid"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "You splash around for a while, fighting the current, then you drown."
+     ],
+     "verbs": [
+      "put"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You should get in the boat then launch it."
+     ],
+     "verbs": [
+      "put"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The \u2026 floats for a moment, then sinks."
+     ],
+     "verbs": [
+      "put"
+     ],
+     "when": "when the prso is burn"
+    },
+    {
+     "says": [
+      "The \u2026 splashes into the water and is gone forever."
+     ],
+     "verbs": [
+      "put"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "A look before leaping reveals that the river is wide and dangerous, with swift currents and large, half-hidden rocks. You decide to forgo your swim."
+     ],
+     "verbs": [
+      "leap",
+      "through"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "river",
+   "size": 0,
+   "synonyms": [
+    "river"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "rope": {
+   "action": "ROPE-FUNCTION",
+   "adjectives": [
+    "large"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "You can't tie the rope to that."
+     ],
+     "verbs": [
+      "tie"
+     ],
+     "when": "in Dome Room"
+    },
+    {
+     "says": [
+      "The rope is already tied to it."
+     ],
+     "verbs": [
+      "tie"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The rope drops over the side and comes within ten feet of the floor."
+     ],
+     "verbs": [
+      "tie"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Your attempt to tie up the \u2026 awakens him."
+     ],
+     "verbs": [
+      "tie up"
+     ],
+     "when": "when the prso is actor"
+    },
+    {
+     "says": [
+      "The \u2026 struggles and you cannot tie him up."
+     ],
+     "verbs": [
+      "tie up"
+     ],
+     "when": "when the prso is actor"
+    },
+    {
+     "says": [
+      "Why would you tie up a \u2026 ?"
+     ],
+     "verbs": [
+      "tie up"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The rope is now untied."
+     ],
+     "verbs": [
+      "untie"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "It is not tied to anything."
+     ],
+     "verbs": [
+      "untie"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The rope drops gently to the floor below."
+     ],
+     "verbs": [
+      "drop"
+     ],
+     "when": "in Dome Room"
+    },
+    {
+     "says": [
+      "The rope is tied to the railing."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "A large coil of rope is lying in the corner.",
+   "flags": [
+    "SACREDBIT",
+    "TAKEBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "the thief will not steal it",
+    "can be picked up",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "rope",
+   "size": 10,
+   "synonyms": [
+    "rope",
+    "hemp",
+    "coil"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "ATTIC"
+  },
+  "rusty knife": {
+   "action": "RUSTY-KNIFE-FCN",
+   "adjectives": [
+    "rusty"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "As you touch the rusty knife, your sword gives a single pulse of blinding blue light."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "As the knife approaches its victim, your mind is submerged by an overmastering will. Slowly, your hand turns, until the rusty blade is an inch from your neck. The knife seems to sing as it savagely slits your throat."
+     ],
+     "verbs": [
+      "attack",
+      "swing"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "Beside the skeleton is a rusty knife.",
+   "flags": [
+    "TAKEBIT",
+    "TOOLBIT",
+    "TRYTAKEBIT",
+    "WEAPONBIT"
+   ],
+   "is": [
+    "can be picked up",
+    "a tool",
+    "looks portable but is not",
+    "a weapon"
+   ],
+   "ldesc": "",
+   "name": "rusty knife",
+   "size": 20,
+   "synonyms": [
+    "knives",
+    "knife"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAZE-5"
+  },
+  "sand": {
+   "action": "SAND-FUNCTION",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The hole collapses, smothering you."
+     ],
+     "verbs": [
+      "dig"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You can see a scarab here in the sand."
+     ],
+     "verbs": [
+      "dig"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "sand",
+   "size": 0,
+   "synonyms": [
+    "sand"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "SANDY-CAVE"
+  },
+  "sapphire-encrusted bracelet": {
+   "action": null,
+   "adjectives": [
+    "sapphire"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "sapphire-encrusted bracelet",
+   "size": 10,
+   "synonyms": [
+    "bracelet",
+    "jewel",
+    "sapphire",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 5,
+   "value": 5,
+   "where": "GAS-ROOM"
+  },
+  "sceptre": {
+   "action": "SCEPTRE-FUNCTION",
+   "adjectives": [
+    "sharp",
+    "egyptian",
+    "ancient",
+    "enameled"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "Suddenly, the rainbow appears to become solid and, I venture, walkable (I think the giveaway was the stairs and bannister)."
+     ],
+     "verbs": [
+      "raise",
+      "wave"
+     ],
+     "when": "in Aragain Falls, in End Of Rainbow"
+    },
+    {
+     "says": [
+      "A shimmering pot of gold appears at the end of the rainbow."
+     ],
+     "verbs": [
+      "raise",
+      "wave"
+     ],
+     "when": "in Aragain Falls, in End Of Rainbow"
+    },
+    {
+     "says": [
+      "The rainbow seems to have become somewhat run-of-the-mill."
+     ],
+     "verbs": [
+      "raise",
+      "wave"
+     ],
+     "when": "in Aragain Falls, in End Of Rainbow"
+    },
+    {
+     "says": [
+      "The structural integrity of the rainbow is severely compromised, leaving you hanging in midair, supported only by water vapor. Bye."
+     ],
+     "verbs": [
+      "raise",
+      "wave"
+     ],
+     "when": "in On Rainbow"
+    },
+    {
+     "says": [
+      "A dazzling display of color briefly emanates from the sceptre."
+     ],
+     "verbs": [
+      "raise",
+      "wave"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "A sceptre, possibly that of ancient Egypt itself, is in the coffin. The sceptre is ornamented with colored enamel, and tapers to a sharp point.",
+   "flags": [
+    "TAKEBIT",
+    "WEAPONBIT"
+   ],
+   "is": [
+    "can be picked up",
+    "a weapon"
+   ],
+   "ldesc": "An ornamented sceptre, tapering to a sharp point, is here.",
+   "name": "sceptre",
+   "size": 3,
+   "synonyms": [
+    "sceptre",
+    "scepter",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 6,
+   "value": 4,
+   "where": "COFFIN"
+  },
+  "screwdriver": {
+   "action": null,
+   "adjectives": [
+    "screw"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT",
+    "TOOLBIT"
+   ],
+   "is": [
+    "can be picked up",
+    "a tool"
+   ],
+   "ldesc": "",
+   "name": "screwdriver",
+   "size": 0,
+   "synonyms": [
+    "screwdriver",
+    "tool",
+    "tools",
+    "driver"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAINTENANCE-ROOM"
+  },
+  "set of teeth": {
+   "action": "TEETH-F",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "Well, you seem to have been brushing your teeth with some sort of glue. As a result, your mouth gets glued together (with your nose) and you die of respiratory failure."
+     ],
+     "verbs": [
+      "brush"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Dental hygiene is highly recommended, but I'm not sure what you want to brush them with."
+     ],
+     "verbs": [
+      "brush"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "A nice idea, but with a \u2026 ?"
+     ],
+     "verbs": [
+      "brush"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "set of teeth",
+   "size": 0,
+   "synonyms": [
+    "overboard",
+    "teeth"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "GLOBAL-OBJECTS"
+  },
+  "shovel": {
+   "action": null,
+   "adjectives": [],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT",
+    "TOOLBIT"
+   ],
+   "is": [
+    "can be picked up",
+    "a tool"
+   ],
+   "ldesc": "",
+   "name": "shovel",
+   "size": 15,
+   "synonyms": [
+    "shovel",
+    "tool",
+    "tools"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "SANDY-BEACH"
+  },
+  "skeleton": {
+   "action": "SKELETON",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "A ghost appears in the room and is appalled at your desecration of the remains of a fellow adventurer. He casts a curse on your valuables and banishes them to the Land of the Living Dead. The ghost leaves, muttering obscenities."
+     ],
+     "verbs": [
+      "attack",
+      "kick",
+      "kiss",
+      "lower",
+      "move",
+      "push",
+      "raise",
+      "take",
+      "touch"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "skeleton",
+   "size": 0,
+   "synonyms": [
+    "bones",
+    "skeleton",
+    "body"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAZE-5"
+  },
+  "skeleton key": {
+   "action": null,
+   "adjectives": [
+    "skeleton"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT",
+    "TOOLBIT"
+   ],
+   "is": [
+    "can be picked up",
+    "a tool"
+   ],
+   "ldesc": "",
+   "name": "skeleton key",
+   "size": 10,
+   "synonyms": [
+    "key"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAZE-5"
+  },
+  "small mailbox": {
+   "action": "MAILBOX-F",
+   "adjectives": [
+    "small"
+   ],
+   "capacity": 10,
+   "does": [
+    {
+     "says": [
+      "It is securely anchored."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "a container",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "small mailbox",
+   "size": 0,
+   "synonyms": [
+    "mailbox",
+    "box"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "WEST-OF-HOUSE"
+  },
+  "small piece of vitreous slag": {
+   "action": "GUNK-FUNCTION",
+   "adjectives": [
+    "small",
+    "vitreous"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "can be picked up",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "small piece of vitreous slag",
+   "size": 10,
+   "synonyms": [
+    "gunk",
+    "piece",
+    "slag"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": null
+  },
+  "small pile of coal": {
+   "action": null,
+   "adjectives": [
+    "small"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "BURNBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "will burn",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "small pile of coal",
+   "size": 20,
+   "synonyms": [
+    "coal",
+    "pile",
+    "heap"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "DEAD-END-5"
+  },
+  "songbird": {
+   "action": "SONGBIRD-F",
+   "adjectives": [
+    "song"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The songbird is not here but is probably nearby."
+     ],
+     "verbs": [
+      "find",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You can't hear the songbird now."
+     ],
+     "verbs": [
+      "listen"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "It can't be followed."
+     ],
+     "verbs": [
+      "follow"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "songbird",
+   "size": 0,
+   "synonyms": [
+    "bird",
+    "songbird"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "stiletto": {
+   "action": "STILETTO-FUNCTION",
+   "adjectives": [
+    "vicious"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "TAKEBIT",
+    "TRYTAKEBIT",
+    "WEAPONBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "can be picked up",
+    "looks portable but is not",
+    "a weapon"
+   ],
+   "ldesc": "",
+   "name": "stiletto",
+   "size": 10,
+   "synonyms": [
+    "stiletto"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "THIEF"
+  },
+  "stone barrow": {
+   "action": "BARROW-FCN",
+   "adjectives": [
+    "massive",
+    "stone"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "stone barrow",
+   "size": 0,
+   "synonyms": [
+    "barrow",
+    "tomb"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "STONE-BARROW"
+  },
+  "stone door": {
+   "action": "BARROW-DOOR-FCN",
+   "adjectives": [
+    "huge",
+    "stone"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The door is too heavy."
+     ],
+     "verbs": [
+      "close",
+      "open"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "DOORBIT",
+    "NDESCBIT",
+    "OPENBIT"
+   ],
+   "is": [
+    "a door",
+    "not listed in the room description",
+    "starts open"
+   ],
+   "ldesc": "",
+   "name": "stone door",
+   "size": 0,
+   "synonyms": [
+    "door"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "STONE-BARROW"
+  },
+  "surrounding wall": {
+   "action": null,
+   "adjectives": [
+    "surrounding"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [],
+   "is": [],
+   "ldesc": "",
+   "name": "surrounding wall",
+   "size": 0,
+   "synonyms": [
+    "wall",
+    "walls"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "GLOBAL-OBJECTS"
+  },
+  "switch": {
+   "action": "MSWITCH-FUNCTION",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The machine doesn't seem to want to do anything."
+     ],
+     "verbs": [
+      "turn"
+     ],
+     "when": "when the machine is open"
+    },
+    {
+     "says": [
+      "The machine comes to life (figuratively) with a dazzling display of colored lights and bizarre noises. After a few moments, the excitement abates."
+     ],
+     "verbs": [
+      "turn"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "It seems that a \u2026 won't do."
+     ],
+     "verbs": [
+      "turn"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT",
+    "TURNBIT"
+   ],
+   "is": [
+    "not listed in the room description",
+    "can be turned"
+   ],
+   "ldesc": "",
+   "name": "switch",
+   "size": 0,
+   "synonyms": [
+    "switch"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MACHINE-ROOM"
+  },
+  "sword": {
+   "action": "SWORD-FCN",
+   "adjectives": [
+    "elvish",
+    "old",
+    "antique"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "Your sword is glowing with a faint blue glow."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Your sword is glowing very brightly."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "Above the trophy case hangs an elvish sword of great antiquity.",
+   "flags": [
+    "TAKEBIT",
+    "TRYTAKEBIT",
+    "WEAPONBIT"
+   ],
+   "is": [
+    "can be picked up",
+    "looks portable but is not",
+    "a weapon"
+   ],
+   "ldesc": "",
+   "name": "sword",
+   "size": 30,
+   "synonyms": [
+    "sword",
+    "orcrist",
+    "glamdring",
+    "blade"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LIVING-ROOM"
+  },
+  "table": {
+   "action": null,
+   "adjectives": [],
+   "capacity": 40,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "NDESCBIT",
+    "OPENBIT",
+    "SURFACEBIT"
+   ],
+   "is": [
+    "a container",
+    "not listed in the room description",
+    "starts open",
+    "things can sit on it"
+   ],
+   "ldesc": "",
+   "name": "table",
+   "size": 0,
+   "synonyms": [
+    "table"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "ATTIC"
+  },
+  "tan label": {
+   "action": null,
+   "adjectives": [
+    "tan",
+    "fine"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "BURNBIT",
+    "READBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "will burn",
+    "can be read",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "tan label",
+   "size": 2,
+   "synonyms": [
+    "label",
+    "fineprint",
+    "print"
+   ],
+   "text": "!!!!FROBOZZ MAGIC BOAT COMPANY!!!!| | Hello, Sailor!| | Instructions for use:| | To get into a body of water, say \\\"Launch\\\".| To get to shore, say \\\"Land\\\" or the direction in which you want to maneuver the boat.| | Warranty:| | This boat is guaranteed against all defects for a period of 76 milliseconds from date of purchase or until first used, whichever comes first.| | Warning:| This boat is made of thin plastic.| Good Luck!",
+   "tvalue": 0,
+   "value": 0,
+   "where": "INFLATED-BOAT"
+  },
+  "thief": {
+   "action": "ROBBER-FUNCTION",
+   "adjectives": [
+    "shady",
+    "suspicious",
+    "seedy"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The thief is a strong, silent type."
+     ],
+     "verbs": [
+      "tell"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The thief, being temporarily incapacitated, is unable to acknowledge your greeting with his usual graciousness."
+     ],
+     "verbs": [
+      "hello"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You evidently frightened the robber, though you didn't hit him. He flees"
+     ],
+     "verbs": [
+      "throw"
+     ],
+     "when": "when the thief is fight"
+    },
+    {
+     "says": [
+      ", but the contents of his bag fall on the floor."
+     ],
+     "verbs": [
+      "throw"
+     ],
+     "when": "when the thief is fight"
+    },
+    {
+     "says": [
+      "You missed. The thief makes no attempt to take the knife, though it would be a fine addition to the collection in his bag. He does seem angered by your attempt."
+     ],
+     "verbs": [
+      "throw"
+     ],
+     "when": "when the thief is fight"
+    },
+    {
+     "says": [
+      "Your proposed victim suddenly recovers consciousness."
+     ],
+     "verbs": [
+      "give",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The thief takes his stiletto and salutes you with a small nod of his head."
+     ],
+     "verbs": [
+      "give",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The thief is taken aback by your unexpected generosity, but accepts the \u2026 and stops to admire its beauty."
+     ],
+     "verbs": [
+      "give",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The thief places the \u2026 in his bag and thanks you politely."
+     ],
+     "verbs": [
+      "give",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Once you got him, what would you do with him?"
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The thief is a slippery character with beady eyes that flit back and forth. He carries, along with an unmistakable arrogance, a large bag over his shoulder and a vicious stiletto, whose blade is aimed menacingly in your direction. I'd watch out if I were you."
+     ],
+     "verbs": [
+      "examine",
+      "look in"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The thief says nothing, as you have not been formally introduced."
+     ],
+     "verbs": [
+      "listen"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The chalice is now safe to take."
+     ],
+     "verbs": [],
+     "when": "in Treasure Room"
+    },
+    {
+     "says": [
+      "As the thief dies, the power of his magic decreases, and his treasures reappear:"
+     ],
+     "verbs": [],
+     "when": "in Treasure Room"
+    },
+    {
+     "says": [
+      ", with"
+     ],
+     "verbs": [],
+     "when": "in Treasure Room"
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "ACTORBIT",
+    "CONTBIT",
+    "INVISIBLE",
+    "OPENBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "alive",
+    "a container",
+    "hidden until something reveals it",
+    "starts open",
+    "looks portable but is not"
+   ],
+   "ldesc": "There is a suspicious-looking individual, holding a large bag, leaning against one wall. He is armed with a deadly stiletto.",
+   "name": "thief",
+   "size": 0,
+   "synonyms": [
+    "thief",
+    "robber",
+    "man",
+    "person"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "ROUND-ROOM"
+  },
+  "torch": {
+   "action": "TORCH-OBJECT",
+   "adjectives": [
+    "flaming",
+    "ivory"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The torch is burning."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water evaporates before it gets close."
+     ],
+     "verbs": [
+      "pour on"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You nearly burn your hand trying to extinguish the flame."
+     ],
+     "verbs": [
+      "turn off"
+     ],
+     "when": "when the prso is on"
+    }
+   ],
+   "fdesc": "Sitting on the pedestal is a flaming torch, made of ivory.",
+   "flags": [
+    "FLAMEBIT",
+    "LIGHTBIT",
+    "ONBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "burning",
+    "can give light",
+    "starts lit",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "torch",
+   "size": 20,
+   "synonyms": [
+    "torch",
+    "ivory",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 6,
+   "value": 14,
+   "where": "PEDESTAL"
+  },
+  "tour guidebook": {
+   "action": null,
+   "adjectives": [
+    "tour",
+    "guide"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "Some guidebooks entitled \\\"Flood Control Dam #3\\\" are on the reception desk.",
+   "flags": [
+    "BURNBIT",
+    "READBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "will burn",
+    "can be read",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "tour guidebook",
+   "size": 0,
+   "synonyms": [
+    "guide",
+    "book",
+    "books",
+    "guidebooks"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "DAM-LOBBY"
+  },
+  "trap door": {
+   "action": "TRAP-DOOR-FCN",
+   "adjectives": [
+    "trap",
+    "dusty"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The door reluctantly opens to reveal a rickety staircase descending into darkness.",
+      "The door swings shut and closes."
+     ],
+     "verbs": [
+      "close",
+      "open"
+     ],
+     "when": "in Living Room"
+    },
+    {
+     "says": [
+      "You see a rickety staircase descending into darkness."
+     ],
+     "verbs": [
+      "look under"
+     ],
+     "when": "when the trap door is open"
+    },
+    {
+     "says": [
+      "It's closed."
+     ],
+     "verbs": [
+      "look under"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The door is locked from above."
+     ],
+     "verbs": [
+      "open",
+      "unlock"
+     ],
+     "when": "in Cellar"
+    },
+    {
+     "says": [
+      "The door closes and locks."
+     ],
+     "verbs": [
+      "close"
+     ],
+     "when": "in Cellar"
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "DOORBIT",
+    "INVISIBLE",
+    "NDESCBIT"
+   ],
+   "is": [
+    "a door",
+    "hidden until something reveals it",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "trap door",
+   "size": 0,
+   "synonyms": [
+    "door",
+    "trapdoor",
+    "trap-door",
+    "cover"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LIVING-ROOM"
+  },
+  "tree": {
+   "action": null,
+   "adjectives": [
+    "large",
+    "storm",
+    ";\"-tossed\""
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "CLIMBBIT",
+    "NDESCBIT"
+   ],
+   "is": [
+    "can be climbed",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "tree",
+   "size": 0,
+   "synonyms": [
+    "tree",
+    "branch"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "troll": {
+   "action": "TROLL-FCN",
+   "adjectives": [
+    "nasty"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The troll isn't much of a conversationalist."
+     ],
+     "verbs": [
+      "tell"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The troll scratches his head in confusion, then takes the axe."
+     ],
+     "verbs": [
+      "destroy",
+      "give",
+      "move",
+      "take",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You would have to get the \u2026 first, and that seems unlikely."
+     ],
+     "verbs": [
+      "destroy",
+      "give",
+      "move",
+      "take",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The troll, who is remarkably coordinated, catches the"
+     ],
+     "verbs": [
+      "destroy",
+      "give",
+      "move",
+      "take",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The troll, who is not overly proud, graciously accepts the gift"
+     ],
+     "verbs": [
+      "destroy",
+      "give",
+      "move",
+      "take",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "and eats it hungrily. Poor troll, he dies from an internal hemorrhage and his carcass disappears in a sinister black fog."
+     ],
+     "verbs": [
+      "destroy",
+      "give",
+      "move",
+      "take",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "and, being for the moment sated, throws it back. Fortunately, the troll has poor control, and the \u2026 falls to the floor. He does not look pleased."
+     ],
+     "verbs": [
+      "destroy",
+      "give",
+      "move",
+      "take",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "and not having the most discriminating tastes, gleefully eats it."
+     ],
+     "verbs": [
+      "destroy",
+      "give",
+      "move",
+      "take",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The troll spits in your face, grunting \\\"Better luck next time\\\" in a rather barbarous accent."
+     ],
+     "verbs": [
+      "destroy",
+      "give",
+      "move",
+      "take",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The troll laughs at your puny gesture."
+     ],
+     "verbs": [
+      "destroy",
+      "give",
+      "move",
+      "take",
+      "throw"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Every so often the troll says something, probably uncomplimentary, in his guttural tongue."
+     ],
+     "verbs": [
+      "listen"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Unfortunately, the troll can't hear you."
+     ],
+     "verbs": [
+      "hello"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "ACTORBIT",
+    "OPENBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "alive",
+    "starts open",
+    "looks portable but is not"
+   ],
+   "ldesc": "A nasty-looking troll, brandishing a bloody axe, blocks all passages out of the room.",
+   "name": "troll",
+   "size": 0,
+   "synonyms": [
+    "troll"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "TROLL-ROOM"
+  },
+  "trophy case": {
+   "action": "TROPHY-CASE-FCN",
+   "adjectives": [
+    "trophy"
+   ],
+   "capacity": 10000,
+   "does": [
+    {
+     "says": [
+      "The trophy case is securely fastened to the wall."
+     ],
+     "verbs": [
+      "take"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "NDESCBIT",
+    "SEARCHBIT",
+    "TRANSBIT",
+    "TRYTAKEBIT"
+   ],
+   "is": [
+    "a container",
+    "not listed in the room description",
+    "worth searching",
+    "see-through",
+    "looks portable but is not"
+   ],
+   "ldesc": "",
+   "name": "trophy case",
+   "size": 0,
+   "synonyms": [
+    "case"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LIVING-ROOM"
+  },
+  "trunk of jewels": {
+   "action": "TRUNK-F",
+   "adjectives": [
+    "old"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "Lying half buried in the mud is an old trunk, bulging with jewels.",
+   "flags": [
+    "INVISIBLE",
+    "TAKEBIT"
+   ],
+   "is": [
+    "hidden until something reveals it",
+    "can be picked up"
+   ],
+   "ldesc": "There is an old trunk here, bulging with assorted jewels.",
+   "name": "trunk of jewels",
+   "size": 35,
+   "synonyms": [
+    "trunk",
+    "chest",
+    "jewels",
+    "treasure"
+   ],
+   "text": "",
+   "tvalue": 5,
+   "value": 15,
+   "where": "RESERVOIR"
+  },
+  "tube": {
+   "action": "TUBE-FUNCTION",
+   "adjectives": [],
+   "capacity": 7,
+   "does": [
+    {
+     "says": [
+      "The tube refuses to accept anything."
+     ],
+     "verbs": [
+      "put"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The viscous material oozes into your hand."
+     ],
+     "verbs": [
+      "squeeze"
+     ],
+     "when": "when the prso is open"
+    },
+    {
+     "says": [
+      "The tube is apparently empty."
+     ],
+     "verbs": [
+      "squeeze"
+     ],
+     "when": "when the prso is open"
+    },
+    {
+     "says": [
+      "The tube is closed."
+     ],
+     "verbs": [
+      "squeeze"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CONTBIT",
+    "READBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "a container",
+    "can be read",
+    "can be picked up"
+   ],
+   "ldesc": "There is an object which looks like a tube of toothpaste here.",
+   "name": "tube",
+   "size": 5,
+   "synonyms": [
+    "tube",
+    "tooth",
+    "paste"
+   ],
+   "text": "---> Frobozz Magic Gunk Company <---| All-Purpose Gunk",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAINTENANCE-ROOM"
+  },
+  "viscous material": {
+   "action": "PUTTY-FCN",
+   "adjectives": [
+    "viscous"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The all-purpose gunk isn't a lubricant."
+     ],
+     "verbs": [
+      "oil",
+      "put"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT",
+    "TOOLBIT"
+   ],
+   "is": [
+    "can be picked up",
+    "a tool"
+   ],
+   "ldesc": "",
+   "name": "viscous material",
+   "size": 6,
+   "synonyms": [
+    "material",
+    "gunk"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "TUBE"
+  },
+  "wall with engravings": {
+   "action": null,
+   "adjectives": [
+    "old",
+    "ancient"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "READBIT",
+    "SACREDBIT"
+   ],
+   "is": [
+    "can be read",
+    "the thief will not steal it"
+   ],
+   "ldesc": "There are old engravings on the walls here.",
+   "name": "wall with engravings",
+   "size": 0,
+   "synonyms": [
+    "wall",
+    "engravings",
+    "inscription"
+   ],
+   "text": "The engravings were incised in the living rock of the cave wall by an unknown hand. They depict, in symbolic form, the beliefs of the ancient Zorkers. Skillfully interwoven with the bas reliefs are excerpts illustrating the major religious tenets of that time. Unfortunately, a later age seems to have considered them blasphemous and just as skillfully excised them.",
+   "tvalue": 0,
+   "value": 0,
+   "where": "ENGRAVINGS-CAVE"
+  },
+  "water": {
+   "action": "WATER-F",
+   "adjectives": [],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "There is now a puddle in the bottom of the \u2026 ."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water leaks out of the \u2026 and evaporates immediately."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The bottle is closed."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": "when the bottle is open"
+    },
+    {
+     "says": [
+      "The bottle is now full of water."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water slips through your fingers."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "It's in the bottle. Perhaps you should take that instead."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water slips through your fingers."
+     ],
+     "verbs": [
+      "put",
+      "take"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The bottle is closed."
+     ],
+     "verbs": [
+      "drop",
+      "give"
+     ],
+     "when": "when the bottle is open"
+    },
+    {
+     "says": [
+      "There is now a puddle in the bottom of the \u2026 ."
+     ],
+     "verbs": [
+      "drop",
+      "give"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water spills to the floor and evaporates immediately."
+     ],
+     "verbs": [
+      "drop",
+      "give"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The water splashes on the walls and evaporates immediately."
+     ],
+     "verbs": [
+      "throw"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "DRINKBIT"
+   ],
+   "is": [
+    "drinkable"
+   ],
+   "ldesc": "",
+   "name": "water",
+   "size": 0,
+   "synonyms": [
+    "water",
+    "quantity"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "white cliffs": {
+   "action": "WCLIF-OBJECT",
+   "adjectives": [
+    "white"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The cliff is too steep for climbing."
+     ],
+     "verbs": [
+      "climb down",
+      "climb foo",
+      "climb up"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "CLIMBBIT",
+    "NDESCBIT"
+   ],
+   "is": [
+    "can be climbed",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "white cliffs",
+   "size": 0,
+   "synonyms": [
+    "cliff",
+    "cliffs"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "white house": {
+   "action": "WHITE-HOUSE-F",
+   "adjectives": [
+    "white",
+    "beauti",
+    "coloni"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "Why not find your brains?"
+     ],
+     "verbs": [
+      "find"
+     ],
+     "when": "in Attic, in Kitchen, in Living Room"
+    },
+    {
+     "says": [
+      "It seems to be to the west."
+     ],
+     "verbs": [
+      "find"
+     ],
+     "when": "in East Of House, in North Of House, in South Of House, in West Of House"
+    },
+    {
+     "says": [
+      "It was here just a minute ago...."
+     ],
+     "verbs": [
+      "find"
+     ],
+     "when": "in East Of House, in North Of House, in South Of House, in West Of House"
+    },
+    {
+     "says": [
+      "You're not at the house."
+     ],
+     "verbs": [],
+     "when": "in East Of House, in North Of House, in South Of House, in West Of House"
+    },
+    {
+     "says": [
+      "It's right here! Are you blind or something?"
+     ],
+     "verbs": [
+      "find"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The house is a beautiful colonial house which is painted white. It is clear that the owners must have been extremely wealthy."
+     ],
+     "verbs": [
+      "examine"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The window is closed."
+     ],
+     "verbs": [
+      "open",
+      "through"
+     ],
+     "when": "in East Of House"
+    },
+    {
+     "says": [
+      "I can't see how to get in from here."
+     ],
+     "verbs": [
+      "open",
+      "through"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You must be joking."
+     ],
+     "verbs": [
+      "burn"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "white house",
+   "size": 0,
+   "synonyms": [
+    "house"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "wooden door": {
+   "action": "FRONT-DOOR-FCN",
+   "adjectives": [
+    "wooden",
+    "gothic",
+    "strange",
+    "west"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "The door cannot be opened."
+     ],
+     "verbs": [
+      "open"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You cannot burn this door."
+     ],
+     "verbs": [
+      "burn"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "You can't seem to damage the door."
+     ],
+     "verbs": [
+      "destroy"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "It won't open."
+     ],
+     "verbs": [
+      "look behind"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "DOORBIT",
+    "NDESCBIT",
+    "READBIT",
+    "TRANSBIT"
+   ],
+   "is": [
+    "a door",
+    "not listed in the room description",
+    "can be read",
+    "see-through"
+   ],
+   "ldesc": "",
+   "name": "wooden door",
+   "size": 0,
+   "synonyms": [
+    "door",
+    "lettering",
+    "writing"
+   ],
+   "text": "The engravings translate to \\\"This space intentionally left blank.\\\"",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LIVING-ROOM"
+  },
+  "wooden ladder": {
+   "action": null,
+   "adjectives": [
+    "wooden",
+    "rickety",
+    "narrow"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "CLIMBBIT",
+    "NDESCBIT"
+   ],
+   "is": [
+    "can be climbed",
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "wooden ladder",
+   "size": 0,
+   "synonyms": [
+    "ladder"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "LOCAL-GLOBALS"
+  },
+  "wooden railing": {
+   "action": null,
+   "adjectives": [
+    "wooden"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "wooden railing",
+   "size": 0,
+   "synonyms": [
+    "railing",
+    "rail"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "DOME-ROOM"
+  },
+  "wrench": {
+   "action": null,
+   "adjectives": [],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "",
+   "flags": [
+    "TAKEBIT",
+    "TOOLBIT"
+   ],
+   "is": [
+    "can be picked up",
+    "a tool"
+   ],
+   "ldesc": "",
+   "name": "wrench",
+   "size": 10,
+   "synonyms": [
+    "wrench",
+    "tool",
+    "tools"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAINTENANCE-ROOM"
+  },
+  "yellow button": {
+   "action": "BUTTON-F",
+   "adjectives": [
+    "yellow"
+   ],
+   "capacity": 0,
+   "does": [
+    {
+     "says": [
+      "They're greek to you."
+     ],
+     "verbs": [
+      "read"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "There is a rumbling sound and a stream of water appears to burst from the east wall of the room (apparently, a leak has occurred in a pipe)."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The blue button appears to be jammed."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "The lights within the room"
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "shut off."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": "when the here is on"
+    },
+    {
+     "says": [
+      "come on."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Click."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    },
+    {
+     "says": [
+      "Click."
+     ],
+     "verbs": [
+      "push"
+     ],
+     "when": ""
+    }
+   ],
+   "fdesc": "",
+   "flags": [
+    "NDESCBIT"
+   ],
+   "is": [
+    "not listed in the room description"
+   ],
+   "ldesc": "",
+   "name": "yellow button",
+   "size": 0,
+   "synonyms": [
+    "button",
+    "switch"
+   ],
+   "text": "",
+   "tvalue": 0,
+   "value": 0,
+   "where": "MAINTENANCE-ROOM"
+  },
+  "zork owner's manual": {
+   "action": null,
+   "adjectives": [
+    "zork",
+    "owners",
+    "small"
+   ],
+   "capacity": 0,
+   "does": [],
+   "fdesc": "Loosely attached to a wall is a small piece of paper.",
+   "flags": [
+    "READBIT",
+    "TAKEBIT"
+   ],
+   "is": [
+    "can be read",
+    "can be picked up"
+   ],
+   "ldesc": "",
+   "name": "ZORK owner's manual",
+   "size": 0,
+   "synonyms": [
+    "manual",
+    "piece",
+    "paper"
+   ],
+   "text": "Congratulations!| | You are the privileged owner of ZORK I: The Great Underground Empire, a self-contained and self-maintaining universe. If used and maintained in accordance with normal operating practices for small universes, ZORK will provide many months of trouble-free operation.",
+   "tvalue": 0,
+   "value": 0,
+   "where": "STUDIO"
+  }
+ },
  "objectFlags": {
   "altar": [
    "CONTBIT",
@@ -517,6 +7373,22 @@
     }
    ],
    "desc": "You are standing in an open field west of a white house, with a boarded front door.",
+   "does": [
+    {
+     "says": [
+      "You are standing in an open field west of a white house, with a boarded front door."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "A secret path leads southwest into the forest."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -584,6 +7456,41 @@
    "action": "STONE-BARROW-FCN",
    "blocked": [],
    "desc": "You are standing in front of a massive barrow of stone. In the east face is a huge stone door which is open. You cannot see into the dark of the tomb.",
+   "does": [
+    {
+     "says": [
+      "Inside the Barrow| As you enter the barrow, the door closes inexorably behind you. Around you it is dark, but ahead is an enormous cavern, brightly lit. Through its center runs a wide stream. Spanning the stream is a small wooden footbridge, and beyond a path leads into a dark tunnel. Above the bridge, floating in the air, is a large sign. It reads: All ye who stand before this bridge have completed a great and perilous adventure which has tested your wit and courage. You have mastered"
+     ],
+     "verbs": [
+      "enter",
+      "through",
+      "walk"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "the first part of the ZORK trilogy. Those who pass over this bridge must be prepared to undertake an even greater adventure that will severely test your skill and bravery!| | The ZORK trilogy continues with \\\"ZORK II: The Wizard of Frobozz\\\" and is completed in \\\"ZORK III: The Dungeon Master.\\\""
+     ],
+     "verbs": [
+      "enter",
+      "through",
+      "walk"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "ZORK: The Great Underground Empire.|"
+     ],
+     "verbs": [
+      "enter",
+      "through",
+      "walk"
+     ],
+     "when": "before each command"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -622,6 +7529,7 @@
     }
    ],
    "desc": "You are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -674,6 +7582,7 @@
     }
    ],
    "desc": "You are facing the south side of a white house. There is no door here, and all the windows are boarded.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -721,6 +7630,29 @@
    "action": "EAST-HOUSE",
    "blocked": [],
    "desc": "You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is",
+   "does": [
+    {
+     "says": [
+      "You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is"
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "open."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "slightly ajar."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -786,6 +7718,7 @@
     }
    ],
    "desc": "This is a forest, with trees in all directions. To the east, there appears to be sunlight.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -832,6 +7765,7 @@
     }
    ],
    "desc": "This is a dimly lit forest, with large trees all around.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -878,6 +7812,7 @@
     }
    ],
    "desc": "The forest thins out, revealing impassable mountains.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -932,6 +7867,7 @@
     }
    ],
    "desc": "This is a dimly lit forest, with large trees all around.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -969,6 +7905,7 @@
    "action": "FOREST-ROOM",
    "blocked": [],
    "desc": "This is a path winding through a dimly lit forest. The path heads north-south here. One particularly large tree with some low branches stands at the edge of the path.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1021,6 +7958,59 @@
     }
    ],
    "desc": "You are about 10 feet above the ground nestled among some large branches. The nearest branch above you is above your reach.",
+   "does": [
+    {
+     "says": [
+      "You are about 10 feet above the ground nestled among some large branches. The nearest branch above you is above your reach."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "On the ground below you can see:"
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The nest falls to the ground, and the egg spills out of it, seriously damaged."
+     ],
+     "verbs": [
+      "drop"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "The egg falls to the ground and springs open, seriously damaged."
+     ],
+     "verbs": [
+      "drop"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "The \u2026 falls to the ground."
+     ],
+     "verbs": [
+      "drop"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "That was just a bit too far down."
+     ],
+     "verbs": [
+      "drop",
+      "leap"
+     ],
+     "when": "before each command"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -1059,6 +8049,29 @@
     }
    ],
    "desc": "You are in a clearing, with a forest surrounding you on all sides. A path leads south.",
+   "does": [
+    {
+     "says": [
+      "You are in a clearing, with a forest surrounding you on all sides. A path leads south."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "There is an open grating, descending into darkness."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "There is a grating securely fastened into the ground."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -1110,6 +8123,7 @@
     }
    ],
    "desc": "You are in a small clearing in a well marked forest path that extends to the east and west.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1152,6 +8166,38 @@
    "action": "KITCHEN-FCN",
    "blocked": [],
    "desc": "You are in the kitchen of the white house. A table seems to have been used recently for the preparation of food. A passage leads to the west and a dark staircase can be seen leading upward. A dark chimney leads down and to the east is a small window which is",
+   "does": [
+    {
+     "says": [
+      "You are in the kitchen of the white house. A table seems to have been used recently for the preparation of food. A passage leads to the west and a dark staircase can be seen leading upward. A dark chimney leads down and to the east is a small window which is"
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "open."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "slightly ajar."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "There are no stairs leading down."
+     ],
+     "verbs": [
+      "climb up"
+     ],
+     "when": ""
+    }
+   ],
    "exits": [
     {
      "cond": "if the kitchen window is open",
@@ -1203,6 +8249,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is the attic. The only exit is a stairway leading down.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1235,6 +8282,58 @@
    "action": "LIVING-ROOM-FCN",
    "blocked": [],
    "desc": "You are in the living room. There is a doorway to the east",
+   "does": [
+    {
+     "says": [
+      "You are in the living room. There is a doorway to the east",
+      "a trophy case,"
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      ". To the west is a cyclops-shaped opening in an old wooden door, above which is some strange gothic lettering,"
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      ", a wooden door with strange gothic lettering to the west, which appears to be nailed shut,"
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "and a rug lying beside an open trap door."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "and a closed trap door at your feet."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "and an open trap door at your feet."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "and a large oriental rug in the center of the room."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -1306,6 +8405,22 @@
     }
    ],
    "desc": "You are in a dark and damp cellar with a narrow passageway leading north, and a crawlway to the south. On the west is the bottom of a steep metal ramp which is unclimbable.",
+   "does": [
+    {
+     "says": [
+      "You are in a dark and damp cellar with a narrow passageway leading north, and a crawlway to the south. On the west is the bottom of a steep metal ramp which is unclimbable."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The trap door crashes shut, and you hear someone barring it."
+     ],
+     "verbs": [],
+     "when": "on entering"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -1339,6 +8454,7 @@
    "action": "TROLL-ROOM-F",
    "blocked": [],
    "desc": "This is a small room with passages to the east and south and a forbidding hole leading west. Bloodstains and deep scratches (perhaps made by an axe) mar the walls.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1380,6 +8496,7 @@
     }
    ],
    "desc": "You are on the east edge of a chasm, the bottom of which cannot be seen. A narrow passage goes north, and the path you are on continues to the east.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1407,6 +8524,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is an art gallery. Most of the paintings have been stolen by vandals with exceptional taste. The vandals left through either the north or west exits.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1444,6 +8562,7 @@
     }
    ],
    "desc": "This appears to have been an artist's studio. The walls and floors are splattered with paints of 69 different colors. Strangely enough, nothing of value is hanging here. At the south end of the room is an open door (also covered with paint). A dark and narrow chimney leads up from a fireplace; although you might be able to get up it, it seems unlikely you could get back down.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1474,6 +8593,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1510,6 +8630,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1541,6 +8662,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1572,6 +8694,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1603,6 +8726,7 @@
    "action": null,
    "blocked": [],
    "desc": "You have come to a dead end in the maze.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1624,6 +8748,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike. A skeleton, probably the remains of a luckless adventurer, lies here.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1681,6 +8806,7 @@
    "action": null,
    "blocked": [],
    "desc": "You have come to a dead end in the maze.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1702,6 +8828,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1738,6 +8865,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1779,6 +8907,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1810,6 +8939,7 @@
    "action": null,
    "blocked": [],
    "desc": "You have come to a dead end in the maze.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1831,6 +8961,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1877,6 +9008,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1908,6 +9040,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -1944,6 +9077,36 @@
    "action": "MAZE-11-FCN",
    "blocked": [],
    "desc": "You are in a small room near the maze. There are twisty passages in the immediate vicinity.",
+   "does": [
+    {
+     "says": [
+      "You are in a small room near the maze. There are twisty passages in the immediate vicinity."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "Above you is an open grating with sunlight pouring in."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "Above you is a grating."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "Above you is a grating locked with a skull-and-crossbones lock."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -1971,6 +9134,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "one-way diode",
@@ -2012,6 +9176,7 @@
    "action": null,
    "blocked": [],
    "desc": "You have come to a dead end in the maze.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2033,6 +9198,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2069,6 +9235,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2105,6 +9272,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is part of a maze of twisty little passages, all alike.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2136,6 +9304,50 @@
    "action": "CYCLOPS-ROOM-FCN",
    "blocked": [],
    "desc": "This room has an exit on the northwest, and a staircase leading up.",
+   "does": [
+    {
+     "says": [
+      "This room has an exit on the northwest, and a staircase leading up."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The cyclops is sleeping blissfully at the foot of the stairs."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The east wall, previously solid, now has a cyclops-sized opening in it."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "A cyclops, who looks prepared to eat horses (much less mere adventurers), blocks the staircase. From his state of health, and the bloodstains on the walls, you gather that he is not very friendly, though he likes people."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The cyclops is standing in the corner, eyeing you closely. I don't think he likes you very much. He looks extremely hungry, even for a cyclops."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The cyclops, having eaten the hot peppers, appears to be gasping. His enflamed tongue protrudes from his man-sized mouth."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -2172,6 +9384,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a long passage. To the west is one entrance. On the east there is an old wooden door, with a large opening in it (about cyclops sized).",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2202,6 +9415,15 @@
    "action": "TREASURE-ROOM-FCN",
    "blocked": [],
    "desc": "This is a large room, whose east wall is solid granite. A number of discarded bags, which crumble at your touch, are scattered about on the floor. There is an exit down a staircase.",
+   "does": [
+    {
+     "says": [
+      "You hear a scream of anguish as you violate the robber's hideaway. Using passages unknown to you, he rushes to its defense."
+     ],
+     "verbs": [],
+     "when": "on entering"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -2229,6 +9451,43 @@
    "action": "RESERVOIR-SOUTH-FCN",
    "blocked": [],
    "desc": "You are in a long room, to the north of which was formerly a lake. However, with the water level lowered, there is merely a wide stream running through the center of the room.",
+   "does": [
+    {
+     "says": [
+      "There is a path along the stream to the east or west, a steep pathway climbing southwest along the edge of a chasm, and a path leading into a canyon to the southeast."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You are in a long room, to the north of which was formerly a lake. However, with the water level lowered, there is merely a wide stream running through the center of the room."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You are in a long room. To the north is a large lake, too deep to cross. You notice, however, that the water level appears to be dropping at a rapid rate. Before long, it might be possible to cross to the other side from here."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You are in a long room, to the north of which is a wide area which was formerly a reservoir, but now is merely a stream. You notice, however, that the level of the stream is rising quickly and that before long it will be impossible to cross here."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You are in a long room on the south shore of a large lake, far too deep and wide for crossing."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -2278,6 +9537,29 @@
     }
    ],
    "desc": "You are on what used to be a large lake, but which is now a large mud pile. There are \\\"shores\\\" to the north and south.",
+   "does": [
+    {
+     "says": [
+      "You notice that the water level here is rising rapidly. The currents are also becoming stronger. Staying here seems quite perilous!"
+     ],
+     "verbs": [],
+     "when": "at the end of each turn"
+    },
+    {
+     "says": [
+      "You are on what used to be a large lake, but which is now a large mud pile. There are \\\"shores\\\" to the north and south."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You are on the lake. Beaches can be seen north and south. Upstream a small stream enters the lake through a narrow cleft in the rocks. The dam can be seen downstream."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -2322,6 +9604,43 @@
    "action": "RESERVOIR-NORTH-FCN",
    "blocked": [],
    "desc": "You are in a large cavernous room, the south of which was formerly a lake. However, with the water level lowered, there is merely a wide stream running through there.",
+   "does": [
+    {
+     "says": [
+      "There is a slimy stairway leaving the room to the north."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You are in a large cavernous room, the south of which was formerly a lake. However, with the water level lowered, there is merely a wide stream running through there."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You are in a large cavernous area. To the south is a wide lake, whose water level appears to be falling rapidly."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You are in a cavernous area, to the south of which is a very wide stream. The level of the stream is rising rapidly, and it appears that before long it will be impossible to cross to the other side."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You are in a large cavernous room, north of a large lake."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -2361,6 +9680,7 @@
     }
    ],
    "desc": "You are standing on a path beside a gently flowing stream. The path follows the stream, which flows from west to east.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2393,6 +9713,7 @@
     }
    ],
    "desc": "You are on the gently flowing stream. The upstream route is too narrow to navigate, and the downstream route is invisible due to twisting walls. There is a narrow beach to land on.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2426,6 +9747,22 @@
    "action": "MIRROR-ROOM",
    "blocked": [],
    "desc": "You are in a large square room with tall ceilings. On the south wall is an enormous mirror which fills the entire wall. There are exits on the other three sides of the room.",
+   "does": [
+    {
+     "says": [
+      "You are in a large square room with tall ceilings. On the south wall is an enormous mirror which fills the entire wall. There are exits on the other three sides of the room."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "Unfortunately, the mirror has been destroyed by your recklessness."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -2462,6 +9799,22 @@
    "action": "MIRROR-ROOM",
    "blocked": [],
    "desc": "You are in a large square room with tall ceilings. On the south wall is an enormous mirror which fills the entire wall. There are exits on the other three sides of the room.",
+   "does": [
+    {
+     "says": [
+      "You are in a large square room with tall ceilings. On the south wall is an enormous mirror which fills the entire wall. There are exits on the other three sides of the room."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "Unfortunately, the mirror has been destroyed by your recklessness."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -2499,6 +9852,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a tiny cave with entrances west and north, and a staircase leading down.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2534,6 +9888,22 @@
    "action": "CAVE2-ROOM",
    "blocked": [],
    "desc": "This is a tiny cave with entrances west and north, and a dark, forbidding staircase leading down.",
+   "does": [
+    {
+     "says": [
+      "A gust of wind blows out your candles!"
+     ],
+     "verbs": [],
+     "when": "at the end of each turn"
+    },
+    {
+     "says": [
+      "It is now completely dark."
+     ],
+     "verbs": [],
+     "when": "at the end of each turn"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -2564,6 +9934,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a cold and damp corridor where a long east-west passageway turns into a southward path.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2589,6 +9960,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a long and narrow corridor where a long north-south passageway briefly narrows even further.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2614,6 +9986,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a winding passage. It seems that there are only exits on the east and north.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2639,6 +10012,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a winding passage. It seems that there are only exits on the east and north.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2664,6 +10038,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is an ancient room, long under water. There is an exit to the south and a staircase leading up.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2695,6 +10070,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a narrow east-west passageway. There is a narrow stairway leading down at the north end of the room.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2730,6 +10106,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a circular stone room with passages in all directions. Several of them have unfortunately been blocked by cave-ins.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2776,6 +10153,29 @@
    "action": "DEEP-CANYON-F",
    "blocked": [],
    "desc": "You are on the south edge of a deep canyon. Passages lead off to the east, northwest and southwest. A stairway leads down.",
+   "does": [
+    {
+     "says": [
+      "You are on the south edge of a deep canyon. Passages lead off to the east, northwest and southwest. A stairway leads down."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You can hear a loud roaring sound, like that of rushing water, from below."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You can hear the sound of flowing water from below."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -2816,6 +10216,7 @@
     }
    ],
    "desc": "This cave has exits to the west and east, and narrows to a crack toward the south. The earth is particularly damp here.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2843,6 +10244,64 @@
    "action": "LOUD-ROOM-FCN",
    "blocked": [],
    "desc": "This is a large room with a ceiling which cannot be detected from the ground. There is a narrow passage from east to west and a stone stairway leading upward.",
+   "does": [
+    {
+     "says": [
+      "This is a large room with a ceiling which cannot be detected from the ground. There is a narrow passage from east to west and a stone stairway leading upward."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The room is eerie in its quietness."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The room is deafeningly loud with an undetermined rushing sound. The sound seems to reverberate from all of the walls, making it difficult even to think."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "It is unbearably loud here, with an ear-splitting roar seeming to come from all around you. There is a pounding in your head which won't stop. With a tremendous effort, you scramble out of the room."
+     ],
+     "verbs": [],
+     "when": "at the end of each turn"
+    },
+    {
+     "says": [
+      "The rest of your commands have been lost in the noise."
+     ],
+     "verbs": [],
+     "when": "on entering"
+    },
+    {
+     "says": [
+      "I beg your pardon?"
+     ],
+     "verbs": [],
+     "when": "on entering"
+    },
+    {
+     "says": [
+      "That's only your opinion."
+     ],
+     "verbs": [],
+     "when": "on entering"
+    },
+    {
+     "says": [
+      "The acoustics of the room change subtly."
+     ],
+     "verbs": [],
+     "when": "on entering"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -2879,6 +10338,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a high north-south passage, which forks to the northeast.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2914,6 +10374,7 @@
     }
    ],
    "desc": "A chasm runs southwest to northeast and the path follows it. You are on the south side of the chasm, where a crack opens into a passage.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -2952,6 +10413,74 @@
    "action": "LLD-ROOM",
    "blocked": [],
    "desc": "You are outside a large gateway, on which is inscribed|| Abandon every hope all ye who enter here!|| The gate is open; through it you can see a desolation, with a pile of mangled bodies in one corner. Thousands of voices, lamenting some hideous fate, can be heard.",
+   "does": [
+    {
+     "says": [
+      "You are outside a large gateway, on which is inscribed|| Abandon every hope all ye who enter here!|| The gate is open; through it you can see a desolation, with a pile of mangled bodies in one corner. Thousands of voices, lamenting some hideous fate, can be heard."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The way through the gate is barred by evil spirits, who jeer at your attempts to pass."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "You must perform the ceremony."
+     ],
+     "verbs": [
+      "exorcise"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "You aren't equipped for an exorcism."
+     ],
+     "verbs": [
+      "exorcise"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "The bell suddenly becomes red hot and falls to the ground. The wraiths, as if paralyzed, stop their jeering and slowly turn to face you. On their ashen faces, the expression of a long-forgotten terror takes shape."
+     ],
+     "verbs": [
+      "ring"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "In your confusion, the candles drop to the ground (and they are out)."
+     ],
+     "verbs": [
+      "ring"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "Each word of the prayer reverberates through the hall in a deafening confusion. As the last word fades, a voice, loud and commanding, speaks: \\\"Begone, fiends!\\\" A heart-stopping scream fills the cavern, and the spirits, sensing a greater power, flee through the walls."
+     ],
+     "verbs": [
+      "read"
+     ],
+     "when": "before each command"
+    },
+    {
+     "says": [
+      "The flames flicker wildly and appear to dance. The earth beneath your feet trembles, and your legs nearly buckle beneath you. The spirits cower at your unearthly power."
+     ],
+     "verbs": [],
+     "when": "at the end of each turn"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -2993,6 +10522,7 @@
    "action": null,
    "blocked": [],
    "desc": "You have entered the Land of the Living Dead. Thousands of lost souls can be heard weeping and moaning. In the corner are stacked the remains of dozens of previous adventurers less fortunate than yourself. A passage exits to the north.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3027,6 +10557,7 @@
    "action": null,
    "blocked": [],
    "desc": "You have entered a low cave with passages leading northwest and east.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3058,6 +10589,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a room which looks like an Egyptian tomb. There is an ascending staircase to the west.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3089,6 +10621,38 @@
    "action": "DOME-ROOM-FCN",
    "blocked": [],
    "desc": "You are at the periphery of a large dome, which forms the ceiling of another room below. Protecting you from a precipitous drop is a wooden railing which circles the dome.",
+   "does": [
+    {
+     "says": [
+      "You are at the periphery of a large dome, which forms the ceiling of another room below. Protecting you from a precipitous drop is a wooden railing which circles the dome."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "Hanging down from the railing is a rope which ends about ten feet from the floor below."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "As you enter the dome you feel a strong pull as if from a wind drawing you over the railing and down."
+     ],
+     "verbs": [],
+     "when": "on entering"
+    },
+    {
+     "says": [
+      "I'm afraid that the leap you attempted has done you in."
+     ],
+     "verbs": [
+      "leap"
+     ],
+     "when": "on entering"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -3127,6 +10691,22 @@
     }
    ],
    "desc": "This is a large room with a prominent doorway leading to a down staircase. Above you is a large dome. Up around the edge of the dome (20 feet up) is a wooden railing. In the center of the room sits a white marble pedestal.",
+   "does": [
+    {
+     "says": [
+      "This is a large room with a prominent doorway leading to a down staircase. Above you is a large dome. Up around the edge of the dome (20 feet up) is a wooden railing. In the center of the room sits a white marble pedestal."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "A piece of rope descends from the railing above, ending some five feet above your head."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -3160,6 +10740,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is the north end of a large temple. On the east wall is an ancient inscription, probably a prayer in a long-forgotten language. Below the prayer is a staircase leading down. The west wall is solid granite. The exit to the north end of the room is through huge marble pillars.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3218,6 +10799,7 @@
    "action": "SOUTH-TEMPLE-FCN",
    "blocked": [],
    "desc": "This is the south end of a large temple. In front of you is what appears to be an altar. In one corner is a small hole in the floor which leads into darkness. You probably could not get back up it.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3256,6 +10838,51 @@
    "action": "DAM-ROOM-FCN",
    "blocked": [],
    "desc": "You are standing on the top of the Flood Control Dam #3, which was quite a tourist attraction in times far distant. There are paths to the north, south, and west, and a scramble down.",
+   "does": [
+    {
+     "says": [
+      "You are standing on the top of the Flood Control Dam #3, which was quite a tourist attraction in times far distant. There are paths to the north, south, and west, and a scramble down.",
+      "There is a control panel here, on which a large metal bolt is mounted. Directly above the bolt is a small green plastic bubble"
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The water level behind the dam is low: The sluice gates have been opened. Water rushes through the dam and downstream."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The sluice gates are open, and water rushes through the dam. The water level behind the dam is still high."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The sluice gates are closed. The water level in the reservoir is quite low, but the level is rising quickly."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "The sluice gates on the dam are closed. Behind the dam, there can be seen a wide reservoir. Water is pouring over the top of the now abandoned dam."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "which is glowing serenely"
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -3320,6 +10947,7 @@
    "action": null,
    "blocked": [],
    "desc": "This room appears to have been the waiting room for groups touring the dam. There are open doorways here to the north and east marked \\\"Private\\\", and there is a path leading south over the top of the dam.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3362,6 +10990,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is what appears to have been the maintenance room for Flood Control Dam #3. Apparently, this room has been ransacked recently, for most of the valuable equipment is gone. On the wall in front of you is a group of buttons colored blue, yellow, brown, and red. There are doorways to the west and south.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3433,6 +11062,7 @@
    "action": null,
    "blocked": [],
    "desc": "You are at the base of Flood Control Dam #3, which looms above you and to the north. The river Frigid is flowing by here. Along the river are the White Cliffs which seem to form giant walls stretching from north to south along the shores of the river as it winds its way downstream.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3478,6 +11108,7 @@
     }
    ],
    "desc": "You are on the Frigid River in the vicinity of the Dam. The river flows quietly here. There is a landing on the west shore.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3530,6 +11161,7 @@
     }
    ],
    "desc": "The river turns a corner here making it impossible to see the Dam. The White Cliffs loom on the east bank and large rocks prevent landing on the west.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3559,6 +11191,7 @@
     }
    ],
    "desc": "The river descends here into a valley. There is a narrow beach on the west shore below the cliffs. In the distance a faint rumbling can be heard.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3593,6 +11226,7 @@
    "action": "WHITE-CLIFFS-FUNCTION",
    "blocked": [],
    "desc": "You are on a narrow strip of beach which runs along the base of the White Cliffs. There is a narrow path heading south along the Cliffs and a tight passage leading west into the cliffs themselves.",
+   "does": [],
    "exits": [
     {
      "cond": "if deflate",
@@ -3623,6 +11257,7 @@
    "action": "WHITE-CLIFFS-FUNCTION",
    "blocked": [],
    "desc": "You are on a rocky, narrow strip of beach beside the Cliffs. A narrow path leads north along the shore.",
+   "does": [],
    "exits": [
     {
      "cond": "if deflate",
@@ -3657,6 +11292,15 @@
     }
    ],
    "desc": "The river is running faster here and the sound ahead appears to be that of rushing water. On the east shore is a sandy beach. A small area of beach can also be seen below the cliffs on the west shore.",
+   "does": [
+    {
+     "says": [
+      "You notice something funny about the feel of the buoy."
+     ],
+     "verbs": [],
+     "when": "at the end of each turn"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -3702,6 +11346,7 @@
     }
    ],
    "desc": "The sound of rushing water is nearly unbearable here. On the east shore is a large landing area.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3732,6 +11377,7 @@
    "action": null,
    "blocked": [],
    "desc": "You are on the east shore of the river. The water here seems somewhat treacherous. A path travels from north to south here, the south end quickly turning around a sharp corner.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3762,6 +11408,7 @@
    "action": null,
    "blocked": [],
    "desc": "You are on a large sandy beach on the east shore of the river, which is flowing quickly by. A path runs beside the river to the south here, and a passage is partially buried in sand to the northeast.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3797,6 +11444,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a sand-filled cave whose exit is to the southwest.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3833,6 +11481,29 @@
     }
    ],
    "desc": "You are at the top of Aragain Falls, an enormous waterfall with a drop of about 450 feet. The only path here is on the north end.",
+   "does": [
+    {
+     "says": [
+      "You are at the top of Aragain Falls, an enormous waterfall with a drop of about 450 feet. The only path here is on the north end."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "A solid rainbow spans the falls."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "A beautiful rainbow can be seen over the falls and to the west."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "if rainbow flag",
@@ -3869,6 +11540,7 @@
    "action": null,
    "blocked": [],
    "desc": "You are on top of a rainbow (I bet you never thought you would walk on a rainbow), with a magnificent view of the Falls. The rainbow travels east-west here.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3898,6 +11570,7 @@
    "action": null,
    "blocked": [],
    "desc": "You are on a small, rocky beach on the continuation of the Frigid River past the Falls. The beach is narrow due to the presence of the White Cliffs. The river canyon opens here and sunlight shines in from above. A rainbow crosses over the falls to the east and a narrow path continues to the southwest.",
+   "does": [],
    "exits": [
     {
      "cond": "if rainbow flag",
@@ -3944,6 +11617,7 @@
    "action": null,
    "blocked": [],
    "desc": "You are beneath the walls of the river canyon which may be climbable here. The lesser part of the runoff of Aragain Falls flows by below. To the north is a narrow path.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -3975,6 +11649,7 @@
    "action": null,
    "blocked": [],
    "desc": "You are on a ledge about halfway up the wall of the river canyon. You can see from here that the main flow from Aragain Falls twists along a passage which it is impossible for you to enter. Below you is the canyon bottom. Above you is more cliff, which appears climbable.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4010,6 +11685,7 @@
     }
    ],
    "desc": "You are at the top of the Great Canyon on its west wall. From here there is a marvelous view of the canyon and parts of the Frigid River upstream. Across the canyon, the walls of the White Cliffs join the mighty ramparts of the Flathead Mountains to the east. Following the Canyon upstream to the north, Aragain Falls may be seen, complete with rainbow. The mighty Frigid River flows out from a great dark cavern. To the west and south can be seen an immense forest, stretching for miles around. A path leads northwest. It is possible to climb down into the canyon from here.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4051,6 +11727,7 @@
    "action": null,
    "blocked": [],
    "desc": "You are standing at the entrance of what might have been a coal mine. The shaft enters the west wall, and there is another exit on the south end of the room.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4081,6 +11758,7 @@
    "action": null,
    "blocked": [],
    "desc": "You are in a small room. Strange squeaky sounds may be heard coming from the passage at the north end. You may also escape to the east.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4106,6 +11784,15 @@
    "action": "BATS-ROOM",
    "blocked": [],
    "desc": "You are in a small room which has doors only to the east and south.",
+   "does": [
+    {
+     "says": [
+      "You are in a small room which has doors only to the east and south."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -4148,6 +11835,7 @@
     }
    ],
    "desc": "This is a large room, in the middle of which is a small shaft descending through the floor into darkness below. To the west and the north are exits from this room. Constructed over the top of the shaft is a metal framework to which a heavy iron chain is attached.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4181,6 +11869,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a small nondescript room. However, from the direction of a small descending staircase a foul odor can be detected. To the south is a narrow tunnel.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4209,6 +11898,29 @@
    "action": "BOOM-ROOM",
    "blocked": [],
    "desc": "This is a small room which smells strongly of coal gas. There is a short climb up some stairs and a narrow tunnel leading east.",
+   "does": [
+    {
+     "says": [
+      "| ** BOOOOOOOOOOOM **"
+     ],
+     "verbs": [],
+     "when": "at the end of each turn"
+    },
+    {
+     "says": [
+      "How sad for an aspiring adventurer to light a \u2026 in a room which reeks of gas. Fortunately, there is justice in the world."
+     ],
+     "verbs": [],
+     "when": "at the end of each turn"
+    },
+    {
+     "says": [
+      "Oh dear. It appears that the smell coming from this room was coal gas. I would have thought twice about carrying flaming objects in here."
+     ],
+     "verbs": [],
+     "when": "at the end of each turn"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -4244,6 +11956,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a very small room. In the corner is a rickety wooden ladder, leading downward. It might be safe to descend. There is also a staircase leading upward.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4271,6 +11984,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a rather wide room. On one side is the bottom of a narrow wooden ladder. To the west and the south are passages leaving the room.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4303,6 +12017,7 @@
    "action": null,
    "blocked": [],
    "desc": "You have come to a dead end in the mine.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4329,6 +12044,7 @@
    "action": "NO-OBJS",
    "blocked": [],
    "desc": "This is a long and narrow passage, which is cluttered with broken timbers. A wide passage comes from the east and turns at the west end of the room into a very narrow passageway. From the west comes a strong draft.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4361,6 +12077,7 @@
    "action": "NO-OBJS",
    "blocked": [],
    "desc": "This is a small drafty room in which is the bottom of a long shaft. To the south is a passageway and to the east a very narrow passage. In the shaft can be seen a heavy iron chain.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4400,6 +12117,29 @@
    "action": "MACHINE-ROOM-FCN",
    "blocked": [],
    "desc": "This is a large, cold room whose sole exit is to the north. In one corner there is a machine which is reminiscent of a clothes dryer. On its face is a switch which is labelled \\\"START\\\". The switch does not appear to be manipulable by any human hand (unless the fingers are about 1/16 by 1/4 inch). On the front of the machine is a large lid, which is",
+   "does": [
+    {
+     "says": [
+      "This is a large, cold room whose sole exit is to the north. In one corner there is a machine which is reminiscent of a clothes dryer. On its face is a switch which is labelled \\\"START\\\". The switch does not appear to be manipulable by any human hand (unless the fingers are about 1/16 by 1/4 inch). On the front of the machine is a large lid, which is"
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "open."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    },
+    {
+     "says": [
+      "closed."
+     ],
+     "verbs": [],
+     "when": "on looking"
+    }
+   ],
    "exits": [
     {
      "cond": "",
@@ -4431,6 +12171,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a nondescript part of a coal mine.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4461,6 +12202,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a nondescript part of a coal mine.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4491,6 +12233,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a nondescript part of a coal mine.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4521,6 +12264,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a nondescript part of a coal mine.",
+   "does": [],
    "exits": [
     {
      "cond": "",
@@ -4551,6 +12295,7 @@
    "action": null,
    "blocked": [],
    "desc": "This is a small chamber, which appears to have been part of a coal mine. On the south wall of the chamber the letters \\\"Granite Wall\\\" are etched in the rock. To the east is a long passage, and there is a steep metal slide twisting downward. To the north is a small opening.",
+   "does": [],
    "exits": [
     {
      "cond": "",

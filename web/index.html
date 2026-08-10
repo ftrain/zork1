@@ -110,6 +110,14 @@
     margin-left: 16px; border-left: 2px solid #2c343e; border-radius: 0 5px 5px 0;
   }
   .thing .nm { display: block; color: var(--ink); }
+  .thing .nm.treasure { color: var(--gold); }
+  .quote {
+    color: #9fb0c0; font-size: 12px; margin: 4px 0 6px;
+    padding-left: 8px; border-left: 2px solid #2c343e;
+  }
+  .says { margin: 8px 0; }
+  .says b { color: var(--acid); font-weight: 600; }
+  .says .when { color: var(--dim); font-size: 11px; }
   .thing .what, aside > .what {
     color: var(--dim); font-size: 11px; margin: 2px 0 6px;
   }
@@ -710,6 +718,13 @@
     items(n);
     if (mode === "atlas") atlasExits(n); else liveControls(n);
 
+    // In the atlas the exits are how you get around, so they come before the
+    // lore; in a live game the things in front of you come first.
+    var itemsEl = document.getElementById("r-items");
+    var exitsEl = document.getElementById("r-exits");
+    if (mode === "atlas") itemsEl.parentNode.insertBefore(exitsEl, itemsEl);
+    else itemsEl.parentNode.insertBefore(itemsEl, exitsEl);
+
     document.getElementById("r-trail").textContent =
       state.trail.slice(-12).map(function (t) {
         var m = node(t);
@@ -728,18 +743,124 @@
     var host = document.getElementById("r-items");
     host.innerHTML = "";
     if (mode === "live") return liveThings(host, n);
-    if (!n.objects || !n.objects.length) return;
-    var h = document.createElement("h3");
-    h.textContent = "HERE";
-    host.appendChild(h);
-    var ul = document.createElement("ul");
-    n.objects.forEach(function (o) {
-      var li = document.createElement("li");
-      li.className = "item" + (o.treasure ? " treasure" : "");
-      li.textContent = o.name;
-      ul.appendChild(li);
+    return atlasThings(host, n);
+  }
+
+  /* ---------- the atlas: everything the source says, in plain sight ---- */
+
+  function loreOf(name) {
+    return ATLAS.lore[String(name || "").toLowerCase()];
+  }
+
+  // The verb-by-verb behaviour pulled out of the object's ACTION routine:
+  // what it answers to, under what condition, and what it says back.
+  function behaviourList(does) {
+    var wrap = document.createElement("div");
+    does.forEach(function (d) {
+      var row = document.createElement("div");
+      row.className = "says";
+      var head = document.createElement("div");
+      if (d.verbs.length) {
+        var v = document.createElement("b");
+        v.textContent = d.verbs.join(" / ");
+        head.appendChild(v);
+      }
+      if (d.when) {
+        var w = document.createElement("span");
+        w.className = "when";
+        w.textContent = (d.verbs.length ? " " : "") + d.when;
+        head.appendChild(w);
+      }
+      row.appendChild(head);
+      d.says.forEach(function (s) {
+        var q = document.createElement("div");
+        q.className = "quote";
+        q.textContent = "“" + s + "”";
+        row.appendChild(q);
+      });
+      wrap.appendChild(row);
     });
-    host.appendChild(ul);
+    return wrap;
+  }
+
+  function loreCard(name, treasure) {
+    var o = loreOf(name);
+    var card = document.createElement("div");
+    card.className = "thing";
+    var nm = document.createElement("div");
+    nm.className = "nm" + (treasure ? " treasure" : "");
+    nm.textContent = name;
+    card.appendChild(nm);
+
+    var facts = [];
+    if (o) {
+      facts = (o.is || []).slice();
+      if (o.tvalue) facts.push(o.tvalue + " points for taking it");
+      if (o.value) facts.push(o.value + " points in the case");
+      if (o.capacity) facts.push("holds " + o.capacity);
+    }
+    if (facts.length) {
+      var f = document.createElement("div");
+      f.className = "what";
+      f.textContent = facts.join(" · ");
+      card.appendChild(f);
+    }
+
+    // How the game first shows it to you, and what it says when read.
+    [o && o.fdesc, o && o.ldesc, o && o.text].forEach(function (t, i) {
+      if (!t) return;
+      if (i === 1 && o.fdesc === t) return;
+      var d = document.createElement("div");
+      d.className = "quote";
+      d.textContent = "“" + t + "”";
+      card.appendChild(d);
+    });
+
+    var does = (o && o.does) || [];
+    if (does.length) {
+      var btn = document.createElement("button");
+      btn.textContent = "what it answers to (" + does.length + ")";
+      var body = null;
+      btn.onclick = function () {
+        if (body) {
+          body.remove();
+          body = null;
+          btn.textContent = "what it answers to (" + does.length + ")";
+          return;
+        }
+        body = behaviourList(does);
+        card.appendChild(body);
+        btn.textContent = "hide";
+      };
+      card.appendChild(btn);
+    }
+    return card;
+  }
+
+  function atlasThings(host, n) {
+    if (n.does && n.does.length) {
+      // The room's own logic. "On looking" is the description already
+      // printed above, so it would only repeat itself here.
+      var logic = n.does.filter(function (d) {
+        return d.when !== "on looking";
+      });
+      if (logic.length) {
+        section(host, "WHAT HAPPENS HERE");
+        host.appendChild(behaviourList(logic));
+      }
+    }
+    if (n.objects && n.objects.length) {
+      section(host, "THINGS HERE");
+      n.objects.forEach(function (o) {
+        host.appendChild(loreCard(o.name, o.treasure));
+      });
+    }
+    var scenery = (n.globals || []).concat(ATLAS.everywhere || []);
+    if (scenery.length) {
+      section(host, "ALSO REFERRABLE HERE",
+              "scenery the room answers to without holding it");
+      scenery.forEach(function (g) { host.appendChild(loreCard(g, false)); });
+    }
   }
 
   function cmdButton(label, cmd) {

@@ -24,6 +24,35 @@ labelled with their condition (`if the trap door is open`).
   object, which is the fastest way to see the shape of the thing
 * progress is kept in `localStorage`; **reset** clears it
 
+Nothing is hidden here. The atlas is for reading the game, not playing it,
+so every room lists what is in it — including things the game keeps
+invisible until something reveals them, labelled as such.
+
+Each thing is shown with what it is (*a container · looks portable but is
+not · holds 10*), how the game first presents it, what it is worth, and
+**what it answers to**: the verbs its `ACTION` routine handles, the
+condition each one is guarded by, and the exact words it replies with.
+
+    trap door    a door · hidden until something reveals it
+      close / open   in Living Room
+        "The door reluctantly opens to reveal a rickety staircase…"
+        "The door swings shut and closes."
+      look under     when the trap door is open
+        "You see a rickety staircase descending into darkness."
+
+Rooms get the same treatment under **what happens here** — the Cellar
+tells you up front that the trap door crashes shut behind you.
+
+This is read out of `1actions.zil` by a small ZIL reader in the extractor.
+It walks each routine's `COND` clauses, taking the verbs from `<VERB? …>`,
+the condition from `<EQUAL? ,HERE …>` and `<FSET? … >`, and the replies
+from the `TELL` forms. The pieces of a single `TELL` are joined with an
+ellipsis, because the gaps are where the game splices in an object's name
+at runtime — *"You would have to get the … first"* is one message with a
+hole in it, not two messages.
+
+72 of the 120 objects have behaviour worth showing; 28 rooms do.
+
 ## The game — the same map, actually playing
 
 Press **play the game**. Every click now runs a real command in `zork1.zip`,
