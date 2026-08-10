@@ -1,4 +1,9 @@
 {
+ "everywhere": [
+  "granite wall",
+  "set of teeth",
+  "surrounding wall"
+ ],
  "rooms": [
   {
    "action": "WEST-HOUSE",
@@ -51,6 +56,11 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "board",
+    "forest",
+    "white house"
+   ],
    "id": "WEST-OF-HOUSE",
    "name": "West of House",
    "objects": [
@@ -83,6 +93,7 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [],
    "id": "STONE-BARROW",
    "name": "Stone Barrow",
    "objects": [
@@ -140,6 +151,12 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "board",
+    "boarded window",
+    "forest",
+    "white house"
+   ],
    "id": "NORTH-OF-HOUSE",
    "name": "North of House",
    "objects": [],
@@ -185,6 +202,12 @@
     "RLANDBIT",
     "ONBIT",
     "SACREDBIT"
+   ],
+   "globals": [
+    "board",
+    "boarded window",
+    "forest",
+    "white house"
    ],
    "id": "SOUTH-OF-HOUSE",
    "name": "South of House",
@@ -237,6 +260,11 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "forest",
+    "kitchen window",
+    "white house"
+   ],
    "id": "EAST-OF-HOUSE",
    "name": "Behind House",
    "objects": [],
@@ -276,6 +304,12 @@
     "RLANDBIT",
     "ONBIT",
     "SACREDBIT"
+   ],
+   "globals": [
+    "forest",
+    "songbird",
+    "tree",
+    "white house"
    ],
    "id": "FOREST-1",
    "name": "Forest",
@@ -317,6 +351,12 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "forest",
+    "songbird",
+    "tree",
+    "white house"
+   ],
    "id": "FOREST-2",
    "name": "Forest",
    "objects": [],
@@ -356,6 +396,10 @@
     "RLANDBIT",
     "ONBIT",
     "SACREDBIT"
+   ],
+   "globals": [
+    "tree",
+    "white house"
    ],
    "id": "MOUNTAINS",
    "name": "Forest",
@@ -407,6 +451,12 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "forest",
+    "songbird",
+    "tree",
+    "white house"
+   ],
    "id": "FOREST-3",
    "name": "Forest",
    "objects": [],
@@ -448,6 +498,12 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "forest",
+    "songbird",
+    "tree",
+    "white house"
+   ],
    "id": "PATH",
    "name": "Forest Path",
    "objects": [],
@@ -473,6 +529,12 @@
     "RLANDBIT",
     "ONBIT",
     "SACREDBIT"
+   ],
+   "globals": [
+    "forest",
+    "songbird",
+    "tree",
+    "white house"
    ],
    "id": "UP-A-TREE",
    "name": "Up a Tree",
@@ -521,6 +583,10 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "grating",
+    "white house"
+   ],
    "id": "GRATING-CLEARING",
    "name": "Clearing",
    "objects": [
@@ -568,6 +634,12 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "forest",
+    "songbird",
+    "tree",
+    "white house"
+   ],
    "id": "CLEARING",
    "name": "Clearing",
    "objects": [],
@@ -609,6 +681,10 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "chimney",
+    "kitchen window"
+   ],
    "id": "KITCHEN",
    "name": "Kitchen",
    "objects": [
@@ -635,6 +711,7 @@
     "RLANDBIT",
     "SACREDBIT"
    ],
+   "globals": [],
    "id": "ATTIC",
    "name": "Attic",
    "objects": [
@@ -676,6 +753,10 @@
     "RLANDBIT",
     "ONBIT",
     "SACREDBIT"
+   ],
+   "globals": [
+    "nail",
+    "nails"
    ],
    "id": "LIVING-ROOM",
    "name": "Living Room",
@@ -742,6 +823,10 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [
+    "chute",
+    "trap door"
+   ],
    "id": "CELLAR",
    "name": "Cellar",
    "objects": [],
@@ -771,6 +856,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "TROLL-ROOM",
    "name": "The Troll Room",
    "objects": [
@@ -806,6 +892,9 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [
+    "chasm"
+   ],
    "id": "EAST-OF-CHASM",
    "name": "East of Chasm",
    "objects": [],
@@ -831,6 +920,7 @@
     "RLANDBIT",
     "ONBIT"
    ],
+   "globals": [],
    "id": "GALLERY",
    "name": "Gallery",
    "objects": [
@@ -860,6 +950,11 @@
    ],
    "flags": [
     "RLANDBIT"
+   ],
+   "globals": [
+    "chimney",
+    "door",
+    "paint"
    ],
    "id": "STUDIO",
    "name": "Studio",
@@ -902,6 +997,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-1",
    "name": "Maze",
    "objects": [],
@@ -932,6 +1028,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-2",
    "name": "Maze",
    "objects": [],
@@ -962,6 +1059,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-3",
    "name": "Maze",
    "objects": [],
@@ -992,6 +1090,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-4",
    "name": "Maze",
    "objects": [],
@@ -1012,6 +1111,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "DEAD-END-1",
    "name": "Dead End",
    "objects": [],
@@ -1042,6 +1142,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-5",
    "name": "Maze",
    "objects": [
@@ -1088,6 +1189,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "DEAD-END-2",
    "name": "Dead End",
    "objects": [],
@@ -1123,6 +1225,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-6",
    "name": "Maze",
    "objects": [],
@@ -1163,6 +1266,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-7",
    "name": "Maze",
    "objects": [],
@@ -1193,6 +1297,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-8",
    "name": "Maze",
    "objects": [],
@@ -1213,6 +1318,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "DEAD-END-3",
    "name": "Dead End",
    "objects": [],
@@ -1258,6 +1364,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-9",
    "name": "Maze",
    "objects": [],
@@ -1288,6 +1395,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-10",
    "name": "Maze",
    "objects": [],
@@ -1323,6 +1431,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-11",
    "name": "Maze",
    "objects": [],
@@ -1346,6 +1455,9 @@
    ],
    "flags": [
     "RLANDBIT"
+   ],
+   "globals": [
+    "grating"
    ],
    "id": "GRATING-ROOM",
    "name": "Grating Room",
@@ -1387,6 +1499,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-12",
    "name": "Maze",
    "objects": [],
@@ -1407,6 +1520,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "DEAD-END-4",
    "name": "Dead End",
    "objects": [],
@@ -1442,6 +1556,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-13",
    "name": "Maze",
    "objects": [],
@@ -1477,6 +1592,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-14",
    "name": "Maze",
    "objects": [],
@@ -1507,6 +1623,7 @@
     "RLANDBIT",
     "MAZEBIT"
    ],
+   "globals": [],
    "id": "MAZE-15",
    "name": "Maze",
    "objects": [],
@@ -1536,6 +1653,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "CYCLOPS-ROOM",
    "name": "Cyclops Room",
    "objects": [
@@ -1571,6 +1689,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "STRANGE-PASSAGE",
    "name": "Strange Passage",
    "objects": [],
@@ -1591,6 +1710,7 @@
     "RLANDBIT",
     ";\"CANT-HAVE-ONBIT\""
    ],
+   "globals": [],
    "id": "TREASURE-ROOM",
    "name": "Treasure Room",
    "objects": [
@@ -1636,6 +1756,11 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [
+    "chasm",
+    "lake",
+    "water"
+   ],
    "id": "RESERVOIR-SOUTH",
    "name": "Reservoir South",
    "objects": [],
@@ -1675,6 +1800,10 @@
    "flags": [
     "NONLANDBIT"
    ],
+   "globals": [
+    "stream",
+    "water"
+   ],
    "id": "RESERVOIR",
    "name": "Reservoir",
    "objects": [
@@ -1705,6 +1834,10 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [
+    "lake",
+    "water"
+   ],
    "id": "RESERVOIR-NORTH",
    "name": "Reservoir North",
    "objects": [
@@ -1734,6 +1867,10 @@
    ],
    "flags": [
     "RLANDBIT"
+   ],
+   "globals": [
+    "stream",
+    "water"
    ],
    "id": "STREAM-VIEW",
    "name": "Stream View",
@@ -1773,6 +1910,10 @@
    "flags": [
     "NONLANDBIT"
    ],
+   "globals": [
+    "stream",
+    "water"
+   ],
    "id": "IN-STREAM",
    "name": "Stream",
    "objects": [],
@@ -1802,6 +1943,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "MIRROR-ROOM-1",
    "name": "Mirror Room",
    "objects": [
@@ -1838,6 +1980,7 @@
     "RLANDBIT",
     "ONBIT"
    ],
+   "globals": [],
    "id": "MIRROR-ROOM-2",
    "name": "Mirror Room",
    "objects": [
@@ -1878,6 +2021,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "SMALL-CAVE",
    "name": "Cave",
    "objects": [],
@@ -1907,6 +2051,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "TINY-CAVE",
    "name": "Cave",
    "objects": [],
@@ -1931,6 +2076,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "COLD-PASSAGE",
    "name": "Cold Passage",
    "objects": [],
@@ -1955,6 +2101,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "NARROW-PASSAGE",
    "name": "Narrow Passage",
    "objects": [],
@@ -1979,6 +2126,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "WINDING-PASSAGE",
    "name": "Winding Passage",
    "objects": [],
@@ -2003,6 +2151,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "TWISTING-PASSAGE",
    "name": "Twisting Passage",
    "objects": [],
@@ -2027,6 +2176,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "ATLANTIS-ROOM",
    "name": "Atlantis Room",
    "objects": [
@@ -2067,6 +2217,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "EW-PASSAGE",
    "name": "East-West Passage",
    "objects": [],
@@ -2106,6 +2257,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "ROUND-ROOM",
    "name": "Round Room",
    "objects": [
@@ -2146,6 +2298,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "DEEP-CANYON",
    "name": "Deep Canyon",
    "objects": [],
@@ -2174,6 +2327,9 @@
    ],
    "flags": [
     "RLANDBIT"
+   ],
+   "globals": [
+    "crack"
    ],
    "id": "DAMP-CAVE",
    "name": "Damp Cave",
@@ -2204,6 +2360,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "LOUD-ROOM",
    "name": "Loud Room",
    "objects": [
@@ -2239,6 +2396,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "NS-PASSAGE",
    "name": "North-South Passage",
    "objects": [],
@@ -2278,6 +2436,10 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [
+    "chasm",
+    "crack"
+   ],
    "id": "CHASM-ROOM",
    "name": "Chasm",
    "objects": [],
@@ -2307,6 +2469,11 @@
    "flags": [
     "RLANDBIT",
     "ONBIT"
+   ],
+   "globals": [
+    "gate",
+    "gates",
+    "pile of bodies"
    ],
    "id": "ENTRANCE-TO-HADES",
    "name": "Entrance to Hades",
@@ -2339,6 +2506,9 @@
     "RLANDBIT",
     "ONBIT"
    ],
+   "globals": [
+    "pile of bodies"
+   ],
    "id": "LAND-OF-LIVING-DEAD",
    "name": "Land of the Dead",
    "objects": [
@@ -2369,6 +2539,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "ENGRAVINGS-CAVE",
    "name": "Engravings Cave",
    "objects": [
@@ -2399,6 +2570,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "EGYPT-ROOM",
    "name": "Egyptian Room",
    "objects": [
@@ -2428,6 +2600,9 @@
    ],
    "flags": [
     "RLANDBIT"
+   ],
+   "globals": [
+    "dome"
    ],
    "id": "DOME-ROOM",
    "name": "Dome Room",
@@ -2463,6 +2638,9 @@
    ],
    "flags": [
     "RLANDBIT"
+   ],
+   "globals": [
+    "dome"
    ],
    "id": "TORCH-ROOM",
    "name": "Torch Room",
@@ -2516,6 +2694,7 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [],
    "id": "NORTH-TEMPLE",
    "name": "Temple",
    "objects": [
@@ -2553,6 +2732,7 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [],
    "id": "SOUTH-TEMPLE",
    "name": "Altar",
    "objects": [
@@ -2603,6 +2783,9 @@
    "flags": [
     "RLANDBIT",
     "ONBIT"
+   ],
+   "globals": [
+    "water"
    ],
    "id": "DAM-ROOM",
    "name": "Dam",
@@ -2655,6 +2838,7 @@
     "RLANDBIT",
     "ONBIT"
    ],
+   "globals": [],
    "id": "DAM-LOBBY",
    "name": "Dam Lobby",
    "objects": [
@@ -2690,6 +2874,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "MAINTENANCE-ROOM",
    "name": "Maintenance Room",
    "objects": [
@@ -2762,6 +2947,10 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "river",
+    "water"
+   ],
    "id": "DAM-BASE",
    "name": "Dam Base",
    "objects": [
@@ -2808,6 +2997,10 @@
     "SACREDBIT",
     "ONBIT"
    ],
+   "globals": [
+    "river",
+    "water"
+   ],
    "id": "RIVER-1",
    "name": "Frigid River",
    "objects": [],
@@ -2845,6 +3038,10 @@
     "NONLANDBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "river",
+    "water"
+   ],
    "id": "RIVER-2",
    "name": "Frigid River",
    "objects": [],
@@ -2880,6 +3077,10 @@
     "NONLANDBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "river",
+    "water"
+   ],
    "id": "RIVER-3",
    "name": "Frigid River",
    "objects": [],
@@ -2905,6 +3106,11 @@
     "RLANDBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "river",
+    "water",
+    "white cliffs"
+   ],
    "id": "WHITE-CLIFFS-NORTH",
    "name": "White Cliffs Beach",
    "objects": [],
@@ -2924,6 +3130,11 @@
    "flags": [
     "RLANDBIT",
     "SACREDBIT"
+   ],
+   "globals": [
+    "river",
+    "water",
+    "white cliffs"
    ],
    "id": "WHITE-CLIFFS-SOUTH",
    "name": "White Cliffs Beach",
@@ -2964,6 +3175,10 @@
     "NONLANDBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "river",
+    "water"
+   ],
    "id": "RIVER-4",
    "name": "Frigid River",
    "objects": [
@@ -3001,6 +3216,10 @@
     "SACREDBIT",
     "ONBIT"
    ],
+   "globals": [
+    "river",
+    "water"
+   ],
    "id": "RIVER-5",
    "name": "Frigid River",
    "objects": [],
@@ -3027,6 +3246,10 @@
     "SACREDBIT",
     "ONBIT"
    ],
+   "globals": [
+    "river",
+    "water"
+   ],
    "id": "SHORE",
    "name": "Shore",
    "objects": [],
@@ -3051,6 +3274,10 @@
    "flags": [
     "RLANDBIT",
     "SACREDBIT"
+   ],
+   "globals": [
+    "river",
+    "water"
    ],
    "id": "SANDY-BEACH",
    "name": "Sandy Beach",
@@ -3077,6 +3304,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "SANDY-CAVE",
    "name": "Sandy Cave",
    "objects": [
@@ -3124,6 +3352,11 @@
     "SACREDBIT",
     "ONBIT"
    ],
+   "globals": [
+    "rainbow",
+    "river",
+    "water"
+   ],
    "id": "ARAGAIN-FALLS",
    "name": "Aragain Falls",
    "objects": [],
@@ -3149,6 +3382,9 @@
     "RLANDBIT",
     "ONBIT",
     "SACREDBIT"
+   ],
+   "globals": [
+    "rainbow"
    ],
    "id": "ON-RAINBOW",
    "name": "On the Rainbow",
@@ -3185,6 +3421,11 @@
     "RLANDBIT",
     "ONBIT"
    ],
+   "globals": [
+    "rainbow",
+    "river",
+    "water"
+   ],
    "id": "END-OF-RAINBOW",
    "name": "End of Rainbow",
    "objects": [
@@ -3217,6 +3458,11 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "cliff",
+    "river",
+    "water"
+   ],
    "id": "CANYON-BOTTOM",
    "name": "Canyon Bottom",
    "objects": [],
@@ -3242,6 +3488,10 @@
     "RLANDBIT",
     "ONBIT",
     "SACREDBIT"
+   ],
+   "globals": [
+    "cliff",
+    "river"
    ],
    "id": "CLIFF-MIDDLE",
    "name": "Rocky Ledge",
@@ -3284,6 +3534,11 @@
     "ONBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "cliff",
+    "rainbow",
+    "river"
+   ],
    "id": "CANYON-VIEW",
    "name": "Canyon View",
    "objects": [],
@@ -3313,6 +3568,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "MINE-ENTRANCE",
    "name": "Mine Entrance",
    "objects": [],
@@ -3337,6 +3593,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "SQUEEKY-ROOM",
    "name": "Squeaky Room",
    "objects": [],
@@ -3362,6 +3619,7 @@
     "RLANDBIT",
     "SACREDBIT"
    ],
+   "globals": [],
    "id": "BAT-ROOM",
    "name": "Bat Room",
    "objects": [
@@ -3402,6 +3660,9 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [
+    "chain"
+   ],
    "id": "SHAFT-ROOM",
    "name": "Shaft Room",
    "objects": [
@@ -3432,6 +3693,10 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [
+    "gas",
+    "odor"
+   ],
    "id": "SMELLY-ROOM",
    "name": "Smelly Room",
    "objects": [],
@@ -3456,6 +3721,10 @@
    "flags": [
     "RLANDBIT",
     "SACREDBIT"
+   ],
+   "globals": [
+    "gas",
+    "odor"
    ],
    "id": "GAS-ROOM",
    "name": "Gas Room",
@@ -3487,6 +3756,9 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [
+    "wooden ladder"
+   ],
    "id": "LADDER-TOP",
    "name": "Ladder Top",
    "objects": [],
@@ -3516,6 +3788,9 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [
+    "wooden ladder"
+   ],
    "id": "LADDER-BOTTOM",
    "name": "Ladder Bottom",
    "objects": [],
@@ -3535,6 +3810,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "DEAD-END-5",
    "name": "Dead End",
    "objects": [
@@ -3566,6 +3842,7 @@
     "RLANDBIT",
     "SACREDBIT"
    ],
+   "globals": [],
    "id": "TIMBER-ROOM",
    "name": "Timber Room",
    "objects": [
@@ -3602,6 +3879,9 @@
     "RLANDBIT",
     "SACREDBIT"
    ],
+   "globals": [
+    "chain"
+   ],
    "id": "LOWER-SHAFT",
    "name": "Drafty Room",
    "objects": [
@@ -3627,6 +3907,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "MACHINE-ROOM",
    "name": "Machine Room",
    "objects": [
@@ -3667,6 +3948,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "MINE-1",
    "name": "Coal Mine",
    "objects": [],
@@ -3696,6 +3978,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "MINE-2",
    "name": "Coal Mine",
    "objects": [],
@@ -3725,6 +4008,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "MINE-3",
    "name": "Coal Mine",
    "objects": [],
@@ -3754,6 +4038,7 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [],
    "id": "MINE-4",
    "name": "Coal Mine",
    "objects": [],
@@ -3783,11 +4068,829 @@
    "flags": [
     "RLANDBIT"
    ],
+   "globals": [
+    "chute"
+   ],
    "id": "SLIDE-ROOM",
    "name": "Slide Room",
    "objects": [],
    "value": 0
   }
  ],
- "start": "WEST-OF-HOUSE"
+ "start": "WEST-OF-HOUSE",
+ "verbs": {
+  "none": [
+   {
+    "phrase": "look"
+   },
+   {
+    "phrase": "enter"
+   },
+   {
+    "phrase": "exit"
+   },
+   {
+    "phrase": "inventory"
+   },
+   {
+    "phrase": "wait"
+   },
+   {
+    "phrase": "jump"
+   },
+   {
+    "phrase": "pray"
+   },
+   {
+    "phrase": "diagnose"
+   },
+   {
+    "phrase": "score"
+   },
+   {
+    "phrase": "answer"
+   },
+   {
+    "phrase": "back"
+   },
+   {
+    "phrase": "blast"
+   },
+   {
+    "phrase": "bug"
+   },
+   {
+    "phrase": "chomp"
+   },
+   {
+    "phrase": "curse"
+   },
+   {
+    "phrase": "echo"
+   },
+   {
+    "phrase": "follow"
+   },
+   {
+    "phrase": "frobozz"
+   },
+   {
+    "phrase": "hello"
+   },
+   {
+    "phrase": "incant"
+   },
+   {
+    "phrase": "leave"
+   },
+   {
+    "phrase": "mumble"
+   },
+   {
+    "phrase": "odysseus"
+   },
+   {
+    "phrase": "plugh"
+   },
+   {
+    "phrase": "repent"
+   },
+   {
+    "phrase": "say"
+   },
+   {
+    "phrase": "skip"
+   },
+   {
+    "phrase": "stand"
+   },
+   {
+    "phrase": "stay"
+   },
+   {
+    "phrase": "swim"
+   },
+   {
+    "phrase": "treasure"
+   },
+   {
+    "phrase": "walk"
+   },
+   {
+    "phrase": "win"
+   },
+   {
+    "phrase": "wish"
+   },
+   {
+    "phrase": "yell"
+   },
+   {
+    "phrase": "zork"
+   }
+  ],
+  "one": [
+   {
+    "phrase": "take"
+   },
+   {
+    "phrase": "drop"
+   },
+   {
+    "phrase": "examine"
+   },
+   {
+    "phrase": "read"
+   },
+   {
+    "phrase": "open"
+   },
+   {
+    "phrase": "close"
+   },
+   {
+    "phrase": "look under"
+   },
+   {
+    "phrase": "look behind"
+   },
+   {
+    "phrase": "look in"
+   },
+   {
+    "phrase": "turn on"
+   },
+   {
+    "phrase": "turn off"
+   },
+   {
+    "phrase": "move"
+   },
+   {
+    "phrase": "push"
+   },
+   {
+    "phrase": "pull"
+   },
+   {
+    "phrase": "search"
+   },
+   {
+    "phrase": "untie"
+   },
+   {
+    "phrase": "attack"
+   },
+   {
+    "phrase": "kill"
+   },
+   {
+    "phrase": "eat"
+   },
+   {
+    "phrase": "drink"
+   },
+   {
+    "phrase": "wear"
+   },
+   {
+    "phrase": "climb"
+   },
+   {
+    "phrase": "enter"
+   },
+   {
+    "phrase": "board"
+   },
+   {
+    "phrase": "exit"
+   },
+   {
+    "phrase": "fill"
+   },
+   {
+    "phrase": "pour"
+   },
+   {
+    "phrase": "wave"
+   },
+   {
+    "phrase": "wind"
+   },
+   {
+    "phrase": "ring"
+   },
+   {
+    "phrase": "count"
+   },
+   {
+    "phrase": "smell"
+   },
+   {
+    "phrase": "activate"
+   },
+   {
+    "phrase": "answer"
+   },
+   {
+    "phrase": "blow in"
+   },
+   {
+    "phrase": "blow out"
+   },
+   {
+    "phrase": "blow up"
+   },
+   {
+    "phrase": "brush"
+   },
+   {
+    "phrase": "climb down"
+   },
+   {
+    "phrase": "climb in"
+   },
+   {
+    "phrase": "climb on"
+   },
+   {
+    "phrase": "climb up"
+   },
+   {
+    "phrase": "climb with"
+   },
+   {
+    "phrase": "cross"
+   },
+   {
+    "phrase": "curse"
+   },
+   {
+    "phrase": "deflate"
+   },
+   {
+    "phrase": "destroy in"
+   },
+   {
+    "phrase": "dig in"
+   },
+   {
+    "phrase": "disembark"
+   },
+   {
+    "phrase": "disenchant"
+   },
+   {
+    "phrase": "drink from"
+   },
+   {
+    "phrase": "enchant"
+   },
+   {
+    "phrase": "examine in"
+   },
+   {
+    "phrase": "examine on"
+   },
+   {
+    "phrase": "exorcise"
+   },
+   {
+    "phrase": "exorcise away"
+   },
+   {
+    "phrase": "exorcise out"
+   },
+   {
+    "phrase": "extinguish"
+   },
+   {
+    "phrase": "find"
+   },
+   {
+    "phrase": "follow"
+   },
+   {
+    "phrase": "hatch"
+   },
+   {
+    "phrase": "hello"
+   },
+   {
+    "phrase": "jump across"
+   },
+   {
+    "phrase": "jump from"
+   },
+   {
+    "phrase": "jump in"
+   },
+   {
+    "phrase": "jump off"
+   },
+   {
+    "phrase": "jump over"
+   },
+   {
+    "phrase": "kick"
+   },
+   {
+    "phrase": "kiss"
+   },
+   {
+    "phrase": "knock at"
+   },
+   {
+    "phrase": "knock down"
+   },
+   {
+    "phrase": "knock on"
+   },
+   {
+    "phrase": "launch"
+   },
+   {
+    "phrase": "lean on"
+   },
+   {
+    "phrase": "leave"
+   },
+   {
+    "phrase": "light"
+   },
+   {
+    "phrase": "listen for"
+   },
+   {
+    "phrase": "listen to"
+   },
+   {
+    "phrase": "look around"
+   },
+   {
+    "phrase": "look at"
+   },
+   {
+    "phrase": "look down"
+   },
+   {
+    "phrase": "look for"
+   },
+   {
+    "phrase": "look on"
+   },
+   {
+    "phrase": "look up"
+   },
+   {
+    "phrase": "look with"
+   },
+   {
+    "phrase": "lower"
+   },
+   {
+    "phrase": "make"
+   },
+   {
+    "phrase": "open up"
+   },
+   {
+    "phrase": "pick"
+   },
+   {
+    "phrase": "pick up"
+   },
+   {
+    "phrase": "play"
+   },
+   {
+    "phrase": "pull on"
+   },
+   {
+    "phrase": "pull up"
+   },
+   {
+    "phrase": "pump up"
+   },
+   {
+    "phrase": "push on"
+   },
+   {
+    "phrase": "put down"
+   },
+   {
+    "phrase": "put on"
+   },
+   {
+    "phrase": "put out"
+   },
+   {
+    "phrase": "raise"
+   },
+   {
+    "phrase": "raise up"
+   },
+   {
+    "phrase": "rape"
+   },
+   {
+    "phrase": "read from"
+   },
+   {
+    "phrase": "roll"
+   },
+   {
+    "phrase": "roll up"
+   },
+   {
+    "phrase": "rub"
+   },
+   {
+    "phrase": "search for"
+   },
+   {
+    "phrase": "search in"
+   },
+   {
+    "phrase": "send for"
+   },
+   {
+    "phrase": "shake"
+   },
+   {
+    "phrase": "spin"
+   },
+   {
+    "phrase": "squeeze"
+   },
+   {
+    "phrase": "stab"
+   },
+   {
+    "phrase": "stand up"
+   },
+   {
+    "phrase": "strike"
+   },
+   {
+    "phrase": "swim across"
+   },
+   {
+    "phrase": "swim in"
+   },
+   {
+    "phrase": "swing"
+   },
+   {
+    "phrase": "take in"
+   },
+   {
+    "phrase": "take on"
+   },
+   {
+    "phrase": "take out"
+   },
+   {
+    "phrase": "take up"
+   },
+   {
+    "phrase": "talk to"
+   },
+   {
+    "phrase": "tell"
+   },
+   {
+    "phrase": "wake"
+   },
+   {
+    "phrase": "wake up"
+   },
+   {
+    "phrase": "walk"
+   },
+   {
+    "phrase": "walk around"
+   },
+   {
+    "phrase": "walk away"
+   },
+   {
+    "phrase": "walk down"
+   },
+   {
+    "phrase": "walk in"
+   },
+   {
+    "phrase": "walk on"
+   },
+   {
+    "phrase": "walk over"
+   },
+   {
+    "phrase": "walk to"
+   },
+   {
+    "phrase": "walk up"
+   },
+   {
+    "phrase": "walk with"
+   },
+   {
+    "phrase": "wave at"
+   },
+   {
+    "phrase": "wind up"
+   }
+  ],
+  "two": [
+   {
+    "phrase": "put",
+    "prep": "in"
+   },
+   {
+    "phrase": "put",
+    "prep": "on"
+   },
+   {
+    "phrase": "attack",
+    "prep": "with"
+   },
+   {
+    "phrase": "kill",
+    "prep": "with"
+   },
+   {
+    "phrase": "unlock",
+    "prep": "with"
+   },
+   {
+    "phrase": "lock",
+    "prep": "with"
+   },
+   {
+    "phrase": "tie",
+    "prep": "to"
+   },
+   {
+    "phrase": "untie",
+    "prep": "from"
+   },
+   {
+    "phrase": "throw",
+    "prep": "at"
+   },
+   {
+    "phrase": "give",
+    "prep": "to"
+   },
+   {
+    "phrase": "open",
+    "prep": "with"
+   },
+   {
+    "phrase": "cut",
+    "prep": "with"
+   },
+   {
+    "phrase": "burn",
+    "prep": "with"
+   },
+   {
+    "phrase": "light",
+    "prep": "with"
+   },
+   {
+    "phrase": "dig",
+    "prep": "with"
+   },
+   {
+    "phrase": "fill",
+    "prep": "with"
+   },
+   {
+    "phrase": "pour",
+    "prep": "on"
+   },
+   {
+    "phrase": "put",
+    "prep": "under"
+   },
+   {
+    "phrase": "look at",
+    "prep": "with"
+   },
+   {
+    "phrase": "move",
+    "prep": "with"
+   },
+   {
+    "phrase": "turn",
+    "prep": "with"
+   },
+   {
+    "phrase": "take",
+    "prep": "from"
+   },
+   {
+    "phrase": "wave",
+    "prep": "at"
+   },
+   {
+    "phrase": "tell",
+    "prep": "about"
+   },
+   {
+    "phrase": "apply",
+    "prep": "to"
+   },
+   {
+    "phrase": "blow up",
+    "prep": "with"
+   },
+   {
+    "phrase": "brush",
+    "prep": "with"
+   },
+   {
+    "phrase": "burn down",
+    "prep": "with"
+   },
+   {
+    "phrase": "destroy",
+    "prep": "with"
+   },
+   {
+    "phrase": "destroy down",
+    "prep": "with"
+   },
+   {
+    "phrase": "dig in",
+    "prep": "with"
+   },
+   {
+    "phrase": "drop",
+    "prep": "down"
+   },
+   {
+    "phrase": "drop",
+    "prep": "in"
+   },
+   {
+    "phrase": "drop",
+    "prep": "on"
+   },
+   {
+    "phrase": "inflat",
+    "prep": "with"
+   },
+   {
+    "phrase": "lubricate",
+    "prep": "with"
+   },
+   {
+    "phrase": "melt",
+    "prep": "with"
+   },
+   {
+    "phrase": "move",
+    "prep": "in"
+   },
+   {
+    "phrase": "move",
+    "prep": "to"
+   },
+   {
+    "phrase": "pick",
+    "prep": "with"
+   },
+   {
+    "phrase": "plug",
+    "prep": "with"
+   },
+   {
+    "phrase": "poke",
+    "prep": "with"
+   },
+   {
+    "phrase": "pour",
+    "prep": "from"
+   },
+   {
+    "phrase": "pour",
+    "prep": "in"
+   },
+   {
+    "phrase": "pump up",
+    "prep": "with"
+   },
+   {
+    "phrase": "puncture",
+    "prep": "with"
+   },
+   {
+    "phrase": "push",
+    "prep": "to"
+   },
+   {
+    "phrase": "push",
+    "prep": "under"
+   },
+   {
+    "phrase": "push",
+    "prep": "with"
+   },
+   {
+    "phrase": "put",
+    "prep": "behind"
+   },
+   {
+    "phrase": "read",
+    "prep": "with"
+   },
+   {
+    "phrase": "ring",
+    "prep": "with"
+   },
+   {
+    "phrase": "rub",
+    "prep": "with"
+   },
+   {
+    "phrase": "slide",
+    "prep": "to"
+   },
+   {
+    "phrase": "slide",
+    "prep": "under"
+   },
+   {
+    "phrase": "spray",
+    "prep": "on"
+   },
+   {
+    "phrase": "spray",
+    "prep": "with"
+   },
+   {
+    "phrase": "squeeze",
+    "prep": "on"
+   },
+   {
+    "phrase": "stab",
+    "prep": "with"
+   },
+   {
+    "phrase": "strike",
+    "prep": "with"
+   },
+   {
+    "phrase": "swing",
+    "prep": "at"
+   },
+   {
+    "phrase": "take",
+    "prep": "off"
+   },
+   {
+    "phrase": "take",
+    "prep": "out"
+   },
+   {
+    "phrase": "throw",
+    "prep": "in"
+   },
+   {
+    "phrase": "throw",
+    "prep": "off"
+   },
+   {
+    "phrase": "throw",
+    "prep": "on"
+   },
+   {
+    "phrase": "throw",
+    "prep": "over"
+   },
+   {
+    "phrase": "throw",
+    "prep": "with"
+   },
+   {
+    "phrase": "tie up",
+    "prep": "with"
+   },
+   {
+    "phrase": "turn",
+    "prep": "for"
+   },
+   {
+    "phrase": "turn",
+    "prep": "to"
+   },
+   {
+    "phrase": "turn on",
+    "prep": "with"
+   }
+  ]
+ }
 }

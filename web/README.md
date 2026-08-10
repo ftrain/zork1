@@ -40,11 +40,35 @@ blocks every exit until you deal with him.
 * the compass greys out directions the game has refused, greens the ones
   that worked, and blues the ones the ZIL source says exist but you have not
   tried yet
-* objects in the room come with **take / examine / open / read** buttons
 * **undo** rewinds the interpreter — useful, since exploring Zork by
   clicking is an efficient way to get eaten
-* a text box is there for the handful of things buttons cannot express
-  (`move rug`, `kill troll with sword`)
+
+## Playing it with no keyboard at all
+
+Everything the parser accepts is reachable by tapping, which is the whole
+point on a phone. Tap a thing, then tap what to do with it; if the verb
+needs a second thing, tap that too. `move rug`, `open trap door`,
+`attack troll with sword` are all three-tap sequences.
+
+The verbs are not a guessed list — `tools/extract_map.py` parses the 267
+SYNTAX lines in `gsyntax.zil`, the actual grammar the game was compiled
+with, and groups them by how many objects each takes. A verb is only ever
+offered in a shape the parser will accept. The dozen most-reached-for come
+first; the other 185 are one tap further in, under **more verbs**.
+
+Three things supply the nouns:
+
+* what the interpreter reports in the room, minus anything still flagged
+  invisible — so the trap door does not appear, or become tappable, until
+  you have moved the rug
+* what you are carrying, marked with a dot
+* the scenery the ZIL source lists for that room. This one matters more
+  than it sounds: the kitchen window is in no room's object tree, so
+  without it there would be no way to open the window without typing —
+  and no way into the house
+
+A **type instead** button is still there for a desktop keyboard. Nothing
+requires it.
 
 ## What is in here
 
@@ -69,10 +93,11 @@ was first prototyped against.
 
     python3 tools/extract_map.py
 
-Reads `1dungeon.zil` for rooms, exits and objects, and `1actions.zil` for the
-room descriptions that live inside `M-LOOK` handlers rather than in an
-`LDESC` property. Writes `web/world.json` and `web/world.js` (the same data as
-a script tag, so the map also opens straight off disk, where `fetch` is
+Reads `1dungeon.zil` for rooms, exits, objects and the per-room scenery
+globals, `1actions.zil` for the room descriptions that live inside `M-LOOK`
+handlers rather than in an `LDESC` property, and `gsyntax.zil` for the verb
+grammar. Writes `web/world.json` and `web/world.js` (the same data as a
+script tag, so the map also opens straight off disk, where `fetch` is
 blocked).
 
 Seven exits in the source are computed by a routine at runtime rather than

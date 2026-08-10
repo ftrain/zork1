@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """Extract the Zork I world graph from the ZIL source into JSON.
 
-Reads 1dungeon.zil (rooms, exits, objects) and 1actions.zil (room
-descriptions that live inside M-LOOK handlers) and writes
-web/world.json, which the clickable map in web/index.html consumes.
+Reads 1dungeon.zil (rooms, exits, objects), 1actions.zil (room descriptions
+that live inside M-LOOK handlers) and gsyntax.zil (the verb grammar) and
+writes web/world.json, which the clickable map in web/index.html consumes.
+
+The grammar matters as much as the map: it is what lets the page offer
+every command as a button instead of a text box. A verb is only offered
+with as many objects as the parser will actually accept for it.
 
 Usage: python3 tools/extract_map.py
 """
@@ -104,6 +108,95 @@ def pretty(name):
     return name.replace("-", " ").title()
 
 
+# Commands the page handles itself, or that this interpreter cannot honour.
+SKIP_VERBS = set("""SAVE RESTORE RESTART QUIT SCRIPT UNSCRIPT VERBOSE BRIEF
+SUPER SUPERBRIEF VERSION DEBUG COMMAND""".split())
+
+# Roughly the order a player reaches for them. Anything not listed still
+# appears, just behind a "more verbs" tap.
+COMMON_VERBS = [
+    "take", "drop", "examine", "read", "open", "close", "look", "look under",
+    "look behind", "look in", "turn on", "turn off", "move", "push", "pull",
+    "search", "unlock", "lock", "tie", "untie", "attack", "kill", "put",
+    "throw", "give", "show", "burn", "eat", "drink", "touch", "wear",
+    "climb", "enter", "board", "exit", "dig", "fill", "pour", "wave",
+    "turn", "wind", "ring", "knock", "count", "smell", "listen", "inventory",
+    "wait", "again", "jump", "pray", "diagnose", "score",
+]
+
+
+COMMON_PAIRS = [
+    "put in", "put on", "attack with", "kill with", "unlock with",
+    "lock with", "tie to", "untie from", "throw at", "give to", "open with",
+    "cut with", "burn with", "light with", "dig with", "fill with",
+    "pour on", "put under", "look at with", "move with", "turn with",
+    "take from", "wave at", "tell about",
+]
+
+
+def verb_grammar(syntax_src):
+    """Parse gsyntax.zil into verb phrases grouped by how many objects.
+
+    A SYNTAX line looks like any of:
+
+        <SYNTAX INVENTORY = V-INVENTORY>
+        <SYNTAX TAKE OBJECT (FIND TAKEBIT) (ON-GROUND) = V-TAKE>
+        <SYNTAX TURN ON OBJECT (FIND ...) = V-LAMP-ON>
+        <SYNTAX TIE OBJECT (HELD) TO OBJECT = V-TIE-UP>
+
+    Words before the first OBJECT are the verb phrase ("turn on"), words
+    between two OBJECTs are the preposition ("tie X to Y").
+    """
+    none, one, two = [], [], []
+    seen = set()
+    for body in forms(syntax_src, "SYNTAX"):
+        head = body[1:-1].split("=")[0]
+        # Drop the parenthesised parser flag groups; they constrain matching
+        # but say nothing about the shape of the phrase.
+        head = re.sub(r"\([^)]*\)", " ", head)
+        words = head.split()[1:]
+        if not words:
+            continue
+        verb, rest = words[0], words[1:]
+        if verb in SKIP_VERBS or not re.match(r"^[A-Z][A-Z\-]*$", verb):
+            continue
+        phrase = [verb]
+        while rest and rest[0] != "OBJECT":
+            phrase.append(rest.pop(0))
+        text = " ".join(phrase).lower()
+        if not rest:
+            add(none, seen, ("0", text), {"phrase": text})
+            continue
+        rest.pop(0)                       # the first OBJECT
+        prep = []
+        while rest and rest[0] != "OBJECT":
+            prep.append(rest.pop(0))
+        if not rest:
+            add(one, seen, ("1", text), {"phrase": text})
+        elif prep:
+            # Two objects with nothing between them ("move X Y") is a shape
+            # no tap sequence can express unambiguously, so it is dropped.
+            p = " ".join(prep).lower()
+            add(two, seen, ("2", text, p), {"phrase": text, "prep": p})
+    rank = dict((v, i) for i, v in enumerate(COMMON_VERBS))
+    key = lambda v: (rank.get(v["phrase"], 999), v["phrase"])
+    # Two-object verbs are ranked on the whole phrase. Ranking them on the
+    # verb alone floods the top of the list with "take out / take off /
+    # take from" and pushes "attack with" out of sight.
+    rank2 = dict((v, i) for i, v in enumerate(COMMON_PAIRS))
+    key2 = lambda v: (rank2.get(v["phrase"] + " " + v["prep"], 999),
+                      v["phrase"], v["prep"])
+    return {"none": sorted(none, key=key),
+            "one": sorted(one, key=key),
+            "two": sorted(two, key=key2)}
+
+
+def add(target, seen, sig, value):
+    if sig not in seen:
+        seen.add(sig)
+        target.append(value)
+
+
 def look_texts(actions_src):
     """Map ROUTINE name -> description text printed on M-LOOK."""
     out = {}
@@ -145,6 +238,8 @@ def main():
             "flags": [],
             "value": 0,
             "action": None,
+            "globalIds": [],
+            "pseudo": [],
         }
         for p in props(body):
             head = p[1:].split(None, 1)
@@ -164,6 +259,13 @@ def main():
                 room["value"] = int(rest or 0)
             elif key == "ACTION":
                 room["action"] = rest
+            elif key == "GLOBAL":
+                # Scenery the room lets you talk about without it being in
+                # the room's object tree: the window, the house, the chimney.
+                room["globalIds"] = rest.split()
+            elif key == "PSEUDO":
+                # Nouns the room fakes up, given as "WORD" ROUTINE pairs.
+                room["pseudo"] = [w.lower() for w in strings(p)]
             elif key in DIRS:
                 rest_nc = strip_comments(rest).strip()
                 to = re.match(r"TO\s+([A-Z0-9?\-]+)(.*)", rest_nc, re.S)
@@ -195,7 +297,10 @@ def main():
             room["desc"] = "You are in " + room["name"] + "."
         rooms[rid] = room
 
-    # Objects sitting in rooms at game start.
+    # Objects sitting in rooms at game start, plus the scenery objects rooms
+    # point at by name.
+    names = {}
+    everywhere = []
     for body in forms(dungeon, "OBJECT"):
         oid = re.match(r"<OBJECT\s+([A-Z0-9?\-]+)", body).group(1)
         loc = name = None
@@ -212,12 +317,20 @@ def main():
                     name = s[0]
             elif key == "FLAGS":
                 flags = rest.split()
+        names[oid] = name or pretty(oid).lower()
+        if loc == "GLOBAL-OBJECTS" and name:
+            everywhere.append(name)
         if loc in rooms:
             rooms[loc]["objects"].append({
                 "name": name or pretty(oid),
                 "treasure": "TREASURE" in body.upper().split("SYNONYM")[-1][:120],
                 "takeable": "TAKEBIT" in flags,
             })
+
+    for room in rooms.values():
+        room["globals"] = sorted(set(
+            [names[g] for g in room.pop("globalIds") if g in names]
+            + room.pop("pseudo")))
 
     # Drop exits pointing at rooms that do not exist (there are none today,
     # but a typo in the source should not produce a dangling click target).
@@ -227,6 +340,8 @@ def main():
     world = {
         "start": "WEST-OF-HOUSE",
         "rooms": [rooms[k] for k in rooms],
+        "verbs": verb_grammar(read("gsyntax.zil")),
+        "everywhere": sorted(set(everywhere)),
     }
     out = os.path.join(ROOT, "web", "world.json")
     with open(out, "w") as fh:
@@ -239,6 +354,9 @@ def main():
         json.dump(world, fh, sort_keys=True)
         fh.write(";\n")
 
+    verbs = world["verbs"]
+    print("verbs: %d none, %d one-object, %d two-object" % (
+        len(verbs["none"]), len(verbs["one"]), len(verbs["two"])))
     edges = sum(len(r["exits"]) for r in rooms.values())
     print("rooms: %d  exits: %d  blocked: %d  objects: %d" % (
         len(rooms), edges,

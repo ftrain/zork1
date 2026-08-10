@@ -125,6 +125,11 @@ window.ZorkEngine = (function () {
   var A1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var A2 = " \n0123456789.,!?_#'\"/\\-:()";
   var ATTR_TAKEABLE = 17;   // Infocom's convention, as zwalker documents
+  // Attribute 7 is INVISIBLE in this build: the trap door under the rug
+  // carries it, and moving the rug clears exactly that bit. Objects holding
+  // it are in the room but cannot be referred to yet, so listing them would
+  // both give the game away and offer taps the parser will reject.
+  var ATTR_INVISIBLE = 7;
   var PLAYER_NAMES = ["cretin", "adventurer", "protagonist", "player", "yourself"];
 
   function Peek(vm) { this.vm = vm; this.player = null; }
@@ -196,7 +201,13 @@ window.ZorkEngine = (function () {
   Peek.prototype.contents = function (n) {
     var out = [], c = this.child(n), guard = 0;
     while (c && guard++ < 200) {
-      out.push({ id: c, name: this.name(c), takeable: !!this.attr(c, ATTR_TAKEABLE) });
+      if (!this.attr(c, ATTR_INVISIBLE)) {
+        out.push({
+          id: c,
+          name: this.name(c),
+          takeable: !!this.attr(c, ATTR_TAKEABLE)
+        });
+      }
       c = this.sibling(c);
     }
     return out;
@@ -296,7 +307,10 @@ window.ZorkEngine = (function () {
     var out = this.drain();
     this.moves++;
     var after = this.peek.room();
-    if (after !== before && !this.descs[after]) {
+    // Cache a room's prose on arrival, and refresh it on a deliberate look:
+    // the description held from first entry can go stale once the troll is
+    // dead or the trap door is open.
+    if ((after !== before && !this.descs[after]) || /^l(ook)?$/i.test(text)) {
       this.descs[after] = describe(out, this.peek.name(after));
     }
     var snap = this.snapshot(out);

@@ -46,7 +46,10 @@
 
   main { flex: 1; display: flex; min-height: 0; }
   #mapwrap { flex: 1; position: relative; min-width: 0; }
-  canvas { display: block; width: 100%; height: 100%; cursor: grab; }
+  canvas {
+    display: block; width: 100%; height: 100%; cursor: grab;
+    touch-action: none;   /* the canvas handles its own pan and pinch */
+  }
   canvas.drag { cursor: grabbing; }
   #hint {
     position: absolute; left: 10px; bottom: 8px; color: var(--dim);
@@ -60,6 +63,13 @@
   aside h2 { font-size: 15px; margin: 0 0 2px; color: var(--gold); }
   .meta { color: var(--dim); font-size: 11px; margin-bottom: 10px; }
   .desc { margin-bottom: 4px; }
+  /* Room prose is long and the controls matter more on a phone, so it folds
+     down to a few lines until tapped. */
+  .desc.clamped {
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+    overflow: hidden; cursor: pointer;
+  }
+  .desc.clamped::after { content: " more"; color: var(--sky); }
   h3 {
     font-size: 11px; letter-spacing: .16em; color: var(--dim);
     margin: 16px 0 6px; border-bottom: 1px solid var(--line); padding-bottom: 4px;
@@ -83,8 +93,8 @@
   }
   .blocked .dir { color: var(--blood); font-weight: 700; }
 
-  .compass { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
-  .compass button { padding: 6px 2px; text-align: center; font-size: 11px; }
+  .compass { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+  .compass button { padding: 11px 2px; text-align: center; font-size: 12px; }
   .compass button.known { border-color: #3d6b3d; color: var(--acid); background: #16211a; }
   .compass button.hint { border-color: #38506b; color: var(--sky); }
   .compass button.wall { color: #59616b; border-style: dashed; opacity: .6; }
@@ -103,9 +113,62 @@
   }
   #log .cmd { color: var(--acid); }
   .trail { color: var(--dim); font-size: 11px; word-break: break-word; }
+
+  /* Things you can talk about here: room contents, what you carry, and the
+     scenery the ZIL source says this room will answer to. */
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chip {
+    padding: 9px 11px; border-radius: 14px; border: 1px solid var(--line);
+    background: #171d25; font-size: 12px;
+  }
+  .chip.carried { border-color: #4a5b3a; }
+  .chip.scenery { color: var(--dim); }
+
+  /* The action sheet: tap a thing, pick a verb, and if the verb wants a
+     second thing, pick that too. Nothing here needs a keyboard. */
+  #veil {
+    position: fixed; inset: 0; background: rgba(0, 0, 0, .55); z-index: 9;
+  }
+  #sheet {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+    background: var(--panel); border-top: 1px solid var(--acid);
+    border-radius: 12px 12px 0 0; padding: 12px 14px 18px;
+    max-height: 76vh; overflow-y: auto;
+    box-shadow: 0 -12px 32px rgba(0, 0, 0, .5);
+  }
+  #sheet[hidden], #veil[hidden] { display: none; }
+  #sheet h4 {
+    margin: 0 0 10px; font-size: 14px; color: var(--gold);
+    display: flex; align-items: center; gap: 10px;
+  }
+  #sheet h4 .x { margin-left: auto; }
+  #sheet .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+    gap: 5px;
+  }
+  #sheet .grid button { padding: 11px 8px; text-align: left; }
+  #sheet .sub { color: var(--dim); font-size: 11px; margin: 12px 0 6px; }
+
+  @media (min-width: 761px) { aside { width: 360px; } }
   @media (max-width: 760px) {
+    body { font-size: 14px; }
     main { flex-direction: column; }
-    aside { width: auto; border-left: 0; border-top: 1px solid var(--line); max-height: 48vh; }
+    header { gap: 10px; padding: 7px 10px; }
+    header h1 { font-size: 12px; }
+    #mapwrap { flex: 0 0 38vh; }
+    #hint { display: none; }
+    aside {
+      width: auto; border-left: 0; border-top: 1px solid var(--line);
+      flex: 1; max-height: none; padding: 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+    button { padding: 9px 12px; }
+    .row button { font-size: 12px; }
+    header button { padding: 5px 9px; font-size: 11px; }
+    /* Keep the header on one line: rooms and score are the ones worth the
+       width on a phone. */
+    #s-edges, #s-moves { display: none; }
+    .stat.thin { display: none; }
   }
 </style>
 </head>
@@ -114,8 +177,8 @@
   <h1>ZORK I</h1>
   <span id="mode">ATLAS</span>
   <span class="stat">rooms <b id="s-rooms">0</b><span id="s-of"></span></span>
-  <span class="stat">exits <b id="s-edges">0</b></span>
-  <span class="stat">moves <b id="s-moves">0</b></span>
+  <span class="stat thin">exits <b id="s-edges">0</b></span>
+  <span class="stat thin">moves <b id="s-moves">0</b></span>
   <span class="stat" id="s-scorewrap" hidden>score <b id="s-score">0</b></span>
   <span class="spacer"></span>
   <button id="b-live">play the game</button>
@@ -141,6 +204,8 @@
     <div class="trail" id="r-trail"></div>
   </aside>
 </main>
+<div id="veil" hidden></div>
+<div id="sheet" hidden></div>
 
 <script src="world.js"></script>
 <script src="vendor/zvm.js"></script>
@@ -610,7 +675,10 @@
     if (!n) return;
 
     document.getElementById("r-name").textContent = n.name;
-    document.getElementById("r-desc").textContent = n.desc || "";
+    var desc = document.getElementById("r-desc");
+    desc.textContent = n.desc || "";
+    desc.className = "desc" + (window.innerWidth <= 760 ? " clamped" : "");
+    desc.onclick = function () { desc.classList.toggle("clamped"); };
 
     var bits = [];
     if (mode === "atlas") {
@@ -645,38 +713,19 @@
   function items(n) {
     var host = document.getElementById("r-items");
     host.innerHTML = "";
+    if (mode === "live") return liveThings(host, n);
     if (!n.objects || !n.objects.length) return;
     var h = document.createElement("h3");
     h.textContent = "HERE";
     host.appendChild(h);
-    if (mode === "atlas") {
-      var ul = document.createElement("ul");
-      n.objects.forEach(function (o) {
-        var li = document.createElement("li");
-        li.className = "item" + (o.treasure ? " treasure" : "");
-        li.textContent = o.name;
-        ul.appendChild(li);
-      });
-      host.appendChild(ul);
-      return;
-    }
+    var ul = document.createElement("ul");
     n.objects.forEach(function (o) {
-      var d = document.createElement("div");
-      d.className = "obj";
-      var nm = document.createElement("span");
-      nm.className = "nm";
-      nm.textContent = o.name;
-      d.appendChild(nm);
-      var row = document.createElement("div");
-      row.className = "row";
-      var verbs = ["examine", "open", "read"];
-      if (o.takeable) verbs.unshift("take");
-      verbs.forEach(function (v) {
-        row.appendChild(cmdButton(v, v + " " + o.name));
-      });
-      d.appendChild(row);
-      host.appendChild(d);
+      var li = document.createElement("li");
+      li.className = "item" + (o.treasure ? " treasure" : "");
+      li.textContent = o.name;
+      ul.appendChild(li);
     });
+    host.appendChild(ul);
   }
 
   function cmdButton(label, cmd) {
@@ -685,6 +734,145 @@
     b.disabled = busy;
     b.onclick = function () { send(cmd, null); };
     return b;
+  }
+
+  /* ---------- everything you can name, as chips ---------- */
+
+  // Three sources: what the interpreter says is in the room, what you are
+  // carrying, and the scenery the ZIL source lists for this room. The third
+  // matters more than it sounds — the kitchen window is not in any room's
+  // object tree, so without it you could not open the window without typing.
+  function nouns(n) {
+    var out = [], seen = {};
+    function push(label, kind) {
+      var key = label.toLowerCase();
+      if (!label || seen[key]) return;
+      seen[key] = 1;
+      out.push({ label: label, kind: kind });
+    }
+    (n.objects || []).forEach(function (o) { push(o.name, "here"); });
+    (live && live.inventory || []).forEach(function (o) { push(o.name, "carried"); });
+    var zil = BY_NAME[(n.name || "").toLowerCase()];
+    if (zil) (zil.globals || []).forEach(function (g) { push(g, "scenery"); });
+    (ATLAS.everywhere || []).forEach(function (g) { push(g, "scenery"); });
+    return out;
+  }
+
+  function liveThings(host, n) {
+    var list = nouns(n);
+    if (!list.length) return;
+    var h = document.createElement("h3");
+    h.textContent = "TAP A THING";
+    host.appendChild(h);
+    var wrap = document.createElement("div");
+    wrap.className = "chips";
+    list.forEach(function (t) {
+      var b = document.createElement("button");
+      b.className = "chip " + t.kind;
+      b.textContent = t.kind === "carried" ? "· " + t.label : t.label;
+      b.disabled = busy;
+      b.onclick = function () { openSheet(t.label); };
+      wrap.appendChild(b);
+    });
+    host.appendChild(wrap);
+  }
+
+  /* ---------- the action sheet ---------- */
+
+  var sheet = document.getElementById("sheet");
+  var veil = document.getElementById("veil");
+  veil.onclick = closeSheet;
+
+  function closeSheet() {
+    sheet.hidden = veil.hidden = true;
+    sheet.innerHTML = "";
+  }
+
+  function sheetHead(title, back) {
+    sheet.innerHTML = "";
+    var h = document.createElement("h4");
+    h.appendChild(document.createTextNode(title));
+    var x = document.createElement("button");
+    x.className = "x";
+    x.textContent = back ? "back" : "close";
+    x.onclick = back || closeSheet;
+    h.appendChild(x);
+    sheet.appendChild(h);
+    sheet.hidden = veil.hidden = false;
+    sheet.scrollTop = 0;
+  }
+
+  function verbGrid(verbs, label, onPick) {
+    var note = document.createElement("div");
+    note.className = "sub";
+    note.textContent = label;
+    sheet.appendChild(note);
+    var grid = document.createElement("div");
+    grid.className = "grid";
+    verbs.forEach(function (v) {
+      var b = document.createElement("button");
+      b.textContent = v.prep ? v.phrase + " … " + v.prep + " …" : v.phrase;
+      b.onclick = function () { onPick(v); };
+      grid.appendChild(b);
+    });
+    sheet.appendChild(grid);
+    return grid;
+  }
+
+  // The first dozen verbs of each shape cover almost everything anyone
+  // reaches for; the rest of the parser's grammar is one tap further in.
+  var SHOWN = 12;
+
+  function openSheet(thing) {
+    var one = ATLAS.verbs.one, two = ATLAS.verbs.two;
+    sheetHead(thing);
+    verbGrid(one.slice(0, SHOWN), "do this to it", function (v) {
+      closeSheet();
+      send(v.phrase + " " + thing, null);
+    });
+    verbGrid(two.slice(0, SHOWN), "use it with something else", function (v) {
+      pickTarget(thing, v);
+    });
+    more(function () {
+      sheetHead(thing + " — every verb", function () { openSheet(thing); });
+      verbGrid(one.slice(SHOWN), "do this to it", function (v) {
+        closeSheet();
+        send(v.phrase + " " + thing, null);
+      });
+      verbGrid(two.slice(SHOWN), "use it with something else", function (v) {
+        pickTarget(thing, v);
+      });
+    });
+  }
+
+  function more(onClick) {
+    var b = document.createElement("button");
+    b.textContent = "more verbs…";
+    b.style.marginTop = "12px";
+    b.onclick = onClick;
+    sheet.appendChild(b);
+  }
+
+  function pickTarget(thing, verb) {
+    var phrase = verb.phrase + " " + thing + " " + verb.prep;
+    sheetHead(phrase + " …", function () { openSheet(thing); });
+    var note = document.createElement("div");
+    note.className = "sub";
+    note.textContent = "with what?";
+    sheet.appendChild(note);
+    var grid = document.createElement("div");
+    grid.className = "grid";
+    nouns(node(state.current)).forEach(function (t) {
+      if (t.label.toLowerCase() === thing.toLowerCase()) return;
+      var b = document.createElement("button");
+      b.textContent = t.label;
+      b.onclick = function () {
+        closeSheet();
+        send(phrase + " " + t.label, null);
+      };
+      grid.appendChild(b);
+    });
+    sheet.appendChild(grid);
   }
 
   function atlasExits(n) {
@@ -754,8 +942,8 @@
     acts.innerHTML = "<h3>DO</h3>";
     var row = document.createElement("div");
     row.className = "row";
-    ["look", "inventory", "wait", "listen", "out"].forEach(function (c) {
-      row.appendChild(cmdButton(c, c));
+    ATLAS.verbs.none.slice(0, 8).forEach(function (v) {
+      row.appendChild(cmdButton(v.phrase, v.phrase));
     });
     if (live) {
       var u = document.createElement("button");
@@ -769,21 +957,44 @@
       };
       row.appendChild(u);
     }
+    var rest = ATLAS.verbs.none.slice(8);
+    if (rest.length) {
+      var b = document.createElement("button");
+      b.textContent = "more…";
+      b.onclick = function () {
+        sheetHead("commands");
+        verbGrid(rest, "no object needed", function (v) {
+          closeSheet();
+          send(v.phrase, null);
+        });
+      };
+      row.appendChild(b);
+    }
     acts.appendChild(row);
 
+    // A keyboard is never required, but on a desktop it is sometimes faster.
     var free = document.createElement("div");
     free.className = "row";
+    var typeBtn = document.createElement("button");
+    typeBtn.textContent = "type instead";
     var input = document.createElement("input");
-    input.placeholder = "anything else…";
+    input.placeholder = "any command…";
+    input.hidden = true;
     input.style.cssText =
-      "flex:1;min-width:120px;background:#0d1116;color:inherit;font:inherit;" +
-      "border:1px solid #232a33;border-radius:3px;padding:4px 7px";
+      "flex:1;min-width:140px;background:#0d1116;color:inherit;font:inherit;" +
+      "border:1px solid #232a33;border-radius:3px;padding:8px 9px";
+    typeBtn.onclick = function () {
+      input.hidden = false;
+      typeBtn.hidden = true;
+      input.focus();
+    };
     input.onkeydown = function (ev) {
       if (ev.key === "Enter" && input.value.trim()) {
         send(input.value.trim(), null);
         input.value = "";
       }
     };
+    free.appendChild(typeBtn);
     free.appendChild(input);
     acts.appendChild(free);
   }
@@ -804,12 +1015,39 @@
 
   /* ---------- input ---------- */
 
-  var drag = null;
-  canvas.addEventListener("mousedown", function (ev) {
-    drag = { x: ev.clientX, y: ev.clientY, moved: 0 };
-    canvas.classList.add("drag");
+  // Pointer events cover mouse and touch in one path: one pointer pans and
+  // taps, two pointers pinch to zoom.
+  var pointers = {}, drag = null, pinch = null;
+
+  function pointerList() {
+    return Object.keys(pointers).map(function (k) { return pointers[k]; });
+  }
+
+  canvas.addEventListener("pointerdown", function (ev) {
+    canvas.setPointerCapture(ev.pointerId);
+    pointers[ev.pointerId] = { x: ev.clientX, y: ev.clientY };
+    var all = pointerList();
+    if (all.length === 1) {
+      drag = { x: ev.clientX, y: ev.clientY, moved: 0 };
+      canvas.classList.add("drag");
+    } else if (all.length === 2) {
+      drag = null;
+      pinch = { dist: spread(all), z: cam.z };
+    }
   });
-  window.addEventListener("mousemove", function (ev) {
+
+  canvas.addEventListener("pointermove", function (ev) {
+    if (!pointers[ev.pointerId]) return;
+    pointers[ev.pointerId] = { x: ev.clientX, y: ev.clientY };
+    var all = pointerList();
+    if (pinch && all.length === 2) {
+      var d = spread(all);
+      if (pinch.dist > 0) {
+        cam.z = Math.max(0.06, Math.min(2.5, pinch.z * (d / pinch.dist)));
+        draw();
+      }
+      return;
+    }
     if (!drag) return;
     drag.moved += Math.abs(ev.clientX - drag.x) + Math.abs(ev.clientY - drag.y);
     cam.x -= (ev.clientX - drag.x) / cam.z;
@@ -818,8 +1056,11 @@
     drag.y = ev.clientY;
     draw();
   });
-  window.addEventListener("mouseup", function (ev) {
-    if (drag && drag.moved < 4) {
+
+  function endPointer(ev) {
+    delete pointers[ev.pointerId];
+    if (pointerList().length < 2) pinch = null;
+    if (drag && drag.moved < 8) {
       var rect = canvas.getBoundingClientRect();
       var id = roomAt(ev.clientX - rect.left, ev.clientY - rect.top);
       // Fast travel is an atlas privilege: in a live game you can only get
@@ -831,7 +1072,13 @@
     }
     drag = null;
     canvas.classList.remove("drag");
-  });
+  }
+  canvas.addEventListener("pointerup", endPointer);
+  canvas.addEventListener("pointercancel", endPointer);
+
+  function spread(all) {
+    return Math.hypot(all[0].x - all[1].x, all[0].y - all[1].y);
+  }
   canvas.addEventListener("wheel", function (ev) {
     ev.preventDefault();
     var rect = canvas.getBoundingClientRect();
