@@ -383,6 +383,23 @@ window.ZorkEngine = (function () {
     return this.snapshot("Undone.");
   };
 
+  // Explicit save points, on the same terms as undo: the pending read must
+  // stay armed, so a mark can only be taken and rewound while the game is
+  // waiting for a command. This is what lets a solver try something fatal
+  // and take it back.
+  Engine.prototype.mark = function () {
+    if (this.vm.quit || !this.glk.lineRequest) return null;
+    return { q: this.vm.save_file(this.vm.pc, 1), moves: this.moves };
+  };
+
+  Engine.prototype.rewind = function (mark) {
+    if (!mark || this.vm.quit || !this.glk.lineRequest) return false;
+    if (!this.vm.restore_file(mark.q, 1)) return false;
+    this.moves = mark.moves;
+    this.drain();
+    return true;
+  };
+
   Engine.prototype.restart = function () { return this.snapshot(this.boot()); };
 
   Engine.prototype.snapshot = function (output) {

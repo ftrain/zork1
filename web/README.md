@@ -177,6 +177,46 @@ Finding it was a search over seeds, which is exactly how zwalker verifies
 its own solutions. Of ten seeds tried, one won, two got past 300, and three
 died on the way.
 
+## A solver that has not read the walkthrough
+
+**let it solve** turns `solver.js` loose. It knows only what the interface
+knows — the room it is in by object number, what is lying there, what it is
+carrying, the score, and which things the ZIL marks as treasure. It has no
+walkthrough.
+
+What makes it workable is save/restore. Every command is taken behind a
+mark, so a move that kills you is rewound and struck off the list for that
+room; the map never shows a room it died in and took back. A typical run
+rewinds a few hundred deaths and is none the worse.
+
+It reaches **40 out of 350** and maps a little over half the dungeon —
+around 50 rooms of 110 — in 1500 moves. That is the honest ceiling of what
+it does, and worth being plain about: it is a hill-climber with a few
+domain habits, not a planner.
+
+Three things it learned the hard way, each of which is a real property of
+Zork rather than a coding slip:
+
+* **The window.** It sat outside the house scoring nothing until it could
+  refer to the kitchen window, which is in no room's object tree. The
+  per-room `GLOBAL` list from the ZIL is what let it in.
+* **The troll.** He blocks every exit from his room, so with no notion of
+  attacking, the whole underground was unreachable: 24 rooms became 52 the
+  moment it would swing a sword at something alive.
+* **The lamp.** Groping about an unlit room means twelve fatal directions
+  and nothing learned, and a routed path walks through darkness as happily
+  as daylight. Lighting the lamp on entering the dark, retreating when
+  there is no lamp, and dousing it in rooms the ZIL marks lit — the battery
+  is finite — cut deaths from around 300 to under 80.
+
+Where it stops is the interesting part. Most of Zork's points are behind
+chains of actions no local search will stumble on: the bell, book and
+candles at Hades, the coal mine basket, the dam controls, the thief who
+must be allowed to steal the egg before he can open it. A solver that
+scored those would need a model of the puzzles, which is a different and
+much larger program. Compare **replay a win** for what the finished article
+looks like.
+
 ## Regenerating the graph
 
     python3 tools/extract_map.py

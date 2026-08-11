@@ -200,6 +200,7 @@
   <span class="spacer"></span>
   <button id="b-live">play the game</button>
   <button id="b-replay" hidden>replay a win</button>
+  <button id="b-solve" hidden>let it solve</button>
   <button id="b-center">center</button>
   <button id="b-fit">fit</button>
   <button id="b-reveal">reveal all</button>
@@ -230,6 +231,7 @@
 <script src="story.js"></script>
 <script src="engine.js"></script>
 <script src="walkthrough.js"></script>
+<script src="solver.js"></script>
 <script>
 (function () {
   "use strict";
@@ -495,6 +497,12 @@
       rb.onclick = replayWin;
       rb.title = "a verified 350-point game, replayed from a pinned seed";
     }
+    if (window.ZorkSolver) {
+      var sb = document.getElementById("b-solve");
+      sb.hidden = false;
+      sb.onclick = solve;
+      sb.title = "explores and scores on its own, knowing no walkthrough";
+    }
     document.getElementById("hint").textContent =
       "every click runs a real command in zork1.zip · drag to pan · scroll to zoom";
     document.title = "ZORK I — playing";
@@ -538,6 +546,53 @@
       if (i % 40 === 0 || i === plan.commands.length) fit();
     }, 45);
     document.getElementById("b-replay").textContent = "stop";
+  }
+
+  /* ---------- letting it solve itself ---------- */
+
+  var solving = null;
+
+  function solve() {
+    if (!window.ZorkSolver) return;
+    if (solving) { stopSolve(); return; }
+    if (replaying) stopReplay();
+    if (!confirm("Turn a solver loose? It restarts the game and explores on " +
+                 "its own, banking what treasure it can find.")) return;
+
+    engine = window.ZorkEngine.create(42);
+    state = fresh();
+    logLines = [];
+    var snap = engine.snapshot(engine.banner);
+    state.session = snap.session;
+    absorb(snap, null, null);
+
+    var agent = window.ZorkSolver.create(engine, ATLAS, {
+      maxMoves: 1500,
+      onKept: function (cmd, res, dir) { absorb(res, cmd, DIR_OF[dir] || null); }
+    });
+    var b = document.getElementById("b-solve");
+    solving = setInterval(function () {
+      if (!agent.step()) {
+        stopSolve();
+        log(null, "The solver stopped: " + agent.stats.why + ". Score " +
+                  agent.stats.score + "/350 in " + agent.stats.moves +
+                  " moves, " + agent.stats.rooms + " rooms, " +
+                  agent.stats.deaths + " deaths rewound.");
+        return;
+      }
+      b.textContent = "stop (" + agent.stats.moves + " moves, " +
+                      agent.stats.deaths + " deaths)";
+      if (agent.stats.moves % 50 === 0) fit();
+    }, 20);
+    b.textContent = "stop";
+  }
+
+  function stopSolve() {
+    clearInterval(solving);
+    solving = null;
+    document.getElementById("b-solve").textContent = "let it solve";
+    fit();
+    render();
   }
 
   function stopReplay() {
