@@ -189,10 +189,17 @@ mark, so a move that kills you is rewound and struck off the list for that
 room; the map never shows a room it died in and took back. A typical run
 rewinds a few hundred deaths and is none the worse.
 
-It reaches **40 out of 350** and maps a little over half the dungeon —
-around 50 rooms of 110 — in 1500 moves. That is the honest ceiling of what
-it does, and worth being plain about: it is a hill-climber with a few
-domain habits, not a planner.
+It reaches **54 out of 350** and maps a little over half the dungeon —
+around 55 rooms of 110 — in 1500 moves.
+
+Its goals come out of the ZIL rather than out of luck. The source says what
+is worth points and where it starts, so the extractor resolves each
+treasure to a room, following container chains where it has to: the sceptre
+is in the coffin, the coffin is in the Egyptian Room; the canary is in the
+egg, in the nest, up a tree. Seventeen of the twenty-one treasures place
+this way. The solver then routes over the source's own exit table, which
+lets it walk to a room it has never seen, and records a refusal against
+that edge when a gated exit turns out to be shut.
 
 Three things it learned the hard way, each of which is a real property of
 Zork rather than a coding slip:
@@ -209,13 +216,28 @@ Zork rather than a coding slip:
   there is no lamp, and dousing it in rooms the ZIL marks lit — the battery
   is finite — cut deaths from around 300 to under 80.
 
-Where it stops is the interesting part. Most of Zork's points are behind
-chains of actions no local search will stumble on: the bell, book and
-candles at Hades, the coal mine basket, the dam controls, the thief who
-must be allowed to steal the egg before he can open it. A solver that
-scored those would need a model of the puzzles, which is a different and
-much larger program. Compare **replay a win** for what the finished article
-looks like.
+Where it stops is the interesting part, and it is not where you would
+guess. Routing is not the problem: it reaches End of Rainbow, Up a Tree,
+the Loud Room, the maze and the Gallery, and picks up the coins and the
+painting. What stops it is that **the treasure cannot be got home**.
+
+The trap door bars itself behind you, so the underground is a one-way trip.
+The only way back is the chimney in the Studio, and the chimney will not
+take more than one item plus the lamp. Banking a hoard therefore means
+dropping almost everything, climbing out, and ferrying — a deliberate plan,
+not something a hill-climber falls into. So the solver ends each run
+carrying treasure it scored for taking and could not deposit.
+
+The rest of the points sit behind chains no local search will stumble on:
+the bell, book and candles at Hades, the coal mine basket, the dam
+controls, the thief who must be allowed to steal the egg before he can open
+it. Compare **replay a win** for what the finished article looks like.
+
+Chasing this turned up a real error in the map, from the first commit: the
+`PER_EXITS` table put the chimney in the Living Room, which invented an
+exit that does not exist and lost the only way back up from the dungeon.
+It is in the Studio. The atlas had been wrong about that for everyone, not
+just the solver.
 
 ## Regenerating the graph
 

@@ -59,6 +59,64 @@ window.ZorkSolver = (function () {
       var z = byName[String(cur.name || "").toLowerCase()];
       return !!(z && (z.flags || []).indexOf("ONBIT") >= 0);
     }
+    /* ---- goals, read out of the source ----------------------------------
+     *
+     * The ZIL says what is worth points and where it starts, so the solver
+     * does not have to stumble on treasure: it can be sent for it. Routing
+     * is over the source's own exit table rather than the rooms walked so
+     * far, which means it can plan a path through country it has never
+     * seen. Exits gated on a flag look identical to open ones here, so a
+     * refusal is recorded and the route recomputed around it.
+     */
+    var WORD = {
+      NORTH: "north", SOUTH: "south", EAST: "east", WEST: "west",
+      NE: "northeast", NW: "northwest", SE: "southeast", SW: "southwest",
+      UP: "up", DOWN: "down", IN: "in", OUT: "out", LAND: "land"
+    };
+    var zil = {}, zilByName = {}, zilBlocked = {};
+    (world.rooms || []).forEach(function (r) {
+      zil[r.id] = r;
+      var k = r.name.toLowerCase();
+      zilByName[k] = zilByName.hasOwnProperty(k) ? null : r.id;
+    });
+
+    // Which source room we are standing in. Rooms sharing a name -- every
+    // Maze, every Forest -- are deliberately unresolvable, so the planner
+    // stays quiet there and the blind explorer takes over.
+    function zilHere() {
+      return zilByName[String(cur.name || "").toLowerCase()] || null;
+    }
+
+    function zilRoute(from, to) {
+      if (!from || !to) return null;
+      var seen = {}, q = [[from, []]];
+      seen[from] = 1;
+      while (q.length) {
+        var it = q.shift();
+        if (it[0] === to) return it[1];
+        var r = zil[it[0]];
+        if (!r || it[1].length > 40) continue;
+        for (var i = 0; i < r.exits.length; i++) {
+          var e = r.exits[i];
+          if (zilBlocked[it[0] + ">" + e.dir] || seen[e.to]) continue;
+          seen[e.to] = 1;
+          q.push([e.to, it[1].concat([WORD[e.dir] || e.dir.toLowerCase()])]);
+        }
+      }
+      return null;
+    }
+
+    var prizes = Object.keys(lore).map(function (n) {
+      var o = lore[n];
+      return { name: n, room: o.room, via: o.via || [],
+               worth: (o.tvalue || 0) + (o.value || 0) };
+    }).filter(function (t) { return t.worth > 0 && t.room; });
+
+    var tries = {};          // how often a prize has been set out for
+    var giveUp = {};         // treasures that would not come when called
+    var goal = null;         // {name, room, path}
+    var caseZil = null;      // the Living Room, in source terms
+
     var rooms = {};          // id -> what we know and have tried there
     var queue = [];          // commands routed but not yet sent
     var deposited = {};      // treasures already in the case
@@ -69,6 +127,13 @@ window.ZorkSolver = (function () {
     var cur = engine.snapshot("");
     var stats = { moves: 0, score: 0, rooms: 0, deaths: 0, treasures: 0,
                   done: false, why: "" };
+
+    // The printed name is for reading; the last word of it is what the
+    // parser actually has in its dictionary.
+    function noun(name) {
+      var w = String(name || "").trim().split(/\s+/);
+      return w[w.length - 1] || name;
+    }
 
     function isTreasure(name) {
       var o = lore[String(name || "").toLowerCase()];
@@ -175,15 +240,17 @@ window.ZorkSolver = (function () {
         var load = carried().filter(function (n) {
           return isTreasure(n) && !deposited[n];
         });
-        if (load.length >= (opts.hoard || 3)) {
+        if (load.length >= (opts.hoard || 2)) {
           var trip = routeTo(function (x) { return x && x.id === caseRoom; });
           if (trip && trip.length) { queue = trip.slice(); return queue.shift(); }
         }
       }
 
       // Pick things up, treasure first.
+      // A command is issued by noun but the object is known by its printed
+      // name; check both, or the same thing is picked up forever.
       var objs = here().filter(function (o) {
-        return !r.tried["take " + o.name];
+        return !r.tried["take " + o.name] && !r.tried["take " + noun(o.name)];
       });
       function rank(o) {
         if (o.f && o.f.light) return 3;
@@ -192,15 +259,17 @@ window.ZorkSolver = (function () {
       }
       objs.sort(function (a, b) { return rank(b) - rank(a); });
       for (var i = 0; i < objs.length; i++) {
-        if (objs[i].takeable || isTreasure(objs[i].name)) {
-          return "take " + objs[i].name;
+        var o0 = objs[i], f0 = o0.f || {};
+        var worthCarrying = isTreasure(o0.name) || f0.light || f0.weapon;
+        if (worthCarrying && (o0.takeable || isTreasure(o0.name))) {
+          return "take " + o0.name;
         }
       }
       // Open what is closed: containers hide most of the treasure.
       for (var j = 0; j < objs.length; j++) {
         var o = objs[j];
         if ((o.f && (o.f.container || o.f.door)) && !o.f.open &&
-            !r.tried["open " + o.name]) {
+            !r.tried["open " + o.name] && !r.tried["open " + noun(o.name)]) {
           return "open " + o.name;
         }
       }
@@ -217,6 +286,66 @@ window.ZorkSolver = (function () {
         }
       }
 
+      // ---- go and get what the source says is worth having ----
+      var at = zilHere();
+      if (at) {
+        if (String(cur.name) === "Living Room") caseZil = at;
+
+        // Arrived where a prize lives: open whatever it is inside, take it.
+        if (goal && goal.room === at) {
+          var target = goal;
+          goal = null;
+          var steps = target.via.filter(function (c) {
+            return !r.tried["open " + c];
+          }).map(function (c) { return "open " + c; });
+          steps.push("take " + target.name);
+          giveUp[target.name] = 1;      // one attempt each; the source says
+          queue = steps.slice();        // where it is, not how to earn it
+          return queue.shift();
+        }
+
+        var holding = carried().filter(function (n) {
+          return isTreasure(n) && !deposited[n];
+        });
+
+        // Take the hoard home when it is worth the walk.
+        if (caseZil && holding.length >= (opts.hoard || 2)) {
+          var home = zilRoute(at, caseZil);
+          if (home && home.length) {
+            goal = null;
+            queue = home.slice();
+            return queue.shift();
+          }
+        }
+
+        // Otherwise head for the best prize per step of walking.
+        if (!goal) {
+          var best = null;
+          prizes.forEach(function (t) {
+            if (deposited[t.name] || giveUp[t.name]) return;
+            if (carried().indexOf(t.name) >= 0) return;
+            var path = zilRoute(at, t.room);
+            if (!path) return;
+            var value = t.worth / (path.length + 2);
+            if (!best || value > best.value) {
+              best = { value: value, path: path, t: t };
+            }
+          });
+          if (best) {
+            tries[best.t.name] = (tries[best.t.name] || 0) + 1;
+            if (tries[best.t.name] > (opts.maxTries || 6)) {
+              giveUp[best.t.name] = 1;
+              return choose();
+            }
+            goal = { name: best.t.name, room: best.t.room, via: best.t.via };
+            if (best.path.length) {
+              queue = best.path.slice();
+              return queue.shift();
+            }
+          }
+        }
+      }
+
       if (r.untried.length) return r.untried[0];
 
       // Shove and peer under whatever is lying about. This is how the trap
@@ -225,10 +354,9 @@ window.ZorkSolver = (function () {
       for (var m = 0; m < objs.length; m++) {
         var f = objs[m].f || {};
         if (f.take || f.actor) continue;
-        if (!r.tried["move " + objs[m].name]) return "move " + objs[m].name;
-        if (!r.tried["look under " + objs[m].name]) {
-          return "look under " + objs[m].name;
-        }
+        var nm = objs[m].name;
+        if (!r.tried["move " + nm]) return "move " + nm;
+        if (!r.tried["look under " + nm]) return "look under " + nm;
       }
 
       // Carrying a hoard and nothing to do here: go and cash it in.
@@ -300,7 +428,17 @@ window.ZorkSolver = (function () {
       if (DIED.test(res.output || "")) {
         stats.deaths++;
         if (engine.rewind(mark)) {
-          if (isMove) r.blocked[cmd] = 1;
+          if (isMove) {
+            r.blocked[cmd] = 1;
+            var zf = zilHere();
+            if (zf && zil[zf]) {
+              zil[zf].exits.forEach(function (e) {
+                if ((WORD[e.dir] || "") === cmd) zilBlocked[zf + ">" + e.dir] = 1;
+              });
+            }
+          }
+          queue = [];
+          goal = null;
           log.push({ cmd: cmd, note: "fatal, rewound" });
           return true;   // deliberately not reported: it did not happen
         }
@@ -315,8 +453,19 @@ window.ZorkSolver = (function () {
           r.exits[cmd] = res.id;
           lastDir = cmd;
           room(res.id);
-        } else if (FAILED.test(res.output || "")) {
+        } else {
           r.blocked[cmd] = 1;
+          // The source lists exits that a flag may be holding shut. Record
+          // the refusal against the source graph too, so the next route is
+          // planned around it rather than into it again.
+          var z = zilHere();
+          if (z && zil[z]) {
+            zil[z].exits.forEach(function (e) {
+              if ((WORD[e.dir] || "") === cmd) zilBlocked[z + ">" + e.dir] = 1;
+            });
+          }
+          queue = [];
+          goal = null;
         }
       }
       // An open door is a new exit: let this room's refusals be retried.

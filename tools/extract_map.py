@@ -27,7 +27,11 @@ DIRS = ["NORTH", "SOUTH", "EAST", "WEST", "NE", "NW", "SE", "SW",
 PER_EXITS = {
     ("GRATING-CLEARING", "DOWN"): ("GRATING-ROOM", "if the grating is open"),
     ("LIVING-ROOM", "DOWN"): ("CELLAR", "if the trap door is open"),
-    ("LIVING-ROOM", "UP"): ("KITCHEN", "up the chimney, carrying at most one item plus the lamp"),
+    # The chimney is in the Studio, not the Living Room. Reading it off a
+    # grep of the PER exits put it in the wrong room, which invented an exit
+    # that does not exist and lost the only way back up from the dungeon
+    # once the trap door bars itself.
+    ("STUDIO", "UP"): ("KITCHEN", "up the chimney, carrying at most one item plus the lamp"),
     ("MAZE-2", "DOWN"): ("MAZE-4", "one-way diode"),
     ("MAZE-7", "DOWN"): ("DEAD-END-1", "one-way diode"),
     ("MAZE-9", "DOWN"): ("MAZE-11", "one-way diode"),
@@ -523,6 +527,7 @@ def main():
     everywhere = []
     objflags = {}
     lore = {}
+    byid = {}
     for body in forms(dungeon, "OBJECT"):
         oid = re.match(r"<OBJECT\s+([A-Z0-9?\-]+)", body).group(1)
         loc = name = None
@@ -565,6 +570,8 @@ def main():
                             if f in FLAG_WORDS]
             record["does"] = behaviour.get(record["action"], [])
             record["where"] = loc
+            record["oid"] = oid
+            byid[oid] = record
             lore[name.lower()] = record
         if name and flags:
             # Keyed by printed name, which is what the interpreter reports at
@@ -589,6 +596,18 @@ def main():
     # but a typo in the source should not produce a dangling click target).
     for room in rooms.values():
         room["exits"] = [e for e in room["exits"] if e["to"] in rooms]
+
+    # Where a thing really is. The sceptre is in the coffin, the coffin is in
+    # the Egyptian Room; a planner wants the room, and the chain it has to
+    # open on the way.
+    for rec in lore.values():
+        seen, loc, chain = set(), rec["where"], []
+        while loc and loc not in rooms and loc in byid and loc not in seen:
+            seen.add(loc)
+            chain.append(byid[loc]["name"])
+            loc = byid[loc]["where"]
+        rec["room"] = loc if loc in rooms else None
+        rec["via"] = chain
 
     world = {
         "start": "WEST-OF-HOUSE",

@@ -25,6 +25,8 @@
    ],
    "ldesc": "",
    "name": "altar",
+   "oid": "ALTAR",
+   "room": "SOUTH-TEMPLE",
    "size": 0,
    "synonyms": [
     "altar"
@@ -32,6 +34,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "SOUTH-TEMPLE"
   },
   "ancient map": {
@@ -56,6 +59,8 @@
    ],
    "ldesc": "",
    "name": "ancient map",
+   "oid": "MAP",
+   "room": "LIVING-ROOM",
    "size": 2,
    "synonyms": [
     "parchment",
@@ -64,6 +69,9 @@
    "text": "The map shows a forest with three clearings. The largest clearing contains a house. Three paths leave the large clearing. One of these paths, leading southwest, is marked \\\"To Stone Barrow\\\".",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "trophy case"
+   ],
    "where": "TROPHY-CASE"
   },
   "basket": {
@@ -123,6 +131,8 @@
    ],
    "ldesc": "At the end of the chain is a basket.",
    "name": "basket",
+   "oid": "RAISED-BASKET",
+   "room": "SHAFT-ROOM",
    "size": 0,
    "synonyms": [
     "cage",
@@ -132,6 +142,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "SHAFT-ROOM"
   },
   "bat": {
@@ -165,6 +176,8 @@
    ],
    "ldesc": "",
    "name": "bat",
+   "oid": "BAT",
+   "room": "BAT-ROOM",
    "size": 0,
    "synonyms": [
     "bat",
@@ -173,6 +186,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "BAT-ROOM"
   },
   "beautiful brass bauble": {
@@ -192,6 +206,8 @@
    ],
    "ldesc": "",
    "name": "beautiful brass bauble",
+   "oid": "BAUBLE",
+   "room": null,
    "size": 0,
    "synonyms": [
     "bauble",
@@ -200,6 +216,7 @@
    "text": "",
    "tvalue": 1,
    "value": 1,
+   "via": [],
    "where": null
   },
   "beautiful jeweled scarab": {
@@ -222,6 +239,8 @@
    ],
    "ldesc": "",
    "name": "beautiful jeweled scarab",
+   "oid": "SCARAB",
+   "room": "SANDY-CAVE",
    "size": 8,
    "synonyms": [
     "scarab",
@@ -232,6 +251,7 @@
    "text": "",
    "tvalue": 5,
    "value": 5,
+   "via": [],
    "where": "SANDY-CAVE"
   },
   "bird's nest": {
@@ -258,6 +278,8 @@
    ],
    "ldesc": "",
    "name": "bird's nest",
+   "oid": "NEST",
+   "room": "UP-A-TREE",
    "size": 0,
    "synonyms": [
     "nest"
@@ -265,6 +287,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "UP-A-TREE"
   },
   "black book": {
@@ -330,6 +353,8 @@
    ],
    "ldesc": "",
    "name": "black book",
+   "oid": "BOOK",
+   "room": "SOUTH-TEMPLE",
    "size": 10,
    "synonyms": [
     "book",
@@ -340,6 +365,9 @@
    "text": "Commandment #12592| | Oh ye who go about saying unto each: \\\"Hello sailor\\\":| Dost thou know the magnitude of thy sin before the gods?| Yea, verily, thou shalt be ground between two stones.| Shall the angry gods cast thy body into the whirlpool?| Surely, thy eye shall be put out with a sharp stick!| Even unto the ends of the earth shalt thou wander and| Unto the land of the dead shalt thou be sent at last.| Surely thou shalt repent of thy cunning.",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "altar"
+   ],
    "where": "ALTAR"
   },
   "bloody axe": {
@@ -364,6 +392,8 @@
    ],
    "ldesc": "",
    "name": "bloody axe",
+   "oid": "AXE",
+   "room": "TROLL-ROOM",
    "size": 25,
    "synonyms": [
     "axe",
@@ -372,6 +402,9 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "troll"
+   ],
    "where": "TROLL"
   },
   "blue button": {
@@ -463,6 +496,8 @@
    ],
    "ldesc": "",
    "name": "blue button",
+   "oid": "BLUE-BUTTON",
+   "room": "MAINTENANCE-ROOM",
    "size": 0,
    "synonyms": [
     "button",
@@ -471,6 +506,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAINTENANCE-ROOM"
   },
   "board": {
@@ -498,6 +534,8 @@
    ],
    "ldesc": "",
    "name": "board",
+   "oid": "BOARD",
+   "room": null,
    "size": 0,
    "synonyms": [
     "boards",
@@ -506,6 +544,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "boarded window": {
@@ -543,6 +582,8 @@
    ],
    "ldesc": "",
    "name": "boarded window",
+   "oid": "BOARDED-WINDOW",
+   "room": null,
    "size": 0,
    "synonyms": [
     "window"
@@ -550,6 +591,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "bolt": {
@@ -619,6 +661,8 @@
    ],
    "ldesc": "",
    "name": "bolt",
+   "oid": "BOLT",
+   "room": "DAM-ROOM",
    "size": 0,
    "synonyms": [
     "bolt",
@@ -627,6 +671,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "DAM-ROOM"
   },
   "brass bell": {
@@ -656,6 +701,8 @@
    ],
    "ldesc": "",
    "name": "brass bell",
+   "oid": "BELL",
+   "room": "NORTH-TEMPLE",
    "size": 0,
    "synonyms": [
     "bell"
@@ -663,6 +710,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "NORTH-TEMPLE"
   },
   "brass lantern": {
@@ -747,6 +795,8 @@
    ],
    "ldesc": "There is a brass lantern (battery-powered) here.",
    "name": "brass lantern",
+   "oid": "LAMP",
+   "room": "LIVING-ROOM",
    "size": 15,
    "synonyms": [
     "lamp",
@@ -756,6 +806,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LIVING-ROOM"
   },
   "broken clockwork canary": {
@@ -805,6 +856,8 @@
    ],
    "ldesc": "",
    "name": "broken clockwork canary",
+   "oid": "BROKEN-CANARY",
+   "room": null,
    "size": 0,
    "synonyms": [
     "canary",
@@ -813,6 +866,9 @@
    "text": "",
    "tvalue": 1,
    "value": 0,
+   "via": [
+    "broken jewel-encrusted egg"
+   ],
    "where": "BROKEN-EGG"
   },
   "broken jewel-encrusted egg": {
@@ -838,6 +894,8 @@
    ],
    "ldesc": "There is a somewhat ruined egg here.",
    "name": "broken jewel-encrusted egg",
+   "oid": "BROKEN-EGG",
+   "room": null,
    "size": 0,
    "synonyms": [
     "egg",
@@ -846,6 +904,7 @@
    "text": "",
    "tvalue": 2,
    "value": 0,
+   "via": [],
    "where": null
   },
   "broken lantern": {
@@ -864,6 +923,8 @@
    ],
    "ldesc": "",
    "name": "broken lantern",
+   "oid": "BROKEN-LAMP",
+   "room": null,
    "size": 0,
    "synonyms": [
     "lamp",
@@ -872,6 +933,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": null
   },
   "broken timber": {
@@ -891,6 +953,8 @@
    ],
    "ldesc": "",
    "name": "broken timber",
+   "oid": "TIMBERS",
+   "room": "TIMBER-ROOM",
    "size": 50,
    "synonyms": [
     "timbers",
@@ -899,6 +963,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "TIMBER-ROOM"
   },
   "brown button": {
@@ -990,6 +1055,8 @@
    ],
    "ldesc": "",
    "name": "brown button",
+   "oid": "BROWN-BUTTON",
+   "room": "MAINTENANCE-ROOM",
    "size": 0,
    "synonyms": [
     "button",
@@ -998,6 +1065,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAINTENANCE-ROOM"
   },
   "brown sack": {
@@ -1032,6 +1100,8 @@
    ],
    "ldesc": "",
    "name": "brown sack",
+   "oid": "SANDWICH-BAG",
+   "room": "KITCHEN",
    "size": 9,
    "synonyms": [
     "bag",
@@ -1040,6 +1110,9 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "kitchen table"
+   ],
    "where": "KITCHEN-TABLE"
   },
   "burned-out lantern": {
@@ -1061,6 +1134,8 @@
    ],
    "ldesc": "",
    "name": "burned-out lantern",
+   "oid": "BURNED-OUT-LANTERN",
+   "room": "MAZE-5",
    "size": 20,
    "synonyms": [
     "lantern",
@@ -1069,6 +1144,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAZE-5"
   },
   "carpet": {
@@ -1165,6 +1241,8 @@
    ],
    "ldesc": "",
    "name": "carpet",
+   "oid": "RUG",
+   "room": "LIVING-ROOM",
    "size": 0,
    "synonyms": [
     "rug",
@@ -1173,6 +1251,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LIVING-ROOM"
   },
   "chalice": {
@@ -1215,6 +1294,8 @@
    ],
    "ldesc": "There is a silver chalice, intricately engraved, here.",
    "name": "chalice",
+   "oid": "CHALICE",
+   "room": "TREASURE-ROOM",
    "size": 10,
    "synonyms": [
     "chalice",
@@ -1225,6 +1306,7 @@
    "text": "",
    "tvalue": 5,
    "value": 10,
+   "via": [],
    "where": "TREASURE-ROOM"
   },
   "chimney": {
@@ -1266,6 +1348,8 @@
    ],
    "ldesc": "",
    "name": "chimney",
+   "oid": "CHIMNEY",
+   "room": null,
    "size": 0,
    "synonyms": [
     "chimney"
@@ -1273,6 +1357,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "chute": {
@@ -1307,6 +1392,8 @@
    ],
    "ldesc": "",
    "name": "chute",
+   "oid": "SLIDE",
+   "room": null,
    "size": 0,
    "synonyms": [
     "chute",
@@ -1316,6 +1403,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "cliff": {
@@ -1358,6 +1446,8 @@
    ],
    "ldesc": "",
    "name": "cliff",
+   "oid": "CLIMBABLE-CLIFF",
+   "room": null,
    "size": 0,
    "synonyms": [
     "wall",
@@ -1368,6 +1458,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "clove of garlic": {
@@ -1396,6 +1487,8 @@
    ],
    "ldesc": "",
    "name": "clove of garlic",
+   "oid": "GARLIC",
+   "room": "KITCHEN",
    "size": 4,
    "synonyms": [
     "garlic",
@@ -1404,6 +1497,10 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "brown sack",
+    "kitchen table"
+   ],
    "where": "SANDWICH-BAG"
   },
   "control panel": {
@@ -1422,6 +1519,8 @@
    ],
    "ldesc": "",
    "name": "control panel",
+   "oid": "CONTROL-PANEL",
+   "room": "DAM-ROOM",
    "size": 0,
    "synonyms": [
     "panel"
@@ -1429,6 +1528,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "DAM-ROOM"
   },
   "crack": {
@@ -1457,6 +1557,8 @@
    ],
    "ldesc": "",
    "name": "crack",
+   "oid": "CRACK",
+   "room": null,
    "size": 0,
    "synonyms": [
     "crack"
@@ -1464,6 +1566,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "crystal skull": {
@@ -1482,6 +1585,8 @@
    ],
    "ldesc": "",
    "name": "crystal skull",
+   "oid": "SKULL",
+   "room": "LAND-OF-LIVING-DEAD",
    "size": 0,
    "synonyms": [
     "skull",
@@ -1491,6 +1596,7 @@
    "text": "",
    "tvalue": 10,
    "value": 10,
+   "via": [],
    "where": "LAND-OF-LIVING-DEAD"
   },
   "crystal trident": {
@@ -1511,6 +1617,8 @@
    ],
    "ldesc": "",
    "name": "crystal trident",
+   "oid": "TRIDENT",
+   "room": "ATLANTIS-ROOM",
    "size": 20,
    "synonyms": [
     "trident",
@@ -1520,6 +1628,7 @@
    "text": "",
    "tvalue": 11,
    "value": 4,
+   "via": [],
    "where": "ATLANTIS-ROOM"
   },
   "cyclops": {
@@ -1669,6 +1778,8 @@
    ],
    "ldesc": "",
    "name": "cyclops",
+   "oid": "CYCLOPS",
+   "room": "CYCLOPS-ROOM",
    "size": 0,
    "synonyms": [
     "cyclops",
@@ -1678,6 +1789,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "CYCLOPS-ROOM"
   },
   "dam": {
@@ -1725,6 +1837,8 @@
    ],
    "ldesc": "",
    "name": "dam",
+   "oid": "DAM",
+   "room": "DAM-ROOM",
    "size": 0,
    "synonyms": [
     "dam",
@@ -1735,6 +1849,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "DAM-ROOM"
   },
   "door": {
@@ -1793,6 +1908,8 @@
    ],
    "ldesc": "",
    "name": "door",
+   "oid": "FRONT-DOOR",
+   "room": "WEST-OF-HOUSE",
    "size": 0,
    "synonyms": [
     "door"
@@ -1800,6 +1917,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "WEST-OF-HOUSE"
   },
   "forest": {
@@ -1853,6 +1971,8 @@
    ],
    "ldesc": "",
    "name": "forest",
+   "oid": "FOREST",
+   "room": null,
    "size": 0,
    "synonyms": [
     "forest",
@@ -1863,6 +1983,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "glass bottle": {
@@ -1905,6 +2026,8 @@
    ],
    "ldesc": "",
    "name": "glass bottle",
+   "oid": "BOTTLE",
+   "room": "KITCHEN",
    "size": 0,
    "synonyms": [
     "bottle",
@@ -1913,6 +2036,9 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "kitchen table"
+   ],
    "where": "KITCHEN-TABLE"
   },
   "gold coffin": {
@@ -1938,6 +2064,8 @@
    ],
    "ldesc": "The solid-gold coffin used for the burial of Ramses II is here.",
    "name": "gold coffin",
+   "oid": "COFFIN",
+   "room": "EGYPT-ROOM",
    "size": 55,
    "synonyms": [
     "coffin",
@@ -1947,6 +2075,7 @@
    "text": "",
    "tvalue": 15,
    "value": 10,
+   "via": [],
    "where": "EGYPT-ROOM"
   },
   "golden clockwork canary": {
@@ -1997,6 +2126,8 @@
    ],
    "ldesc": "",
    "name": "golden clockwork canary",
+   "oid": "CANARY",
+   "room": "UP-A-TREE",
    "size": 0,
    "synonyms": [
     "canary",
@@ -2005,6 +2136,10 @@
    "text": "",
    "tvalue": 4,
    "value": 6,
+   "via": [
+    "jewel-encrusted egg",
+    "bird's nest"
+   ],
    "where": "EGG"
   },
   "granite wall": {
@@ -2077,6 +2212,8 @@
    "is": [],
    "ldesc": "",
    "name": "granite wall",
+   "oid": "GRANITE-WALL",
+   "room": null,
    "size": 0,
    "synonyms": [
     "wall"
@@ -2084,6 +2221,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "GLOBAL-OBJECTS"
   },
   "grating": {
@@ -2227,6 +2365,8 @@
    ],
    "ldesc": "",
    "name": "grating",
+   "oid": "GRATE",
+   "room": null,
    "size": 0,
    "synonyms": [
     "grate",
@@ -2235,6 +2375,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "green bubble": {
@@ -2257,6 +2398,8 @@
    ],
    "ldesc": "",
    "name": "green bubble",
+   "oid": "BUBBLE",
+   "room": "DAM-ROOM",
    "size": 0,
    "synonyms": [
     "bubble"
@@ -2264,6 +2407,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "DAM-ROOM"
   },
   "group of tool chests": {
@@ -2318,6 +2462,8 @@
    ],
    "ldesc": "",
    "name": "group of tool chests",
+   "oid": "TOOL-CHEST",
+   "room": "MAINTENANCE-ROOM",
    "size": 0,
    "synonyms": [
     "chest",
@@ -2328,6 +2474,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAINTENANCE-ROOM"
   },
   "hand-held air pump": {
@@ -2349,6 +2496,8 @@
    ],
    "ldesc": "",
    "name": "hand-held air pump",
+   "oid": "PUMP",
+   "room": "RESERVOIR-NORTH",
    "size": 0,
    "synonyms": [
     "pump",
@@ -2359,6 +2508,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "RESERVOIR-NORTH"
   },
   "huge diamond": {
@@ -2378,6 +2528,8 @@
    ],
    "ldesc": "There is an enormous diamond (perfectly cut) here.",
    "name": "huge diamond",
+   "oid": "DIAMOND",
+   "room": null,
    "size": 0,
    "synonyms": [
     "diamond",
@@ -2386,6 +2538,7 @@
    "text": "",
    "tvalue": 10,
    "value": 10,
+   "via": [],
    "where": null
   },
   "jade figurine": {
@@ -2405,6 +2558,8 @@
    ],
    "ldesc": "There is an exquisite jade figurine here.",
    "name": "jade figurine",
+   "oid": "JADE",
+   "room": "BAT-ROOM",
    "size": 10,
    "synonyms": [
     "figurine",
@@ -2413,6 +2568,7 @@
    "text": "",
    "tvalue": 5,
    "value": 5,
+   "via": [],
    "where": "BAT-ROOM"
   },
   "jewel-encrusted egg": {
@@ -2519,6 +2675,8 @@
    ],
    "ldesc": "",
    "name": "jewel-encrusted egg",
+   "oid": "EGG",
+   "room": "UP-A-TREE",
    "size": 0,
    "synonyms": [
     "egg",
@@ -2527,6 +2685,9 @@
    "text": "",
    "tvalue": 5,
    "value": 5,
+   "via": [
+    "bird's nest"
+   ],
    "where": "NEST"
   },
   "kitchen table": {
@@ -2551,6 +2712,8 @@
    ],
    "ldesc": "",
    "name": "kitchen table",
+   "oid": "KITCHEN-TABLE",
+   "room": "KITCHEN",
    "size": 0,
    "synonyms": [
     "table"
@@ -2558,6 +2721,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "KITCHEN"
   },
   "kitchen window": {
@@ -2627,6 +2791,8 @@
    ],
    "ldesc": "",
    "name": "kitchen window",
+   "oid": "KITCHEN-WINDOW",
+   "room": null,
    "size": 0,
    "synonyms": [
     "window"
@@ -2634,6 +2800,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "large bag": {
@@ -2703,6 +2870,8 @@
    ],
    "ldesc": "",
    "name": "large bag",
+   "oid": "LARGE-BAG",
+   "room": "ROUND-ROOM",
    "size": 0,
    "synonyms": [
     "bag"
@@ -2710,6 +2879,9 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "thief"
+   ],
    "where": "THIEF"
   },
   "large emerald": {
@@ -2728,6 +2900,8 @@
    ],
    "ldesc": "",
    "name": "large emerald",
+   "oid": "EMERALD",
+   "room": "RIVER-4",
    "size": 0,
    "synonyms": [
     "emerald",
@@ -2736,6 +2910,9 @@
    "text": "",
    "tvalue": 10,
    "value": 5,
+   "via": [
+    "red buoy"
+   ],
    "where": "BUOY"
   },
   "leaflet": {
@@ -2758,6 +2935,8 @@
    ],
    "ldesc": "A small leaflet is on the ground.",
    "name": "leaflet",
+   "oid": "ADVERTISEMENT",
+   "room": "WEST-OF-HOUSE",
    "size": 2,
    "synonyms": [
     "advertisement",
@@ -2768,6 +2947,9 @@
    "text": "\\\"WELCOME TO ZORK!| | ZORK is a game of adventure, danger, and low cunning. In it you will explore some of the most amazing territory ever seen by mortals. No computer should be without one!\\\"",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "small mailbox"
+   ],
    "where": "MAILBOX"
   },
   "leak": {
@@ -2786,6 +2968,8 @@
    ],
    "ldesc": "",
    "name": "leak",
+   "oid": "LEAK",
+   "room": "MAINTENANCE-ROOM",
    "size": 0,
    "synonyms": [
     "leak",
@@ -2795,6 +2979,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAINTENANCE-ROOM"
   },
   "leather bag of coins": {
@@ -2814,6 +2999,8 @@
    ],
    "ldesc": "An old leather bag, bulging with coins, is here.",
    "name": "leather bag of coins",
+   "oid": "BAG-OF-COINS",
+   "room": "MAZE-5",
    "size": 15,
    "synonyms": [
     "bag",
@@ -2823,6 +3010,7 @@
    "text": "",
    "tvalue": 5,
    "value": 10,
+   "via": [],
    "where": "MAZE-5"
   },
   "lunch": {
@@ -2844,6 +3032,8 @@
    ],
    "ldesc": "A hot pepper sandwich is here.",
    "name": "lunch",
+   "oid": "LUNCH",
+   "room": "KITCHEN",
    "size": 0,
    "synonyms": [
     "food",
@@ -2854,6 +3044,10 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "brown sack",
+    "kitchen table"
+   ],
    "where": "SANDWICH-BAG"
   },
   "machine": {
@@ -2920,6 +3114,8 @@
    ],
    "ldesc": "",
    "name": "machine",
+   "oid": "MACHINE",
+   "room": "MACHINE-ROOM",
    "size": 0,
    "synonyms": [
     "machine",
@@ -2930,6 +3126,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MACHINE-ROOM"
   },
   "magic boat": {
@@ -3107,6 +3304,8 @@
    ],
    "ldesc": "",
    "name": "magic boat",
+   "oid": "INFLATED-BOAT",
+   "room": null,
    "size": 20,
    "synonyms": [
     "boat",
@@ -3115,6 +3314,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": null
   },
   "matchbook": {
@@ -3213,6 +3413,8 @@
    ],
    "ldesc": "There is a matchbook whose cover says \\\"Visit Beautiful FCD#3\\\" here.",
    "name": "matchbook",
+   "oid": "MATCH",
+   "room": "DAM-LOBBY",
    "size": 2,
    "synonyms": [
     "match",
@@ -3222,6 +3424,7 @@
    "text": "| (Close cover before striking)| | YOU too can make BIG MONEY in the exciting field of PAPER SHUFFLING!| | Mr. Anderson of Muddle, Mass. says: \\\"Before I took this course I was a lowly bit twiddler. Now with what I learned at GUE Tech I feel really important and can obfuscate and confuse with the best.\\\"| | Dr. Blank had this to say: \\\"Ten short days ago all I could look forward to was a dead-end job as a doctor. Now I have a promising future and make really big Zorkmids.\\\"| | GUE Tech can't promise these fantastic results to everyone. But when you earn your degree from GUE Tech, your future will be brighter.",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "DAM-LOBBY"
   },
   "mirror": {
@@ -3310,6 +3513,8 @@
    ],
    "ldesc": "",
    "name": "mirror",
+   "oid": "MIRROR-1",
+   "room": "MIRROR-ROOM-1",
    "size": 0,
    "synonyms": [
     "reflection",
@@ -3319,6 +3524,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MIRROR-ROOM-1"
   },
   "mountain range": {
@@ -3352,6 +3558,8 @@
    ],
    "ldesc": "",
    "name": "mountain range",
+   "oid": "MOUNTAIN-RANGE",
+   "room": "MOUNTAINS",
    "size": 0,
    "synonyms": [
     "mountain",
@@ -3360,6 +3568,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MOUNTAINS"
   },
   "nasty knife": {
@@ -3383,6 +3592,8 @@
    ],
    "ldesc": "",
    "name": "nasty knife",
+   "oid": "KNIFE",
+   "room": "ATTIC",
    "size": 0,
    "synonyms": [
     "knives",
@@ -3392,6 +3603,9 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "table"
+   ],
    "where": "ATTIC-TABLE"
   },
   "number of ghosts": {
@@ -3442,6 +3656,8 @@
    ],
    "ldesc": "",
    "name": "number of ghosts",
+   "oid": "GHOSTS",
+   "room": "ENTRANCE-TO-HADES",
    "size": 0,
    "synonyms": [
     "ghosts",
@@ -3452,6 +3668,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "ENTRANCE-TO-HADES"
   },
   "painting": {
@@ -3483,6 +3700,8 @@
    ],
    "ldesc": "A painting by a neglected genius is here.",
    "name": "painting",
+   "oid": "PAINTING",
+   "room": "GALLERY",
    "size": 15,
    "synonyms": [
     "painting",
@@ -3493,6 +3712,7 @@
    "text": "",
    "tvalue": 6,
    "value": 4,
+   "via": [],
    "where": "GALLERY"
   },
   "pair of candles": {
@@ -3680,6 +3900,8 @@
    ],
    "ldesc": "",
    "name": "pair of candles",
+   "oid": "CANDLES",
+   "room": "SOUTH-TEMPLE",
    "size": 10,
    "synonyms": [
     "candles",
@@ -3688,6 +3910,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "SOUTH-TEMPLE"
   },
   "pedestal": {
@@ -3734,6 +3957,8 @@
    ],
    "ldesc": "",
    "name": "pedestal",
+   "oid": "PEDESTAL",
+   "room": "TORCH-ROOM",
    "size": 0,
    "synonyms": [
     "pedestal"
@@ -3741,6 +3966,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "TORCH-ROOM"
   },
   "pile of bodies": {
@@ -3781,6 +4007,8 @@
    ],
    "ldesc": "",
    "name": "pile of bodies",
+   "oid": "BODIES",
+   "room": null,
    "size": 0,
    "synonyms": [
     "bodies",
@@ -3791,6 +4019,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "pile of leaves": {
@@ -3867,6 +4096,8 @@
    ],
    "ldesc": "On the ground is a pile of leaves.",
    "name": "pile of leaves",
+   "oid": "LEAVES",
+   "room": "GRATING-CLEARING",
    "size": 25,
    "synonyms": [
     "leaves",
@@ -3876,6 +4107,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "GRATING-CLEARING"
   },
   "pile of plastic": {
@@ -3948,6 +4180,8 @@
    ],
    "ldesc": "There is a folded pile of plastic here which has a small valve attached.",
    "name": "pile of plastic",
+   "oid": "INFLATABLE-BOAT",
+   "room": "DAM-BASE",
    "size": 20,
    "synonyms": [
     "boat",
@@ -3958,6 +4192,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "DAM-BASE"
   },
   "platinum bar": {
@@ -3979,6 +4214,8 @@
    ],
    "ldesc": "On the ground is a large platinum bar.",
    "name": "platinum bar",
+   "oid": "BAR",
+   "room": "LOUD-ROOM",
    "size": 20,
    "synonyms": [
     "bar",
@@ -3988,6 +4225,7 @@
    "text": "",
    "tvalue": 5,
    "value": 10,
+   "via": [],
    "where": "LOUD-ROOM"
   },
   "pot of gold": {
@@ -4008,6 +4246,8 @@
    ],
    "ldesc": "",
    "name": "pot of gold",
+   "oid": "POT-OF-GOLD",
+   "room": "END-OF-RAINBOW",
    "size": 15,
    "synonyms": [
     "pot",
@@ -4017,6 +4257,7 @@
    "text": "",
    "tvalue": 10,
    "value": 10,
+   "via": [],
    "where": "END-OF-RAINBOW"
   },
   "prayer": {
@@ -4040,6 +4281,8 @@
    ],
    "ldesc": "",
    "name": "prayer",
+   "oid": "PRAYER",
+   "room": "NORTH-TEMPLE",
    "size": 0,
    "synonyms": [
     "prayer",
@@ -4048,6 +4291,7 @@
    "text": "The prayer is inscribed in an ancient script, rarely used today. It seems to be a philippic against small insects, absent-mindedness, and the picking up and dropping of small objects. The final verse consigns trespassers to the land of the dead. All evidence indicates that the beliefs of the ancient Zorkers were obscure.",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "NORTH-TEMPLE"
   },
   "punctured boat": {
@@ -4081,6 +4325,8 @@
    ],
    "ldesc": "",
    "name": "punctured boat",
+   "oid": "PUNCTURED-BOAT",
+   "room": null,
    "size": 20,
    "synonyms": [
     "boat",
@@ -4090,6 +4336,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": null
   },
   "quantity of water": {
@@ -4220,6 +4467,8 @@
    ],
    "ldesc": "",
    "name": "quantity of water",
+   "oid": "WATER",
+   "room": "KITCHEN",
    "size": 4,
    "synonyms": [
     "water",
@@ -4230,6 +4479,10 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "glass bottle",
+    "kitchen table"
+   ],
    "where": "BOTTLE"
   },
   "rainbow": {
@@ -4288,6 +4541,8 @@
    ],
    "ldesc": "",
    "name": "rainbow",
+   "oid": "RAINBOW",
+   "room": null,
    "size": 0,
    "synonyms": [
     "rainbow"
@@ -4295,6 +4550,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "red buoy": {
@@ -4315,6 +4571,8 @@
    ],
    "ldesc": "",
    "name": "red buoy",
+   "oid": "BUOY",
+   "room": "RIVER-4",
    "size": 10,
    "synonyms": [
     "buoy"
@@ -4322,6 +4580,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "RIVER-4"
   },
   "red button": {
@@ -4413,6 +4672,8 @@
    ],
    "ldesc": "",
    "name": "red button",
+   "oid": "RED-BUTTON",
+   "room": "MAINTENANCE-ROOM",
    "size": 0,
    "synonyms": [
     "button",
@@ -4421,6 +4682,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAINTENANCE-ROOM"
   },
   "red hot brass bell": {
@@ -4500,6 +4762,8 @@
    ],
    "ldesc": "On the ground is a red hot bell.",
    "name": "red hot brass bell",
+   "oid": "HOT-BELL",
+   "room": null,
    "size": 0,
    "synonyms": [
     "bell"
@@ -4507,6 +4771,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": null
   },
   "river": {
@@ -4572,6 +4837,8 @@
    ],
    "ldesc": "",
    "name": "river",
+   "oid": "RIVER",
+   "room": null,
    "size": 0,
    "synonyms": [
     "river"
@@ -4579,6 +4846,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "rope": {
@@ -4692,6 +4960,8 @@
    ],
    "ldesc": "",
    "name": "rope",
+   "oid": "ROPE",
+   "room": "ATTIC",
    "size": 10,
    "synonyms": [
     "rope",
@@ -4701,6 +4971,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "ATTIC"
   },
   "rusty knife": {
@@ -4745,6 +5016,8 @@
    ],
    "ldesc": "",
    "name": "rusty knife",
+   "oid": "RUSTY-KNIFE",
+   "room": "MAZE-5",
    "size": 20,
    "synonyms": [
     "knives",
@@ -4753,6 +5026,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAZE-5"
   },
   "sand": {
@@ -4788,6 +5062,8 @@
    ],
    "ldesc": "",
    "name": "sand",
+   "oid": "SAND",
+   "room": "SANDY-CAVE",
    "size": 0,
    "synonyms": [
     "sand"
@@ -4795,6 +5071,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "SANDY-CAVE"
   },
   "sapphire-encrusted bracelet": {
@@ -4813,6 +5090,8 @@
    ],
    "ldesc": "",
    "name": "sapphire-encrusted bracelet",
+   "oid": "BRACELET",
+   "room": "GAS-ROOM",
    "size": 10,
    "synonyms": [
     "bracelet",
@@ -4823,6 +5102,7 @@
    "text": "",
    "tvalue": 5,
    "value": 5,
+   "via": [],
    "where": "GAS-ROOM"
   },
   "sceptre": {
@@ -4897,6 +5177,8 @@
    ],
    "ldesc": "An ornamented sceptre, tapering to a sharp point, is here.",
    "name": "sceptre",
+   "oid": "SCEPTRE",
+   "room": "EGYPT-ROOM",
    "size": 3,
    "synonyms": [
     "sceptre",
@@ -4906,6 +5188,9 @@
    "text": "",
    "tvalue": 6,
    "value": 4,
+   "via": [
+    "gold coffin"
+   ],
    "where": "COFFIN"
   },
   "screwdriver": {
@@ -4926,6 +5211,8 @@
    ],
    "ldesc": "",
    "name": "screwdriver",
+   "oid": "SCREWDRIVER",
+   "room": "MAINTENANCE-ROOM",
    "size": 0,
    "synonyms": [
     "screwdriver",
@@ -4936,6 +5223,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAINTENANCE-ROOM"
   },
   "set of teeth": {
@@ -4980,6 +5268,8 @@
    ],
    "ldesc": "",
    "name": "set of teeth",
+   "oid": "TEETH",
+   "room": null,
    "size": 0,
    "synonyms": [
     "overboard",
@@ -4988,6 +5278,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "GLOBAL-OBJECTS"
   },
   "shovel": {
@@ -5006,6 +5297,8 @@
    ],
    "ldesc": "",
    "name": "shovel",
+   "oid": "SHOVEL",
+   "room": "SANDY-BEACH",
    "size": 15,
    "synonyms": [
     "shovel",
@@ -5015,6 +5308,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "SANDY-BEACH"
   },
   "skeleton": {
@@ -5051,6 +5345,8 @@
    ],
    "ldesc": "",
    "name": "skeleton",
+   "oid": "BONES",
+   "room": "MAZE-5",
    "size": 0,
    "synonyms": [
     "bones",
@@ -5060,6 +5356,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAZE-5"
   },
   "skeleton key": {
@@ -5080,6 +5377,8 @@
    ],
    "ldesc": "",
    "name": "skeleton key",
+   "oid": "KEYS",
+   "room": "MAZE-5",
    "size": 10,
    "synonyms": [
     "key"
@@ -5087,6 +5386,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAZE-5"
   },
   "small mailbox": {
@@ -5117,6 +5417,8 @@
    ],
    "ldesc": "",
    "name": "small mailbox",
+   "oid": "MAILBOX",
+   "room": "WEST-OF-HOUSE",
    "size": 0,
    "synonyms": [
     "mailbox",
@@ -5125,6 +5427,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "WEST-OF-HOUSE"
   },
   "small piece of vitreous slag": {
@@ -5146,6 +5449,8 @@
    ],
    "ldesc": "",
    "name": "small piece of vitreous slag",
+   "oid": "GUNK",
+   "room": null,
    "size": 10,
    "synonyms": [
     "gunk",
@@ -5155,6 +5460,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": null
   },
   "small pile of coal": {
@@ -5175,6 +5481,8 @@
    ],
    "ldesc": "",
    "name": "small pile of coal",
+   "oid": "COAL",
+   "room": "DEAD-END-5",
    "size": 20,
    "synonyms": [
     "coal",
@@ -5184,6 +5492,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "DEAD-END-5"
   },
   "songbird": {
@@ -5231,6 +5540,8 @@
    ],
    "ldesc": "",
    "name": "songbird",
+   "oid": "SONGBIRD",
+   "room": null,
    "size": 0,
    "synonyms": [
     "bird",
@@ -5239,6 +5550,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "stiletto": {
@@ -5263,6 +5575,8 @@
    ],
    "ldesc": "",
    "name": "stiletto",
+   "oid": "STILETTO",
+   "room": "ROUND-ROOM",
    "size": 10,
    "synonyms": [
     "stiletto"
@@ -5270,6 +5584,9 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "thief"
+   ],
    "where": "THIEF"
   },
   "stone barrow": {
@@ -5289,6 +5606,8 @@
    ],
    "ldesc": "",
    "name": "stone barrow",
+   "oid": "BARROW",
+   "room": "STONE-BARROW",
    "size": 0,
    "synonyms": [
     "barrow",
@@ -5297,6 +5616,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "STONE-BARROW"
   },
   "stone door": {
@@ -5331,6 +5651,8 @@
    ],
    "ldesc": "",
    "name": "stone door",
+   "oid": "BARROW-DOOR",
+   "room": "STONE-BARROW",
    "size": 0,
    "synonyms": [
     "door"
@@ -5338,6 +5660,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "STONE-BARROW"
   },
   "surrounding wall": {
@@ -5352,6 +5675,8 @@
    "is": [],
    "ldesc": "",
    "name": "surrounding wall",
+   "oid": "WALL",
+   "room": null,
    "size": 0,
    "synonyms": [
     "wall",
@@ -5360,6 +5685,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "GLOBAL-OBJECTS"
   },
   "switch": {
@@ -5406,6 +5732,8 @@
    ],
    "ldesc": "",
    "name": "switch",
+   "oid": "MACHINE-SWITCH",
+   "room": "MACHINE-ROOM",
    "size": 0,
    "synonyms": [
     "switch"
@@ -5413,6 +5741,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MACHINE-ROOM"
   },
   "sword": {
@@ -5456,6 +5785,8 @@
    ],
    "ldesc": "",
    "name": "sword",
+   "oid": "SWORD",
+   "room": "LIVING-ROOM",
    "size": 30,
    "synonyms": [
     "sword",
@@ -5466,6 +5797,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LIVING-ROOM"
   },
   "table": {
@@ -5488,6 +5820,8 @@
    ],
    "ldesc": "",
    "name": "table",
+   "oid": "ATTIC-TABLE",
+   "room": "ATTIC",
    "size": 0,
    "synonyms": [
     "table"
@@ -5495,6 +5829,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "ATTIC"
   },
   "tan label": {
@@ -5518,6 +5853,8 @@
    ],
    "ldesc": "",
    "name": "tan label",
+   "oid": "BOAT-LABEL",
+   "room": null,
    "size": 2,
    "synonyms": [
     "label",
@@ -5527,6 +5864,9 @@
    "text": "!!!!FROBOZZ MAGIC BOAT COMPANY!!!!| | Hello, Sailor!| | Instructions for use:| | To get into a body of water, say \\\"Launch\\\".| To get to shore, say \\\"Land\\\" or the direction in which you want to maneuver the boat.| | Warranty:| | This boat is guaranteed against all defects for a period of 76 milliseconds from date of purchase or until first used, whichever comes first.| | Warning:| This boat is made of thin plastic.| Good Luck!",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "magic boat"
+   ],
    "where": "INFLATED-BOAT"
   },
   "thief": {
@@ -5690,6 +6030,8 @@
    ],
    "ldesc": "There is a suspicious-looking individual, holding a large bag, leaning against one wall. He is armed with a deadly stiletto.",
    "name": "thief",
+   "oid": "THIEF",
+   "room": "ROUND-ROOM",
    "size": 0,
    "synonyms": [
     "thief",
@@ -5700,6 +6042,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "ROUND-ROOM"
   },
   "torch": {
@@ -5753,6 +6096,8 @@
    ],
    "ldesc": "",
    "name": "torch",
+   "oid": "TORCH",
+   "room": "TORCH-ROOM",
    "size": 20,
    "synonyms": [
     "torch",
@@ -5762,6 +6107,9 @@
    "text": "",
    "tvalue": 6,
    "value": 14,
+   "via": [
+    "pedestal"
+   ],
    "where": "PEDESTAL"
   },
   "tour guidebook": {
@@ -5785,6 +6133,8 @@
    ],
    "ldesc": "",
    "name": "tour guidebook",
+   "oid": "GUIDE",
+   "room": "DAM-LOBBY",
    "size": 0,
    "synonyms": [
     "guide",
@@ -5795,6 +6145,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "DAM-LOBBY"
   },
   "trap door": {
@@ -5867,6 +6218,8 @@
    ],
    "ldesc": "",
    "name": "trap door",
+   "oid": "TRAP-DOOR",
+   "room": "LIVING-ROOM",
    "size": 0,
    "synonyms": [
     "door",
@@ -5877,6 +6230,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LIVING-ROOM"
   },
   "tree": {
@@ -5899,6 +6253,8 @@
    ],
    "ldesc": "",
    "name": "tree",
+   "oid": "TREE",
+   "room": null,
    "size": 0,
    "synonyms": [
     "tree",
@@ -5907,6 +6263,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "troll": {
@@ -6074,6 +6431,8 @@
    ],
    "ldesc": "A nasty-looking troll, brandishing a bloody axe, blocks all passages out of the room.",
    "name": "troll",
+   "oid": "TROLL",
+   "room": "TROLL-ROOM",
    "size": 0,
    "synonyms": [
     "troll"
@@ -6081,6 +6440,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "TROLL-ROOM"
   },
   "trophy case": {
@@ -6117,6 +6477,8 @@
    ],
    "ldesc": "",
    "name": "trophy case",
+   "oid": "TROPHY-CASE",
+   "room": "LIVING-ROOM",
    "size": 0,
    "synonyms": [
     "case"
@@ -6124,6 +6486,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LIVING-ROOM"
   },
   "trunk of jewels": {
@@ -6144,6 +6507,8 @@
    ],
    "ldesc": "There is an old trunk here, bulging with assorted jewels.",
    "name": "trunk of jewels",
+   "oid": "TRUNK",
+   "room": "RESERVOIR",
    "size": 35,
    "synonyms": [
     "trunk",
@@ -6154,6 +6519,7 @@
    "text": "",
    "tvalue": 5,
    "value": 15,
+   "via": [],
    "where": "RESERVOIR"
   },
   "tube": {
@@ -6211,6 +6577,8 @@
    ],
    "ldesc": "There is an object which looks like a tube of toothpaste here.",
    "name": "tube",
+   "oid": "TUBE",
+   "room": "MAINTENANCE-ROOM",
    "size": 5,
    "synonyms": [
     "tube",
@@ -6220,6 +6588,7 @@
    "text": "---> Frobozz Magic Gunk Company <---| All-Purpose Gunk",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAINTENANCE-ROOM"
   },
   "viscous material": {
@@ -6251,6 +6620,8 @@
    ],
    "ldesc": "",
    "name": "viscous material",
+   "oid": "PUTTY",
+   "room": "MAINTENANCE-ROOM",
    "size": 6,
    "synonyms": [
     "material",
@@ -6259,6 +6630,9 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [
+    "tube"
+   ],
    "where": "TUBE"
   },
   "wall with engravings": {
@@ -6280,6 +6654,8 @@
    ],
    "ldesc": "There are old engravings on the walls here.",
    "name": "wall with engravings",
+   "oid": "ENGRAVINGS",
+   "room": "ENGRAVINGS-CAVE",
    "size": 0,
    "synonyms": [
     "wall",
@@ -6289,6 +6665,7 @@
    "text": "The engravings were incised in the living rock of the cave wall by an unknown hand. They depict, in symbolic form, the beliefs of the ancient Zorkers. Skillfully interwoven with the bas reliefs are excerpts illustrating the major religious tenets of that time. Unfortunately, a later age seems to have considered them blasphemous and just as skillfully excised them.",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "ENGRAVINGS-CAVE"
   },
   "water": {
@@ -6415,6 +6792,8 @@
    ],
    "ldesc": "",
    "name": "water",
+   "oid": "GLOBAL-WATER",
+   "room": null,
    "size": 0,
    "synonyms": [
     "water",
@@ -6423,6 +6802,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "white cliffs": {
@@ -6455,6 +6835,8 @@
    ],
    "ldesc": "",
    "name": "white cliffs",
+   "oid": "WHITE-CLIFF",
+   "room": null,
    "size": 0,
    "synonyms": [
     "cliff",
@@ -6463,6 +6845,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "white house": {
@@ -6565,6 +6948,8 @@
    ],
    "ldesc": "",
    "name": "white house",
+   "oid": "WHITE-HOUSE",
+   "room": null,
    "size": 0,
    "synonyms": [
     "house"
@@ -6572,6 +6957,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "wooden door": {
@@ -6636,6 +7022,8 @@
    ],
    "ldesc": "",
    "name": "wooden door",
+   "oid": "WOODEN-DOOR",
+   "room": "LIVING-ROOM",
    "size": 0,
    "synonyms": [
     "door",
@@ -6645,6 +7033,7 @@
    "text": "The engravings translate to \\\"This space intentionally left blank.\\\"",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LIVING-ROOM"
   },
   "wooden ladder": {
@@ -6667,6 +7056,8 @@
    ],
    "ldesc": "",
    "name": "wooden ladder",
+   "oid": "LADDER",
+   "room": null,
    "size": 0,
    "synonyms": [
     "ladder"
@@ -6674,6 +7065,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "LOCAL-GLOBALS"
   },
   "wooden railing": {
@@ -6692,6 +7084,8 @@
    ],
    "ldesc": "",
    "name": "wooden railing",
+   "oid": "RAILING",
+   "room": "DOME-ROOM",
    "size": 0,
    "synonyms": [
     "railing",
@@ -6700,6 +7094,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "DOME-ROOM"
   },
   "wrench": {
@@ -6718,6 +7113,8 @@
    ],
    "ldesc": "",
    "name": "wrench",
+   "oid": "WRENCH",
+   "room": "MAINTENANCE-ROOM",
    "size": 10,
    "synonyms": [
     "wrench",
@@ -6727,6 +7124,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAINTENANCE-ROOM"
   },
   "yellow button": {
@@ -6818,6 +7216,8 @@
    ],
    "ldesc": "",
    "name": "yellow button",
+   "oid": "YELLOW-BUTTON",
+   "room": "MAINTENANCE-ROOM",
    "size": 0,
    "synonyms": [
     "button",
@@ -6826,6 +7226,7 @@
    "text": "",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "MAINTENANCE-ROOM"
   },
   "zork owner's manual": {
@@ -6848,6 +7249,8 @@
    ],
    "ldesc": "",
    "name": "ZORK owner's manual",
+   "oid": "OWNERS-MANUAL",
+   "room": "STUDIO",
    "size": 0,
    "synonyms": [
     "manual",
@@ -6857,6 +7260,7 @@
    "text": "Congratulations!| | You are the privileged owner of ZORK I: The Great Underground Empire, a self-contained and self-maintaining universe. If used and maintained in accordance with normal operating practices for small universes, ZORK will provide many months of trouble-free operation.",
    "tvalue": 0,
    "value": 0,
+   "via": [],
    "where": "STUDIO"
   }
  },
@@ -8555,12 +8959,7 @@
   },
   {
    "action": null,
-   "blocked": [
-    {
-     "dir": "UP",
-     "msg": "The way is decided by Up Chimney Function."
-    }
-   ],
+   "blocked": [],
    "desc": "This appears to have been an artist's studio. The walls and floors are splattered with paints of 69 different colors. Strangely enough, nothing of value is hanging here. At the south end of the room is an open door (also covered with paint). A dark and narrow chimney leads up from a fireplace; although you might be able to get up it, it seems unlikely you could get back down.",
    "does": [],
    "exits": [
@@ -8568,6 +8967,11 @@
      "cond": "",
      "dir": "SOUTH",
      "to": "GALLERY"
+    },
+    {
+     "cond": "up the chimney, carrying at most one item plus the lamp",
+     "dir": "UP",
+     "to": "KITCHEN"
     }
    ],
    "flags": [
