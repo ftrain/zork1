@@ -118,6 +118,11 @@
   .says { margin: 8px 0; }
   .says b { color: var(--acid); font-weight: 600; }
   .says .when { color: var(--dim); font-size: 11px; }
+  .unlock {
+    margin: -2px 0 8px 9px; padding-left: 8px;
+    border-left: 2px solid #4a3a6b; color: var(--ink); font-size: 12px;
+  }
+  .unlock .key2 { color: #9d86d0; letter-spacing: .05em; }
   .thing .what, aside > .what {
     color: var(--dim); font-size: 11px; margin: 2px 0 6px;
   }
@@ -952,6 +957,36 @@
     return card;
   }
 
+  // What a locked door is actually waiting on. Traced backwards through the
+  // source: the exit names a flag, the flag is set somewhere, and that
+  // somewhere sits under a verb. Hence "odysseus" for the Cyclops wall.
+  function unlockNote(needs) {
+    var box = document.createElement("div");
+    box.className = "unlock";
+    var head = document.createElement("span");
+    head.className = "key2";
+    head.textContent = "opened by ";
+    box.appendChild(head);
+    var said = [];
+    needs.slice(0, 3).forEach(function (h) {
+      var verb = (h.verbs || []).join(" / ");
+      var line = verb
+        ? verb + (h.on ? " the " + h.on : "")
+        : (h.on ? "something that happens to the " + h.on
+                : "something the game does");
+      if (h.when) line += " (" + h.when + ")";
+      said.push(line);
+    });
+    box.appendChild(document.createTextNode(said.join(", or ")));
+    if (needs[0].says && needs[0].says[0]) {
+      var q = document.createElement("div");
+      q.className = "quote";
+      q.textContent = "“" + needs[0].says[0] + "”";
+      box.appendChild(q);
+    }
+    return box;
+  }
+
   function atlasThings(host, n) {
     if (n.does && n.does.length) {
       // The room's own logic. "On looking" is the description already
@@ -1303,6 +1338,7 @@
         (e.cond ? '<span class="cond">' + esc(e.cond) + "</span>" : "");
       b.onclick = function () { atlasGo(e.dir, e.to); };
       host.appendChild(b);
+      if (e.needs && e.needs.length) host.appendChild(unlockNote(e.needs));
     });
     n.blocked.forEach(function (e) {
       var d = document.createElement("div");

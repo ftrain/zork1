@@ -153,6 +153,36 @@ attribute 17, finding the player object by name) are the ones worked out in
 [zwalker](https://github.com/avwohl/zwalker), whose Python interpreter this
 was first prototyped against.
 
+## What each locked door is waiting on
+
+Every gated exit in the atlas says what opens it. The Living Room's west
+wall reads *opened by odysseus*, with the line the Cyclops speaks when he
+goes through it.
+
+This is read backwards out of the source. An exit names a flag —
+`IF MAGIC-FLAG`, `IF TRAP-DOOR IS OPEN`. Somewhere a routine sets that
+flag, and that statement sits inside a `COND` clause guarded by a verb. So:
+flag → setter → the command that trips it. `changes()` in the extractor is
+the mirror image of `responses()`: the same walk over the clauses,
+collecting `<SETG FLAG T>` and `<FSET ,OBJ ,BIT>` instead of the `TELL`
+strings.
+
+Two details make it work. A verb routine is named after its verb, so
+`V-ODYSSEUS` supplies the word when the clause has no `<VERB? …>` of its
+own. And `<FSET ,PRSO ,OPENBIT>` sets the flag on *whatever was typed*,
+which inside an object's own routine means that object — otherwise the
+window and the trap door would have no findable setter at all.
+
+27 of the 31 machine-readable gates trace back to a command this way. The
+four that do not are set by the game rather than by you: the troll's flag
+flips when he dies, not when you say anything.
+
+**It did not help the solver.** Wiring these unlocks in as commands to try
+produced no gain and cost one seed six points, because the solver never
+gets deep enough to stand in front of the doors it cannot open — the
+Cyclops is far past where it runs out. The knowledge is real and the atlas
+is better for it; the bottleneck was somewhere else. The hook was removed.
+
 ## A complete game, deterministically
 
 **replay a win** plays Zork I from the opening to 350 out of 350 points in

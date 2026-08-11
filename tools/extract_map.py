@@ -404,6 +404,86 @@ def responses(routine):
     return out
 
 
+def changes(routine):
+    """What a routine *does*, rather than what it says.
+
+    The mirror image of responses(): same walk over the COND clauses, but
+    collecting <SETG FLAG T> and <FSET ,OBJ ,BIT> instead of TELL strings.
+    This is the half that lets a locked door be traced back to the command
+    that opens it.
+    """
+    out = []
+
+    def walk(cond, verbs, guard):
+        for clause in cond[1:]:
+            if not isinstance(clause, list) or not clause:
+                continue
+            head, body = clause[0], clause[1:]
+            v = verbs + [verb_word(x) for x in atoms(head, "VERB?")]
+            g = guard or humanize_guard(head)
+            sets = []
+            for f in find_forms(body, "SETG"):
+                args = [str(x) for x in f[1:] if isinstance(x, Atom)]
+                # <SETG FLAG T> turns it on; <SETG FLAG <>> turns it off.
+                if len(args) >= 2 and args[1] == "T":
+                    sets.append({"kind": "global", "name": args[0]})
+            for f in find_forms(body, "FSET"):
+                args = [str(x).lstrip(",") for x in f[1:] if isinstance(x, Atom)]
+                if len(args) >= 2 and args[1].endswith("BIT"):
+                    sets.append({"kind": "flag", "obj": args[0], "bit": args[1]})
+            if sets:
+                said = [t for t in texts(body) if len(t) > 3]
+                out.append({"verbs": sorted(set(v)), "when": g, "sets": sets,
+                            "says": said[:1]})
+            for sub in subconds(body):
+                walk(sub, v, g)
+
+    for cond in subconds(routine):
+        walk(cond, [], "")
+    return out
+
+
+def unlock_index(sources, owner_of, owner_id_of):
+    """flag -> the commands that set it, with the thing they act on."""
+    index = {}
+    for src in sources:
+        for body in forms(src, "ROUTINE"):
+            m = re.match(r"<ROUTINE\s+([A-Z0-9?\-]+)", body)
+            if not m:
+                continue
+            tree = parse(body)
+            if not tree:
+                continue
+            rname = m.group(1)
+            owner = owner_of.get(rname)
+            for entry in changes(tree[0]):
+                verbs = entry["verbs"]
+                # A verb routine is named after its verb: V-ODYSSEUS is what
+                # happens when you say odysseus. Without this the Cyclops
+                # chain loses the one word that matters.
+                if not verbs and rname.startswith("V-"):
+                    verbs = [rname[2:].replace("-", " ").lower()]
+                for target in entry["sets"]:
+                    # ,PRSO is "whatever was typed"; inside an object's own
+                    # routine that means the object itself.
+                    if target["kind"] == "flag" and target["obj"] == "PRSO":
+                        if rname not in owner_id_of:
+                            continue
+                        target = dict(target, obj=owner_id_of[rname])
+                    key = (target["name"] if target["kind"] == "global"
+                           else target["obj"] + "/" + target["bit"])
+                    how = {"verbs": verbs, "when": entry["when"],
+                           "says": entry["says"], "routine": m.group(1)}
+                    if owner:
+                        how["on"] = owner
+                    # A clause with no verb is the game doing it to you, not
+                    # something you can go and do; keep it, but marked.
+                    index.setdefault(key, [])
+                    if how not in index[key]:
+                        index[key].append(how)
+    return index
+
+
 def routine_map(actions_src):
     """ROUTINE name -> the verbs it answers and what it says."""
     out = {}
@@ -499,6 +579,7 @@ def main():
                         "dir": key,
                         "to": to.group(1),
                         "cond": humanize_cond(cond),
+                        "gate": gate_of(cond),
                     })
                     continue
                 per = re.match(r"PER\s+([A-Z0-9?\-]+)", rest_nc)
@@ -609,6 +690,41 @@ def main():
         rec["room"] = loc if loc in rooms else None
         rec["via"] = chain
 
+    # Which routine belongs to which thing, so an unlock can be reported as
+    # "say odysseus to the cyclops" rather than as a routine name.
+    owner_of, owner_id_of = {}, {}
+    for rec in lore.values():
+        if rec.get("action"):
+            owner_of[rec["action"]] = rec["name"]
+            owner_id_of[rec["action"]] = rec["oid"]
+    for rm in rooms.values():
+        if rm.get("action"):
+            owner_of.setdefault(rm["action"], rm["name"])
+
+    unlocks = unlock_index([actions, read("gverbs.zil")], owner_of, owner_id_of)
+
+    # Hang the answer on every gated exit: what it waits on, and what trips
+    # it. This is the backward step -- from a locked door to the command.
+    gated = 0
+    for rm in rooms.values():
+        for e in rm["exits"]:
+            g = e.get("gate")
+            if not g:
+                continue
+            key = (g["name"] if g["kind"] == "global"
+                   else g["obj"] + "/" + g["bit"])
+            e["needs"] = unlocks.get(key, [])
+            # Anything gated on being open is opened by opening it. The
+            # generic handler sets the bit on whatever was typed, so there
+            # is no object-specific setter to find.
+            if not e["needs"] and g["kind"] == "flag" and g["bit"] == "OPENBIT":
+                who = names.get(g["obj"], pretty(g["obj"]).lower())
+                e["needs"] = [{"verbs": ["open"], "on": who, "when": "",
+                               "says": [], "routine": "V-OPEN"}]
+            if e["needs"]:
+                gated += 1
+    print("gated exits traced back to a command: %d" % gated)
+
     world = {
         "start": "WEST-OF-HOUSE",
         "rooms": [rooms[k] for k in rooms],
@@ -616,6 +732,7 @@ def main():
         "everywhere": sorted(set(everywhere)),
         "objectFlags": objflags,
         "lore": lore,
+        "unlocks": unlocks,
     }
     out = os.path.join(ROOT, "web", "world.json")
     with open(out, "w") as fh:
@@ -637,6 +754,24 @@ def main():
         sum(len(r["blocked"]) for r in rooms.values()),
         sum(len(r["objects"]) for r in rooms.values())))
     print("wrote " + out)
+
+
+def gate_of(cond):
+    """The flag an exit is actually waiting on, in machine terms.
+
+    `IF TRAP-DOOR IS OPEN` waits on an object's flag; `IF MAGIC-FLAG` waits
+    on a global. Keeping the raw form is what makes it possible to go and
+    find whatever sets it.
+    """
+    if not cond:
+        return None
+    m = re.match(r"IF\s+([A-Z0-9?\-]+)\s+IS\s+([A-Z]+)", cond)
+    if m:
+        return {"kind": "flag", "obj": m.group(1), "bit": m.group(2) + "BIT"}
+    m = re.match(r"IF\s+([A-Z0-9?\-]+)", cond)
+    if m:
+        return {"kind": "global", "name": m.group(1)}
+    return None
 
 
 def humanize_cond(cond):

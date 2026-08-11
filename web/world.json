@@ -7797,36 +7797,81 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "NORTH-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "SOUTH-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "NE",
+     "gate": null,
      "to": "NORTH-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "SE",
+     "gate": null,
      "to": "SOUTH-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "FOREST-1"
     },
     {
      "cond": "if won flag",
      "dir": "SW",
+     "gate": {
+      "kind": "global",
+      "name": "WON-FLAG"
+     },
+     "needs": [
+      {
+       "routine": "SCORE-UPD",
+       "says": [],
+       "verbs": [],
+       "when": ""
+      },
+      {
+       "routine": "SCORE-UPD",
+       "says": [
+        "An almost inaudible voice whispers in your ear, \\\"Look to your treasures for the final secret.\\\""
+       ],
+       "verbs": [],
+       "when": ""
+      }
+     ],
      "to": "STONE-BARROW"
     },
     {
      "cond": "if won flag",
      "dir": "IN",
+     "gate": {
+      "kind": "global",
+      "name": "WON-FLAG"
+     },
+     "needs": [
+      {
+       "routine": "SCORE-UPD",
+       "says": [],
+       "verbs": [],
+       "when": ""
+      },
+      {
+       "routine": "SCORE-UPD",
+       "says": [
+        "An almost inaudible voice whispers in your ear, \\\"Look to your treasures for the final secret.\\\""
+       ],
+       "verbs": [],
+       "when": ""
+      }
+     ],
      "to": "STONE-BARROW"
     }
    ],
@@ -7899,6 +7944,7 @@
     {
      "cond": "",
      "dir": "NE",
+     "gate": null,
      "to": "WEST-OF-HOUSE"
     }
    ],
@@ -7938,26 +7984,31 @@
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "WEST-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "SE",
+     "gate": null,
      "to": "EAST-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "WEST-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "EAST-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "PATH"
     }
    ],
@@ -7991,26 +8042,31 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "WEST-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "EAST-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "NE",
+     "gate": null,
      "to": "EAST-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "NW",
+     "gate": null,
      "to": "WEST-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "FOREST-3"
     }
    ],
@@ -8061,36 +8117,73 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "NORTH-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "SOUTH-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "SOUTH-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "NW",
+     "gate": null,
      "to": "NORTH-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "CLEARING"
     },
     {
      "cond": "if the kitchen window is open",
      "dir": "WEST",
+     "gate": {
+      "bit": "OPENBIT",
+      "kind": "flag",
+      "obj": "KITCHEN-WINDOW"
+     },
+     "needs": [
+      {
+       "on": "kitchen window",
+       "routine": "V-OPEN",
+       "says": [],
+       "verbs": [
+        "open"
+       ],
+       "when": ""
+      }
+     ],
      "to": "KITCHEN"
     },
     {
      "cond": "if the kitchen window is open",
      "dir": "IN",
+     "gate": {
+      "bit": "OPENBIT",
+      "kind": "flag",
+      "obj": "KITCHEN-WINDOW"
+     },
+     "needs": [
+      {
+       "on": "kitchen window",
+       "routine": "V-OPEN",
+       "says": [],
+       "verbs": [
+        "open"
+       ],
+       "when": ""
+      }
+     ],
      "to": "KITCHEN"
     }
    ],
@@ -8127,16 +8220,19 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "GRATING-CLEARING"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "PATH"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "FOREST-3"
     }
    ],
@@ -8174,16 +8270,19 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MOUNTAINS"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "CLEARING"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "PATH"
     }
    ],
@@ -8221,16 +8320,19 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "FOREST-2"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "FOREST-2"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "FOREST-2"
     }
    ],
@@ -8276,16 +8378,19 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "CLEARING"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "FOREST-1"
     },
     {
      "cond": "",
      "dir": "NW",
+     "gate": null,
      "to": "SOUTH-OF-HOUSE"
     }
    ],
@@ -8314,26 +8419,31 @@
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "UP-A-TREE"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "GRATING-CLEARING"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "FOREST-2"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "NORTH-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "FOREST-1"
     }
    ],
@@ -8419,6 +8529,7 @@
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "PATH"
     }
    ],
@@ -8480,16 +8591,19 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "FOREST-2"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "FOREST-1"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "PATH"
     },
     {
@@ -8532,21 +8646,25 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "CANYON-VIEW"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "FOREST-2"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "FOREST-3"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "EAST-OF-HOUSE"
     }
    ],
@@ -8606,26 +8724,65 @@
     {
      "cond": "if the kitchen window is open",
      "dir": "EAST",
+     "gate": {
+      "bit": "OPENBIT",
+      "kind": "flag",
+      "obj": "KITCHEN-WINDOW"
+     },
+     "needs": [
+      {
+       "on": "kitchen window",
+       "routine": "V-OPEN",
+       "says": [],
+       "verbs": [
+        "open"
+       ],
+       "when": ""
+      }
+     ],
      "to": "EAST-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "LIVING-ROOM"
     },
     {
      "cond": "if the kitchen window is open",
      "dir": "OUT",
+     "gate": {
+      "bit": "OPENBIT",
+      "kind": "flag",
+      "obj": "KITCHEN-WINDOW"
+     },
+     "needs": [
+      {
+       "on": "kitchen window",
+       "routine": "V-OPEN",
+       "says": [],
+       "verbs": [
+        "open"
+       ],
+       "when": ""
+      }
+     ],
      "to": "EAST-OF-HOUSE"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "ATTIC"
     },
     {
      "cond": "if false flag",
      "dir": "DOWN",
+     "gate": {
+      "kind": "global",
+      "name": "FALSE-FLAG"
+     },
+     "needs": [],
      "to": "STUDIO"
     }
    ],
@@ -8658,6 +8815,7 @@
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "KITCHEN"
     }
    ],
@@ -8742,11 +8900,28 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "KITCHEN"
     },
     {
      "cond": "if magic flag",
      "dir": "WEST",
+     "gate": {
+      "kind": "global",
+      "name": "MAGIC-FLAG"
+     },
+     "needs": [
+      {
+       "routine": "V-ODYSSEUS",
+       "says": [
+        "The cyclops, hearing the name of his father's deadly nemesis, flees the room by knocking down the wall on the east of the room."
+       ],
+       "verbs": [
+        "odysseus"
+       ],
+       "when": ""
+      }
+     ],
      "to": "STRANGE-PASSAGE"
     },
     {
@@ -8829,16 +9004,34 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "TROLL-ROOM"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "EAST-OF-CHASM"
     },
     {
      "cond": "if the trap door is open",
      "dir": "UP",
+     "gate": {
+      "bit": "OPENBIT",
+      "kind": "flag",
+      "obj": "TRAP-DOOR"
+     },
+     "needs": [
+      {
+       "on": "trap door",
+       "routine": "V-OPEN",
+       "says": [],
+       "verbs": [
+        "open"
+       ],
+       "when": ""
+      }
+     ],
      "to": "LIVING-ROOM"
     }
    ],
@@ -8863,16 +9056,145 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "CELLAR"
     },
     {
      "cond": "if troll flag",
      "dir": "EAST",
+     "gate": {
+      "kind": "global",
+      "name": "TROLL-FLAG"
+     },
+     "needs": [
+      {
+       "on": "troll",
+       "routine": "TROLL-FCN",
+       "says": [],
+       "verbs": [],
+       "when": ""
+      },
+      {
+       "on": "troll",
+       "routine": "TROLL-FCN",
+       "says": [
+        "An unconscious troll is sprawled on the floor. All passages out of the room are open."
+       ],
+       "verbs": [],
+       "when": ""
+      },
+      {
+       "on": "troll",
+       "routine": "TROLL-FCN",
+       "says": [],
+       "verbs": [
+        "destroy",
+        "give",
+        "move",
+        "take",
+        "throw"
+       ],
+       "when": ""
+      },
+      {
+       "on": "troll",
+       "routine": "TROLL-FCN",
+       "says": [
+        "and eats it hungrily. Poor troll, he dies from an internal hemorrhage and his carcass disappears in a sinister black fog."
+       ],
+       "verbs": [
+        "destroy",
+        "give",
+        "move",
+        "take",
+        "throw"
+       ],
+       "when": ""
+      },
+      {
+       "routine": "JIGS-UP",
+       "says": [],
+       "verbs": [],
+       "when": ""
+      },
+      {
+       "routine": "JIGS-UP",
+       "says": [
+        "As you take your last breath, you feel relieved of your burdens. The feeling passes as you find yourself before the gates of Hell, where the spirits jeer at you and deny you entry. Your senses are disturbed. The objects in the dungeon appear indistinct, bleached of color, even unreal."
+       ],
+       "verbs": [],
+       "when": "when the south temple is touch"
+      }
+     ],
      "to": "EW-PASSAGE"
     },
     {
      "cond": "if troll flag",
      "dir": "WEST",
+     "gate": {
+      "kind": "global",
+      "name": "TROLL-FLAG"
+     },
+     "needs": [
+      {
+       "on": "troll",
+       "routine": "TROLL-FCN",
+       "says": [],
+       "verbs": [],
+       "when": ""
+      },
+      {
+       "on": "troll",
+       "routine": "TROLL-FCN",
+       "says": [
+        "An unconscious troll is sprawled on the floor. All passages out of the room are open."
+       ],
+       "verbs": [],
+       "when": ""
+      },
+      {
+       "on": "troll",
+       "routine": "TROLL-FCN",
+       "says": [],
+       "verbs": [
+        "destroy",
+        "give",
+        "move",
+        "take",
+        "throw"
+       ],
+       "when": ""
+      },
+      {
+       "on": "troll",
+       "routine": "TROLL-FCN",
+       "says": [
+        "and eats it hungrily. Poor troll, he dies from an internal hemorrhage and his carcass disappears in a sinister black fog."
+       ],
+       "verbs": [
+        "destroy",
+        "give",
+        "move",
+        "take",
+        "throw"
+       ],
+       "when": ""
+      },
+      {
+       "routine": "JIGS-UP",
+       "says": [],
+       "verbs": [],
+       "when": ""
+      },
+      {
+       "routine": "JIGS-UP",
+       "says": [
+        "As you take your last breath, you feel relieved of your burdens. The feeling passes as you find yourself before the gates of Hell, where the spirits jeer at you and deny you entry. Your senses are disturbed. The objects in the dungeon appear indistinct, bleached of color, even unreal."
+       ],
+       "verbs": [],
+       "when": "when the south temple is touch"
+      }
+     ],
      "to": "MAZE-1"
     }
    ],
@@ -8905,11 +9227,13 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "CELLAR"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "GALLERY"
     }
    ],
@@ -8933,11 +9257,13 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "EAST-OF-CHASM"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "STUDIO"
     }
    ],
@@ -8966,6 +9292,7 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "GALLERY"
     },
     {
@@ -9002,21 +9329,25 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "TROLL-ROOM"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MAZE-1"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MAZE-2"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-4"
     }
    ],
@@ -9039,6 +9370,7 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MAZE-1"
     },
     {
@@ -9049,6 +9381,7 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MAZE-3"
     }
    ],
@@ -9071,16 +9404,19 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-2"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MAZE-4"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "MAZE-5"
     }
    ],
@@ -9103,16 +9439,19 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-3"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MAZE-1"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "DEAD-END-1"
     }
    ],
@@ -9135,6 +9474,7 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MAZE-4"
     }
    ],
@@ -9157,16 +9497,19 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "DEAD-END-2"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MAZE-3"
     },
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "MAZE-6"
     }
    ],
@@ -9215,6 +9558,7 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-5"
     }
    ],
@@ -9237,21 +9581,25 @@
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "MAZE-5"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MAZE-7"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-6"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "MAZE-9"
     }
    ],
@@ -9274,11 +9622,13 @@
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "MAZE-14"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-6"
     },
     {
@@ -9289,11 +9639,13 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MAZE-8"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MAZE-15"
     }
    ],
@@ -9316,16 +9668,19 @@
     {
      "cond": "",
      "dir": "NE",
+     "gate": null,
      "to": "MAZE-7"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-8"
     },
     {
      "cond": "",
      "dir": "SE",
+     "gate": null,
      "to": "DEAD-END-3"
     }
    ],
@@ -9348,6 +9703,7 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MAZE-8"
     }
    ],
@@ -9370,6 +9726,7 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MAZE-6"
     },
     {
@@ -9380,21 +9737,25 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MAZE-10"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MAZE-13"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-12"
     },
     {
      "cond": "",
      "dir": "NW",
+     "gate": null,
      "to": "MAZE-9"
     }
    ],
@@ -9417,16 +9778,19 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MAZE-9"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-13"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "MAZE-11"
     }
    ],
@@ -9449,21 +9813,25 @@
     {
      "cond": "",
      "dir": "NE",
+     "gate": null,
      "to": "GRATING-ROOM"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "MAZE-10"
     },
     {
      "cond": "",
      "dir": "NW",
+     "gate": null,
      "to": "MAZE-13"
     },
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "MAZE-12"
     }
    ],
@@ -9515,11 +9883,28 @@
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "MAZE-11"
     },
     {
      "cond": "if the grate is open",
      "dir": "UP",
+     "gate": {
+      "bit": "OPENBIT",
+      "kind": "flag",
+      "obj": "GRATE"
+     },
+     "needs": [
+      {
+       "on": "grating",
+       "routine": "V-OPEN",
+       "says": [],
+       "verbs": [
+        "open"
+       ],
+       "when": ""
+      }
+     ],
      "to": "GRATING-CLEARING"
     }
    ],
@@ -9548,21 +9933,25 @@
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "MAZE-11"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MAZE-13"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "MAZE-9"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "DEAD-END-4"
     }
    ],
@@ -9585,6 +9974,7 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MAZE-12"
     }
    ],
@@ -9607,21 +9997,25 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MAZE-9"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "MAZE-12"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MAZE-10"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-11"
     }
    ],
@@ -9644,21 +10038,25 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-15"
     },
     {
      "cond": "",
      "dir": "NW",
+     "gate": null,
      "to": "MAZE-14"
     },
     {
      "cond": "",
      "dir": "NE",
+     "gate": null,
      "to": "MAZE-7"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MAZE-7"
     }
    ],
@@ -9681,16 +10079,19 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MAZE-14"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MAZE-7"
     },
     {
      "cond": "",
      "dir": "SE",
+     "gate": null,
      "to": "CYCLOPS-ROOM"
     }
    ],
@@ -9756,16 +10157,69 @@
     {
      "cond": "",
      "dir": "NW",
+     "gate": null,
      "to": "MAZE-15"
     },
     {
      "cond": "if magic flag",
      "dir": "EAST",
+     "gate": {
+      "kind": "global",
+      "name": "MAGIC-FLAG"
+     },
+     "needs": [
+      {
+       "routine": "V-ODYSSEUS",
+       "says": [
+        "The cyclops, hearing the name of his father's deadly nemesis, flees the room by knocking down the wall on the east of the room."
+       ],
+       "verbs": [
+        "odysseus"
+       ],
+       "when": ""
+      }
+     ],
      "to": "STRANGE-PASSAGE"
     },
     {
      "cond": "if cyclops flag",
      "dir": "UP",
+     "gate": {
+      "kind": "global",
+      "name": "CYCLOPS-FLAG"
+     },
+     "needs": [
+      {
+       "on": "cyclops",
+       "routine": "CYCLOPS-FCN",
+       "says": [],
+       "verbs": [
+        "give"
+       ],
+       "when": ""
+      },
+      {
+       "on": "cyclops",
+       "routine": "CYCLOPS-FCN",
+       "says": [
+        "The cyclops takes the bottle, checks that it's open, and drinks the water. A moment later, he lets out a yawn that nearly blows you over, and then falls fast asleep (what did you put in that drink, anyway?)."
+       ],
+       "verbs": [
+        "give"
+       ],
+       "when": ""
+      },
+      {
+       "routine": "V-ODYSSEUS",
+       "says": [
+        "The cyclops, hearing the name of his father's deadly nemesis, flees the room by knocking down the wall on the east of the room."
+       ],
+       "verbs": [
+        "odysseus"
+       ],
+       "when": ""
+      }
+     ],
      "to": "TREASURE-ROOM"
     }
    ],
@@ -9793,16 +10247,19 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "CYCLOPS-ROOM"
     },
     {
      "cond": "",
      "dir": "IN",
+     "gate": null,
      "to": "CYCLOPS-ROOM"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "LIVING-ROOM"
     }
    ],
@@ -9832,6 +10289,7 @@
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "CYCLOPS-ROOM"
     }
    ],
@@ -9896,26 +10354,35 @@
     {
      "cond": "",
      "dir": "SE",
+     "gate": null,
      "to": "DEEP-CANYON"
     },
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "CHASM-ROOM"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "DAM-ROOM"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "STREAM-VIEW"
     },
     {
      "cond": "if low tide",
      "dir": "NORTH",
+     "gate": {
+      "kind": "global",
+      "name": "LOW-TIDE"
+     },
+     "needs": [],
      "to": "RESERVOIR"
     }
    ],
@@ -9968,21 +10435,25 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "RESERVOIR-NORTH"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "RESERVOIR-SOUTH"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "IN-STREAM"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "IN-STREAM"
     }
    ],
@@ -10049,11 +10520,17 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "ATLANTIS-ROOM"
     },
     {
      "cond": "if low tide",
      "dir": "SOUTH",
+     "gate": {
+      "kind": "global",
+      "name": "LOW-TIDE"
+     },
+     "needs": [],
      "to": "RESERVOIR"
     }
    ],
@@ -10089,6 +10566,7 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "RESERVOIR-SOUTH"
     }
    ],
@@ -10122,16 +10600,19 @@
     {
      "cond": "",
      "dir": "LAND",
+     "gate": null,
      "to": "STREAM-VIEW"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "RESERVOIR"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "RESERVOIR"
     }
    ],
@@ -10171,16 +10652,19 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "COLD-PASSAGE"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "TWISTING-PASSAGE"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "SMALL-CAVE"
     }
    ],
@@ -10223,16 +10707,19 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "WINDING-PASSAGE"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "NARROW-PASSAGE"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "TINY-CAVE"
     }
    ],
@@ -10261,21 +10748,25 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MIRROR-ROOM-1"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "ATLANTIS-ROOM"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "ATLANTIS-ROOM"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "TWISTING-PASSAGE"
     }
    ],
@@ -10312,16 +10803,19 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MIRROR-ROOM-2"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "WINDING-PASSAGE"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "ENTRANCE-TO-HADES"
     }
    ],
@@ -10343,11 +10837,13 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MIRROR-ROOM-1"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "SLIDE-ROOM"
     }
    ],
@@ -10369,11 +10865,13 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "ROUND-ROOM"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MIRROR-ROOM-2"
     }
    ],
@@ -10395,11 +10893,13 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MIRROR-ROOM-2"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "TINY-CAVE"
     }
    ],
@@ -10421,11 +10921,13 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MIRROR-ROOM-1"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "SMALL-CAVE"
     }
    ],
@@ -10447,11 +10949,13 @@
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "SMALL-CAVE"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "RESERVOIR-NORTH"
     }
    ],
@@ -10479,21 +10983,25 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "ROUND-ROOM"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "TROLL-ROOM"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "CHASM-ROOM"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "CHASM-ROOM"
     }
    ],
@@ -10515,26 +11023,31 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "LOUD-ROOM"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "EW-PASSAGE"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "NS-PASSAGE"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "NARROW-PASSAGE"
     },
     {
      "cond": "",
      "dir": "SE",
+     "gate": null,
      "to": "ENGRAVINGS-CAVE"
     }
    ],
@@ -10584,21 +11097,25 @@
     {
      "cond": "",
      "dir": "NW",
+     "gate": null,
      "to": "RESERVOIR-SOUTH"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "DAM-ROOM"
     },
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "NS-PASSAGE"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "LOUD-ROOM"
     }
    ],
@@ -10625,11 +11142,13 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "LOUD-ROOM"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "WHITE-CLIFFS-NORTH"
     }
    ],
@@ -10710,16 +11229,19 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "DAMP-CAVE"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "ROUND-ROOM"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "DEEP-CANYON"
     }
    ],
@@ -10747,16 +11269,19 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "CHASM-ROOM"
     },
     {
      "cond": "",
      "dir": "NE",
+     "gate": null,
      "to": "DEEP-CANYON"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "ROUND-ROOM"
     }
    ],
@@ -10783,21 +11308,25 @@
     {
      "cond": "",
      "dir": "NE",
+     "gate": null,
      "to": "RESERVOIR-SOUTH"
     },
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "EW-PASSAGE"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "EW-PASSAGE"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "NS-PASSAGE"
     }
    ],
@@ -10889,16 +11418,65 @@
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "TINY-CAVE"
     },
     {
      "cond": "if lld flag",
      "dir": "IN",
+     "gate": {
+      "kind": "global",
+      "name": "LLD-FLAG"
+     },
+     "needs": [
+      {
+       "on": "Entrance to Hades",
+       "routine": "LLD-ROOM",
+       "says": [],
+       "verbs": [],
+       "when": "before each command"
+      },
+      {
+       "on": "Entrance to Hades",
+       "routine": "LLD-ROOM",
+       "says": [
+        "Each word of the prayer reverberates through the hall in a deafening confusion. As the last word fades, a voice, loud and commanding, speaks: \\\"Begone, fiends!\\\" A heart-stopping scream fills the cavern, and the spirits, sensing a greater power, flee through the walls."
+       ],
+       "verbs": [
+        "read"
+       ],
+       "when": "before each command"
+      }
+     ],
      "to": "LAND-OF-LIVING-DEAD"
     },
     {
      "cond": "if lld flag",
      "dir": "SOUTH",
+     "gate": {
+      "kind": "global",
+      "name": "LLD-FLAG"
+     },
+     "needs": [
+      {
+       "on": "Entrance to Hades",
+       "routine": "LLD-ROOM",
+       "says": [],
+       "verbs": [],
+       "when": "before each command"
+      },
+      {
+       "on": "Entrance to Hades",
+       "routine": "LLD-ROOM",
+       "says": [
+        "Each word of the prayer reverberates through the hall in a deafening confusion. As the last word fades, a voice, loud and commanding, speaks: \\\"Begone, fiends!\\\" A heart-stopping scream fills the cavern, and the spirits, sensing a greater power, flee through the walls."
+       ],
+       "verbs": [
+        "read"
+       ],
+       "when": "before each command"
+      }
+     ],
      "to": "LAND-OF-LIVING-DEAD"
     }
    ],
@@ -10931,11 +11509,13 @@
     {
      "cond": "",
      "dir": "OUT",
+     "gate": null,
      "to": "ENTRANCE-TO-HADES"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "ENTRANCE-TO-HADES"
     }
    ],
@@ -10966,11 +11546,13 @@
     {
      "cond": "",
      "dir": "NW",
+     "gate": null,
      "to": "ROUND-ROOM"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "DOME-ROOM"
     }
    ],
@@ -10998,11 +11580,13 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "NORTH-TEMPLE"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "NORTH-TEMPLE"
     }
    ],
@@ -11061,11 +11645,38 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "ENGRAVINGS-CAVE"
     },
     {
      "cond": "if dome flag",
      "dir": "DOWN",
+     "gate": {
+      "kind": "global",
+      "name": "DOME-FLAG"
+     },
+     "needs": [
+      {
+       "on": "rope",
+       "routine": "ROPE-FUNCTION",
+       "says": [],
+       "verbs": [
+        "tie"
+       ],
+       "when": ""
+      },
+      {
+       "on": "rope",
+       "routine": "ROPE-FUNCTION",
+       "says": [
+        "The rope drops over the side and comes within ten feet of the floor."
+       ],
+       "verbs": [
+        "tie"
+       ],
+       "when": ""
+      }
+     ],
      "to": "TORCH-ROOM"
     }
    ],
@@ -11115,11 +11726,13 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "NORTH-TEMPLE"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "NORTH-TEMPLE"
     }
    ],
@@ -11149,31 +11762,37 @@
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "EGYPT-ROOM"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "EGYPT-ROOM"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "TORCH-ROOM"
     },
     {
      "cond": "",
      "dir": "OUT",
+     "gate": null,
      "to": "TORCH-ROOM"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "TORCH-ROOM"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "SOUTH-TEMPLE"
     }
    ],
@@ -11208,11 +11827,17 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "NORTH-TEMPLE"
     },
     {
      "cond": "if coffin cure",
      "dir": "DOWN",
+     "gate": {
+      "kind": "global",
+      "name": "COFFIN-CURE"
+     },
+     "needs": [],
      "to": "TINY-CAVE"
     }
    ],
@@ -11291,26 +11916,31 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "DEEP-CANYON"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "DAM-BASE"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "DAM-BASE"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "DAM-LOBBY"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "RESERVOIR-SOUTH"
     }
    ],
@@ -11356,16 +11986,19 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "DAM-ROOM"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MAINTENANCE-ROOM"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MAINTENANCE-ROOM"
     }
    ],
@@ -11399,11 +12032,13 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "DAM-LOBBY"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "DAM-LOBBY"
     }
    ],
@@ -11471,11 +12106,13 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "DAM-ROOM"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "DAM-ROOM"
     }
    ],
@@ -11517,16 +12154,19 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "DAM-BASE"
     },
     {
      "cond": "",
      "dir": "LAND",
+     "gate": null,
      "to": "DAM-BASE"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "RIVER-2"
     }
    ],
@@ -11570,6 +12210,7 @@
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "RIVER-3"
     }
    ],
@@ -11600,16 +12241,19 @@
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "RIVER-4"
     },
     {
      "cond": "",
      "dir": "LAND",
+     "gate": null,
      "to": "WHITE-CLIFFS-NORTH"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "WHITE-CLIFFS-NORTH"
     }
    ],
@@ -11635,11 +12279,77 @@
     {
      "cond": "if deflate",
      "dir": "SOUTH",
+     "gate": {
+      "kind": "global",
+      "name": "DEFLATE"
+     },
+     "needs": [
+      {
+       "on": "White Cliffs Beach",
+       "routine": "WHITE-CLIFFS-FUNCTION",
+       "says": [],
+       "verbs": [],
+       "when": "at the end of each turn"
+      },
+      {
+       "on": "magic boat",
+       "routine": "RBOAT-FUNCTION",
+       "says": [],
+       "verbs": [
+        "deflate"
+       ],
+       "when": ""
+      },
+      {
+       "on": "magic boat",
+       "routine": "RBOAT-FUNCTION",
+       "says": [
+        "The boat deflates."
+       ],
+       "verbs": [
+        "deflate"
+       ],
+       "when": ""
+      }
+     ],
      "to": "WHITE-CLIFFS-SOUTH"
     },
     {
      "cond": "if deflate",
      "dir": "WEST",
+     "gate": {
+      "kind": "global",
+      "name": "DEFLATE"
+     },
+     "needs": [
+      {
+       "on": "White Cliffs Beach",
+       "routine": "WHITE-CLIFFS-FUNCTION",
+       "says": [],
+       "verbs": [],
+       "when": "at the end of each turn"
+      },
+      {
+       "on": "magic boat",
+       "routine": "RBOAT-FUNCTION",
+       "says": [],
+       "verbs": [
+        "deflate"
+       ],
+       "when": ""
+      },
+      {
+       "on": "magic boat",
+       "routine": "RBOAT-FUNCTION",
+       "says": [
+        "The boat deflates."
+       ],
+       "verbs": [
+        "deflate"
+       ],
+       "when": ""
+      }
+     ],
      "to": "DAMP-CAVE"
     }
    ],
@@ -11666,6 +12376,39 @@
     {
      "cond": "if deflate",
      "dir": "NORTH",
+     "gate": {
+      "kind": "global",
+      "name": "DEFLATE"
+     },
+     "needs": [
+      {
+       "on": "White Cliffs Beach",
+       "routine": "WHITE-CLIFFS-FUNCTION",
+       "says": [],
+       "verbs": [],
+       "when": "at the end of each turn"
+      },
+      {
+       "on": "magic boat",
+       "routine": "RBOAT-FUNCTION",
+       "says": [],
+       "verbs": [
+        "deflate"
+       ],
+       "when": ""
+      },
+      {
+       "on": "magic boat",
+       "routine": "RBOAT-FUNCTION",
+       "says": [
+        "The boat deflates."
+       ],
+       "verbs": [
+        "deflate"
+       ],
+       "when": ""
+      }
+     ],
      "to": "WHITE-CLIFFS-NORTH"
     }
    ],
@@ -11709,16 +12452,19 @@
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "RIVER-5"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "WHITE-CLIFFS-SOUTH"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "SANDY-BEACH"
     }
    ],
@@ -11755,11 +12501,13 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "SHORE"
     },
     {
      "cond": "",
      "dir": "LAND",
+     "gate": null,
      "to": "SHORE"
     }
    ],
@@ -11786,11 +12534,13 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "SANDY-BEACH"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "ARAGAIN-FALLS"
     }
    ],
@@ -11817,11 +12567,13 @@
     {
      "cond": "",
      "dir": "NE",
+     "gate": null,
      "to": "SANDY-CAVE"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "SHORE"
     }
    ],
@@ -11853,6 +12605,7 @@
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "SANDY-BEACH"
     }
    ],
@@ -11912,16 +12665,93 @@
     {
      "cond": "if rainbow flag",
      "dir": "WEST",
+     "gate": {
+      "kind": "global",
+      "name": "RAINBOW-FLAG"
+     },
+     "needs": [
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": ""
+      },
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": "in Aragain Falls, in End Of Rainbow"
+      },
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [
+        "Suddenly, the rainbow appears to become solid and, I venture, walkable (I think the giveaway was the stairs and bannister)."
+       ],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": "in Aragain Falls, in End Of Rainbow"
+      }
+     ],
      "to": "ON-RAINBOW"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "SHORE"
     },
     {
      "cond": "if rainbow flag",
      "dir": "UP",
+     "gate": {
+      "kind": "global",
+      "name": "RAINBOW-FLAG"
+     },
+     "needs": [
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": ""
+      },
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": "in Aragain Falls, in End Of Rainbow"
+      },
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [
+        "Suddenly, the rainbow appears to become solid and, I venture, walkable (I think the giveaway was the stairs and bannister)."
+       ],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": "in Aragain Falls, in End Of Rainbow"
+      }
+     ],
      "to": "ON-RAINBOW"
     }
    ],
@@ -11949,11 +12779,13 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "END-OF-RAINBOW"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "ARAGAIN-FALLS"
     }
    ],
@@ -11979,21 +12811,136 @@
     {
      "cond": "if rainbow flag",
      "dir": "UP",
+     "gate": {
+      "kind": "global",
+      "name": "RAINBOW-FLAG"
+     },
+     "needs": [
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": ""
+      },
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": "in Aragain Falls, in End Of Rainbow"
+      },
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [
+        "Suddenly, the rainbow appears to become solid and, I venture, walkable (I think the giveaway was the stairs and bannister)."
+       ],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": "in Aragain Falls, in End Of Rainbow"
+      }
+     ],
      "to": "ON-RAINBOW"
     },
     {
      "cond": "if rainbow flag",
      "dir": "NE",
+     "gate": {
+      "kind": "global",
+      "name": "RAINBOW-FLAG"
+     },
+     "needs": [
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": ""
+      },
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": "in Aragain Falls, in End Of Rainbow"
+      },
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [
+        "Suddenly, the rainbow appears to become solid and, I venture, walkable (I think the giveaway was the stairs and bannister)."
+       ],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": "in Aragain Falls, in End Of Rainbow"
+      }
+     ],
      "to": "ON-RAINBOW"
     },
     {
      "cond": "if rainbow flag",
      "dir": "EAST",
+     "gate": {
+      "kind": "global",
+      "name": "RAINBOW-FLAG"
+     },
+     "needs": [
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": ""
+      },
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": "in Aragain Falls, in End Of Rainbow"
+      },
+      {
+       "on": "sceptre",
+       "routine": "SCEPTRE-FUNCTION",
+       "says": [
+        "Suddenly, the rainbow appears to become solid and, I venture, walkable (I think the giveaway was the stairs and bannister)."
+       ],
+       "verbs": [
+        "raise",
+        "wave"
+       ],
+       "when": "in Aragain Falls, in End Of Rainbow"
+      }
+     ],
      "to": "ON-RAINBOW"
     },
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "CANYON-BOTTOM"
     }
    ],
@@ -12026,11 +12973,13 @@
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "CLIFF-MIDDLE"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "END-OF-RAINBOW"
     }
    ],
@@ -12058,11 +13007,13 @@
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "CANYON-VIEW"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "CANYON-BOTTOM"
     }
    ],
@@ -12094,21 +13045,25 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "CLIFF-MIDDLE"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "CLIFF-MIDDLE"
     },
     {
      "cond": "",
      "dir": "NW",
+     "gate": null,
      "to": "CLEARING"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "FOREST-3"
     }
    ],
@@ -12136,16 +13091,19 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "SLIDE-ROOM"
     },
     {
      "cond": "",
      "dir": "IN",
+     "gate": null,
      "to": "SQUEEKY-ROOM"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "SQUEEKY-ROOM"
     }
    ],
@@ -12167,11 +13125,13 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "BAT-ROOM"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MINE-ENTRANCE"
     }
    ],
@@ -12201,11 +13161,13 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "SQUEEKY-ROOM"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "SHAFT-ROOM"
     }
    ],
@@ -12244,11 +13206,13 @@
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "BAT-ROOM"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "SMELLY-ROOM"
     }
    ],
@@ -12278,11 +13242,13 @@
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "GAS-ROOM"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "SHAFT-ROOM"
     }
    ],
@@ -12329,11 +13295,13 @@
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "SMELLY-ROOM"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MINE-1"
     }
    ],
@@ -12365,11 +13333,13 @@
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "LADDER-BOTTOM"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "MINE-4"
     }
    ],
@@ -12393,16 +13363,19 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "DEAD-END-5"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "TIMBER-ROOM"
     },
     {
      "cond": "",
      "dir": "UP",
+     "gate": null,
      "to": "LADDER-TOP"
     }
    ],
@@ -12426,6 +13399,7 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "LADDER-BOTTOM"
     }
    ],
@@ -12453,11 +13427,25 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "LADDER-BOTTOM"
     },
     {
      "cond": "if empty handed",
      "dir": "WEST",
+     "gate": {
+      "kind": "global",
+      "name": "EMPTY-HANDED"
+     },
+     "needs": [
+      {
+       "on": "Timber Room",
+       "routine": "NO-OBJS",
+       "says": [],
+       "verbs": [],
+       "when": "before each command"
+      }
+     ],
      "to": "LOWER-SHAFT"
     }
    ],
@@ -12486,16 +13474,43 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MACHINE-ROOM"
     },
     {
      "cond": "if empty handed",
      "dir": "OUT",
+     "gate": {
+      "kind": "global",
+      "name": "EMPTY-HANDED"
+     },
+     "needs": [
+      {
+       "on": "Timber Room",
+       "routine": "NO-OBJS",
+       "says": [],
+       "verbs": [],
+       "when": "before each command"
+      }
+     ],
      "to": "TIMBER-ROOM"
     },
     {
      "cond": "if empty handed",
      "dir": "EAST",
+     "gate": {
+      "kind": "global",
+      "name": "EMPTY-HANDED"
+     },
+     "needs": [
+      {
+       "on": "Timber Room",
+       "routine": "NO-OBJS",
+       "says": [],
+       "verbs": [],
+       "when": "before each command"
+      }
+     ],
      "to": "TIMBER-ROOM"
     }
    ],
@@ -12548,6 +13563,7 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "LOWER-SHAFT"
     }
    ],
@@ -12580,16 +13596,19 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "GAS-ROOM"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MINE-1"
     },
     {
      "cond": "",
      "dir": "NE",
+     "gate": null,
      "to": "MINE-2"
     }
    ],
@@ -12611,16 +13630,19 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MINE-2"
     },
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MINE-1"
     },
     {
      "cond": "",
      "dir": "SE",
+     "gate": null,
      "to": "MINE-3"
     }
    ],
@@ -12642,16 +13664,19 @@
     {
      "cond": "",
      "dir": "SOUTH",
+     "gate": null,
      "to": "MINE-3"
     },
     {
      "cond": "",
      "dir": "SW",
+     "gate": null,
      "to": "MINE-4"
     },
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "MINE-2"
     }
    ],
@@ -12673,16 +13698,19 @@
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MINE-3"
     },
     {
      "cond": "",
      "dir": "WEST",
+     "gate": null,
      "to": "MINE-4"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "LADDER-TOP"
     }
    ],
@@ -12704,16 +13732,19 @@
     {
      "cond": "",
      "dir": "EAST",
+     "gate": null,
      "to": "COLD-PASSAGE"
     },
     {
      "cond": "",
      "dir": "NORTH",
+     "gate": null,
      "to": "MINE-ENTRANCE"
     },
     {
      "cond": "",
      "dir": "DOWN",
+     "gate": null,
      "to": "CELLAR"
     }
    ],
@@ -12730,6 +13761,1282 @@
   }
  ],
  "start": "WEST-OF-HOUSE",
+ "unlocks": {
+  ".DWEAPON/WEAPONBIT": [
+   {
+    "routine": "HERO-BLOW",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   }
+  ],
+  ".F/TOUCHBIT": [
+   {
+    "routine": "TOUCH-ALL",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   }
+  ],
+  ".OBJ/OPENBIT": [
+   {
+    "routine": "OPEN-CLOSE",
+    "says": [],
+    "verbs": [
+     "open"
+    ],
+    "when": ""
+   }
+  ],
+  ".OBJ/RMUNGBIT": [
+   {
+    "routine": "LIGHT-INT",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   }
+  ],
+  ".X/TOUCHBIT": [
+   {
+    "routine": "ROB-MAZE",
+    "says": [
+     "You hear, off in the distance, someone saying \\\"My, I wonder what this fine \u2026 is doing here.\\\""
+    ],
+    "verbs": [],
+    "when": "when the .x is take"
+   },
+   {
+    "routine": "ROB-MAZE",
+    "says": [],
+    "verbs": [],
+    "when": "when the .x is take"
+   },
+   {
+    "routine": "STEAL-JUNK",
+    "says": [],
+    "verbs": [],
+    "when": "when the .x is sacred, when the .x is take"
+   },
+   {
+    "routine": "ROB",
+    "says": [],
+    "verbs": [],
+    "when": "when the .x is sacred"
+   },
+   {
+    "routine": "SHAKE-LOOP",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   }
+  ],
+  "ALWAYS-LIT": [
+   {
+    "routine": "JIGS-UP",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "routine": "JIGS-UP",
+    "says": [
+     "As you take your last breath, you feel relieved of your burdens. The feeling passes as you find yourself before the gates of Hell, where the spirits jeer at you and deny you entry. Your senses are disturbed. The objects in the dungeon appear indistinct, bleached of color, even unreal."
+    ],
+    "verbs": [],
+    "when": "when the south temple is touch"
+   }
+  ],
+  "AXE/NDESCBIT": [
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [
+     "A nasty-looking troll, brandishing a bloody axe, blocks all passages out of the room."
+    ],
+    "verbs": [],
+    "when": ""
+   }
+  ],
+  "AXE/WEAPONBIT": [
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [
+     "An unconscious troll is sprawled on the floor. All passages out of the room are open."
+    ],
+    "verbs": [],
+    "when": ""
+   }
+  ],
+  "BOTTLE/OPENBIT": [
+   {
+    "on": "cyclops",
+    "routine": "CYCLOPS-FCN",
+    "says": [],
+    "verbs": [
+     "give"
+    ],
+    "when": ""
+   },
+   {
+    "on": "cyclops",
+    "routine": "CYCLOPS-FCN",
+    "says": [
+     "The cyclops takes the bottle, checks that it's open, and drinks the water. A moment later, he lets out a yawn that nearly blows you over, and then falls fast asleep (what did you put in that drink, anyway?)."
+    ],
+    "verbs": [
+     "give"
+    ],
+    "when": ""
+   }
+  ],
+  "CAGE-TOP": [
+   {
+    "on": "basket",
+    "routine": "BASKET-F",
+    "says": [],
+    "verbs": [
+     "raise"
+    ],
+    "when": ""
+   },
+   {
+    "on": "basket",
+    "routine": "BASKET-F",
+    "says": [
+     "The basket is raised to the top of the shaft."
+    ],
+    "verbs": [
+     "raise"
+    ],
+    "when": ""
+   }
+  ],
+  "CANDLES/ONBIT": [
+   {
+    "on": "pair of candles",
+    "routine": "CANDLES-FCN",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "pair of candles",
+    "routine": "CANDLES-FCN",
+    "says": [],
+    "verbs": [
+     "burn",
+     "turn on"
+    ],
+    "when": ""
+   },
+   {
+    "on": "pair of candles",
+    "routine": "CANDLES-FCN",
+    "says": [
+     "The candles are"
+    ],
+    "verbs": [
+     "burn",
+     "turn on"
+    ],
+    "when": "when the match is on"
+   },
+   {
+    "on": "pair of candles",
+    "routine": "CANDLES-FCN",
+    "says": [
+     "lit."
+    ],
+    "verbs": [
+     "burn",
+     "turn on"
+    ],
+    "when": "when the match is on"
+   }
+  ],
+  "CANDLES/TOUCHBIT": [
+   {
+    "on": "pair of candles",
+    "routine": "CANDLES-FCN",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "pair of candles",
+    "routine": "CANDLES-FCN",
+    "says": [],
+    "verbs": [
+     "turn off"
+    ],
+    "when": ""
+   },
+   {
+    "on": "pair of candles",
+    "routine": "CANDLES-FCN",
+    "says": [
+     "The flame is extinguished."
+    ],
+    "verbs": [
+     "turn off"
+    ],
+    "when": "when the candles is on"
+   }
+  ],
+  "CYCLOPS-FLAG": [
+   {
+    "on": "cyclops",
+    "routine": "CYCLOPS-FCN",
+    "says": [],
+    "verbs": [
+     "give"
+    ],
+    "when": ""
+   },
+   {
+    "on": "cyclops",
+    "routine": "CYCLOPS-FCN",
+    "says": [
+     "The cyclops takes the bottle, checks that it's open, and drinks the water. A moment later, he lets out a yawn that nearly blows you over, and then falls fast asleep (what did you put in that drink, anyway?)."
+    ],
+    "verbs": [
+     "give"
+    ],
+    "when": ""
+   },
+   {
+    "routine": "V-ODYSSEUS",
+    "says": [
+     "The cyclops, hearing the name of his father's deadly nemesis, flees the room by knocking down the wall on the east of the room."
+    ],
+    "verbs": [
+     "odysseus"
+    ],
+    "when": ""
+   }
+  ],
+  "CYCLOPS/FIGHTBIT": [
+   {
+    "on": "cyclops",
+    "routine": "CYCLOPS-FCN",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "cyclops",
+    "routine": "CYCLOPS-FCN",
+    "says": [
+     "The cyclops yawns and stares at the thing that woke him up."
+    ],
+    "verbs": [
+     "alarm",
+     "attack",
+     "burn",
+     "destroy",
+     "kick"
+    ],
+    "when": ""
+   }
+  ],
+  "DEAD": [
+   {
+    "routine": "JIGS-UP",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "routine": "JIGS-UP",
+    "says": [
+     "As you take your last breath, you feel relieved of your burdens. The feeling passes as you find yourself before the gates of Hell, where the spirits jeer at you and deny you entry. Your senses are disturbed. The objects in the dungeon appear indistinct, bleached of color, even unreal."
+    ],
+    "verbs": [],
+    "when": "when the south temple is touch"
+   }
+  ],
+  "DEFLATE": [
+   {
+    "on": "White Cliffs Beach",
+    "routine": "WHITE-CLIFFS-FUNCTION",
+    "says": [],
+    "verbs": [],
+    "when": "at the end of each turn"
+   },
+   {
+    "on": "magic boat",
+    "routine": "RBOAT-FUNCTION",
+    "says": [],
+    "verbs": [
+     "deflate"
+    ],
+    "when": ""
+   },
+   {
+    "on": "magic boat",
+    "routine": "RBOAT-FUNCTION",
+    "says": [
+     "The boat deflates."
+    ],
+    "verbs": [
+     "deflate"
+    ],
+    "when": ""
+   }
+  ],
+  "DOME-FLAG": [
+   {
+    "on": "rope",
+    "routine": "ROPE-FUNCTION",
+    "says": [],
+    "verbs": [
+     "tie"
+    ],
+    "when": ""
+   },
+   {
+    "on": "rope",
+    "routine": "ROPE-FUNCTION",
+    "says": [
+     "The rope drops over the side and comes within ten feet of the floor."
+    ],
+    "verbs": [
+     "tie"
+    ],
+    "when": ""
+   }
+  ],
+  "EGG-SOLVE": [
+   {
+    "routine": "DEPOSIT-BOOTY",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   }
+  ],
+  "EGG/FIGHTBIT": [
+   {
+    "on": "jewel-encrusted egg",
+    "routine": "EGG-OBJECT",
+    "says": [],
+    "verbs": [
+     "destroy",
+     "open"
+    ],
+    "when": ""
+   },
+   {
+    "on": "jewel-encrusted egg",
+    "routine": "EGG-OBJECT",
+    "says": [
+     "The concept of using a \u2026 is certainly original."
+    ],
+    "verbs": [
+     "destroy",
+     "open"
+    ],
+    "when": ""
+   }
+  ],
+  "EGG/OPENBIT": [
+   {
+    "routine": "DEPOSIT-BOOTY",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   }
+  ],
+  "EMPTY-HANDED": [
+   {
+    "on": "Timber Room",
+    "routine": "NO-OBJS",
+    "says": [],
+    "verbs": [],
+    "when": "before each command"
+   }
+  ],
+  "GATE-FLAG": [
+   {
+    "on": "blue button",
+    "routine": "BUTTON-F",
+    "says": [],
+    "verbs": [
+     "push"
+    ],
+    "when": ""
+   },
+   {
+    "on": "blue button",
+    "routine": "BUTTON-F",
+    "says": [
+     "Click."
+    ],
+    "verbs": [
+     "push"
+    ],
+    "when": ""
+   }
+  ],
+  "GATES-OPEN": [
+   {
+    "on": "bolt",
+    "routine": "BOLT-F",
+    "says": [],
+    "verbs": [
+     "turn"
+    ],
+    "when": ""
+   },
+   {
+    "on": "bolt",
+    "routine": "BOLT-F",
+    "says": [
+     "The sluice gates open and water pours through the dam."
+    ],
+    "verbs": [
+     "turn"
+    ],
+    "when": ""
+   }
+  ],
+  "GRATE-REVEALED": [
+   {
+    "routine": "LEAVES-APPEAR",
+    "says": [],
+    "verbs": [],
+    "when": "when the grate is open"
+   },
+   {
+    "on": "grating",
+    "routine": "GRATE-FUNCTION",
+    "says": [],
+    "verbs": [
+     "close",
+     "open"
+    ],
+    "when": ""
+   },
+   {
+    "on": "grating",
+    "routine": "GRATE-FUNCTION",
+    "says": [
+     "The grating is closed."
+    ],
+    "verbs": [
+     "close",
+     "open"
+    ],
+    "when": ""
+   },
+   {
+    "on": "grating",
+    "routine": "GRATE-FUNCTION",
+    "says": [],
+    "verbs": [
+     "close",
+     "open"
+    ],
+    "when": "when the grate is open"
+   },
+   {
+    "on": "grating",
+    "routine": "GRATE-FUNCTION",
+    "says": [
+     "A pile of leaves falls onto your head and to the ground."
+    ],
+    "verbs": [
+     "close",
+     "open"
+    ],
+    "when": "when the grate is open"
+   }
+  ],
+  "GRATING-ROOM/ONBIT": [
+   {
+    "on": "grating",
+    "routine": "GRATE-FUNCTION",
+    "says": [],
+    "verbs": [
+     "close",
+     "open"
+    ],
+    "when": ""
+   },
+   {
+    "on": "grating",
+    "routine": "GRATE-FUNCTION",
+    "says": [
+     "The grating is closed."
+    ],
+    "verbs": [
+     "close",
+     "open"
+    ],
+    "when": ""
+   },
+   {
+    "on": "grating",
+    "routine": "GRATE-FUNCTION",
+    "says": [],
+    "verbs": [
+     "close",
+     "open"
+    ],
+    "when": "when the grate is open"
+   }
+  ],
+  "GRUNLOCK": [
+   {
+    "on": "grating",
+    "routine": "GRATE-FUNCTION",
+    "says": [],
+    "verbs": [
+     "unlock"
+    ],
+    "when": ""
+   },
+   {
+    "on": "grating",
+    "routine": "GRATE-FUNCTION",
+    "says": [
+     "The grate is unlocked."
+    ],
+    "verbs": [
+     "unlock"
+    ],
+    "when": "in Grating Room"
+   }
+  ],
+  "GWIM-DISABLE": [
+   {
+    "routine": "JIGS-UP",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "routine": "JIGS-UP",
+    "says": [
+     "As you take your last breath, you feel relieved of your burdens. The feeling passes as you find yourself before the gates of Hell, where the spirits jeer at you and deny you entry. Your senses are disturbed. The objects in the dungeon appear indistinct, bleached of color, even unreal."
+    ],
+    "verbs": [],
+    "when": "when the south temple is touch"
+   }
+  ],
+  "HERE/ONBIT": [
+   {
+    "on": "blue button",
+    "routine": "BUTTON-F",
+    "says": [],
+    "verbs": [
+     "push"
+    ],
+    "when": ""
+   },
+   {
+    "on": "blue button",
+    "routine": "BUTTON-F",
+    "says": [
+     "The lights within the room"
+    ],
+    "verbs": [
+     "push"
+    ],
+    "when": ""
+   },
+   {
+    "on": "blue button",
+    "routine": "BUTTON-F",
+    "says": [
+     "come on."
+    ],
+    "verbs": [
+     "push"
+    ],
+    "when": ""
+   }
+  ],
+  "HERE/TOUCHBIT": [
+   {
+    "routine": "DESCRIBE-ROOM",
+    "says": [],
+    "verbs": [],
+    "when": "when the here is touch"
+   }
+  ],
+  "KITCHEN-WINDOW-FLAG": [
+   {
+    "on": "kitchen window",
+    "routine": "KITCHEN-WINDOW-F",
+    "says": [
+     "With great effort, you open the window far enough to allow entry."
+    ],
+    "verbs": [
+     "close",
+     "open"
+    ],
+    "when": ""
+   }
+  ],
+  "LIT": [
+   {
+    "on": "matchbook",
+    "routine": "MATCH-FUNCTION",
+    "says": [],
+    "verbs": [
+     "burn",
+     "turn on"
+    ],
+    "when": ""
+   },
+   {
+    "on": "matchbook",
+    "routine": "MATCH-FUNCTION",
+    "says": [
+     "One of the matches starts to burn."
+    ],
+    "verbs": [
+     "burn",
+     "turn on"
+    ],
+    "when": ""
+   },
+   {
+    "routine": "V-ENCHANT",
+    "says": [],
+    "verbs": [
+     "enchant"
+    ],
+    "when": ""
+   },
+   {
+    "routine": "V-ENCHANT",
+    "says": [
+     "The \u2026 begins to glow."
+    ],
+    "verbs": [
+     "enchant"
+    ],
+    "when": ""
+   }
+  ],
+  "LLD-FLAG": [
+   {
+    "on": "Entrance to Hades",
+    "routine": "LLD-ROOM",
+    "says": [],
+    "verbs": [],
+    "when": "before each command"
+   },
+   {
+    "on": "Entrance to Hades",
+    "routine": "LLD-ROOM",
+    "says": [
+     "Each word of the prayer reverberates through the hall in a deafening confusion. As the last word fades, a voice, loud and commanding, speaks: \\\"Begone, fiends!\\\" A heart-stopping scream fills the cavern, and the spirits, sensing a greater power, flee through the walls."
+    ],
+    "verbs": [
+     "read"
+    ],
+    "when": "before each command"
+   }
+  ],
+  "LOUD-FLAG": [
+   {
+    "on": "Loud Room",
+    "routine": "LOUD-ROOM-FCN",
+    "says": [],
+    "verbs": [],
+    "when": "on entering"
+   },
+   {
+    "on": "Loud Room",
+    "routine": "LOUD-ROOM-FCN",
+    "says": [
+     "The acoustics of the room change subtly."
+    ],
+    "verbs": [],
+    "when": "on entering"
+   }
+  ],
+  "MACHINE/OPENBIT": [
+   {
+    "on": "machine",
+    "routine": "MACHINE-F",
+    "says": [],
+    "verbs": [
+     "open"
+    ],
+    "when": ""
+   },
+   {
+    "on": "machine",
+    "routine": "MACHINE-F",
+    "says": [
+     "The lid opens, revealing"
+    ],
+    "verbs": [
+     "open"
+    ],
+    "when": ""
+   },
+   {
+    "on": "machine",
+    "routine": "MACHINE-F",
+    "says": [
+     "The lid opens."
+    ],
+    "verbs": [
+     "open"
+    ],
+    "when": ""
+   }
+  ],
+  "MAGIC-FLAG": [
+   {
+    "routine": "V-ODYSSEUS",
+    "says": [
+     "The cyclops, hearing the name of his father's deadly nemesis, flees the room by knocking down the wall on the east of the room."
+    ],
+    "verbs": [
+     "odysseus"
+    ],
+    "when": ""
+   }
+  ],
+  "MATCH/FLAMEBIT": [
+   {
+    "on": "matchbook",
+    "routine": "MATCH-FUNCTION",
+    "says": [],
+    "verbs": [
+     "burn",
+     "turn on"
+    ],
+    "when": ""
+   },
+   {
+    "on": "matchbook",
+    "routine": "MATCH-FUNCTION",
+    "says": [
+     "One of the matches starts to burn."
+    ],
+    "verbs": [
+     "burn",
+     "turn on"
+    ],
+    "when": ""
+   }
+  ],
+  "MATCH/ONBIT": [
+   {
+    "on": "matchbook",
+    "routine": "MATCH-FUNCTION",
+    "says": [],
+    "verbs": [
+     "burn",
+     "turn on"
+    ],
+    "when": ""
+   },
+   {
+    "on": "matchbook",
+    "routine": "MATCH-FUNCTION",
+    "says": [
+     "One of the matches starts to burn."
+    ],
+    "verbs": [
+     "burn",
+     "turn on"
+    ],
+    "when": ""
+   }
+  ],
+  "MIRROR-MUNG": [
+   {
+    "on": "mirror",
+    "routine": "MIRROR-MIRROR",
+    "says": [],
+    "verbs": [
+     "attack",
+     "destroy",
+     "throw"
+    ],
+    "when": ""
+   },
+   {
+    "on": "mirror",
+    "routine": "MIRROR-MIRROR",
+    "says": [
+     "You have broken the mirror. I hope you have a seven years' supply of good luck handy."
+    ],
+    "verbs": [
+     "attack",
+     "destroy",
+     "throw"
+    ],
+    "when": ""
+   }
+  ],
+  "RAINBOW-FLAG": [
+   {
+    "on": "sceptre",
+    "routine": "SCEPTRE-FUNCTION",
+    "says": [],
+    "verbs": [
+     "raise",
+     "wave"
+    ],
+    "when": ""
+   },
+   {
+    "on": "sceptre",
+    "routine": "SCEPTRE-FUNCTION",
+    "says": [],
+    "verbs": [
+     "raise",
+     "wave"
+    ],
+    "when": "in Aragain Falls, in End Of Rainbow"
+   },
+   {
+    "on": "sceptre",
+    "routine": "SCEPTRE-FUNCTION",
+    "says": [
+     "Suddenly, the rainbow appears to become solid and, I venture, walkable (I think the giveaway was the stairs and bannister)."
+    ],
+    "verbs": [
+     "raise",
+     "wave"
+    ],
+    "when": "in Aragain Falls, in End Of Rainbow"
+   }
+  ],
+  "ROPE/NDESCBIT": [
+   {
+    "on": "rope",
+    "routine": "ROPE-FUNCTION",
+    "says": [],
+    "verbs": [
+     "tie"
+    ],
+    "when": ""
+   },
+   {
+    "on": "rope",
+    "routine": "ROPE-FUNCTION",
+    "says": [
+     "The rope drops over the side and comes within ten feet of the floor."
+    ],
+    "verbs": [
+     "tie"
+    ],
+    "when": ""
+   }
+  ],
+  "RUG-MOVED": [
+   {
+    "on": "carpet",
+    "routine": "RUG-FCN",
+    "says": [],
+    "verbs": [
+     "move",
+     "push"
+    ],
+    "when": ""
+   },
+   {
+    "on": "carpet",
+    "routine": "RUG-FCN",
+    "says": [
+     "With a great effort, the rug is moved to one side of the room, revealing the dusty cover of a closed trap door."
+    ],
+    "verbs": [
+     "move",
+     "push"
+    ],
+    "when": ""
+   }
+  ],
+  "SING-SONG": [
+   {
+    "on": "broken clockwork canary",
+    "routine": "CANARY-OBJECT",
+    "says": [],
+    "verbs": [
+     "wind"
+    ],
+    "when": ""
+   },
+   {
+    "on": "broken clockwork canary",
+    "routine": "CANARY-OBJECT",
+    "says": [
+     "The canary chirps, slightly off-key, an aria from a forgotten opera. From out of the greenery flies a lovely songbird. It perches on a limb just over your head and opens its beak to sing. As it does so a beautiful brass bauble drops from its mouth, bounces off the top of your head, and lands glimmering in the grass. As the canary winds down, the songbird flies away."
+    ],
+    "verbs": [
+     "wind"
+    ],
+    "when": ""
+   }
+  ],
+  "SPELL-HANDLED?": [
+   {
+    "routine": "V-ENCHANT",
+    "says": [],
+    "verbs": [
+     "enchant"
+    ],
+    "when": ""
+   },
+   {
+    "routine": "V-ENCHANT",
+    "says": [
+     "The \u2026 goes up in a puff of smoke."
+    ],
+    "verbs": [
+     "enchant"
+    ],
+    "when": "when the prso is take"
+   }
+  ],
+  "STILETTO/NDESCBIT": [
+   {
+    "routine": "THIEF-VS-ADVENTURER",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "routine": "THIEF-VS-ADVENTURER",
+    "says": [
+     "You feel a light finger-touch, and turning, notice a grinning figure holding a large bag in one hand and a stiletto in the other."
+    ],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "thief",
+    "routine": "ROBBER-FUNCTION",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "routine": "RECOVER-STILETTO",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   }
+  ],
+  "THIEF-ENGROSSED": [
+   {
+    "on": "thief",
+    "routine": "ROBBER-FUNCTION",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "thief",
+    "routine": "ROBBER-FUNCTION",
+    "says": [],
+    "verbs": [
+     "give",
+     "throw"
+    ],
+    "when": ""
+   },
+   {
+    "on": "thief",
+    "routine": "ROBBER-FUNCTION",
+    "says": [
+     "The thief is taken aback by your unexpected generosity, but accepts the \u2026 and stops to admire its beauty."
+    ],
+    "verbs": [
+     "give",
+     "throw"
+    ],
+    "when": ""
+   }
+  ],
+  "THIEF-HERE": [
+   {
+    "routine": "THIEF-VS-ADVENTURER",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "routine": "THIEF-VS-ADVENTURER",
+    "says": [
+     "Someone carrying a large bag is casually leaning against one of the walls here. He does not speak, but it is clear from his aspect that the bag will be taken only over his dead body."
+    ],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "routine": "THIEF-VS-ADVENTURER",
+    "says": [
+     "You feel a light finger-touch, and turning, notice a grinning figure holding a large bag in one hand and a stiletto in the other."
+    ],
+    "verbs": [],
+    "when": ""
+   }
+  ],
+  "THIEF/FIGHTBIT": [
+   {
+    "on": "thief",
+    "routine": "ROBBER-FUNCTION",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "thief",
+    "routine": "ROBBER-FUNCTION",
+    "says": [],
+    "verbs": [
+     "throw"
+    ],
+    "when": "when the thief is fight"
+   },
+   {
+    "on": "thief",
+    "routine": "ROBBER-FUNCTION",
+    "says": [
+     "You missed. The thief makes no attempt to take the knife, though it would be a fine addition to the collection in his bag. He does seem angered by your attempt."
+    ],
+    "verbs": [
+     "throw"
+    ],
+    "when": "when the thief is fight"
+   },
+   {
+    "on": "thief",
+    "routine": "ROBBER-FUNCTION",
+    "says": [
+     "The robber revives, briefly feigning continued unconsciousness, and, when he sees his moment, scrambles away from you."
+    ],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "Treasure Room",
+    "routine": "TREASURE-ROOM-FCN",
+    "says": [],
+    "verbs": [],
+    "when": "on entering"
+   }
+  ],
+  "TRAP-DOOR/TOUCHBIT": [
+   {
+    "on": "Cellar",
+    "routine": "CELLAR-FCN",
+    "says": [],
+    "verbs": [],
+    "when": "on entering"
+   },
+   {
+    "on": "Cellar",
+    "routine": "CELLAR-FCN",
+    "says": [
+     "The trap door crashes shut, and you hear someone barring it."
+    ],
+    "verbs": [],
+    "when": "on entering"
+   }
+  ],
+  "TROLL-FLAG": [
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [
+     "An unconscious troll is sprawled on the floor. All passages out of the room are open."
+    ],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [],
+    "verbs": [
+     "destroy",
+     "give",
+     "move",
+     "take",
+     "throw"
+    ],
+    "when": ""
+   },
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [
+     "and eats it hungrily. Poor troll, he dies from an internal hemorrhage and his carcass disappears in a sinister black fog."
+    ],
+    "verbs": [
+     "destroy",
+     "give",
+     "move",
+     "take",
+     "throw"
+    ],
+    "when": ""
+   },
+   {
+    "routine": "JIGS-UP",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "routine": "JIGS-UP",
+    "says": [
+     "As you take your last breath, you feel relieved of your burdens. The feeling passes as you find yourself before the gates of Hell, where the spirits jeer at you and deny you entry. Your senses are disturbed. The objects in the dungeon appear indistinct, bleached of color, even unreal."
+    ],
+    "verbs": [],
+    "when": "when the south temple is touch"
+   }
+  ],
+  "TROLL/FIGHTBIT": [
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [
+     "The troll stirs, quickly resuming a fighting stance."
+    ],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [],
+    "verbs": [
+     "destroy",
+     "give",
+     "move",
+     "take",
+     "throw"
+    ],
+    "when": ""
+   },
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [
+     "The troll scratches his head in confusion, then takes the axe."
+    ],
+    "verbs": [
+     "destroy",
+     "give",
+     "move",
+     "take",
+     "throw"
+    ],
+    "when": ""
+   },
+   {
+    "on": "troll",
+    "routine": "TROLL-FCN",
+    "says": [
+     "and, being for the moment sated, throws it back. Fortunately, the troll has poor control, and the \u2026 falls to the floor. He does not look pleased."
+    ],
+    "verbs": [
+     "destroy",
+     "give",
+     "move",
+     "take",
+     "throw"
+    ],
+    "when": ""
+   }
+  ],
+  "WON-FLAG": [
+   {
+    "routine": "SCORE-UPD",
+    "says": [],
+    "verbs": [],
+    "when": ""
+   },
+   {
+    "routine": "SCORE-UPD",
+    "says": [
+     "An almost inaudible voice whispers in your ear, \\\"Look to your treasures for the final secret.\\\""
+    ],
+    "verbs": [],
+    "when": ""
+   }
+  ],
+  "XB": [
+   {
+    "on": "Entrance to Hades",
+    "routine": "LLD-ROOM",
+    "says": [],
+    "verbs": [],
+    "when": "before each command"
+   },
+   {
+    "on": "Entrance to Hades",
+    "routine": "LLD-ROOM",
+    "says": [
+     "The bell suddenly becomes red hot and falls to the ground. The wraiths, as if paralyzed, stop their jeering and slowly turn to face you. On their ashen faces, the expression of a long-forgotten terror takes shape."
+    ],
+    "verbs": [
+     "ring"
+    ],
+    "when": "before each command"
+   }
+  ],
+  "XC": [
+   {
+    "on": "Entrance to Hades",
+    "routine": "LLD-ROOM",
+    "says": [],
+    "verbs": [],
+    "when": "at the end of each turn"
+   },
+   {
+    "on": "Entrance to Hades",
+    "routine": "LLD-ROOM",
+    "says": [
+     "The flames flicker wildly and appear to dance. The earth beneath your feet trembles, and your legs nearly buckle beneath you. The spirits cower at your unearthly power."
+    ],
+    "verbs": [],
+    "when": "at the end of each turn"
+   }
+  ]
+ },
  "verbs": {
   "none": [
    {
