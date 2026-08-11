@@ -567,7 +567,7 @@
     absorb(snap, null, null);
 
     var agent = window.ZorkSolver.create(engine, ATLAS, {
-      maxMoves: 1500,
+      maxMoves: 4000,
       onKept: function (cmd, res, dir) { absorb(res, cmd, DIR_OF[dir] || null); }
     });
     var b = document.getElementById("b-solve");

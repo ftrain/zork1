@@ -189,8 +189,9 @@ mark, so a move that kills you is rewound and struck off the list for that
 room; the map never shows a room it died in and took back. A typical run
 rewinds a few hundred deaths and is none the worse.
 
-It reaches **54 out of 350** and maps a little over half the dungeon —
-around 55 rooms of 110 — in 1500 moves.
+It reaches **59 out of 350** and maps a little over half the dungeon —
+around 55 rooms of 110 — stopping when nothing has been gained for 400
+moves. Seeds vary: 59 and 60 on two of the three tried, 40 on the third.
 
 Its goals come out of the ZIL rather than out of luck. The source says what
 is worth points and where it starts, so the extractor resolves each
@@ -216,17 +217,21 @@ Zork rather than a coding slip:
   there is no lamp, and dousing it in rooms the ZIL marks lit — the battery
   is finite — cut deaths from around 300 to under 80.
 
-Where it stops is the interesting part, and it is not where you would
-guess. Routing is not the problem: it reaches End of Rainbow, Up a Tree,
-the Loud Room, the maze and the Gallery, and picks up the coins and the
-painting. What stops it is that **the treasure cannot be got home**.
+Routing is not the problem: it reaches End of Rainbow, Up a Tree, the Loud
+Room, the maze and the Gallery, and picks up the coins and the painting.
+Getting them *home* is, and that took a plan rather than a habit.
 
 The trap door bars itself behind you, so the underground is a one-way trip.
 The only way back is the chimney in the Studio, and the chimney will not
-take more than one item plus the lamp. Banking a hoard therefore means
-dropping almost everything, climbing out, and ferrying — a deliberate plan,
-not something a hill-climber falls into. So the solver ends each run
-carrying treasure it scored for taking and could not deposit.
+take more than one item besides the lamp. The ferry handles it: stash
+everything on the Studio floor, climb with one piece, bank it, go back down
+through the trap door, repeat. That is what turns treasure carried into
+treasure scored — the difference between 54 and 59.
+
+It is worth being plain that this is hand-written knowledge. The solver did
+not work the ferry out; it was told. Everything above it — where treasure
+is, how to route there, what to carry — comes out of the ZIL. The ferry is
+the first thing here that came out of a person reading the game.
 
 The rest of the points sit behind chains no local search will stumble on:
 the bell, book and candles at Hades, the coal mine basket, the dam

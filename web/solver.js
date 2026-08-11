@@ -112,6 +112,104 @@ window.ZorkSolver = (function () {
                worth: (o.tvalue || 0) + (o.value || 0) };
     }).filter(function (t) { return t.worth > 0 && t.room; });
 
+    /* ---- the chimney ferry ---------------------------------------------
+     *
+     * The trap door bars itself behind you, so the underground is a one-way
+     * trip, and the only way back -- the chimney out of the Studio -- will
+     * not take more than one item besides the lamp. Treasure therefore has
+     * to be carried home one piece at a time: stash the rest on the Studio
+     * floor, climb, bank it, come back down through the trap door, repeat.
+     *
+     * This is a plan rather than a habit, which is the honest reason the
+     * solver could not find it on its own.
+     */
+    var ferry = null;
+
+    function worthOf(n) {
+      var o = lore[n] || {};
+      return (o.tvalue || 0) + (o.value || 0);
+    }
+
+    function held() {
+      return carried().filter(function (n) {
+        return isTreasure(n) && !deposited[n];
+      }).sort(function (a, b) { return worthOf(b) - worthOf(a); });
+    }
+
+    // Is the case reachable without the chimney? If not, the load limit is
+    // about to matter and the ferry has to take over.
+    function needsFerry(at) {
+      if (!caseZil || !at) return false;
+      var was = zilBlocked["STUDIO>UP"];
+      zilBlocked["STUDIO>UP"] = 1;
+      var direct = zilRoute(at, caseZil);
+      zilBlocked["STUDIO>UP"] = was;
+      return !direct;
+    }
+
+    function ferryStep(at) {
+      var have = held();
+
+      if (ferry.phase === "toStudio") {
+        if (cur.name === "Studio") { ferry.phase = "load"; return ferryStep(at); }
+        var p = zilRoute(at, "STUDIO");
+        if (!p) { ferry = null; return null; }
+        queue = p.slice();
+        return queue.shift();
+      }
+
+      if (ferry.phase === "load") {
+        // Nothing in hand: pick a piece up off the stash and take that one.
+        if (!have.length) {
+          var lying = (cur.objects || []).filter(function (o) {
+            return isTreasure(o.name) && !deposited[o.name];
+          })[0];
+          if (lying) return "take " + lying.name;
+          ferry = null;            // the stash is empty; the ferry is done
+          return null;
+        }
+        // Everything but the lamp and one treasure goes on the floor.
+        var spare = (cur.inventory || []).filter(function (o) {
+          return o.name !== have[0] && !(o.f && o.f.light);
+        })[0];
+        if (spare) return "drop " + spare.name;
+        ferry.phase = "climb";
+        return "up";
+      }
+
+      if (ferry.phase === "climb") {
+        if (cur.name === "Kitchen") { ferry.phase = "toCase"; return ferryStep(at); }
+        ferry.phase = "load";      // refused: too much in hand, shed more
+        return ferryStep(at);
+      }
+
+      if (ferry.phase === "toCase") {
+        if (at === caseZil) { ferry.phase = "deposit"; return ferryStep(at); }
+        var home = zilRoute(at, caseZil);
+        if (!home) { ferry = null; return null; }
+        queue = home.slice();
+        return queue.shift();
+      }
+
+      if (ferry.phase === "deposit") {
+        var box = (cur.objects || []).filter(function (o) {
+          return /trophy case/i.test(o.name);
+        })[0];
+        if (box && box.f && !box.f.open) return "open trophy case";
+        if (have.length) return "put " + have[0] + " in trophy case";
+        ferry.phase = "godown";
+        ferry.opened = 0;
+        return ferryStep(at);
+      }
+
+      if (ferry.phase === "godown") {
+        if (cur.name === "Cellar") { ferry.phase = "toStudio"; return ferryStep(at); }
+        if (!ferry.opened) { ferry.opened = 1; return "open trap door"; }
+        return "down";
+      }
+      return null;
+    }
+
     var tries = {};          // how often a prize has been set out for
     var giveUp = {};         // treasures that would not come when called
     var goal = null;         // {name, room, path}
@@ -127,6 +225,7 @@ window.ZorkSolver = (function () {
     var cur = engine.snapshot("");
     var stats = { moves: 0, score: 0, rooms: 0, deaths: 0, treasures: 0,
                   done: false, why: "" };
+    var idle = 0;            // moves since anything was gained
 
     // The printed name is for reading; the last word of it is what the
     // parser actually has in its dictionary.
@@ -304,9 +403,17 @@ window.ZorkSolver = (function () {
           return queue.shift();
         }
 
-        var holding = carried().filter(function (n) {
-          return isTreasure(n) && !deposited[n];
-        });
+        var holding = held();
+
+        // Carrying treasure with no way home but the chimney: ferry it.
+        if (ferry) {
+          var f = ferryStep(at);
+          if (f) return f;
+        } else if (holding.length && needsFerry(at)) {
+          ferry = { phase: "toStudio" };
+          var f2 = ferryStep(at);
+          if (f2) return f2;
+        }
 
         // Take the hoard home when it is worth the walk.
         if (caseZil && holding.length >= (opts.hoard || 2)) {
@@ -398,6 +505,13 @@ window.ZorkSolver = (function () {
         stats.why = "move budget spent";
         return false;
       }
+      // A ferry with nothing left to carry will happily walk the same loop
+      // for ever. If nothing has been gained in a long while, it is done.
+      if (idle > (opts.patience || 400)) {
+        stats.done = true;
+        stats.why = "no further progress in " + idle + " moves";
+        return false;
+      }
 
       // Darkness outranks the itinerary. A queued route walks through unlit
       // rooms as happily as lit ones, and a grue does not care that you were
@@ -484,7 +598,9 @@ window.ZorkSolver = (function () {
       // Only moves that stuck are reported, so a watching map never draws a
       // room the solver died in and took back.
       if (opts.onKept) opts.onKept(cmd, res, isMove ? cmd : null);
-      stats.rooms = Object.keys(rooms).length;
+      var grew = Object.keys(rooms).length;
+      idle = (res.score > before || grew > stats.rooms) ? 0 : idle + 1;
+      stats.rooms = grew;
       if (res.score > before) {
         log.push({ cmd: cmd, note: "+" + (res.score - before) });
       }
