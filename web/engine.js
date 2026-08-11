@@ -278,8 +278,12 @@ window.ZorkEngine = (function () {
     return out;
   }
 
-  function Engine(story) {
+  function Engine(story, seed) {
     this.story = story;
+    // A non-zero seed makes the run reproducible: ZVM's RANDOM falls back to
+    // Math.random only while the seed is zero, and runs a deterministic
+    // xorshift otherwise. Kept across restarts so a replay always replays.
+    this.pinned = seed || 0;
     this.session = 0;
     this.boot();
   }
@@ -289,6 +293,7 @@ window.ZorkEngine = (function () {
     this.vm = new window.ZVM();
     this.vm.prepare(this.story.slice(0), { Glk: this.glk });
     this.vm.start();
+    if (this.pinned) this.vm.xorshift_seed = this.pinned;
     this.peek = new Peek(this.vm);
     this.descs = {};
     this.undoStack = [];
@@ -419,9 +424,9 @@ window.ZorkEngine = (function () {
   }
 
   return {
-    create: function () {
+    create: function (seed) {
       if (!window.ZVM || !window.ZORK_STORY) return null;
-      return new Engine(bytes(window.ZORK_STORY));
+      return new Engine(bytes(window.ZORK_STORY), seed);
     }
   };
 })();

@@ -153,6 +153,30 @@ attribute 17, finding the player object by name) are the ones worked out in
 [zwalker](https://github.com/avwohl/zwalker), whose Python interpreter this
 was first prototyped against.
 
+## A complete game, deterministically
+
+**replay a win** plays Zork I from the opening to 350 out of 350 points in
+499 moves, drawing the map as it goes: 82 rooms and 129 connections by the
+end. Two runs produce byte-identical transcripts — 42,243 characters,
+sha256 `a46db90bdbf43677…`.
+
+Determinism in a Z-machine comes from the interpreter, not the story file.
+ZVM's `RANDOM` falls back to `Math.random` only while its seed is zero and
+runs a deterministic xorshift otherwise, so pinning the seed pins the whole
+run — the thief's wanderings, the troll's swings, everything.
+
+That also means a seed is not portable between interpreters. The command
+list is zwalker's verified solution
+([solutions/zork1_verified.json](https://github.com/avwohl/zwalker)), found
+and checked against its own Python interpreter under its seed 3. Replayed
+here, seed 3 dies in a trap at 10 points; seed 42 runs the same 431 commands
+to 350 points in 499 moves — the same move count zwalker recorded, which is
+good evidence the two interpreters agree about everything except the dice.
+
+Finding it was a search over seeds, which is exactly how zwalker verifies
+its own solutions. Of ten seeds tried, one won, two got past 300, and three
+died on the way.
+
 ## Regenerating the graph
 
     python3 tools/extract_map.py

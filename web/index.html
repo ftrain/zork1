@@ -199,6 +199,7 @@
   <span class="stat" id="s-scorewrap" hidden>score <b id="s-score">0</b></span>
   <span class="spacer"></span>
   <button id="b-live">play the game</button>
+  <button id="b-replay" hidden>replay a win</button>
   <button id="b-center">center</button>
   <button id="b-fit">fit</button>
   <button id="b-reveal">reveal all</button>
@@ -228,6 +229,7 @@
 <script src="vendor/zvm.js"></script>
 <script src="story.js"></script>
 <script src="engine.js"></script>
+<script src="walkthrough.js"></script>
 <script>
 (function () {
   "use strict";
@@ -282,6 +284,16 @@
   var state;            // per-mode map state, see fresh()
 
   /* ---------- per-mode state ---------- */
+
+  // The command words that are movement, mapped back to compass points, so
+  // a replayed game draws real edges instead of a scatter of rooms.
+  var DIR_OF = {};
+  Object.keys(WORD).forEach(function (d) { DIR_OF[WORD[d]] = d; });
+  ["n:NORTH", "s:SOUTH", "e:EAST", "w:WEST", "ne:NE", "nw:NW", "se:SE",
+   "sw:SW", "u:UP", "d:DOWN"].forEach(function (pair) {
+    var p = pair.split(":");
+    DIR_OF[p[0]] = p[1];
+  });
 
   function key() { return "zork-map-v2-" + mode; }
 
@@ -477,6 +489,12 @@
     // walk into it.
     document.getElementById("b-reveal").hidden = true;
     document.getElementById("b-reset").textContent = "restart";
+    if (window.ZORK_WALKTHROUGH) {
+      var rb = document.getElementById("b-replay");
+      rb.hidden = false;
+      rb.onclick = replayWin;
+      rb.title = "a verified 350-point game, replayed from a pinned seed";
+    }
     document.getElementById("hint").textContent =
       "every click runs a real command in zork1.zip · drag to pan · scroll to zoom";
     document.title = "ZORK I — playing";
@@ -486,6 +504,48 @@
     live = snap;
     absorb(snap, null, null);
     if (logLines.length === 0) log(null, snap.output || "");
+  }
+
+  /* ---------- replaying a complete, winning game ---------- */
+
+  // A Z-machine is only as deterministic as its interpreter's dice. Pinning
+  // ZVM's seed makes the whole run reproducible, so the same 431 commands
+  // reach 350 points every time, drawing the map as they go.
+  var replaying = null;
+
+  function replayWin() {
+    var plan = window.ZORK_WALKTHROUGH;
+    if (!plan) return;
+    if (replaying) { stopReplay(); return; }
+    if (!confirm("Replay a complete winning game? This restarts what you " +
+                 "are playing and takes about half a minute.")) return;
+
+    engine = window.ZorkEngine.create(plan.seed);
+    state = fresh();
+    logLines = [];
+    var snap = engine.snapshot(engine.banner);
+    state.session = snap.session;
+    absorb(snap, null, null);
+
+    var i = 0;
+    replaying = setInterval(function () {
+      if (i >= plan.commands.length) return stopReplay();
+      var cmd = plan.commands[i++];
+      var next = engine.command(cmd);
+      absorb(next, cmd, DIR_OF[cmd] || null);
+      var b = document.getElementById("b-replay");
+      b.textContent = "stop (" + i + "/" + plan.commands.length + ")";
+      if (i % 40 === 0 || i === plan.commands.length) fit();
+    }, 45);
+    document.getElementById("b-replay").textContent = "stop";
+  }
+
+  function stopReplay() {
+    clearInterval(replaying);
+    replaying = null;
+    document.getElementById("b-replay").textContent = "replay a win";
+    fit();
+    render();
   }
 
   var logLines = [];
